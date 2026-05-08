@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="250" viewBox="0 0 1120 250">
+  <style>
+    .box{fill:#f7fbfc;stroke:#0a6f82;stroke-width:2;rx:10}
+    .head{font:700 18px Arial,sans-serif;fill:#17313b}
+    .body{font:14px Arial,sans-serif;fill:#40515a}
+    .arrow{stroke:#9b2226;stroke-width:3;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#9b2226"/>
+    </marker>
+  </defs>
+  <rect x="18" y="50" width="160" height="110" class="box"/>
+  <text x="38" y="86" class="head">Clinical note</text>
+  <text x="38" y="115" class="body">note_text</text>
+  <text x="38" y="137" class="body">visit_date</text>
+  <path d="M185 105 H240" class="arrow"/>
+  <rect x="248" y="50" width="170" height="110" class="box"/>
+  <text x="270" y="86" class="head">BioBERT</text>
+  <text x="270" y="115" class="body">sliding windows</text>
+  <text x="270" y="137" class="body">shared encoder</text>
+  <path d="M425 105 H480" class="arrow"/>
+  <rect x="488" y="25" width="178" height="86" class="box"/>
+  <text x="512" y="60" class="head">Head A</text>
+  <text x="512" y="88" class="body">BIO action/time spans</text>
+  <rect x="488" y="138" width="178" height="86" class="box"/>
+  <text x="512" y="173" class="head">Head B</text>
+  <text x="512" y="201" class="body">action-time linking</text>
+  <path d="M674 68 H730" class="arrow"/>
+  <path d="M674 181 H730" class="arrow"/>
+  <rect x="738" y="50" width="170" height="110" class="box"/>
+  <text x="760" y="86" class="head">Date normalizer</text>
+  <text x="760" y="115" class="body">relative base = visit</text>
+  <text x="760" y="137" class="body">ISO period_date</text>
+  <path d="M915 105 H970" class="arrow"/>
+  <rect x="978" y="50" width="124" height="110" class="box"/>
+  <text x="1002" y="86" class="head">JSON</text>
+  <text x="1002" y="115" class="body">action</text>
+  <text x="1002" y="137" class="body">period_date</text>
+</svg>

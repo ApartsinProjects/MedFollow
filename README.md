@@ -2,6 +2,8 @@
 **Reliability‑first actions and timeline extraction from unstructured doctor’s notes**  
 *BioBERT (NER + Action→Time linking) + deterministic date normalization*
 
+**Paper draft:** [Read the manuscript](https://apartsinprojects.github.io/Course-LLM-Project/) (also at [`Paper/index.html`](Paper/index.html))
+
 <p align="center">
   <img src="visual_abstract/visual_abstract.png" width="900" alt="Visual abstract" />
 </p>

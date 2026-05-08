@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reliable Extraction of Follow-Up Actions and Timelines from Clinical Notes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #d9dce1;
+      --soft: #f6f8fb;
+      --accent: #005f73;
+      --accent-2: #9b2226;
+      --table: #eef4f6;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.62;
+    }
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+    header {
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+    }
+    h1 {
+      font-size: 2.35rem;
+      line-height: 1.12;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+    h2 {
+      border-top: 1px solid var(--line);
+      font-size: 1.55rem;
+      margin: 36px 0 12px;
+      padding-top: 22px;
+    }
+    h3 {
+      font-size: 1.12rem;
+      margin: 24px 0 8px;
+    }
+    p {
+      margin: 0 0 14px;
+    }
+    .authors, .meta, .note {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+    .abstract {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      margin: 28px 0;
+      padding: 18px 20px;
+    }
+    .keywords {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.94rem;
+      margin-top: 10px;
+    }
+    .contrib {
+      background: #fffaf0;
+      border-left: 4px solid #ca6702;
+      padding: 14px 18px;
+    }
+    .warning {
+      background: #fff5f5;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 18px;
+    }
+    table {
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+      margin: 18px 0 24px;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      vertical-align: top;
+    }
+    th {
+      background: var(--table);
+      text-align: left;
+    }
+    td.num, th.num {
+      text-align: right;
+      white-space: nowrap;
+    }
+    figure {
+      margin: 24px 0;
+      text-align: center;
+    }
+    figure img {
+      border: 1px solid var(--line);
+      max-width: 100%;
+    }
+    figcaption {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      text-align: left;
+    }
+    code {
+      background: #f1f3f4;
+      border-radius: 4px;
+      font-family: Consolas, "Liberation Mono", monospace;
+      font-size: 0.93em;
+      padding: 1px 4px;
+    }
+    pre {
+      background: #f1f3f4;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow-x: auto;
+      padding: 12px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .bib li {
+      margin-bottom: 10px;
+    }
+    .smallcaps {
+      font-variant: small-caps;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Reliable Extraction of Follow-Up Actions and Timelines from Clinical Notes via Joint Span-Link Modeling and Deterministic Date Normalization</h1>
+    <p class="authors">Michal Laufer</p>
+    <p class="meta">First manuscript draft. Generated from repository evidence in <code>Course-LLM-Project</code>. This version is intentionally conservative about claims because current evaluation is synthetic-only.</p>
+  </header>
+
+  <section class="abstract">
+    <h2>Abstract</h2>
+    <p>Follow-up instructions in outpatient notes often specify actions that must occur at future times, such as imaging, laboratory testing, specialist consultation, or rehabilitation. These instructions are clinically important but are frequently embedded in free text, where the relevant action, the temporal expression, and the association between them may be separated by distractors, section boundaries, or multiple competing instructions. We study the task of extracting structured action-date items from clinical notes, decomposing it into action span detection, time span detection, action-time linking, and date normalization anchored to the visit date.</p>
+    <p>We present a hybrid neural-symbolic pipeline that combines a shared BioBERT encoder with a BIO tagging head for action and time spans, a span-pair linking head for assigning times to actions, and deterministic normalization of relative dates. On a 2,000-note synthetic outpatient corpus covering five specialties and controlled style variation, the pipeline achieves 0.995 action-span F1, 0.997 time-span F1, 0.980 action-date F1, 0.985 exact date accuracy on matched actions, and 0.53-day mean absolute date error. Under the same held-out split, direct generative baselines show lower action-date F1 and larger date errors. These results support the hypothesis that separating semantic extraction from calendar arithmetic can improve reliability for structured follow-up extraction.</p>
+    <p>The present study should be read as a controlled proof of concept rather than evidence of deployment readiness. The corpus is synthetic, the results are point estimates from one split, and prospective validation on real de-identified clinical notes remains necessary. We describe the current evidence, the relation to clinical temporal information extraction and LLM-based clinical information extraction, and the experiments required to make the work suitable for a top-tier clinical NLP or biomedical informatics venue.</p>
+    <p class="keywords"><strong>Keywords:</strong> clinical natural language processing; information extraction; temporal expression normalization; relation extraction; BioBERT; follow-up instructions; synthetic clinical data</p>
+  </section>
+
+  <section>
+    <h2>1. Introduction</h2>
+    <p>Electronic health records contain a large volume of free-text documentation that records clinical plans, diagnostic uncertainty, rationale, and patient-specific instructions. Clinical information extraction has therefore become a central problem in biomedical informatics, with applications spanning cohort discovery, quality measurement, decision support, registry construction, and downstream validation of structured EHR fields <a href="#ref-wang2018">[1]</a>. Follow-up instructions are a particularly consequential subset of this information. A note may say that a patient should obtain an MRI in two weeks, repeat laboratory testing in three months, schedule physical therapy within five weeks, or return only if symptoms worsen. Failure to capture such instructions can affect scheduling, care coordination, and auditability.</p>
+    <p>The technical challenge is not simply named entity recognition. A clinically useful extraction must recover a structured item, such as <code>{"action": "MRI Brain", "period_text": "in 2 weeks", "period_date": "2026-01-24"}</code>, where <code>period_date</code> is computed relative to the encounter date. This requires recognizing action spans, recognizing temporal expressions, linking the correct time to the correct action, and normalizing relative dates. The difficulty increases when notes contain multiple actions, shorthand expressions such as <code>3 mos</code> or <code>q6mo</code>, historical temporal distractors, and plan sections whose structure varies across specialties and authors.</p>
+    <p>Prior clinical NLP has established strong foundations for concept extraction and temporal reasoning. Systems such as cTAKES operationalized modular clinical concept extraction for EHR text <a href="#ref-savova2010">[2]</a>, while the i2b2 temporal challenge, THYME corpus, and Clinical TempEval tasks formalized event and time extraction in clinical narratives <a href="#ref-sun2013">[3]</a>, <a href="#ref-styler2014">[4]</a>, <a href="#ref-bethard2015">[5]</a>, <a href="#ref-bethard2016">[6]</a>. Transformer encoders adapted to biomedical or clinical domains, including BioBERT, ClinicalBERT, PubMedBERT, and GatorTron, further improved task-specific extraction and relation modeling <a href="#ref-devlin2019">[7]</a>, <a href="#ref-lee2020">[8]</a>, <a href="#ref-alsentzer2019">[9]</a>, <a href="#ref-gu2021">[10]</a>, <a href="#ref-yang2022">[11]</a>. At the same time, large language models have made zero-shot or few-shot structured extraction from clinical notes feasible, but recent evaluations continue to report variability in strict format adherence, task-specific accuracy, and governance requirements <a href="#ref-agrawal2022">[12]</a>, <a href="#ref-huang2024">[13]</a>.</p>
+    <p>This work studies a narrower but operationally important question: for follow-up instruction extraction, is it better to ask a generative model to directly output action-date JSON, or to decompose the task into learned semantic extraction and deterministic date normalization? The repository evidence suggests that the decomposed design is promising on a controlled synthetic benchmark. The paper's central claim is therefore intentionally scoped: on synthetic, stress-varied outpatient notes, separating semantic span/link extraction from calendar arithmetic improves action-date reliability compared with the included direct generative baselines.</p>
+
+    <div class="contrib">
+      <h3>Contributions</h3>
+      <ol>
+        <li>We define follow-up instruction extraction as a structured action-date extraction task over clinical notes, anchored by the visit date.</li>
+        <li>We present a hybrid architecture with a shared BioBERT encoder, action/time BIO tagging, action-time span linking, and deterministic date normalization.</li>
+        <li>We construct and evaluate on a 2,000-note synthetic outpatient corpus with five specialties, plan-section variation, 0/1/2 action cases, temporal shorthand, and distractors.</li>
+        <li>We compare the hybrid pipeline against direct generative extraction baselines using span, linking, action-date, exact date, and date-error metrics.</li>
+        <li>We identify the current evidence gaps that must be addressed before claims of real-world clinical robustness or deployment readiness are warranted.</li>
+      </ol>
+    </div>
+
+    <div class="warning">
+      <h3>Scope boundary</h3>
+      <p>This draft does not claim clinical deployment readiness, real-note generalization, or superiority to all LLM prompting or fine-tuning strategies. The current evidence supports a controlled proof of concept. A top-tier submission will require external validation, ablations, confidence intervals, raw prediction release, and a reproducible experiment package.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Related Work</h2>
+
+    <h3>2.1 Clinical Information Extraction</h3>
+    <p>Clinical information extraction aims to convert unstructured narrative text into structured representations usable for research and care operations. A broad review by Wang et al. describes clinical IE systems as pipelines that may include tokenization, syntactic processing, named entity recognition, concept identification, relation extraction, and context handling <a href="#ref-wang2018">[1]</a>. cTAKES is a prominent open-source clinical NLP system that extracts clinical concepts and attributes from free-text notes using a modular architecture <a href="#ref-savova2010">[2]</a>. Such systems demonstrate the long-standing value of task-specialized clinical NLP, but they usually target broad clinical concepts rather than executable follow-up action-date pairs.</p>
+    <p>The present task differs from standard concept extraction in two ways. First, the action to be scheduled is often a procedure, test, consult, or behavioral instruction rather than a diagnosis or medication mention. Second, extracting the action alone is insufficient: the system must link it to the temporal expression that determines when the action should occur. This places the task at the intersection of named entity recognition, relation extraction, and temporal normalization.</p>
+
+    <h3>2.2 Temporal Information Extraction in Clinical Text</h3>
+    <p>Clinical temporal extraction has been studied through shared tasks and corpora. The 2012 i2b2 challenge evaluated temporal relations in clinical text, including events, time expressions, and temporal links <a href="#ref-sun2013">[3]</a>. The THYME project developed clinical temporal annotation guidelines and corpora, emphasizing the specific demands of clinical narratives such as document sections, historical mentions, and event anchoring <a href="#ref-styler2014">[4]</a>. Clinical TempEval extended this line through SemEval tasks that evaluated systems on clinical temporal expression and relation extraction <a href="#ref-bethard2015">[5]</a>, <a href="#ref-bethard2016">[6]</a>.</p>
+    <p>These resources focus on general temporal structure in clinical narratives. Our task is narrower and more action-oriented: identify future follow-up actions and normalize their execution dates relative to a visit date. This narrower target is clinically useful but also creates new evaluation requirements. A model may correctly detect a temporal phrase and still fail if it links that phrase to the wrong action or if it produces the wrong calendar date.</p>
+
+    <h3>2.3 Temporal Normalization and Rule-Based Date Handling</h3>
+    <p>Temporal expression recognition and normalization have long used rule-based and hybrid systems. HeidelTime is a rule-based temporal tagger for extracting and normalizing temporal expressions <a href="#ref-strotgen2010">[14]</a>, and SUTime provides a library for recognizing and normalizing time expressions using compositional rules <a href="#ref-chang2012">[15]</a>. Clinical temporal extraction work also emphasizes normalization as a foundational step for downstream temporal reasoning <a href="#ref-lin2018">[16]</a>. In this repository, deterministic date normalization is implemented with the Python <code>dateparser</code> library, using the encounter date as the relative base.</p>
+    <p>The key design choice is to avoid asking the neural model to do date arithmetic directly. Instead, the neural components identify spans and links, while deterministic logic maps phrases such as "within five weeks" or "11 mos" to ISO dates. This follows a broader reliability-first pattern: reserve learned models for ambiguous semantic interpretation and use deterministic modules for arithmetic or schema-constrained transformations whenever possible.</p>
+
+    <h3>2.4 Domain-Specific Biomedical and Clinical Encoders</h3>
+    <p>BERT established a general pretraining and fine-tuning framework for many NLP tasks <a href="#ref-devlin2019">[7]</a>. Domain-specific pretraining then became important in biomedical and clinical NLP. BioBERT continues pretraining on PubMed abstracts and PMC full text and improves biomedical NER, relation extraction, and question answering <a href="#ref-lee2020">[8]</a>. ClinicalBERT adapts BERT to clinical notes and demonstrates the value of clinical-domain text for modeling EHR narratives <a href="#ref-alsentzer2019">[9]</a>. PubMedBERT trains from scratch on biomedical literature and argues that in-domain vocabulary and pretraining matter for biomedical tasks <a href="#ref-gu2021">[10]</a>. GatorTron scales clinical language modeling using a large corpus of de-identified clinical text and evaluates across clinical NLP tasks including concept extraction and relation extraction <a href="#ref-yang2022">[11]</a>.</p>
+    <p>Our use of BioBERT is therefore conservative rather than novel by itself. The novelty is not the encoder; it is the task-specific decomposition into action spans, time spans, action-time links, and deterministic date normalization for follow-up instructions.</p>
+
+    <h3>2.5 Span-Based and Biaffine Relation Modeling</h3>
+    <p>Relation extraction often benefits from explicit span-pair modeling. SpERT frames joint entity and relation extraction as a span-based transformer model, scoring candidate entities and relations over span representations <a href="#ref-eberts2020">[17]</a>. Biaffine scoring, popularized in neural dependency parsing, provides a simple and effective way to score directed relations between two contextual representations <a href="#ref-dozat2017">[18]</a>. The present architecture follows this family of ideas by representing action and time spans and scoring candidate action-time links, including a none option for actions without an explicit time.</p>
+
+    <h3>2.6 LLM-Based Clinical Structured Extraction</h3>
+    <p>Large language models have changed the baseline landscape for clinical information extraction. Agrawal et al. showed that large language models can act as zero- and few-shot clinical information extractors, introducing benchmark tasks based on clinical text <a href="#ref-agrawal2022">[12]</a>. Huang et al. assessed ChatGPT for structured extraction from clinical notes and reported promising feasibility, while also underscoring the need for careful evaluation against curated data <a href="#ref-huang2024">[13]</a>. Recent clinical foundation-model reviews emphasize schema adherence, privacy, governance, and evaluation designs that reflect health-system value rather than benchmark convenience <a href="#ref-wornow2023">[19]</a>. Prompt-engineering studies further show that LLM extraction performance is sensitive to task instructions, annotation guidance, and few-shot examples <a href="#ref-hu2024">[20]</a>.</p>
+    <p>These studies motivate using direct generative extraction as a serious baseline. However, follow-up action-date extraction places pressure on exact dates and linking correctness. The results in this repository suggest that direct generation can recover actions well but may suffer more on time extraction, linking, and date arithmetic. This makes the task a useful setting for comparing general-purpose generative extraction with task-specialized decomposed extraction.</p>
+
+    <h3>2.7 Synthetic Clinical Data</h3>
+    <p>Clinical NLP research is constrained by privacy, governance, and access barriers. Synthetic clinical text can reduce PHI risk and support controlled stress testing, but it does not replace real-world validation. Kweon et al. train a publicly shareable clinical LLM on synthetic clinical notes derived from public case reports and evaluate it against real-note tasks, illustrating one route for privacy-aware clinical NLP research <a href="#ref-kweon2024">[21]</a>. A 2025 scoping review of synthetic health record generation highlights both promise and inconsistent evaluation practices across medical text, time series, and longitudinal data <a href="#ref-loni2025">[22]</a>. The present corpus should therefore be positioned as a controlled evaluation scaffold, not as evidence that the model is ready for real clinical deployment.</p>
+  </section>
+
+  <section>
+    <h2>3. Task Definition</h2>
+    <p>Each input example consists of a clinical note \(x\) and a visit date \(v\). The output is a set of follow-up items:</p>
+    <p>$$Y = \{(a_i, \tau_i, d_i)\}_{i=1}^{n},$$</p>
+    <p>where \(a_i\) is an action span, \(\tau_i\) is a time-expression span or null value, and \(d_i\) is an ISO-formatted execution date normalized relative to \(v\). The model must return an empty set when no scheduled follow-up action is present.</p>
+    <p>The task decomposes into four subtasks:</p>
+    <ol>
+      <li><strong>Action span detection:</strong> identify text spans describing actionable future instructions, such as "MRI Brain", "X-Ray", or "Physical Therapy".</li>
+      <li><strong>Time span detection:</strong> identify temporal expressions that specify timing, such as "in 2 weeks", "within five weeks", or "11 mos".</li>
+      <li><strong>Action-time linking:</strong> assign each action to its corresponding time expression or to a none option.</li>
+      <li><strong>Date normalization:</strong> convert the linked time expression into an absolute date using the visit date as anchor.</li>
+    </ol>
+    <p>The strict end-to-end criterion is set-level correctness over action-date pairs. A prediction is correct only when the action matches the gold action and the normalized date matches the gold date.</p>
+  </section>
+
+  <section>
+    <h2>4. Dataset</h2>
+    <p>The repository contains <code>Data/synthetic_clinical_notes_2000.csv</code>, a synthetic corpus generated under a controlled schema to avoid use of protected health information. Each row contains the note text, visit date, specialty, topic, plan variant, action count, plan-section offsets, gold action/time spans, normalized dates, and style features.</p>
+
+    <table>
+      <caption class="note">Table 1. Current dataset summary from repository audit.</caption>
+      <thead>
+        <tr><th>Property</th><th class="num">Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Total notes</td><td class="num">2,000</td></tr>
+        <tr><td>Specialties</td><td class="num">5</td></tr>
+        <tr><td>Orthopedic</td><td class="num">379</td></tr>
+        <tr><td>Cardiovascular / Pulmonary</td><td class="num">391</td></tr>
+        <tr><td>Gastroenterology</td><td class="num">394</td></tr>
+        <tr><td>Neurology</td><td class="num">414</td></tr>
+        <tr><td>General Medicine</td><td class="num">422</td></tr>
+        <tr><td>0-action notes</td><td class="num">497</td></tr>
+        <tr><td>1-action notes</td><td class="num">978</td></tr>
+        <tr><td>2-action notes</td><td class="num">525</td></tr>
+        <tr><td>Mean actions per note</td><td class="num">1.014</td></tr>
+        <tr><td>Note length range</td><td class="num">436-1,834 characters</td></tr>
+        <tr><td>Median note length</td><td class="num">1,193 characters</td></tr>
+        <tr><td>Recorded API errors</td><td class="num">0</td></tr>
+        <tr><td>Recorded span errors</td><td class="num">26</td></tr>
+      </tbody>
+    </table>
+
+    <p>The generator varies plan headers, specialty, clinical topic, clinician style features, action counts, and time-expression forms. Stress features include multi-action instructions, historical distractors, shorthand time phrases, proximity traps, and section ambiguity. The current draft treats these as controlled synthetic factors. A dataset card should be added before submission, including generation prompts, model version, sampling parameters, regeneration filters, annotation validation rules, and split identifiers.</p>
+
+    <figure>
+      <img src="../Visuals/note length variation by specialty plot.png" alt="Note length variation by specialty">
+      <figcaption><strong>Figure 1.</strong> Note-length variation by specialty from the existing repository visuals. A submission version should regenerate this figure from a documented script and include uncertainty or distributional summaries.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>5. Method</h2>
+    <p>The proposed system uses a shared contextual encoder and two task heads. Let \(h_1,\ldots,h_T\) denote contextual token representations from BioBERT for a tokenized note window. Long notes are processed with sliding windows of maximum length 512 and document stride 128.</p>
+
+    <h3>5.1 Span Tagging</h3>
+    <p>The first head predicts BIO tags over tokens:</p>
+    <p>$$z_t \in \{\mathrm{O}, \mathrm{B\mbox{-}ACT}, \mathrm{I\mbox{-}ACT}, \mathrm{B\mbox{-}TIME}, \mathrm{I\mbox{-}TIME}\}.$$</p>
+    <p>The NER loss is weighted cross-entropy to reduce bias toward the majority <code>O</code> class:</p>
+    <p>$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
+
+    <h3>5.2 Span Representation</h3>
+    <p>For each detected span \(s=(b,e)\), the model constructs a span representation using the start state, end state, and a width embedding:</p>
+    <p>$$r_s = [h_b; h_e; \phi(e-b+1)].$$</p>
+
+    <h3>5.3 Action-Time Linking</h3>
+    <p>For each action span \(a\) and candidate time span \(t\), the linker scores compatibility using a biaffine form with distance features:</p>
+    <p>$$\mathrm{score}(a,t) = r_a^\top W r_t + u^\top [r_a; r_t; \psi(\Delta_{a,t})] + b,$$</p>
+    <p>where \(\Delta_{a,t}\) encodes relative span distance. For each action, the model applies a softmax over all candidate time spans plus a none option. The linking loss is:</p>
+    <p>$$\mathcal{L}_{\mathrm{LINK}} = - \sum_{a \in A} \log p(t^\star_a \mid a, T \cup \{\varnothing\}).$$</p>
+
+    <h3>5.4 Joint Objective</h3>
+    <p>The total training objective is:</p>
+    <p>$$\mathcal{L} = \mathcal{L}_{\mathrm{NER}} + \alpha \mathcal{L}_{\mathrm{LINK}}, \quad \alpha = 1.$$</p>
+
+    <h3>5.5 Date Normalization</h3>
+    <p>After action-time linking, the linked time expression is normalized with deterministic date parsing. Given visit date \(v\) and time phrase \(\tau\), the date normalizer returns:</p>
+    <p>$$d = \mathrm{NormalizeDate}(\tau; v).$$</p>
+    <p>Implementation uses <code>dateparser</code> with <code>RELATIVE_BASE</code> set to the visit date and <code>PREFER_DATES_FROM</code> set to future. This design intentionally separates semantic extraction from calendar arithmetic.</p>
+  </section>
+
+  <section>
+    <h2>6. Experiments</h2>
+
+    <h3>6.1 Models</h3>
+    <p>The current repository compares three systems:</p>
+    <ol>
+      <li><strong>BioBERT hybrid pipeline:</strong> the proposed NER, linking, and deterministic date-normalization system.</li>
+      <li><strong>ChatGPT zero-shot:</strong> direct JSON extraction from note text.</li>
+      <li><strong>LLaMA fine-tuned:</strong> an instruction model fine-tuned to output action-date JSON.</li>
+    </ol>
+    <p>The baselines are useful, but a publication-quality experiment must preserve prompts, decoding parameters, model versions, checkpoint identifiers, train/validation/test split IDs, and raw predictions.</p>
+
+    <h3>6.2 Metrics</h3>
+    <p>We report exact span F1 for actions and times, linked-pair F1, action-date F1, exact date accuracy on matched actions, and mean absolute date error in days. Let \(P\) be the predicted set of action-date pairs and \(G\) the gold set. End-to-end precision, recall, and F1 are:</p>
+    <p>$$\mathrm{Precision} = \frac{|P \cap G|}{|P|}, \quad \mathrm{Recall} = \frac{|P \cap G|}{|G|}, \quad F_1 = \frac{2PR}{P+R}.$$</p>
+
+    <h3>6.3 Current Results</h3>
+    <table>
+      <caption class="note">Table 2. Reported held-out metrics from repository result files. These are point estimates and should be augmented with confidence intervals.</caption>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th class="num">Action F1</th>
+          <th class="num">Time/Date F1</th>
+          <th class="num">Action-Date F1</th>
+          <th class="num">Date Exact Acc.</th>
+          <th class="num">Date MAE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BioBERT hybrid pipeline</td>
+          <td class="num">0.9949</td>
+          <td class="num">0.9975</td>
+          <td class="num">0.9797</td>
+          <td class="num">0.9847</td>
+          <td class="num">0.53 days</td>
+        </tr>
+        <tr>
+          <td>ChatGPT zero-shot</td>
+          <td class="num">0.9796</td>
+          <td class="num">0.8308</td>
+          <td class="num">0.8265</td>
+          <td class="num">0.8438</td>
+          <td class="num">5.07 days</td>
+        </tr>
+        <tr>
+          <td>LLaMA fine-tuned</td>
+          <td class="num">1.0000</td>
+          <td class="num">0.8163</td>
+          <td class="num">0.8061</td>
+          <td class="num">0.8061</td>
+          <td class="num">10.88 days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <figure>
+      <img src="../Visuals/model comparison f1.png" alt="Model comparison F1">
+      <figcaption><strong>Figure 2.</strong> Existing model-comparison visualization from repository outputs. A submission figure should be regenerated with consistent colors, split metadata, and confidence intervals.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../Visuals/date error mae.png" alt="Date error mean absolute error">
+      <figcaption><strong>Figure 3.</strong> Date error comparison. The current evidence suggests that deterministic date normalization sharply reduces calendar error on the synthetic held-out split.</figcaption>
+    </figure>
+
+    <h3>6.4 Interpretation</h3>
+    <p>The hybrid pipeline has high action and time span F1, and its action-date F1 is substantially higher than the included generative baselines. The largest observed gap is date arithmetic: the hybrid pipeline's mean absolute date error is below one day, while direct generative extraction produces larger errors. This supports the paper's central hypothesis that learned semantic extraction and deterministic date arithmetic should be separated for this task.</p>
+    <p>However, these results are not yet sufficient for a top-tier claim. They lack repeated seeds, confidence intervals, a documented split manifest, raw predictions, ablation studies, and external validation.</p>
+  </section>
+
+  <section>
+    <h2>7. Required Ablations and Additional Analyses</h2>
+    <p>A serious submission should add the following before claiming method superiority:</p>
+    <ol>
+      <li><strong>Linking ablation:</strong> compare biaffine linking to nearest-time, same-sentence, action-order, and no-link baselines.</li>
+      <li><strong>Date-normalization ablation:</strong> compare deterministic normalization with direct model-generated dates while holding action/time extraction fixed.</li>
+      <li><strong>Encoder ablation:</strong> compare BioBERT with general BERT, PubMedBERT, ClinicalBERT, and a lightweight encoder if compute allows.</li>
+      <li><strong>Stress-slice analysis:</strong> report performance by specialty, note length, action count, shorthand expressions, historical distractors, proximity traps, and list-swapping cases.</li>
+      <li><strong>Uncertainty:</strong> use bootstrap confidence intervals over notes and, where feasible, repeated train/validation/test splits.</li>
+      <li><strong>Error taxonomy:</strong> manually classify errors into action boundary, time boundary, link selection, date normalization, no-action false positive, and missed instruction categories.</li>
+      <li><strong>External realism:</strong> evaluate on a small de-identified clinician-labeled note set or a public clinical temporal extraction benchmark adapted to follow-up action-date extraction.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>8. Discussion</h2>
+    <p>The results point to a useful design principle for clinical extraction systems: when the output combines semantic interpretation with exact symbolic transformation, reliability may improve when these functions are separated. The neural model is used to understand what textual spans denote actions and times and how they relate. The deterministic component is used to perform date arithmetic under a documented anchor date. This is aligned with clinical safety needs because date arithmetic errors are easier to audit and constrain in deterministic code than in unconstrained generation.</p>
+    <p>The comparison with LLM baselines should not be interpreted as a general indictment of generative models for clinical extraction. LLMs are flexible, can operate with limited task-specific labels, and may perform well with stronger prompts, tool use, constrained decoding, retrieval, or fine-tuning. The current evidence instead supports a narrower conclusion: for this synthetic follow-up extraction benchmark, a task-specific decomposed model outperforms the included direct JSON generation baselines on strict action-date correctness and date error.</p>
+    <p>The synthetic corpus is valuable for controlled stress testing because the true action, time, and date are known by construction. Yet synthetic data can encode generator artifacts, simplify real clinical variation, and overrepresent planned cases that fit the schema. Therefore, any top-tier version of this paper must include a realism bridge: either real-note evaluation, clinician annotation of a de-identified sample, or a rigorous synthetic-to-real validation study.</p>
+  </section>
+
+  <section>
+    <h2>9. Limitations</h2>
+    <ol>
+      <li><strong>Synthetic-only evidence:</strong> the repository contains no real patient notes and cannot establish generalization to real EHR documentation.</li>
+      <li><strong>Single split:</strong> current metrics are point estimates on one held-out split, without confidence intervals or repeated seeds.</li>
+      <li><strong>Incomplete reproducibility:</strong> the main implementation is a Colab-style notebook combining generation, training, evaluation, and plotting.</li>
+      <li><strong>Baseline opacity:</strong> prompts, decoding settings, model versions, raw predictions, and split manifests are not yet fully preserved as auditable artifacts.</li>
+      <li><strong>Limited action ontology:</strong> the action set is specialty-specific and controlled; real instructions may include medications, referrals, conditional follow-up, patient behavior, and ambiguous responsibility.</li>
+      <li><strong>Dateparser assumptions:</strong> deterministic normalization depends on library behavior, locale assumptions, and phrase coverage.</li>
+      <li><strong>No workflow validation:</strong> the study does not evaluate clinician acceptance, EHR integration, safety monitoring, or downstream scheduling outcomes.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>10. Ethics and Privacy</h2>
+    <p>The current dataset is synthetic and includes no protected health information. This avoids direct privacy risk from patient records but does not remove the need for ethical review before real-world evaluation. Any extension to de-identified clinical notes should follow institutional governance, data-use agreements, annotation protocols, privacy review, and appropriate reporting of model failure modes. Because follow-up instructions can affect care coordination, deployment would require prospective validation, human oversight, alert-fatigue analysis, and clear accountability for scheduling decisions.</p>
+  </section>
+
+  <section>
+    <h2>11. Reproducibility Plan</h2>
+    <p>Before submission, the repository should be reorganized into a reproducible paper package:</p>
+    <ol>
+      <li><code>scripts/generate_data.py</code>: controlled data generation and validation.</li>
+      <li><code>scripts/create_splits.py</code>: deterministic split creation with saved note IDs.</li>
+      <li><code>scripts/train_biobert.py</code>: model training with config files and seeds.</li>
+      <li><code>scripts/run_baselines.py</code>: baseline inference with prompts and decoding parameters.</li>
+      <li><code>scripts/evaluate.py</code>: strict evaluation and bootstrap confidence intervals.</li>
+      <li><code>scripts/make_figures.py</code>: regenerate all manuscript figures and tables.</li>
+      <li><code>predictions/</code>: raw predictions for all systems.</li>
+      <li><code>splits/</code>: train/validation/test manifests.</li>
+      <li><code>docs/dataset_card.md</code> and <code>docs/model_card.md</code>: dataset and model documentation.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>12. Conclusion</h2>
+    <p>This draft presents a reliability-first approach to extracting follow-up actions and timelines from clinical notes. The core idea is to separate semantic understanding from date arithmetic: a BioBERT-based model detects action and time spans and links them, while deterministic normalization converts relative time phrases into absolute dates. On the current synthetic held-out benchmark, this decomposition yields stronger strict action-date performance and lower date error than the included direct generative baselines.</p>
+    <p>The work is promising but not yet complete as a top-tier paper. The next version should add ablations, stress-slice results, confidence intervals, raw prediction artifacts, and external validation. With those additions, the project can be framed as a focused clinical NLP methods paper about reliable action-date extraction rather than as a broad claim about clinical deployment or general LLM superiority.</p>
+  </section>
+
+  <section>
+    <h2>Validated Bibliography</h2>
+    <p class="note">All entries below correspond to real papers or official project documentation verified through publisher pages, ACL Anthology, arXiv, PubMed/PMC, Nature, or project documentation during the literature search for this draft.</p>
+    <ol class="bib">
+      <li id="ref-wang2018">Wang, Y., Wang, L., Rastegar-Mojarad, M., Moon, S., Shen, F., Afzal, N., Liu, S., Zeng, Y., Mehrabi, S., Sohn, S., and Liu, H. "Clinical information extraction applications: A literature review." <em>Journal of Biomedical Informatics</em>, 77, 34-49, 2018. DOI: 10.1016/j.jbi.2017.11.011.</li>
+      <li id="ref-savova2010">Savova, G. K., Masanz, J. J., Ogren, P. V., Zheng, J., Sohn, S., Kipper-Schuler, K. C., and Chute, C. G. "Mayo clinical Text Analysis and Knowledge Extraction System (cTAKES): architecture, component evaluation and applications." <em>Journal of the American Medical Informatics Association</em>, 17(5), 507-513, 2010. DOI: 10.1136/jamia.2009.001560.</li>
+      <li id="ref-sun2013">Sun, W., Rumshisky, A., and Uzuner, O. "Evaluating temporal relations in clinical text: 2012 i2b2 Challenge." <em>Journal of the American Medical Informatics Association</em>, 20(5), 806-813, 2013. DOI: 10.1136/amiajnl-2013-001628.</li>
+      <li id="ref-styler2014">Styler IV, W. F., Bethard, S., Finan, S., Palmer, M., Pradhan, S., de Groen, P. C., Erickson, B., Miller, T., Lin, C., Savova, G., and Pustejovsky, J. "Temporal Annotation in the Clinical Domain." <em>Transactions of the Association for Computational Linguistics</em>, 2, 143-154, 2014. DOI: 10.1162/tacl_a_00172.</li>
+      <li id="ref-bethard2015">Bethard, S., Derczynski, L., Savova, G., Pustejovsky, J., and Verhagen, M. "SemEval-2015 Task 6: Clinical TempEval." <em>Proceedings of the 9th International Workshop on Semantic Evaluation</em>, 806-814, 2015. DOI: 10.18653/v1/S15-2136.</li>
+      <li id="ref-bethard2016">Bethard, S., Savova, G., Palmer, M., and Pustejovsky, J. "SemEval-2016 Task 12: Clinical TempEval." <em>Proceedings of the 10th International Workshop on Semantic Evaluation</em>, 1052-1062, 2016. DOI: 10.18653/v1/S16-1165.</li>
+      <li id="ref-devlin2019">Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding." <em>Proceedings of NAACL-HLT</em>, 4171-4186, 2019. DOI: 10.18653/v1/N19-1423.</li>
+      <li id="ref-lee2020">Lee, J., Yoon, W., Kim, S., Kim, D., Kim, S., So, C. H., and Kang, J. "BioBERT: a pre-trained biomedical language representation model for biomedical text mining." <em>Bioinformatics</em>, 36(4), 1234-1240, 2020. DOI: 10.1093/bioinformatics/btz682.</li>
+      <li id="ref-alsentzer2019">Alsentzer, E., Murphy, J. R., Boag, W., Weng, W.-H., Jin, D., Naumann, T., and McDermott, M. "Publicly Available Clinical BERT Embeddings." <em>Proceedings of the 2nd Clinical Natural Language Processing Workshop</em>, 72-78, 2019. DOI: 10.18653/v1/W19-1909.</li>
+      <li id="ref-gu2021">Gu, Y., Tinn, R., Cheng, H., Lucas, M., Usuyama, N., Liu, X., Naumann, T., Gao, J., and Poon, H. "Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing." <em>ACM Transactions on Computing for Healthcare</em>, 3(1), Article 2, 2021. DOI: 10.1145/3458754.</li>
+      <li id="ref-yang2022">Yang, X., Chen, A., PourNejatian, N., Shin, H. C., Smith, K. E., Parisien, C., Compas, C., Martin, C., Flores, M. G., Zhang, Y., Magoc, T., Harle, C. A., Lipori, G., Mitchell, D. A., Hogan, W. R., Shenkman, E. A., Bian, J., and Wu, Y. "A large language model for electronic health records." <em>npj Digital Medicine</em>, 5, 194, 2022. DOI: 10.1038/s41746-022-00742-2.</li>
+      <li id="ref-agrawal2022">Agrawal, M., Hegselmann, S., Lang, H., Kim, Y., and Sontag, D. "Large Language Models are Few-Shot Clinical Information Extractors." <em>Proceedings of EMNLP</em>, 1998-2022, 2022. DOI: 10.18653/v1/2022.emnlp-main.130.</li>
+      <li id="ref-huang2024">Huang, J., Yang, D. M., Rong, R., Nezafati, K., Treager, C., Chi, Z., Wang, S., Cheng, X., Guo, Y., Klesse, L. J., Xiao, G., Xie, Y., and others. "A critical assessment of using ChatGPT for extracting structured data from clinical notes." <em>npj Digital Medicine</em>, 7, 106, 2024. DOI: 10.1038/s41746-024-01079-8.</li>
+      <li id="ref-strotgen2010">Strotgen, J., and Gertz, M. "HeidelTime: High Quality Rule-based Extraction and Normalization of Temporal Expressions." <em>Proceedings of the 5th International Workshop on Semantic Evaluation</em>, 321-324, 2010. ACL Anthology ID: S10-1071.</li>
+      <li id="ref-chang2012">Chang, A. X., and Manning, C. D. "SUTime: A Library for Recognizing and Normalizing Time Expressions." <em>Proceedings of the Eighth International Conference on Language Resources and Evaluation</em>, 3735-3740, 2012.</li>
+      <li id="ref-lin2018">Lin, C., Miller, T., Dligach, D., Bethard, S., and Savova, G. "A BERT-based universal model for both within- and cross-sentence clinical temporal relation extraction." <em>Proceedings of the 2nd Clinical Natural Language Processing Workshop</em>, 65-71, 2019. DOI: 10.18653/v1/W19-1908.</li>
+      <li id="ref-eberts2020">Eberts, M., and Ulges, A. "Span-based Joint Entity and Relation Extraction with Transformer Pre-training." <em>Proceedings of the 24th European Conference on Artificial Intelligence</em>, 2020. DOI: 10.3233/FAIA200321.</li>
+      <li id="ref-dozat2017">Dozat, T., and Manning, C. D. "Deep Biaffine Attention for Neural Dependency Parsing." <em>International Conference on Learning Representations</em>, 2017.</li>
+      <li id="ref-wornow2023">Wornow, M., Xu, Y., Thapa, R., Patel, B., Steinberg, E., Fleming, S., Pfeffer, M. A., Fries, J. A., and Shah, N. H. "The shaky foundations of large language models and foundation models for electronic health records." <em>npj Digital Medicine</em>, 6, 135, 2023. DOI: 10.1038/s41746-023-00879-8.</li>
+      <li id="ref-hu2024">Hu, Y., Chen, Q., Du, J., Peng, X., Keloth, V. K., Zuo, X., Zhou, Y., Li, Z., Jiang, X., Lu, Z., Roberts, K., and Xu, H. "Improving large language models for clinical named entity recognition via prompt engineering." <em>Journal of the American Medical Informatics Association</em>, 31(9), 1812-1820, 2024. DOI: 10.1093/jamia/ocad259.</li>
+      <li id="ref-kweon2024">Kweon, S., Kim, J., Kim, J., Im, S., Cho, E., Bae, S., Oh, J., Lee, G., Moon, J. H., You, S. C., Baek, S., Han, C. H., Jung, Y. B., Jo, Y., and Choi, E. "Publicly Shareable Clinical Large Language Model Built on Synthetic Clinical Notes." <em>Findings of the Association for Computational Linguistics: ACL 2024</em>, 5148-5168, 2024. ACL Anthology ID: 2024.findings-acl.305.</li>
+      <li id="ref-loni2025">Loni, M., Poursalim, F., Asadi, M., and Gharehbaghi, A. "A review on generative AI models for synthetic medical text, time series, and longitudinal data." <em>npj Digital Medicine</em>, 8, 281, 2025. DOI: 10.1038/s41746-024-01409-w.</li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>
