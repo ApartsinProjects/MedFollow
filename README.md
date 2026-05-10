@@ -223,7 +223,7 @@ If you use this code or dataset, cite as:
 ```bibtex
 @misc{clinical_temporal_action_extraction_2026,
   title        = {Follow Up Instructions Extraction: Hybrid BioBERT + Deterministic Date Normalization},
-  author       = {Michal Laufer and Alexander Apartsin and Yehudit Aperstein},
+  author       = {Michal Laufer and Yehudit Aperstein and Alexander Apartsin},
   year         = {2026},
 }
 ```
