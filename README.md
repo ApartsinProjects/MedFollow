@@ -1,229 +1,150 @@
-# Follow Up Instructions Extractions   
-**Reliability‑first actions and timeline extraction from unstructured doctor’s notes**  
-*BioBERT (NER + Action→Time linking) + deterministic date normalization*
+# MedFollow
 
-**Paper draft:** [Read the manuscript](https://apartsinprojects.github.io/MedFollow/) (also at [`Paper/index.html`](Paper/index.html))
+**Reliable Follow-Up Action and Date Extraction from Clinical Notes: A Hybrid Neural-Symbolic Approach**
 
-<p align="center">
-  <img src="visual_abstract/visual_abstract.png" width="900" alt="Visual abstract" />
-</p>
+Michal Laufer<sup>a</sup>, Yehudit Aperstein<sup>b,*</sup>, Alexander Apartsin<sup>c</sup>
 
----
+<sup>a</sup>Bar-Ilan University, Ramat Gan, Israel  
+<sup>b</sup>Afeka College of Engineering, Tel Aviv, Israel  
+<sup>c</sup>Holon Institute of Technology, Holon, Israel  
+<sup>*</sup>Corresponding author: [apersteiny@afeka.ac.il](mailto:apersteiny@afeka.ac.il)
 
-## Project Motivation
-Clinical outpatient notes often contain follow‑up instructions such as:
+> Submitted to *Journal of Biomedical Informatics* (Elsevier).
 
-> “Order MRI brain in two weeks.”
-
-These instructions are crucial for scheduling, care coordination, and downstream EHR validation, but they are embedded in free text and can be ambiguous when multiple actions and time expressions appear in the same note.
-
-**Key challenge:** robustly extract *actions* and their *execution dates* while avoiding arithmetic errors common in end‑to‑end text generation.
+| Read | Download |
+|---|---|
+| [Manuscript (HTML)](https://apartsinprojects.github.io/MedFollow/Paper/) | [Manuscript (.docx)](Paper/MedFollow_JBI_submission.docx) |
+| [JBI submission notes](Paper/jbi_submission_notes.md) | [Supplementary materials (.zip)](Paper/MedFollow_supplementary.zip) |
+| [Cover letter](Paper/cover_letter.md) | [Audit report](Paper/audit_report.md) |
 
 ---
 
-## Problem Statement
-### Input
-- `note_text` (free text clinical note)
-- `visit_date` (anchor date)
+## What this is
 
-### Output
-A JSON list of structured follow‑up items:
+A hybrid neural-symbolic system that extracts structured `(action, date)` pairs from outpatient clinical notes. A shared BioBERT encoder feeds a BIO action/time tagging head and a biaffine action-time linker; a deterministic `dateparser`-based normalizer converts the linked time phrase into an absolute ISO date anchored on the visit date. By design, the neural model is never asked to perform calendar arithmetic.
 
-```json
-[
-  {
-    "action": "MRI Brain",
-    "period_text": "in 2 weeks",
-    "period_date": "2026-01-24"
-  }
-]
+```text
+Input note + visit_date
+        |
+        v
+  BioBERT encoder (sliding windows, 512/128)
+        |
+        v
+  Head A: BIO action/time spans     -->     Head B: biaffine action-time linker (with NONE option)
+                                                            |
+                                                            v
+                                              Deterministic date normalizer
+                                                            |
+                                                            v
+                                              {action, period_text, period_date}
 ```
 
-This decomposes into:
-1) **Action span detection** (what to do)  
-2) **Time span detection** (when)  
-3) **Action→Time linking** (which time belongs to which action)  
-4) **Date normalization** anchored to `visit_date`
+## Headline result
 
----
-## Visual Abstract
+On a 2,000-note synthetic outpatient corpus (198-note held-out split, 196 gold actions):
 
-The system consists of:
+| Model | Action F1 [95% CI] | Time F1 [95% CI] | Action-Date F1 [95% CI] | Date MAE (days) |
+|---|---|---|---|---|
+| **BioBERT hybrid (proposed)** | **0.995 [0.987, 1.000]** | **0.997 [0.992, 1.000]** | **0.980 [0.964, 0.992]** | **0.53** |
+| ChatGPT zero-shot (gpt-4o-mini) | 0.980 [0.964, 0.992] | 0.831 [0.790, 0.868] | 0.827 [0.783, 0.864] | 5.07 |
+| LLaMA-3 8B fine-tuned (LoRA) | 1.000 [1.000, 1.000] | 0.816 [0.772, 0.854] | 0.806 [0.762, 0.847] | 10.88 |
 
-Clinical Note
-↓
-Sliding Window Tokenization
-↓
-BioBERT Encoder
-↓
-Head A: BIO NER (Action/Time spans)
-↓
-Head B: Biaffine Linker (Action→Time)
-↓
-Date Normalization (visit_date anchored)
-↓
-Structured JSON Output
+The hybrid pipeline's CIs for time F1, action-date F1, and date accuracy do not overlap with either generative baseline (significant at p<0.05). The largest gap is on calendar arithmetic (0.53 vs 5-11 days MAE), supporting the design hypothesis that semantic extraction and date arithmetic should be separated. See Section 4 of the manuscript for the full results table and Section 5 for discussion.
 
----
-## Method Overview
-We implement a **joint multi‑task architecture** with a shared **BioBERT** encoder feeding two heads:
-
-### 1) Head A, NER (BIO tagging)
-- Tags: `O`, `B-ACT`, `I-ACT`, `B-TIME`, `I-TIME`
-- Learns to identify *Action* spans and *Time* spans
-- Uses **weighted cross‑entropy** to reduce bias toward `O` tokens
-
-### 2) Head B, Relation Extraction (Biaffine linker)
-- Builds a span representation per entity: `[start_state; end_state; width_embedding]`
-- Scores compatibility between each Action and each Time span using:
-  - **biaffine semantic compatibility**
-  - **distance embeddings** to encode proximity bias
-  - a **NONE** option for actions with no explicit time
-
-### 3) Post‑processing, Deterministic date normalization
-- Uses `dateparser` with `visit_date` as the relative base to compute exact ISO dates.
-- This separates **semantic understanding** (learned) from **date arithmetic** (deterministic), reducing hallucinated or inconsistent dates.
-
-
----
-
-## Dataset
-To avoid PHI/HIPAA risks, the project uses a **synthetic dataset** generated with an LLM under a controlled schema.
-
-### Schema (per sample)
-- Inputs:
-  - `note_text`
-  - `visit_date`
-- Labels:
-  - `action_text`, `action_char_start`, `action_char_end`
-  - `time_text`, `time_char_start`, `time_char_end`
-  - `period_date` (ISO date computed from `visit_date` + `time_text`)
-
-### Windowing for long notes
-Clinical notes can exceed 512 tokens, so we use **sliding windows**:
-- `MAX_LEN = 512`
-- `DOC_STRIDE = 128`
-
-The overlap reduces boundary truncation and preserves context around entities.
-
----
-## Data Augmentation & Generation Methods
-
-We applied:
-
-Template randomization
-
-Section reordering
-
-Multi-action injection
-
-History distractors
-
-Clinical shorthand generation (x2w, q6mo, RTC 3mo)
-
-Surface-form variation (weeks vs days vs months)
-
-Stress-test subsets include:
-
-Proximity traps
-
-List-swapping traps
-
-History traps
-
-Section ambiguity
-
-Shorthand temporal noise
-
----
-
-## Repository Structure
-Recommended structure (matches course repo requirements):
+## Repository layout
 
 ```
-.
-├── Code/
-│   ├── ll_project_follow_up_instruction_extraction_2k_dataset_submit.ipynb
-│   └── requirements.txt
-├── Data
-│   └── synthetic_clinical_notes_2000.csv
-├── Results/
-│   ├── biobert_metrics.json
-│   ├── chatgpt_metrics.json
-│   └── llama_metrics.json
-├── Slides/
-│   ├── follow up instructions extraction final presentation pdf.pdf
-│   ├── follow up instructions extraction final presentation.pptx
-│   ├── follow up instructions extraction first presentation pdf.pdf
-│   ├── follow up instructions extraction first presentation.pptx
-│   ├── follow up instructions extraction interim presentation.pptx
-│   └──follow up instructions extraction interim presentation pdf.pdf
-├── Visuals/
-│   ├── confusion matrix.png
-│   ├── date error mae.png
-│   ├── error distribution.png
-│   ├── model comparison f1.png
-│   └── note length variation by specialty plot.png
-└── README.md
+MedFollow/
+|-- Paper/
+|   |-- index.html                           rendered manuscript (KaTeX math, GitHub Pages source)
+|   |-- MedFollow_JBI_submission.docx        camera-ready Word version (JBI single-column)
+|   |-- MedFollow_supplementary.zip          supplementary materials bundle
+|   |-- cover_letter.md                      cover letter to JBI Editor
+|   |-- jbi_submission_notes.md              JBI Guide-for-Authors compliance notes
+|   |-- anticipated_reviewer_concerns.md     internal prep doc (10 likely concerns + responses)
+|   |-- audit_report.md                      automated DOCX audit (24 PASS / 0 ISSUES)
+|   |-- references.bib                       BibTeX
+|   |-- figures/                             6 manuscript figures (1 SVG, 5 PNG)
+|   |-- scripts/                             every script that produces a figure or metric
+|   `-- templates/cnf-word-template.docx     Elsevier generic single-column Word template
+|-- Code/
+|   |-- llm_project_..._submit.ipynb         training, baseline inference, evaluation notebook
+|   `-- requirements.txt
+|-- Data/
+|   |-- synthetic_clinical_notes_2000.csv    the released synthetic corpus
+|   `-- external/mtsamples/                  MTSamples (Apache-2.0) for realism-check work
+|-- Results/
+|   |-- biobert_metrics.json                 per-system aggregated metrics
+|   |-- chatgpt_metrics.json
+|   |-- llama_metrics.json
+|   `-- results_with_ci.json                 consolidated point estimates + 95% CIs
+|-- Visuals/                                 earlier figures (kept for provenance)
+|-- models/
+|   `-- MODELS.md                            external-checkpoint manifest
+|-- Slides/                                  course presentations (first / interim / final)
+|-- index.html                               redirect to Paper/
+`-- README.md                                this file
 ```
 
+## Reproducing the metrics from the released artifacts
 
-## Training
-batch_size 16   --lr 2e-5   --epochs 20   --fp16
-```
+Without the trained model checkpoints (which live on Google Drive, see `models/MODELS.md`), you can already:
 
-Training details:
-- Mixed precision: FP16
-- Early stopping: patience 4 (based on validation loss)
-- Joint objective:
-    \( \mathcal{L} = \mathcal{L}_{NER} + \alpha\,\mathcal{L}_{LINK} \) with \(\alpha=1\) 
+1. **Reproduce every confidence interval in the paper** from the released metric files:
+   ```bash
+   python Paper/scripts/compute_confidence_intervals.py
+   ```
+   Wilson score intervals on proportion metrics; 10,000-replicate instance-level bootstrap on F1 metrics with seed 42.
 
----
+2. **Regenerate every figure** from the released CSV and metric files:
+   ```bash
+   python Paper/scripts/make_round2_figures.py        # Figure 2 (composition)
+   python Paper/scripts/make_vocab_distributions.py   # Figure 3 (vocab)
+   python Paper/scripts/make_round4_figures.py        # Figure 4 (stress factors)
+   ```
+   Figures 5 and 6 are produced by the same `compute_confidence_intervals.py` script.
 
-Expected output columns include:
-- predicted action text
-- predicted period text
-- normalized ISO date (`period_date`)
+3. **Audit the manuscript DOCX** against JBI requirements:
+   ```bash
+   python Paper/scripts/audit_docx.py
+   ```
 
----
+## Running training and inference end-to-end
 
-Reported metrics:
-- NER span F1 (Action, Time)
-- Linking F1 (Action→Time)
-- End‑to‑End Action+Date F1
-- Date MAE (days)
+Currently a single notebook (`Code/llm_project_..._submit.ipynb`) covering data generation, BioBERT training, baseline inference, and evaluation. Restoring this to a runnable state requires:
 
----
+- The fine-tuned BioBERT checkpoint (`biobert_finetuned_2k.pth`, ~440 MB) and tokenizer dir,
+- The LLaMA-3 LoRA adapter (`Llama3_Clinical_Action_Extraction_LoRA/`, ~150 MB),
+- An OpenAI API key for the ChatGPT baseline (`gpt-4o-mini`).
 
-## Results Summary (synthetic held‑out)
-Reported in the project report on a held‑out synthetic test split:
-- **NER span F1:** > 99.7%
-- **Linking F1:** > 98.2%
-- **End‑to‑end date accuracy:** ~ 98.4%
+See [`models/MODELS.md`](models/MODELS.md) for download instructions.
 
---
+Refactoring the notebook into discrete entry-point scripts (`generate_data.py`, `train_biobert.py`, `run_baselines.py`, `evaluate.py`, `make_figures.py`) and persisting raw per-note predictions are the highest-priority reproducibility improvements; both are in progress.
 
-## Ethics & Data Privacy
-- **No real patient data** is included in this repository.
-- The dataset is synthetically generated to avoid PHI/HIPAA concerns.
-- The system is intended as a research prototype; deployment requires governance, clinical validation, and privacy review.
+## Real-EHR realism work (in progress)
 
----
+For the planned external-validation appendix, we have downloaded the MTSamples corpus (4,999 transcribed clinical notes, Apache-2.0) and ranked it for follow-up-instruction richness. The top-100 candidate notes for manual annotation are at [`Data/external/mtsamples/mtsamples_top100_followup.csv`](Data/external/mtsamples/mtsamples_top100_followup.csv); a first pass annotation of the top 5 (mapping verbatim follow-up text to the paper's 28-action closed set) is at [`Data/external/mtsamples/mtsamples_top5_gold.json`](Data/external/mtsamples/mtsamples_top5_gold.json), with a coverage analysis at [`Data/external/mtsamples/mtsamples_top5_coverage.md`](Data/external/mtsamples/mtsamples_top5_coverage.md). Initial finding: closed-set coverage on the top 5 real notes is 36% (5/14 follow-up items map to the closed set), confirming the limitation declared in Section 5.1 of the manuscript that the synthetic ontology underrepresents medication changes, generic follow-up appointments, conditional instructions, and patient self-care behavior.
 
-## Limitations
-- **Synthetic‑only training/evaluation** may not fully reflect real EHR note variability.
-- Date normalization depends on `dateparser` coverage and assumptions (e.g., locale).
-- Complex discourse cases (implicit times, cross‑sentence references) may require additional modeling or global constraints.
+A larger-scale Tier-B evaluation on MIMIC-IV-Note discharge summaries is planned subject to PhysioNet credentialing; see [`Paper/real_ehr_sources.md`](Paper/real_ehr_sources.md) for the three-tier roadmap.
 
----
+## Ethics and data
+
+The released corpus is fully synthetic and contains no protected health information; no IRB approval is required for the present experiments. MTSamples is a publicly redistributed (Apache-2.0) collection of transcribed clinician sample notes; it is not real EHR documentation. Any extension to identifiable clinical data will require institutional governance, a data-use agreement, and IRB approval.
+
+## License
+
+- Synthetic dataset (`Data/synthetic_clinical_notes_2000.csv`): CC BY 4.0.
+- Code: MIT (see `LICENSE`).
+- Manuscript text and figures: CC BY 4.0.
 
 ## Citation
-If you use this code or dataset, cite as:
 
 ```bibtex
-@misc{clinical_temporal_action_extraction_2026,
-  title        = {Follow Up Instructions Extraction: Hybrid BioBERT + Deterministic Date Normalization},
-  author       = {Michal Laufer and Yehudit Aperstein and Alexander Apartsin},
-  year         = {2026},
+@article{medfollow_2026,
+  author  = {Michal Laufer and Yehudit Aperstein and Alexander Apartsin},
+  title   = {Reliable Follow-Up Action and Date Extraction from Clinical Notes: A Hybrid Neural-Symbolic Approach},
+  journal = {Journal of Biomedical Informatics},
+  year    = {2026},
+  note    = {Submitted}
 }
 ```
