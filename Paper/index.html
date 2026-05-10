@@ -155,10 +155,46 @@
     .smallcaps {
       font-variant: small-caps;
     }
+    .downloads {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.86rem;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 12px;
+      line-height: 1.5;
+    }
+    .downloads a {
+      color: var(--accent);
+      text-decoration: none;
+      display: block;
+    }
+    .downloads a:hover {
+      text-decoration: underline;
+    }
+    .downloads .label {
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 720px) {
+      .downloads { position: static; margin: 0 0 18px; display: inline-block; }
+    }
   </style>
 </head>
 <body>
 <main>
+  <div class="downloads">
+    <div class="label">Download</div>
+    <a href="MedFollow_JBI_submission.docx">Manuscript (.docx)</a>
+    <a href="MedFollow_supplementary.zip">Supplementary (.zip)</a>
+  </div>
   <header>
     <h1>Reliable Follow-Up Action and Date Extraction from Clinical Notes: A Hybrid Neural-Symbolic Approach</h1>
     <p class="authors">Michal Laufer<sup>a</sup>, Yehudit Aperstein<sup>b,*</sup>, Alexander Apartsin<sup>c</sup></p>

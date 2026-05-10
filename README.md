@@ -15,7 +15,7 @@ Clinical outpatient notes often contain follow‑up instructions such as:
 
 > “Order MRI brain in two weeks.”
 
-These instructions are crucial for scheduling, care coordination, and downstream EHR validation — but they are embedded in free text and can be ambiguous when multiple actions and time expressions appear in the same note.
+These instructions are crucial for scheduling, care coordination, and downstream EHR validation, but they are embedded in free text and can be ambiguous when multiple actions and time expressions appear in the same note.
 
 **Key challenge:** robustly extract *actions* and their *execution dates* while avoiding arithmetic errors common in end‑to‑end text generation.
 
@@ -68,19 +68,19 @@ Structured JSON Output
 ## Method Overview
 We implement a **joint multi‑task architecture** with a shared **BioBERT** encoder feeding two heads:
 
-### 1) Head A — NER (BIO tagging)
+### 1) Head A, NER (BIO tagging)
 - Tags: `O`, `B-ACT`, `I-ACT`, `B-TIME`, `I-TIME`
 - Learns to identify *Action* spans and *Time* spans
 - Uses **weighted cross‑entropy** to reduce bias toward `O` tokens
 
-### 2) Head B — Relation Extraction (Biaffine linker)
+### 2) Head B, Relation Extraction (Biaffine linker)
 - Builds a span representation per entity: `[start_state; end_state; width_embedding]`
 - Scores compatibility between each Action and each Time span using:
   - **biaffine semantic compatibility**
   - **distance embeddings** to encode proximity bias
   - a **NONE** option for actions with no explicit time
 
-### 3) Post‑processing — Deterministic date normalization
+### 3) Post‑processing, Deterministic date normalization
 - Uses `dateparser` with `visit_date` as the relative base to compute exact ISO dates.
 - This separates **semantic understanding** (learned) from **date arithmetic** (deterministic), reducing hallucinated or inconsistent dates.
 

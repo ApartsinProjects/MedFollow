@@ -164,8 +164,18 @@ def main() -> None:
     ]].sort_values("score", ascending=False)
     out_full.to_csv(full_out, index=False)
 
-    # Pick top 100 with score >= 3 (else we'd be including false-positive-prone notes)
-    top100 = out.sort_values("score", ascending=False).head(100).copy()
+    # MTSamples cross-tags many notes with multiple specialties, so the same
+    # transcription appears under several specialty labels. Dedupe by the
+    # transcription text before picking the top 100. We keep the highest-
+    # scoring duplicate (which, since score depends on text + specialty bonus,
+    # will favour the high-density specialty assignment when applicable).
+    out = (
+        out.sort_values("score", ascending=False)
+        .drop_duplicates(subset=["transcription"], keep="first")
+        .copy()
+    )
+    print(f"After dedup by transcription: {len(out)} unique notes")
+    top100 = out.head(100).copy()
 
     cols = [
         "note_id", "medical_specialty", "sample_name", "score",

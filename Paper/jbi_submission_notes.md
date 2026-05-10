@@ -125,7 +125,7 @@ JBI required body structure (verbatim from Guide for Authors):
 
 5. **Keywords: keep current count (7) which is within the "1 to 7
    keywords" rule. They go on the title page, not in the abstract section.**
-   Current draft puts keywords inside the abstract block — this is
+   Current draft puts keywords inside the abstract block, this is
    non-blocking but conventionally they live just below the abstract on the
    title page in Elsevier production.
 
@@ -139,8 +139,8 @@ JBI required body structure (verbatim from Guide for Authors):
    diagram derived from `Paper/figures/pipeline.svg`.
 
 8. **Figure / table caption style.** Current draft uses "**Figure N.**"
-   bold inline at start of caption — this is fine and matches Elsevier
-   production. Tables use `<caption class="note">Table N. ...</caption>` — also
+   bold inline at start of caption, this is fine and matches Elsevier
+   production. Tables use `<caption class="note">Table N. ...</caption>`, also
    fine. Make sure every figure and table is cited in the text in numerical
    order (we do this already).
 
@@ -156,7 +156,7 @@ labelled blocks. Order recommended by Elsevier production:
 | **CRediT authorship contribution statement** | MISSING | One sentence per author with comma-separated CRediT roles. Heading: "CRediT authorship contribution statement" (Elsevier-standard). |
 | **Declaration of competing interest** | MISSING | If none: "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper." |
 | **Funding** | MISSING | Format: "This work was supported by [agency, grant numbers]" or "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors." |
-| **Ethics statement** | PARTIAL (in body Section 9) | Move into declaration block. State: synthetic data, no PHI, no IRB review required. The guide requires for human-subjects work a "statement that all procedures were approved by appropriate institutional committee(s)" with "date and reference number" — not applicable here, but state it explicitly so reviewers don't ask. |
+| **Ethics statement** | PARTIAL (in body Section 9) | Move into declaration block. State: synthetic data, no PHI, no IRB review required. The guide requires for human-subjects work a "statement that all procedures were approved by appropriate institutional committee(s)" with "date and reference number", not applicable here, but state it explicitly so reviewers don't ask. |
 | **Data availability** | PARTIAL (in body Section 10) | Mandatory: "Required to state the availability of any data at submission." Wording: "The synthetic dataset (`synthetic_clinical_notes_2000.csv`), training/inference code, per-system metric files, and figure-generation scripts are available at [repository URL] under [license]." Cite the dataset as a reference if deposited to a permanent repository (Mendeley Data / Zenodo), per JBI Option-C policy: "Required to deposit research data in a relevant data repository." |
 | **Generative-AI use disclosure** | MISSING (and we need it) | Required because the synthetic corpus was generated with an LLM. Use Elsevier's mandated wording verbatim, placed "before the references list":
 "During the preparation of this work the author(s) used [NAME OF TOOL / SERVICE] in order to [REASON]. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content."
@@ -165,7 +165,7 @@ Note: this clause is for AI use *in manuscript preparation*. For AI use as part 
 
 Image-AI restriction (from the guide): "We do not permit the use of Generative
 AI or AI-assisted tools to create or alter images in submitted manuscripts."
-Our figures are all matplotlib + an SVG pipeline diagram, so this is fine —
+Our figures are all matplotlib + an SVG pipeline diagram, so this is fine -
 but verify the pipeline.svg was hand-drawn or programmatically generated, not
 AI-image-generated.
 
@@ -206,9 +206,9 @@ Key differences our draft needs to fix:
 - Year: in parentheses immediately after volume.
 - Pages: en-dash, no "pp."
 - Bracketed reference number `[1]` at start (we have this in the in-text
-  cite but not in the bibliography list — easy fix).
+  cite but not in the bibliography list, easy fix).
 - Use `https://doi.org/` URLs for DOIs as "permanent link to the electronic
-  article". Our draft has `DOI: 10.xxxx/...` text — convert to live URLs.
+  article". Our draft has `DOI: 10.xxxx/...` text, convert to live URLs.
 
 Required example formats from the guide (verbatim):
 
@@ -251,7 +251,7 @@ Word files. Format Word files in a single-column layout."
 
 Notes:
 
-- For initial submission, Elsevier accepts "your paper your way" — strict
+- For initial submission, Elsevier accepts "your paper your way", strict
   template formatting is not enforced before acceptance. So we can submit a
   clean single-column Word or PDF that follows the structural rules without
   pixel-matching the template.
@@ -267,13 +267,13 @@ From the Guide for Authors:
 
 - Tables: "must be submitted as editable text, not as images"; "avoid vertical
   rules and shading within table cells"; place inline near first citation or
-  collected at end. Our HTML uses real `<table>` elements — good; in Word,
+  collected at end. Our HTML uses real `<table>` elements, good; in Word,
   use Word tables (not pasted images) with no vertical rules and minimal
   shading.
 - Figures: "Submit each image as a separate file." Cite all in text, "Number
-  images according to the sequence they appear" — already satisfied.
+  images according to the sequence they appear", already satisfied.
 - Captions: "brief title (not displayed on the figure itself) and a
-  description" — our captions follow this pattern.
+  description", our captions follow this pattern.
 
 File-format and resolution table (verbatim from guide):
 
@@ -302,10 +302,10 @@ Two reference articles inspected:
 
 1. *Optimising clinical information extraction: a comparative study of
    retrieval-augmented generation techniques in clinical notes* (Zhang et
-   al., 2026). DOI 10.1016/j.jbi.2026.105053. Article in press — confirms
+   al., 2026). DOI 10.1016/j.jbi.2026.105053. Article in press, confirms
    structured abstract and pre-references declaration block ordering.
 2. *Contextualized Medication Information Extraction Using Transformer-based
-   Deep Learning Architectures* (Chen et al.). PMC10980542 — confirmed JBI
+   Deep Learning Architectures* (Chen et al.). PMC10980542, confirmed JBI
    article. Section headings in all-caps, unnumbered (Introduction /
    Background / Methods / Results / Discussion and Conclusion /
    Acknowledgments). Abstract: Objective / Materials and Methods / Results /
@@ -322,7 +322,7 @@ Inferences:
 - Abstract structured headings are flexible: "Materials and Methods" is
   accepted in place of "Methods", but the four-block Objective / Methods /
   Results / Conclusion structure is invariant.
-- "Conclusion(s) must state the applicability of your research" — emphasize
+- "Conclusion(s) must state the applicability of your research", emphasize
   this in the rewrite.
 - Generative-AI corpus generation should be described in Methods with
   explicit model name + version (e.g., `gpt-4o-2024-08-06`).

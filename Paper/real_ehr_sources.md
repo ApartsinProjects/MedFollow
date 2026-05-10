@@ -62,10 +62,10 @@ Target text characteristics: outpatient progress notes, visit notes, or hospital
 
 The HF Hub does not appear to host any large, real, non-PhysioNet outpatient clinical-note dataset in the open. Searches for `clinical notes`, `discharge summary`, `outpatient progress note` returned essentially only mirrors of MTSamples (`harishnair04/mtsamples`, `bhargavi909/mt_Samples`, `NickyNicky/medical_mtsamples`, `metaboulie/MTSamples-openai-embedded`) and synthetic / Asclepius-style derivatives. Notable items:
 
-  - `harishnair04/mtsamples` — best maintained MTSamples mirror, 4,999 rows, Apache-2.0.
-  - `mitclinicalml/clinical-ie` — small CASI-derived snippet sets used in Agrawal et al. (2022) "Large Language Models are Few-Shot Clinical Information Extractors". Contains snippets, not full visit notes.
-  - `AGBonnet/augmented-clinical-notes` — synthetic-augmented; not real.
-  - `ykumards/open-i` — Indiana CXR mirror.
+  - `harishnair04/mtsamples`, best maintained MTSamples mirror, 4,999 rows, Apache-2.0.
+  - `mitclinicalml/clinical-ie`, small CASI-derived snippet sets used in Agrawal et al. (2022) "Large Language Models are Few-Shot Clinical Information Extractors". Contains snippets, not full visit notes.
+  - `AGBonnet/augmented-clinical-notes`, synthetic-augmented; not real.
+  - `ykumards/open-i`, Indiana CXR mirror.
 
   No openly-redistributed large real outpatient EHR exists on HF: this matches the field's status quo (real EHR text is gated behind PhysioNet/i2b2 because of HIPAA).
 
@@ -81,7 +81,7 @@ The HF Hub does not appear to host any large, real, non-PhysioNet outpatient cli
 
 ---
 
-## Tier 2: Credentialed access (PhysioNet) — free but DUA + training
+## Tier 2: Credentialed access (PhysioNet), free but DUA + training
 
 All PhysioNet datasets share a common access path:
 
@@ -96,7 +96,7 @@ All PhysioNet datasets share a common access path:
   - No re-identification attempts; no sharing access with anyone else; no redistribution.
   - Publication of aggregate / derived results is permitted; code associated with publications must be released to a public repo.
 
-### 2.1 MIMIC-IV-Note v2.2 — strongest single source
+### 2.1 MIMIC-IV-Note v2.2, strongest single source
 
 - **Link:** https://physionet.org/content/mimic-iv-note/2.2/
 - **Volume:** **331,794 deidentified discharge summaries** from 145,915 patients at Beth Israel Deaconess Medical Center (Boston), plus 2,321,355 radiology reports.
@@ -187,8 +187,8 @@ Use **Label Studio** (open source, https://labelstud.io/). Reasons:
 
 Alternatives:
 
-  - **doccano** — simpler UI; relation annotation supported in recent versions; lighter setup. Pick this if Label Studio's config XML is too heavy for a 50-200-note job.
-  - **brat** — classic in clinical NLP and historically the i2b2/n2c2 default. Annotation files (.ann sidecars) are easy to diff. Trade-off: requires Python 2 / Apache + has a dated UI; not ideal for Windows.
+  - **doccano**, simpler UI; relation annotation supported in recent versions; lighter setup. Pick this if Label Studio's config XML is too heavy for a 50-200-note job.
+  - **brat**, classic in clinical NLP and historically the i2b2/n2c2 default. Annotation files (.ann sidecars) are easy to diff. Trade-off: requires Python 2 / Apache + has a dated UI; not ideal for Windows.
 
 For 50-200 notes by a single annotator, **Label Studio** or **doccano** will both work; pick whichever the annotator is comfortable with. If you anticipate publishing the annotated corpus alongside the paper, brat .ann format remains the most portable for reviewers.
 
@@ -200,7 +200,7 @@ For a JBI submission's realism appendix, ideally have a second annotator label a
 
 ## Three-tier action plan
 
-### Tier A — fastest path to ~50 real-style notes (1-2 days)
+### Tier A, fastest path to ~50 real-style notes (1-2 days)
 
 For an appendix labelled "Realism check on non-synthetic clinical text".
 
@@ -213,7 +213,7 @@ For an appendix labelled "Realism check on non-synthetic clinical text".
 
 **Expected deliverable:** A 50-note appendix table with per-note action/time-span counts and MedFollow extraction F1, run as-is (zero-shot from the synthetic-trained model).
 
-### Tier B — peer-review-quality ~200 real-EHR sample (2-4 weeks)
+### Tier B, peer-review-quality ~200 real-EHR sample (2-4 weeks)
 
 For a section in the main paper titled e.g. "Evaluation on real EHR discharge instructions".
 
@@ -230,7 +230,7 @@ For a section in the main paper titled e.g. "Evaluation on real EHR discharge in
 
 **Expected deliverable:** A primary results table comparing MedFollow performance on synthetic vs real EHR text, suitable for peer review.
 
-### Tier C — institutional partnership for true outpatient notes (3-12 months)
+### Tier C, institutional partnership for true outpatient notes (3-12 months)
 
 For a follow-up paper or for generalization claims to outpatient settings (which neither MTSamples nor MIMIC discharge summaries fully support).
 
