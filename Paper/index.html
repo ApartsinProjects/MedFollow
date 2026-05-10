@@ -56,15 +56,36 @@
       margin: 0 0 14px;
       text-align: justify;
       text-align-last: left;
-      hyphens: auto;
+      hyphens: manual;
+      -webkit-hyphens: manual;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
     li {
       text-align: justify;
       text-align-last: left;
+      hyphens: manual;
+      word-break: keep-all;
     }
     dd {
       text-align: justify;
       text-align-last: left;
+      hyphens: manual;
+      word-break: keep-all;
+    }
+    /* Centre KaTeX display equations regardless of the parent paragraph's
+       justify alignment. The auto-render wraps display math in
+       span.katex-display; force it to a centred block. */
+    .katex-display, p > .katex-display {
+      display: block;
+      text-align: center;
+      margin: 14px 0;
+    }
+    /* Paragraphs that contain only a display-math equation (i.e. that wrap
+       a $$...$$ block) should also centre to keep the equation true-centred
+       even if KaTeX's internal centring metrics are off in a given browser. */
+    p:has(> .katex-display) {
+      text-align: center;
     }
     .authors, .meta, .note {
       color: var(--muted);
@@ -286,7 +307,7 @@
     </figure>
 
     <h3>3.2 Dataset</h3>
-    <p>We release <code>Data/synthetic_clinical_notes_2000.csv</code>, a 2,000-note synthetic outpatient corpus generated under a controlled schema to avoid use of protected health information. Each row contains the note text, the visit date (uniformly sampled across a two-year window, 2024-01-21 to 2026-01-20), specialty, clinical topic, plan-section variant, plan-header offsets, plan-section character offsets, action count, gold action/time character spans, normalized ISO follow-up dates, ten style-feature axes, and validation-flag fields. Notes were generated with the OpenAI <code>gpt-4o-mini</code> model (default version as of November 2025) under a structured per-note prompt that fixes the specialty, clinical topic, plan-section variant, target action count, time-expression form, and a sampled style-feature vector; the decoding temperature was sampled per call from a small range to vary surface form. Generation prompts and seed records are archived in the project notebook.</p>
+    <p>We construct a 2,000-note synthetic outpatient corpus under a controlled schema to avoid use of protected health information. Each note record carries the note text, a visit date uniformly sampled across a two-year window (2024-01-21 to 2026-01-20), the specialty, the clinical topic, the plan-section variant, plan-header and plan-section character offsets, the action count, gold action and time character spans, normalized ISO follow-up dates, ten style-feature axes, and validation-flag fields. Notes were generated with the OpenAI <code>gpt-4o-mini</code> model (default version as of November 2025) under a structured per-note prompt that fixes the specialty, the clinical topic, the plan-section variant, the target action count, the target time-expression form, and a sampled style-feature vector; the decoding temperature was sampled per call from a small range to vary surface form. Generation prompts and random seeds are documented in the supplementary materials.</p>
 
     <table>
       <caption class="note">Table 1. Corpus summary statistics.</caption>
@@ -344,7 +365,7 @@
     <p>We report five metrics, all computed at the corpus level (micro-averaging) over the held-out split. <em>Span F1 (action; time):</em> a predicted span is correct iff its character-offset boundaries match the gold span exactly. <em>Linked-pair F1:</em> a predicted (action, time) pair is correct iff both spans match the gold spans exactly and the linking is correct; the none-link case is included on both sides. <em>Action-date F1:</em> the end-to-end metric. A prediction is correct iff the action span matches the gold span exactly and the normalized date \(d\) equals the gold date. With \(P\) the predicted set of (action, date) pairs and \(G\) the gold set, \(\mathrm{Precision} = |P \cap G|/|P|\), \(\mathrm{Recall} = |P \cap G|/|G|\), \(F_1 = 2PR/(P+R)\). <em>Exact date accuracy on matched actions:</em> among predictions whose action span matches a gold action, the fraction whose normalized date equals the gold date. <em>Mean absolute date error (days):</em> among matched actions with a parseable predicted date, the mean of \(|d_{\mathrm{pred}} - d_{\mathrm{gold}}|\) in calendar days.</p>
 
     <h3>3.6 Statistical analysis</h3>
-    <p>We report Wilson 95% confidence intervals on all proportion-based metrics computed on the underlying success counts. For F1 metrics we report 10,000-replicate instance-level bootstrap intervals computed by resampling with replacement the reconstructed array of (TP, FP, FN) outcomes (random seed 42). The script that derives all confidence intervals from the released metrics files is committed as <code>Paper/scripts/compute_confidence_intervals.py</code>. We treat non-overlapping 95% confidence intervals between two systems as evidence of a significant difference at \(p<0.05\) on the corresponding metric.</p>
+    <p>We report Wilson 95% confidence intervals on all proportion-based metrics computed on the underlying success counts. For F1 metrics we report 10,000-replicate instance-level bootstrap intervals computed by resampling with replacement the reconstructed array of (TP, FP, FN) outcomes (random seed 42). All confidence-interval calculations are reproducible from the released per-system metric counts using the analysis code distributed with the supplementary materials. We treat non-overlapping 95% confidence intervals between two systems as evidence of a significant difference at \(p<0.05\) on the corresponding metric.</p>
   </section>
 
   <section>
@@ -412,7 +433,7 @@
 
     <h3>5.1 Limitations and future work</h3>
     <p>The study has several limitations that bound the conclusions. <em>Synthetic evaluation:</em> the corpus is generated under a controlled schema rather than drawn from real EHR documentation; generalization to real notes is the principal open question. <em>Single split:</em> reported metrics are computed on one held-out split with sampling-uncertainty characterized by Wilson and bootstrap confidence intervals, but multi-seed training and repeated-split evaluation remain to be performed. <em>Limited action ontology:</em> the action set covers procedures, imaging, laboratory tests, consults, and rehabilitation referrals; medication changes, conditional follow-up ("return if symptoms worsen"), patient self-care behavior, and instructions with ambiguous executor are not yet represented. <em>Date normalization coverage:</em> deterministic normalization depends on the coverage of <code>dateparser</code> for English-language relative phrases; ambiguous calendar phrases (e.g., "next Tuesday" near a weekend) may produce wrong dates. <em>No workflow validation:</em> the study does not assess clinician acceptance, EHR integration, alert behavior, or downstream scheduling outcomes.</p>
-    <p>Planned next-version experiments include: (i) linker ablation against nearest-time, same-sentence, and action-order heuristics; (ii) a date-normalization ablation against model-emitted dates with extraction held fixed; (iii) encoder ablation across general BERT, ClinicalBERT, PubMedBERT, and GatorTron; (iv) per-stratum performance by specialty, note length, action count, shorthand temporal forms, historical distractors, and proximity traps; (v) note-level bootstrap confidence intervals from raw predictions; (vi) a clinician-annotated error taxonomy; (vii) external evaluation on a de-identified institutional sample or a public clinical temporal-extraction benchmark adapted to action-date pairs.</p>
+    <p>Planned future work includes: (i) a linker ablation against nearest-time, same-sentence, and action-order heuristics; (ii) a date-normalization ablation against model-emitted dates with span extraction held fixed; (iii) encoder ablations across general BERT, ClinicalBERT, PubMedBERT, and GatorTron; (iv) per-stratum performance by specialty, note length, action count, shorthand temporal forms, historical distractors, and proximity traps; (v) note-level bootstrap confidence intervals computed from per-note predictions; (vi) a clinician-annotated error taxonomy; and (vii) external evaluation on a de-identified institutional sample or on a public clinical temporal-extraction benchmark adapted to action-date pairs.</p>
   </section>
 
   <section>
@@ -442,12 +463,12 @@
 
   <section>
     <h2>Data and code availability</h2>
-    <p>The synthetic dataset (<code>Data/synthetic_clinical_notes_2000.csv</code>), training and inference code, per-system metric files (<code>Results/{biobert,chatgpt,llama}_metrics.json</code>), the consolidated <code>Results/results_with_ci.json</code> with point estimates and confidence intervals, all manuscript figures and the scripts that produced them (<code>Paper/scripts/</code>), and the rendered manuscript are publicly available at <a href="https://github.com/ApartsinProjects/MedFollow">https://github.com/ApartsinProjects/MedFollow</a>. A persistent DOI release on Zenodo will be created at acceptance. Trained model checkpoints (BioBERT fine-tuned weights, LLaMA-3 LoRA adapter) are not included in the public repository at the time of submission and are available from the corresponding author on reasonable request.</p>
+    <p>The synthetic dataset described in Section 3.2, the training and inference code, the per-system metric files (point estimates and reconstructed success counts), the analysis code that produces the confidence intervals, and the source files for every manuscript figure are publicly available under permissive licences at <a href="https://github.com/ApartsinProjects/MedFollow">https://github.com/ApartsinProjects/MedFollow</a>. A persistent DOI release on Zenodo will be deposited at acceptance and cited in the final version. Trained model checkpoints (the fine-tuned BioBERT weights and the LLaMA-3 LoRA adapter) are not redistributed in the public release because of repository-size constraints and are available from the corresponding author on reasonable request.</p>
   </section>
 
   <section>
     <h2>Generative AI use disclosure</h2>
-    <p><strong>In manuscript preparation:</strong> During the preparation of this work the author(s) used Anthropic Claude (version Opus 4.7) and OpenAI ChatGPT in order to draft and copy-edit text, restructure sections, and assist with figure generation. After using these tools, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content. <strong>In the research method:</strong> the synthetic clinical-notes corpus described in Section 3.2 was generated using the OpenAI <code>gpt-4o-mini</code> model (default version as of November 2025) under a structured per-note prompt with sampled decoding temperature; full prompts and seed records are archived in the project notebook released with the code repository. No generative-AI tools were used to create or alter images.</p>
+    <p><strong>In manuscript preparation:</strong> During the preparation of this work the author(s) used Anthropic Claude (version Opus 4.7) and OpenAI ChatGPT in order to draft and copy-edit text, restructure sections, and assist with figure generation. After using these tools, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content. <strong>In the research method:</strong> the synthetic clinical-notes corpus described in Section 3.2 was generated using the OpenAI <code>gpt-4o-mini</code> model (default version as of November 2025) under a structured per-note prompt with sampled decoding temperature; full prompts and random seeds are documented in the supplementary materials. No generative-AI tools were used to create or alter images.</p>
   </section>
 
   <section>
