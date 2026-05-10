@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="380" viewBox="0 0 1120 380" font-family="Arial, Helvetica, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="380" viewBox="0 0 1140 380" font-family="Arial, Helvetica, sans-serif">
   <style>
     .group-neural { fill: #eaf2f8; stroke: #b6cfe2; stroke-width: 1.5; stroke-dasharray: 4 4; }
     .group-symbolic { fill: #eaf6ec; stroke: #bcd9bf; stroke-width: 1.5; stroke-dasharray: 4 4; }
@@ -12,19 +12,20 @@
     .input-body { font: 12px Arial; fill: #6a4a00; }
     .symbolic-head { font: 700 15px Arial; fill: #1f4a26; }
     .symbolic-body { font: 12px Arial; fill: #1f4a26; }
-    .arrow { stroke: #2c3e50; stroke-width: 2; fill: none; marker-end: url(#arrow-head); }
-    .arrow-aux { stroke: #6a4a00; stroke-width: 1.8; stroke-dasharray: 5 4; fill: none; marker-end: url(#arrow-head-aux); }
-    .arrow-out { stroke: #2f7a3d; stroke-width: 2.2; fill: none; marker-end: url(#arrow-head-out); }
-    .edge-label { font: 11px Arial; fill: #2c3e50; }
-    .edge-label-aux { font: 11px Arial; fill: #6a4a00; font-style: italic; }
-    .edge-label-out { font: 600 11px Arial; fill: #2f7a3d; }
+    .arrow { stroke: #2c3e50; stroke-width: 2.2; fill: none; marker-end: url(#arrow-head); }
+    .arrow-aux { stroke: #b88500; stroke-width: 2; stroke-dasharray: 5 4; fill: none; marker-end: url(#arrow-head-aux); }
+    .arrow-out { stroke: #2f7a3d; stroke-width: 2.4; fill: none; marker-end: url(#arrow-head-out); }
+    .label-bg { fill: #ffffff; stroke: none; }
+    .edge-label { font: 700 12px Arial; fill: #2c3e50; text-anchor: middle; }
+    .edge-label-aux { font: italic 700 12px Arial; fill: #6a4a00; text-anchor: middle; }
+    .edge-label-out { font: 700 12px Arial; fill: #2f7a3d; text-anchor: start; }
   </style>
   <defs>
     <marker id="arrow-head" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,7 L10,3.5 z" fill="#2c3e50"/>
     </marker>
     <marker id="arrow-head-aux" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,7 L10,3.5 z" fill="#6a4a00"/>
+      <path d="M0,0 L0,7 L10,3.5 z" fill="#b88500"/>
     </marker>
     <marker id="arrow-head-out" markerWidth="10" markerHeight="10" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,7 L10,3.5 z" fill="#2f7a3d"/>
@@ -32,73 +33,79 @@
   </defs>
 
   <!-- ============== group backgrounds ============== -->
-  <!-- learned components: BioBERT + Head A + Head B -->
-  <rect x="208" y="60" width="600" height="160" rx="12" class="group-neural"/>
-  <text x="218" y="78" class="group-label">LEARNED (fine-tuned BioBERT)</text>
+  <rect x="215" y="65" width="600" height="170" rx="12" class="group-neural"/>
+  <text x="225" y="84" class="group-label">LEARNED (fine-tuned BioBERT)</text>
 
-  <!-- deterministic component: date normalizer -->
-  <rect x="828" y="60" width="180" height="160" rx="12" class="group-symbolic"/>
-  <text x="838" y="78" class="group-label">DETERMINISTIC</text>
+  <rect x="835" y="65" width="180" height="170" rx="12" class="group-symbolic"/>
+  <text x="845" y="84" class="group-label">DETERMINISTIC</text>
 
-  <!-- ============== row 1: input box (yellow) ============== -->
-  <rect x="20" y="100" width="170" height="100" rx="8" class="input-box"/>
-  <text x="35" y="128" class="input-head">Input</text>
-  <text x="35" y="152" class="input-body">note_text</text>
-  <text x="35" y="172" class="input-body">visit_date</text>
+  <!-- ============== boxes ============== -->
+  <rect x="20" y="105" width="165" height="100" rx="8" class="input-box"/>
+  <text x="35" y="133" class="input-head">Input</text>
+  <text x="35" y="157" class="input-body">note_text</text>
+  <text x="35" y="177" class="input-body">visit_date</text>
 
-  <!-- ============== boxes: BioBERT + 2 heads + date normalizer ============== -->
-  <rect x="220" y="100" width="170" height="100" rx="8" class="neural-box"/>
-  <text x="236" y="128" class="head">BioBERT encoder</text>
-  <text x="236" y="152" class="body">sliding windows</text>
-  <text x="236" y="170" class="body">max_len 512 / stride 128</text>
-  <text x="236" y="188" class="body">h<tspan baseline-shift="sub" font-size="9">t</tspan> &#8712; &#8477;<tspan baseline-shift="super" font-size="9">768</tspan></text>
+  <rect x="225" y="105" width="165" height="100" rx="8" class="neural-box"/>
+  <text x="240" y="133" class="head">BioBERT encoder</text>
+  <text x="240" y="157" class="body">sliding windows</text>
+  <text x="240" y="175" class="body">max_len 512 / stride 128</text>
+  <text x="240" y="193" class="body">h<tspan baseline-shift="sub" font-size="9">t</tspan> &#8712; &#8477;<tspan baseline-shift="super" font-size="9">768</tspan></text>
 
-  <rect x="420" y="100" width="170" height="100" rx="8" class="neural-box"/>
-  <text x="436" y="128" class="head">Head A: BIO tagging</text>
-  <text x="436" y="152" class="body">{O, B-ACT, I-ACT,</text>
-  <text x="436" y="170" class="body">B-TIME, I-TIME}</text>
-  <text x="436" y="188" class="body">char-offset spans</text>
+  <rect x="430" y="105" width="165" height="100" rx="8" class="neural-box"/>
+  <text x="445" y="133" class="head">Head A: BIO tagging</text>
+  <text x="445" y="157" class="body">{O, B-ACT, I-ACT,</text>
+  <text x="445" y="175" class="body">B-TIME, I-TIME}</text>
+  <text x="445" y="193" class="body">char-offset spans</text>
 
-  <rect x="620" y="100" width="170" height="100" rx="8" class="neural-box"/>
-  <text x="636" y="128" class="head">Head B: biaffine</text>
-  <text x="636" y="146" class="head">action-time linker</text>
-  <text x="636" y="170" class="body">softmax over T &#8746; {&#8709;}</text>
-  <text x="636" y="188" class="body">distance &#968;(&#916;<tspan baseline-shift="sub" font-size="9">a,t</tspan>)</text>
+  <rect x="635" y="105" width="165" height="100" rx="8" class="neural-box"/>
+  <text x="650" y="133" class="head">Head B: biaffine</text>
+  <text x="650" y="151" class="head">action-time linker</text>
+  <text x="650" y="175" class="body">softmax over T &#8746; {&#8709;}</text>
+  <text x="650" y="193" class="body">distance &#968;(&#916;<tspan baseline-shift="sub" font-size="9">a,t</tspan>)</text>
 
-  <rect x="840" y="100" width="156" height="100" rx="8" class="symbolic-box"/>
-  <text x="855" y="128" class="symbolic-head">Date normalizer</text>
-  <text x="855" y="152" class="symbolic-body">dateparser</text>
-  <text x="855" y="170" class="symbolic-body">RELATIVE_BASE = v</text>
-  <text x="855" y="188" class="symbolic-body">PREFER_DATES = future</text>
+  <rect x="840" y="105" width="170" height="100" rx="8" class="symbolic-box"/>
+  <text x="855" y="133" class="symbolic-head">Date normalizer</text>
+  <text x="855" y="157" class="symbolic-body">dateparser</text>
+  <text x="855" y="175" class="symbolic-body">RELATIVE_BASE = v</text>
+  <text x="855" y="193" class="symbolic-body">PREFER_DATES = future</text>
 
   <!-- ============== main arrows + edge labels ============== -->
+  <!-- Each label: an explicit white rect background, then the text on top.
+       This works in every SVG renderer including Word's, where paint-order
+       is not reliably supported. -->
+
   <!-- input -> BioBERT -->
-  <path d="M 192 150 H 218" class="arrow"/>
-  <text x="195" y="142" class="edge-label">tokens</text>
+  <path d="M 187 155 H 223" class="arrow"/>
+  <rect x="185" y="132" width="40" height="16" rx="3" class="label-bg"/>
+  <text x="205" y="144" class="edge-label">tokens</text>
 
   <!-- BioBERT -> Head A -->
-  <path d="M 392 150 H 418" class="arrow"/>
-  <text x="395" y="142" class="edge-label">h<tspan baseline-shift="sub" font-size="9">1..T</tspan></text>
+  <path d="M 392 155 H 428" class="arrow"/>
+  <rect x="394" y="132" width="32" height="16" rx="3" class="label-bg"/>
+  <text x="410" y="144" class="edge-label">h<tspan baseline-shift="sub" font-size="9">1..T</tspan></text>
 
   <!-- Head A -> Head B -->
-  <path d="M 592 150 H 618" class="arrow"/>
-  <text x="595" y="142" class="edge-label">spans</text>
+  <path d="M 597 155 H 633" class="arrow"/>
+  <rect x="592" y="132" width="46" height="16" rx="3" class="label-bg"/>
+  <text x="615" y="144" class="edge-label">spans</text>
 
   <!-- Head B -> Date normalizer -->
-  <path d="M 792 150 H 838" class="arrow"/>
-  <text x="797" y="142" class="edge-label">linked &#964;</text>
+  <path d="M 802 155 H 838" class="arrow"/>
+  <rect x="797" y="132" width="46" height="16" rx="3" class="label-bg"/>
+  <text x="820" y="144" class="edge-label">linked &#964;</text>
 
   <!-- ============== auxiliary arrow: visit_date -> normalizer ============== -->
-  <!-- routes: out bottom-right of input box, down, right along the bottom, up into normalizer -->
-  <path d="M 175 200 V 280 H 918 V 202" class="arrow-aux"/>
-  <text x="430" y="297" class="edge-label-aux">visit_date (relative-base anchor)</text>
+  <path d="M 175 205 V 275 H 925 V 207" class="arrow-aux"/>
+  <rect x="385" y="278" width="330" height="18" rx="4" class="label-bg"/>
+  <text x="550" y="291" class="edge-label-aux">visit_date (relative-base anchor)</text>
 
-  <!-- ============== output arrow: normalizer -> JSON ============== -->
-  <path d="M 998 150 H 1095" class="arrow-out"/>
-  <text x="1000" y="138" class="edge-label-out">{action,</text>
-  <text x="1000" y="170" class="edge-label-out">period_date}</text>
+  <!-- ============== output arrow ============== -->
+  <path d="M 1012 155 H 1110" class="arrow-out"/>
+  <rect x="1015" y="131" width="120" height="46" rx="4" class="label-bg"/>
+  <text x="1020" y="148" class="edge-label-out">{action,</text>
+  <text x="1020" y="170" class="edge-label-out">period_date}</text>
 
   <!-- ============== caption-like footnote ============== -->
-  <text x="20" y="350" class="body" font-size="11" fill="#6a7686">Solid arrows: principal data flow. Dashed arrow: visit_date routed directly to the deterministic normalizer; the neural model never performs calendar arithmetic.</text>
+  <text x="20" y="345" class="body" font-size="11" fill="#6a7686">Solid arrows: principal data flow with edge labels indicating what is passed between stages. Dashed arrow: <tspan font-style="italic">visit_date</tspan> routed directly to the deterministic normalizer; the neural model never performs calendar arithmetic.</text>
 
 </svg>

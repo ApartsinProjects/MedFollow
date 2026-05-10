@@ -1,8 +1,8 @@
 # DOCX Audit Report
 
 **Source:** `Paper\MedFollow_JBI_submission.docx`  
-**Size:** 388,173 bytes  
-**Paragraphs:** 136  
+**Size:** 388,503 bytes  
+**Paragraphs:** 138  
 **Tables:** 2  
 **Embedded images:** 6  
 **Native OMML equations:** 42  
@@ -11,12 +11,12 @@
 
 ## Embedded media files
 
-- `word/media/rId23.svg`
-- `word/media/rId27.png`
-- `word/media/rId30.png`
-- `word/media/rId33.png`
-- `word/media/rId42.png`
-- `word/media/rId45.png`
+- `word/media/rId25.svg`
+- `word/media/rId29.png`
+- `word/media/rId32.png`
+- `word/media/rId35.png`
+- `word/media/rId44.png`
+- `word/media/rId47.png`
 
 ## Issues to fix
 
@@ -44,7 +44,7 @@ None.
 - :white_check_mark: Exactly 2 data tables (Table 1, Table 2)
 - :white_check_mark: No vertical rules detected in tables
 - :white_check_mark: Figure captions present and numbered 1..6 consecutively
-- :white_check_mark: Body alignment: 63 paragraphs explicitly JUSTIFIED, 23 LEFT, 18 other
+- :white_check_mark: Body alignment: 65 paragraphs explicitly JUSTIFIED, 23 LEFT, 18 other
 - :white_check_mark: Corresponding-author marker present
 - :white_check_mark: Generative AI disclosure contains Elsevier mandated wording
 - :white_check_mark: Synthetic-data generator model name present (gpt-4o-mini)
