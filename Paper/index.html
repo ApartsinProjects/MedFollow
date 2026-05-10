@@ -227,68 +227,84 @@
 
   <section>
     <h2>4. Dataset</h2>
-    <p>The repository contains <code>Data/synthetic_clinical_notes_2000.csv</code>, a synthetic corpus generated under a controlled schema to avoid use of protected health information. Each row contains the note text, visit date, specialty, topic, plan variant, action count, plan-section offsets, gold action/time spans, normalized dates, and style features.</p>
+    <p>We release <code>Data/synthetic_clinical_notes_2000.csv</code>, a 2,000-note synthetic outpatient corpus generated under a controlled schema to avoid use of protected health information. Each row contains the note text, the visit date (uniformly sampled across a two-year window, 2024-01-21 to 2026-01-20), specialty, clinical topic, plan-section variant, plan-header offsets, plan-section character offsets, action count, gold action/time character spans, normalized ISO follow-up dates, ten style-feature axes, and validation-flag fields.</p>
 
+    <h3>4.1 Composition</h3>
     <table>
-      <caption class="note">Table 1. Current dataset summary from repository audit.</caption>
+      <caption class="note">Table 1. Corpus summary statistics.</caption>
       <thead>
         <tr><th>Property</th><th class="num">Value</th></tr>
       </thead>
       <tbody>
         <tr><td>Total notes</td><td class="num">2,000</td></tr>
-        <tr><td>Specialties</td><td class="num">5</td></tr>
-        <tr><td>Orthopedic</td><td class="num">379</td></tr>
-        <tr><td>Cardiovascular / Pulmonary</td><td class="num">391</td></tr>
-        <tr><td>Gastroenterology</td><td class="num">394</td></tr>
-        <tr><td>Neurology</td><td class="num">414</td></tr>
-        <tr><td>General Medicine</td><td class="num">422</td></tr>
-        <tr><td>0-action notes</td><td class="num">497</td></tr>
-        <tr><td>1-action notes</td><td class="num">978</td></tr>
-        <tr><td>2-action notes</td><td class="num">525</td></tr>
+        <tr><td>Specialties (Cardiovascular/Pulmonary, Gastroenterology, General Medicine, Neurology, Orthopedic)</td><td class="num">5</td></tr>
+        <tr><td>Plan-section variants (A-F)</td><td class="num">6</td></tr>
+        <tr><td>Closed-set action types</td><td class="num">28</td></tr>
+        <tr><td>Total action mentions (gold)</td><td class="num">2,028</td></tr>
+        <tr><td>Notes with 0 / 1 / 2 actions</td><td class="num">497 / 978 / 525</td></tr>
         <tr><td>Mean actions per note</td><td class="num">1.014</td></tr>
-        <tr><td>Note length range</td><td class="num">436-1,834 characters</td></tr>
-        <tr><td>Median note length</td><td class="num">1,193 characters</td></tr>
-        <tr><td>Recorded API errors</td><td class="num">0</td></tr>
-        <tr><td>Recorded span errors</td><td class="num">26</td></tr>
+        <tr><td>Note length: min / median / max characters</td><td class="num">436 / 1,193 / 1,834</td></tr>
+        <tr><td>Visit-date range</td><td class="num">2024-01-21 to 2026-01-20</td></tr>
+        <tr><td>Style-feature axes (each multi-valued)</td><td class="num">10</td></tr>
+        <tr><td>Notes with validation-flag annotations</td><td class="num">26 (1.3%)</td></tr>
+        <tr><td>Recorded API errors during generation</td><td class="num">0</td></tr>
       </tbody>
     </table>
 
-    <p>The generator varies plan headers, specialty, clinical topic, clinician style features (certainty, persona, structure, detail level, imperfections), action counts, and time-expression forms. Stress features include multi-action instructions, historical distractors, shorthand time phrases (e.g., <code>3 mos</code>, <code>q6mo</code>, <code>x2w</code>), proximity traps in which two candidate times surround a single action, and section ambiguity in which a future-tense phrase appears outside the formal plan section. All gold spans and normalized dates are known by construction; the corpus contains zero recorded API errors and 26 recorded span-validation flags out of 2,000 notes (1.3 percent), retained in the released data with their flag codes for transparency.</p>
+    <h3>4.2 Generation procedure and stress factors</h3>
+    <p>Notes are produced by an LLM-based generator under a structured prompt that specifies, per note, a target specialty, clinical topic, plan-section variant, target action count, target time-expression forms, and a style-feature vector. The 28 closed-set action types span imaging (CT, MRI, X-Ray, Echocardiogram, Holter monitor, Sleep study, Abdominal ultrasound), laboratory and procedural tests (Blood test, Lipid panel, Urinalysis, Stool antigen test, Breath test, EMG, EEG, Stress test, Pulmonary function test), procedures (Endoscopy, Colonoscopy, Joint injection, Vaccination), specialty consults (Cardiology, Neurology, GI, Orthopedic), and rehabilitation referrals (Physical therapy, Annual physical). The ten style-feature axes are Certainty (definitive vs hedging), Temporal Precision (precise vs vague), Imperfections (perfect grammar, slight shorthand, heavy shorthand, dictation style, minor typos), Clinician Persona (action-oriented, educator, defensive medicine, burnout/hasty), Structure (standard SOAP headers, minimal headers, bullet points, run-on paragraph), Detail Level (telegraphic, standard, verbose), Terminology (heavy jargon, mixed, simple), Narrative Voice (first vs third person), Tone (clinical/detached, direct/urgent, polite/empathetic), and Formality (casual, standard clinical, formal/academic).</p>
+    <p>Stress factors include multi-action notes, historical temporal distractors (past dates that should not be linked to future actions), shorthand temporal forms (<code>3 mos</code>, <code>q6mo</code>, <code>x2w</code>, <code>RTC 3mo</code>), proximity traps in which two candidate times bracket a single action, and section ambiguity in which a future-tense phrase appears outside the formal plan section. All gold spans and normalized dates are known by construction. Of the 2,000 generated notes, 26 (1.3 percent) carry validation-flag annotations; these are retained in the released data with their flag codes (e.g., <code>plan_header_not_exactly_once</code>, <code>extra_closed_set_action_in_plan</code>) for transparency. Two of these flagged notes fall in the test split and are excluded from the held-out evaluation, leaving 198 evaluation notes.</p>
+
+    <h3>4.3 Splits</h3>
+    <p>The corpus is partitioned into train, validation, and test splits at an 80/10/10 ratio (1,600 / 200 / 200 notes) by a numpy random shuffle with seed 42. After excluding two test-split notes carrying validation flags, the held-out evaluation comprises 198 notes containing 196 gold actions.</p>
+
+    <figure>
+      <img src="figures/dataset_composition.png" alt="Dataset composition by specialty and action count">
+      <figcaption><strong>Figure 1.</strong> Dataset composition. Each bar shows one specialty stratum, segmented by the number of follow-up actions per note (0, 1, or 2). Specialty proportions are approximately balanced (379-422 notes per specialty), and the action-count distribution is consistent across specialties.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="figures/action_ontology.png" alt="Top 20 follow-up action types">
+      <figcaption><strong>Figure 2.</strong> Distribution of the 20 most frequent follow-up action types (out of 28 in the closed set). Imaging (CT, X-Ray, Cardiac MRI) and laboratory tests are most common; specialty consults and rehabilitation referrals appear in the long tail.</figcaption>
+    </figure>
 
     <figure>
       <img src="../Visuals/note length variation by specialty plot.png" alt="Note length variation by specialty">
-      <figcaption><strong>Figure 1.</strong> Distribution of note length (in characters) by specialty across the 2,000-note corpus. Boxes show interquartile range; whiskers show 5th-95th percentiles. Notes range from 436 to 1,834 characters (median 1,193).</figcaption>
+      <figcaption><strong>Figure 3.</strong> Note-length distribution by specialty (characters). Notes range from 436 to 1,834 characters (median 1,193); length is similar across specialties.</figcaption>
     </figure>
   </section>
 
   <section>
     <h2>5. Method</h2>
-    <p>The proposed system uses a shared contextual encoder and two task heads. Let \(h_1,\ldots,h_T\) denote contextual token representations from BioBERT for a tokenized note window. Long notes are processed with sliding windows of maximum length 512 and document stride 128.</p>
+    <p>The proposed system shares a contextual encoder across two task heads (BIO tagging, biaffine action-time linking) and delegates date arithmetic to a deterministic post-processor. We use the publicly released <code>dmis-lab/biobert-base-cased-v1.1</code> checkpoint (768-dimensional hidden states) as the encoder, processing each note with sliding windows of maximum length 512 sub-word tokens and document stride 128. Let \(h_1,\ldots,h_T \in \mathbb{R}^{768}\) denote the contextual token representations for a window.</p>
 
     <h3>5.1 Span Tagging</h3>
     <p>The first head predicts BIO tags over tokens:</p>
     <p>$$z_t \in \{\mathrm{O}, \mathrm{B\mbox{-}ACT}, \mathrm{I\mbox{-}ACT}, \mathrm{B\mbox{-}TIME}, \mathrm{I\mbox{-}TIME}\}.$$</p>
-    <p>The NER loss is weighted cross-entropy to reduce bias toward the majority <code>O</code> class:</p>
+    <p>The NER loss is weighted cross-entropy to reduce bias toward the majority <code>O</code> class. We use the per-class weights \(w = (0.1, 1.0, 1.0, 1.0, 1.0)\) corresponding to (O, B-ACT, I-ACT, B-TIME, I-TIME):</p>
     <p>$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
+    <p>At inference we decode contiguous BIO sequences into character-offset spans on the original note text using the offset-mapping returned by the BioBERT tokenizer. Sub-token spans are merged across windows when they overlap.</p>
 
     <h3>5.2 Span Representation</h3>
-    <p>For each detected span \(s=(b,e)\), the model constructs a span representation using the start state, end state, and a width embedding:</p>
-    <p>$$r_s = [h_b; h_e; \phi(e-b+1)].$$</p>
+    <p>For each detected span \(s=(b,e)\), the model constructs a span representation by concatenating the start hidden state, the end hidden state, and a learned width embedding:</p>
+    <p>$$r_s = [h_b; h_e; \phi(e-b+1)] \in \mathbb{R}^{2 \cdot 768 + 32} = \mathbb{R}^{1568}.$$</p>
+    <p>The width embedding \(\phi\) maps span length to one of nine learned vectors using buckets \(\{1,2,3,4,5,8,12,20,40\}\) (lengths exceeding 40 use the final bucket).</p>
 
     <h3>5.3 Action-Time Linking</h3>
-    <p>For each action span \(a\) and candidate time span \(t\), the linker scores compatibility using a biaffine form with distance features:</p>
+    <p>For each action span \(a\) and candidate time span \(t\), the linker scores compatibility using a biaffine form augmented with a distance feature:</p>
     <p>$$\mathrm{score}(a,t) = r_a^\top W r_t + u^\top [r_a; r_t; \psi(\Delta_{a,t})] + b,$$</p>
-    <p>where \(\Delta_{a,t}\) encodes relative span distance. For each action, the model applies a softmax over all candidate time spans plus a none option. The linking loss is:</p>
+    <p>where \(\Delta_{a,t}\) is the absolute character-offset distance between spans, bucketized into thirteen learned 32-dimensional embeddings using the cut-points \(\{0,1,2,3,4,5,8,12,20,40,80,160,320\}\). For each action, the model applies a softmax over all candidate time spans plus a none option \(\varnothing\) (implemented as a learned virtual time-span representation), so the action either receives a time or is declared time-less:</p>
     <p>$$\mathcal{L}_{\mathrm{LINK}} = - \sum_{a \in A} \log p(t^\star_a \mid a, T \cup \{\varnothing\}).$$</p>
 
-    <h3>5.4 Joint Objective</h3>
+    <h3>5.4 Joint Objective and Training</h3>
     <p>The total training objective is:</p>
     <p>$$\mathcal{L} = \mathcal{L}_{\mathrm{NER}} + \alpha \mathcal{L}_{\mathrm{LINK}}, \quad \alpha = 1.$$</p>
+    <p>We train end-to-end with the HuggingFace <code>Trainer</code> defaults (AdamW, linear weight decay), batch size 16, learning rate 2&times;10<sup>-5</sup>, mixed-precision (FP16) on a single CUDA GPU when available, gradient accumulation of 2 steps, 50 warmup steps, and early stopping on validation loss with patience 4. Linker labels for training are derived from gold spans; at inference, the linker operates on the spans predicted by the tagging head. Random seed 42 is used throughout.</p>
 
     <h3>5.5 Date Normalization</h3>
-    <p>After action-time linking, the linked time expression is normalized with deterministic date parsing. Given visit date \(v\) and time phrase \(\tau\), the date normalizer returns:</p>
+    <p>After action-time linking, each linked time expression is normalized with deterministic date parsing. Given visit date \(v\) and time phrase \(\tau\), the date normalizer returns:</p>
     <p>$$d = \mathrm{NormalizeDate}(\tau; v).$$</p>
-    <p>Implementation uses <code>dateparser</code> with <code>RELATIVE_BASE</code> set to the visit date and <code>PREFER_DATES_FROM</code> set to future. This design intentionally separates semantic extraction from calendar arithmetic.</p>
+    <p>Implementation uses the Python <code>dateparser</code> library with settings <code>RELATIVE_BASE = v</code>, <code>PREFER_DATES_FROM = "future"</code>, and <code>DATE_ORDER = "DMY"</code>. Phrases such as "in 2 weeks", "within five weeks", "11 mos", and "q6mo" are mapped to ISO calendar dates by the library's relative-time grammar. By design the neural model is never asked to perform calendar arithmetic, so failures in this stage are observable as parser-level errors and can be audited against a fixed grammar rather than buried inside model logits.</p>
   </section>
 
   <section>
@@ -297,14 +313,24 @@
     <h3>6.1 Models</h3>
     <p>We compare three systems on identical inputs and the same held-out split (198 notes, 196 gold actions):</p>
     <ol>
-      <li><strong>BioBERT hybrid pipeline (proposed):</strong> shared BioBERT encoder, BIO action/time tagging, biaffine linking with a none option, and deterministic <code>dateparser</code> normalization anchored on the visit date.</li>
-      <li><strong>ChatGPT zero-shot:</strong> a single prompt asks the model to emit a JSON list of <code>{action, period_text, period_date}</code> objects from the note text and visit date, with no in-context examples.</li>
-      <li><strong>LLaMA instruction-tuned:</strong> an instruction-tuned LLaMA model fine-tuned on the training split to emit the same JSON schema, evaluated under both unconstrained ("STRICT") and schema-constrained decoding ("CONSTRAINED").</li>
+      <li><strong>BioBERT hybrid pipeline (proposed):</strong> the model described in Section 5, trained on the 1,600-note training split and selected by validation loss on 200 validation notes.</li>
+      <li><strong>ChatGPT zero-shot:</strong> the OpenAI <code>gpt-4o-mini</code> model is prompted with a system message instructing it to extract scheduled follow-up items from the note as a JSON list of <code>{action, period_text, period_date}</code> objects, given the note text and visit date. Decoding uses temperature 0 and OpenAI's structured-output mode (<code>response_format = {"type": "json_object"}</code>); no in-context examples are supplied. The closed-set action vocabulary (Section 4.2) is included in the prompt as a permitted-actions list.</li>
+      <li><strong>LLaMA instruction-tuned:</strong> the <code>meta-llama/Meta-Llama-3-8B</code> base model is fine-tuned on the 1,600-note training split using LoRA adapters (rank 16) with 8-bit AdamW, cosine learning-rate schedule, and the same JSON output schema. Inference uses a maximum of 256 new tokens. We report results under unconstrained decoding (<code>STRICT</code>) and under schema-constrained decoding restricted to the closed-set action vocabulary (<code>CONSTRAINED</code>).</li>
     </ol>
 
     <h3>6.2 Metrics</h3>
-    <p>We report exact span F1 for actions and times, linked-pair F1, action-date F1, exact date accuracy on matched actions, and mean absolute date error in days. Let \(P\) be the predicted set of action-date pairs and \(G\) the gold set. End-to-end precision, recall, and F1 are:</p>
+    <p>We report five metrics, all computed at the corpus level (micro-averaging) over the held-out split:</p>
+    <ol>
+      <li><strong>Span F1 (action; time).</strong> A predicted span is correct iff its character-offset boundaries match the gold span exactly. Precision, recall, and F1 are computed separately for action and time spans.</li>
+      <li><strong>Linked-pair F1.</strong> A predicted (action, time) pair is correct iff both spans match the gold spans exactly and the linking is correct. The none-link case is included on both sides.</li>
+      <li><strong>Action-date F1.</strong> The end-to-end metric. A prediction is correct iff the action span matches the gold span exactly and the normalized date \(d\) equals the gold date. Let \(P\) be the predicted set of (action, date) pairs and \(G\) the gold set:</li>
+    </ol>
     <p>$$\mathrm{Precision} = \frac{|P \cap G|}{|P|}, \quad \mathrm{Recall} = \frac{|P \cap G|}{|G|}, \quad F_1 = \frac{2PR}{P+R}.$$</p>
+    <ol start="4">
+      <li><strong>Exact date accuracy on matched actions.</strong> Among predictions whose action span matches a gold action, the fraction whose normalized date equals the gold date.</li>
+      <li><strong>Mean absolute date error (days).</strong> Among matched actions with a parseable predicted date, the mean of \(|d_{\mathrm{pred}} - d_{\mathrm{gold}}|\) in calendar days.</li>
+    </ol>
+    <p>Wilson 95% confidence intervals are reported in Section 6.4 for each proportion-based metric, computed on the underlying success counts.</p>
 
     <h3>6.3 Results</h3>
     <table>
@@ -349,12 +375,12 @@
 
     <figure>
       <img src="../Visuals/model comparison f1.png" alt="Model comparison F1">
-      <figcaption><strong>Figure 2.</strong> End-to-end action-date F1 on the held-out split. The hybrid pipeline reaches 0.980, compared with 0.827 for ChatGPT zero-shot and 0.806 for the fine-tuned LLaMA baseline.</figcaption>
+      <figcaption><strong>Figure 4.</strong> End-to-end action-date F1 on the held-out split. The hybrid pipeline reaches 0.980, compared with 0.827 for ChatGPT zero-shot and 0.806 for the fine-tuned LLaMA baseline.</figcaption>
     </figure>
 
     <figure>
       <img src="../Visuals/date error mae.png" alt="Date error mean absolute error">
-      <figcaption><strong>Figure 3.</strong> Mean absolute date error in days on matched actions. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
+      <figcaption><strong>Figure 5.</strong> Mean absolute date error in days on matched actions. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
     </figure>
 
     <h3>6.4 Interpretation</h3>
