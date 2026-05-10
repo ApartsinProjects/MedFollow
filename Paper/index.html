@@ -54,6 +54,17 @@
     }
     p {
       margin: 0 0 14px;
+      text-align: justify;
+      text-align-last: left;
+      hyphens: auto;
+    }
+    li {
+      text-align: justify;
+      text-align-last: left;
+    }
+    dd {
+      text-align: justify;
+      text-align-last: left;
     }
     .authors, .meta, .note {
       color: var(--muted);
@@ -281,7 +292,7 @@
 
     <h3>3.3 Hybrid neural-symbolic architecture</h3>
     <p>The proposed system shares a contextual encoder across two task heads (BIO tagging, biaffine action-time linking) and delegates date arithmetic to a deterministic post-processor. We use the publicly released <code>dmis-lab/biobert-base-cased-v1.1</code> checkpoint (768-dimensional hidden states) as the encoder, processing each note with sliding windows of maximum length 512 sub-word tokens and document stride 128. Let \(h_1,\ldots,h_T \in \mathbb{R}^{768}\) denote the contextual token representations for a window.</p>
-    <p><em>Span tagging.</em> The first head predicts BIO tags over tokens, \(z_t \in \{\mathrm{O}, \mathrm{B\mbox{-}ACT}, \mathrm{I\mbox{-}ACT}, \mathrm{B\mbox{-}TIME}, \mathrm{I\mbox{-}TIME}\}\). The NER loss is weighted cross-entropy with per-class weights \(w = (0.1, 1.0, 1.0, 1.0, 1.0)\) corresponding to (O, B-ACT, I-ACT, B-TIME, I-TIME) to reduce bias toward the majority O class:</p>
+    <p><em>Span tagging.</em> The first head predicts BIO tags over tokens, \(z_t \in \{\mathrm{O}, \mathrm{B\text{-}ACT}, \mathrm{I\text{-}ACT}, \mathrm{B\text{-}TIME}, \mathrm{I\text{-}TIME}\}\). The NER loss is weighted cross-entropy with per-class weights \(w = (0.1, 1.0, 1.0, 1.0, 1.0)\) corresponding to (O, B-ACT, I-ACT, B-TIME, I-TIME) to reduce bias toward the majority O class:</p>
     <p>$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
     <p>At inference we decode contiguous BIO sequences into character-offset spans using the offset-mapping returned by the BioBERT tokenizer; sub-token spans are merged across windows when they overlap.</p>
     <p><em>Span representation.</em> For each detected span \(s=(b,e)\), we concatenate the start hidden state, the end hidden state, and a learned width embedding to obtain \(r_s = [h_b; h_e; \phi(e-b+1)] \in \mathbb{R}^{1568}\). The width embedding maps span length to one of nine learned vectors using buckets \(\{1,2,3,4,5,8,12,20,40\}\).</p>
