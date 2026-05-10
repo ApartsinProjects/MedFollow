@@ -235,7 +235,7 @@
 
     <figure>
       <img src="figures/pipeline.svg" alt="System pipeline overview" style="background:white">
-      <figcaption><strong>Figure 1.</strong> System overview. The clinical note and visit date are processed by a shared BioBERT encoder over sliding windows. A BIO tagging head detects action and time spans, a biaffine span-pair head links each action to a time (or to a none option), and a deterministic <code>dateparser</code>-based normalizer converts the linked time phrase into an absolute ISO date anchored on the visit date.</figcaption>
+      <figcaption><strong>Figure 1.</strong> System overview. Solid arrows show the principal data flow. The note text is encoded by a shared BioBERT encoder over sliding windows of length 512 with stride 128; Head A predicts BIO action and time tags from the contextual states; Head B is a biaffine linker that pairs each predicted action span with a time span (or with a none option); the linked time phrase is then normalized to an absolute ISO date by a deterministic <code>dateparser</code>-based stage. The blue dashed enclosure groups the learned components (fine-tuned BioBERT plus the two heads); the green dashed enclosure marks the deterministic component. The dashed yellow arrow routes the <code>visit_date</code> directly to the normalizer as the relative-base anchor; the neural model never performs calendar arithmetic.</figcaption>
     </figure>
 
     <h3>3.2 Dataset</h3>
