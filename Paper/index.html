@@ -223,6 +223,11 @@
       <li><strong>Date normalization:</strong> convert the linked time expression into an absolute date using the visit date as anchor.</li>
     </ol>
     <p>The strict end-to-end criterion is set-level correctness over action-date pairs. A prediction is correct only when the action matches the gold action and the normalized date matches the gold date.</p>
+
+    <figure>
+      <img src="figures/pipeline.svg" alt="System pipeline overview" style="background:white">
+      <figcaption><strong>Figure 1.</strong> System overview. The clinical note and visit date are processed by a shared BioBERT encoder over sliding windows. A BIO tagging head detects action and time spans, a biaffine span-pair head links each action to a time (or to a none option), and a deterministic <code>dateparser</code>-based normalizer converts the linked time phrase into an absolute ISO date anchored on the visit date.</figcaption>
+    </figure>
   </section>
 
   <section>
@@ -260,17 +265,17 @@
 
     <figure>
       <img src="figures/dataset_composition.png" alt="Dataset composition by specialty and action count">
-      <figcaption><strong>Figure 1.</strong> Dataset composition. Each bar shows one specialty stratum, segmented by the number of follow-up actions per note (0, 1, or 2). Specialty proportions are approximately balanced (379-422 notes per specialty), and the action-count distribution is consistent across specialties.</figcaption>
+      <figcaption><strong>Figure 2.</strong> Dataset composition. Each bar shows one specialty stratum, segmented by the number of follow-up actions per note (0, 1, or 2). Specialty proportions are approximately balanced (379-422 notes per specialty), and the action-count distribution is consistent across specialties.</figcaption>
     </figure>
 
     <figure>
       <img src="figures/action_ontology.png" alt="Top 20 follow-up action types">
-      <figcaption><strong>Figure 2.</strong> Distribution of the 20 most frequent follow-up action types (out of 28 in the closed set). Imaging (CT, X-Ray, Cardiac MRI) and laboratory tests are most common; specialty consults and rehabilitation referrals appear in the long tail.</figcaption>
+      <figcaption><strong>Figure 3.</strong> Distribution of the 20 most frequent follow-up action types (out of 28 in the closed set). Imaging (CT, X-Ray, Cardiac MRI) and laboratory tests are most common; specialty consults and rehabilitation referrals appear in the long tail.</figcaption>
     </figure>
 
     <figure>
       <img src="../Visuals/note length variation by specialty plot.png" alt="Note length variation by specialty">
-      <figcaption><strong>Figure 3.</strong> Note-length distribution by specialty (characters). Notes range from 436 to 1,834 characters (median 1,193); length is similar across specialties.</figcaption>
+      <figcaption><strong>Figure 4.</strong> Note-length distribution by specialty (characters). Notes range from 436 to 1,834 characters (median 1,193); length is similar across specialties.</figcaption>
     </figure>
 
     <h3>4.4 Stress-factor coverage and temporal expression diversity</h3>
@@ -279,12 +284,12 @@
 
     <figure>
       <img src="figures/temporal_phrase_distribution.png" alt="Most frequent temporal expressions">
-      <figcaption><strong>Figure 4.</strong> Top 20 temporal-expression surface forms among 2,028 gold mentions. The 549-way long tail of forms (most appearing fewer than 8 times) reflects the variety of acceptable phrasings in clinical writing, including clinical shorthand and full English phrases.</figcaption>
+      <figcaption><strong>Figure 5.</strong> Top 20 temporal-expression surface forms among 2,028 gold mentions. The 549-way long tail of forms (most appearing fewer than 8 times) reflects the variety of acceptable phrasings in clinical writing, including clinical shorthand and full English phrases.</figcaption>
     </figure>
 
     <figure>
       <img src="figures/stress_factor_coverage.png" alt="Stress-factor coverage">
-      <figcaption><strong>Figure 5.</strong> Distribution of stress factors across the corpus. Multi-action notes, historical-time distractors, shorthand temporal forms, and the six plan variants are all represented at non-trivial proportions, ensuring that the held-out evaluation exercises the conditions the system is intended to handle.</figcaption>
+      <figcaption><strong>Figure 6.</strong> Distribution of stress factors across the corpus. Multi-action notes, historical-time distractors, shorthand temporal forms, and the six plan variants are all represented at non-trivial proportions, ensuring that the held-out evaluation exercises the conditions the system is intended to handle.</figcaption>
     </figure>
   </section>
 
@@ -390,12 +395,12 @@
 
     <figure>
       <img src="figures/model_comparison_with_ci.png" alt="Held-out performance with 95% confidence intervals">
-      <figcaption><strong>Figure 6.</strong> Held-out span and end-to-end performance with 95% confidence intervals (Wilson for proportion metrics, 10k-replicate bootstrap for F1). The hybrid pipeline's confidence intervals for time-span F1, action-date F1, and exact date accuracy do not overlap with either generative baseline.</figcaption>
+      <figcaption><strong>Figure 7.</strong> Held-out span and end-to-end performance with 95% confidence intervals (Wilson for proportion metrics, 10k-replicate bootstrap for F1). The hybrid pipeline's confidence intervals for time-span F1, action-date F1, and exact date accuracy do not overlap with either generative baseline.</figcaption>
     </figure>
 
     <figure>
       <img src="figures/date_error_with_dispersion.png" alt="Mean absolute date error">
-      <figcaption><strong>Figure 7.</strong> Mean absolute date error in days on matched actions. Reference lines mark one day and one week. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA-3), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
+      <figcaption><strong>Figure 8.</strong> Mean absolute date error in days on matched actions. Reference lines mark one day and one week. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA-3), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
     </figure>
 
     <h3>6.4 Interpretation and statistical significance</h3>
@@ -431,7 +436,7 @@
 
   <section>
     <h2>10. Reproducibility</h2>
-    <p>The full code, synthetic dataset (<code>Data/synthetic_clinical_notes_2000.csv</code>), per-system metric files (<code>Results/{biobert,chatgpt,llama}_metrics.json</code>), figures, and the rendered manuscript are released in the project repository. Training was performed with batch size 16, learning rate 2&times;10<sup>-5</sup>, 20 epochs, FP16 mixed precision, and early stopping with patience 4 on validation loss. Sliding-window inference uses maximum length 512 and stride 128. Date normalization uses <code>dateparser</code> with <code>RELATIVE_BASE</code> set to the visit date and <code>PREFER_DATES_FROM=future</code>. The current public artifact is a single notebook combining data generation, training, inference, and evaluation; refactoring into scripted entry points (<code>generate_data.py</code>, <code>train_biobert.py</code>, <code>run_baselines.py</code>, <code>evaluate.py</code>, <code>make_figures.py</code>), persisting raw per-note predictions and explicit train/validation/test split manifests, is the highest-priority reproducibility improvement and is in progress.</p>
+    <p>The full code, synthetic dataset (<code>Data/synthetic_clinical_notes_2000.csv</code>), per-system metric files (<code>Results/{biobert,chatgpt,llama}_metrics.json</code>), the consolidated <code>Results/results_with_ci.json</code> with point estimates and confidence intervals, all manuscript figures with the scripts that produced them (<code>Paper/scripts/</code>), and the rendered manuscript are released in the project repository. Training uses HuggingFace <code>Trainer</code> with batch size 16, learning rate 2&times;10<sup>-5</sup>, 3 training epochs, gradient accumulation of 2 steps, 50 warmup steps, FP16 mixed precision when CUDA is available, and early stopping with patience 4 on validation loss. The 80/10/10 split is produced by a numpy random shuffle with seed 42 (Section 4.3). Sliding-window inference uses maximum length 512 and stride 128. Date normalization uses <code>dateparser</code> with <code>RELATIVE_BASE</code> set to the visit date, <code>PREFER_DATES_FROM = "future"</code>, and <code>DATE_ORDER = "DMY"</code>. The current public artifact is a single notebook combining data generation, training, inference, and evaluation; refactoring into scripted entry points (<code>generate_data.py</code>, <code>train_biobert.py</code>, <code>run_baselines.py</code>, <code>evaluate.py</code>, <code>make_figures.py</code>) and persisting raw per-note predictions and explicit train/validation/test split manifests are the highest-priority reproducibility improvements and are in progress.</p>
   </section>
 
   <section>
