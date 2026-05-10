@@ -333,58 +333,60 @@
     <p>Wilson 95% confidence intervals are reported in Section 6.4 for each proportion-based metric, computed on the underlying success counts.</p>
 
     <h3>6.3 Results</h3>
+    <p>Table 2 reports point estimates and 95% confidence intervals for all five metrics on the 198-note held-out set. Confidence intervals on proportion metrics use the Wilson score interval. Confidence intervals on F1 metrics use a 10,000-replicate instance-level bootstrap over reconstructed (TP, FP, FN) outcomes (random seed 42).</p>
     <table>
-      <caption class="note">Table 2. Held-out performance on 198 notes / 196 gold actions. Wilson 95% confidence intervals are reported in Section 6.4 for proportion-based metrics.</caption>
+      <caption class="note">Table 2. Held-out performance with 95% confidence intervals (n=198 notes; 196 gold actions; 192-196 matched actions for date metrics, depending on system).</caption>
       <thead>
         <tr>
           <th>Model</th>
-          <th class="num">Action F1</th>
-          <th class="num">Time/Date F1</th>
-          <th class="num">Action-Date F1</th>
-          <th class="num">Date Exact Acc.</th>
-          <th class="num">Date MAE</th>
+          <th class="num">Action F1 [95% CI]</th>
+          <th class="num">Time F1 [95% CI]</th>
+          <th class="num">Action-Date F1 [95% CI]</th>
+          <th class="num">Date Exact Acc. [95% CI]</th>
+          <th class="num">Date MAE (days)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>BioBERT hybrid pipeline</td>
-          <td class="num">0.9949</td>
-          <td class="num">0.9975</td>
-          <td class="num">0.9797</td>
-          <td class="num">0.9847</td>
-          <td class="num">0.53 days</td>
+          <td class="num">0.995 [0.987, 1.000]</td>
+          <td class="num">0.997 [0.992, 1.000]</td>
+          <td class="num"><strong>0.980 [0.964, 0.992]</strong></td>
+          <td class="num"><strong>0.985 [0.956, 0.995]</strong></td>
+          <td class="num"><strong>0.53</strong></td>
         </tr>
         <tr>
-          <td>ChatGPT zero-shot</td>
-          <td class="num">0.9796</td>
-          <td class="num">0.8308</td>
-          <td class="num">0.8265</td>
-          <td class="num">0.8438</td>
-          <td class="num">5.07 days</td>
+          <td>ChatGPT zero-shot (gpt-4o-mini)</td>
+          <td class="num">0.980 [0.964, 0.992]</td>
+          <td class="num">0.831 [0.790, 0.868]</td>
+          <td class="num">0.827 [0.783, 0.864]</td>
+          <td class="num">0.844 [0.786, 0.888]</td>
+          <td class="num">5.07</td>
         </tr>
         <tr>
-          <td>LLaMA fine-tuned</td>
-          <td class="num">1.0000</td>
-          <td class="num">0.8163</td>
-          <td class="num">0.8061</td>
-          <td class="num">0.8061</td>
-          <td class="num">10.88 days</td>
+          <td>LLaMA-3 8B fine-tuned (LoRA)</td>
+          <td class="num">1.000 [1.000, 1.000]</td>
+          <td class="num">0.816 [0.772, 0.854]</td>
+          <td class="num">0.806 [0.762, 0.847]</td>
+          <td class="num">0.806 [0.745, 0.855]</td>
+          <td class="num">10.88</td>
         </tr>
       </tbody>
     </table>
 
     <figure>
-      <img src="../Visuals/model comparison f1.png" alt="Model comparison F1">
-      <figcaption><strong>Figure 4.</strong> End-to-end action-date F1 on the held-out split. The hybrid pipeline reaches 0.980, compared with 0.827 for ChatGPT zero-shot and 0.806 for the fine-tuned LLaMA baseline.</figcaption>
+      <img src="figures/model_comparison_with_ci.png" alt="Held-out performance with 95% confidence intervals">
+      <figcaption><strong>Figure 4.</strong> Held-out span and end-to-end performance with 95% confidence intervals (Wilson for proportion metrics, 10k-replicate bootstrap for F1). The hybrid pipeline's confidence intervals for time-span F1, action-date F1, and exact date accuracy do not overlap with either generative baseline.</figcaption>
     </figure>
 
     <figure>
-      <img src="../Visuals/date error mae.png" alt="Date error mean absolute error">
-      <figcaption><strong>Figure 5.</strong> Mean absolute date error in days on matched actions. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
+      <img src="figures/date_error_with_dispersion.png" alt="Mean absolute date error">
+      <figcaption><strong>Figure 5.</strong> Mean absolute date error in days on matched actions. Reference lines mark one day and one week. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA-3), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
     </figure>
 
-    <h3>6.4 Interpretation</h3>
-    <p>The hybrid pipeline matches or exceeds the generative baselines on action span detection (0.995 F1, vs 0.980 for ChatGPT and 1.000 for LLaMA) and substantially exceeds them on time span detection (0.997 vs 0.831 and 0.816), action-time linking, and exact date accuracy. The largest observed gap is in calendar arithmetic: the hybrid pipeline's mean absolute date error is below one day, while ChatGPT and LLaMA produce errors of approximately five and eleven days respectively. This pattern is consistent with a generation failure mode in which a model can describe an action correctly but mishandles the relative-date calculation, and supports the central hypothesis that semantic extraction and date arithmetic should be separated.</p>
+    <h3>6.4 Interpretation and statistical significance</h3>
+    <p>The hybrid pipeline matches or exceeds the generative baselines on action span detection (0.995 F1, vs 0.980 for ChatGPT and 1.000 for LLaMA-3) and substantially exceeds them on time span detection (0.997 vs 0.831 and 0.816), action-time linking, and exact date accuracy. The 95% confidence intervals for the hybrid pipeline's time-span F1 ([0.992, 1.000]), action-date F1 ([0.964, 0.992]), and exact date accuracy ([0.956, 0.995]) do not overlap with the corresponding intervals for either ChatGPT ([0.790, 0.868], [0.783, 0.864], [0.786, 0.888]) or LLaMA-3 ([0.772, 0.854], [0.762, 0.847], [0.745, 0.855]), supporting a significant difference at p&lt;0.05 on these end-to-end metrics. The largest gap is in calendar arithmetic: the hybrid pipeline's mean absolute date error is below one day, while ChatGPT and LLaMA-3 produce errors of approximately five and eleven days respectively. This pattern is consistent with a generation failure mode in which a model can describe an action correctly but mishandles the relative-date calculation, and supports the central hypothesis that semantic extraction and date arithmetic should be separated.</p>
+    <p>It is worth noting where the gap is narrow: action-span F1 is high for all three systems (the LLaMA-3 baseline reaches 1.000 [0.981, 1.000]), and CI overlap with the hybrid pipeline is substantial. The decisive advantage of the hybrid design is therefore on the temporal side of the task, not on lexical action recognition.</p>
   </section>
 
   <section>

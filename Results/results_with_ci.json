@@ -1,0 +1,55 @@
+{
+  "evaluation": {
+    "n_notes": 198,
+    "n_gold_actions": 196,
+    "split": "test (10% of 2000-note corpus, seed 42; 2 flagged notes excluded)"
+  },
+  "ci_method": {
+    "proportion": "Wilson score interval (z=1.96)",
+    "f1": "10000-replicate instance-level bootstrap over reconstructed (TP, FP, FN) outcomes (seed 42)"
+  },
+  "models": {
+    "biobert_hybrid": {
+      "checkpoint": "dmis-lab/biobert-base-cased-v1.1",
+      "counts": {"act_tp": 196, "act_fp": 2, "act_fn": 0,
+                  "time_tp": 196, "time_fp": 1, "time_fn": 0,
+                  "pair_tp": 193, "pair_fp": 5, "pair_fn": 3,
+                  "date_correct": 193, "date_matched": 196},
+      "action_span_f1": {"point": 0.9949, "ci95": [0.987, 1.000]},
+      "time_span_f1":   {"point": 0.9975, "ci95": [0.992, 1.000]},
+      "action_date_f1": {"point": 0.9797, "ci95": [0.964, 0.992]},
+      "date_exact_acc_on_matched": {"point": 0.9847, "ci95": [0.956, 0.995]},
+      "date_mae_days":  0.531,
+      "action_precision": {"point": 0.9899, "ci95": [0.964, 0.997]},
+      "action_recall":    {"point": 1.0000, "ci95": [0.981, 1.000]},
+      "action_date_precision": {"point": 0.9747, "ci95": [0.942, 0.989]},
+      "action_date_recall":    {"point": 0.9847, "ci95": [0.956, 0.995]}
+    },
+    "chatgpt_zero_shot": {
+      "model": "gpt-4o-mini",
+      "decoding": {"temperature": 0.0, "response_format": "json_object"},
+      "counts": {"act_tp": 192, "act_fp": 4, "act_fn": 4,
+                  "time_tp": 162, "time_fp": 32, "time_fn": 34,
+                  "pair_tp": 162, "pair_fp": 34, "pair_fn": 34,
+                  "date_correct": 162, "date_matched": 192},
+      "action_span_f1": {"point": 0.9796, "ci95": [0.964, 0.992]},
+      "time_span_f1":   {"point": 0.8308, "ci95": [0.790, 0.868]},
+      "action_date_f1": {"point": 0.8265, "ci95": [0.783, 0.864]},
+      "date_exact_acc_on_matched": {"point": 0.8438, "ci95": [0.786, 0.888]},
+      "date_mae_days":  5.068
+    },
+    "llama3_8b_lora": {
+      "model": "meta-llama/Meta-Llama-3-8B + LoRA (rank 16, 8-bit AdamW, cosine LR)",
+      "decoding": {"max_new_tokens": 256},
+      "counts": {"act_tp": 196, "act_fp": 0, "act_fn": 0,
+                  "time_tp": 160, "time_fp": 36, "time_fn": 36,
+                  "pair_tp": 158, "pair_fp": 38, "pair_fn": 38,
+                  "date_correct": 158, "date_matched": 196},
+      "action_span_f1": {"point": 1.0000, "ci95": [1.000, 1.000]},
+      "time_span_f1":   {"point": 0.8163, "ci95": [0.772, 0.854]},
+      "action_date_f1": {"point": 0.8061, "ci95": [0.762, 0.847]},
+      "date_exact_acc_on_matched": {"point": 0.8061, "ci95": [0.745, 0.855]},
+      "date_mae_days":  10.878
+    }
+  }
+}
