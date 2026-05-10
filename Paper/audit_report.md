@@ -1,7 +1,7 @@
 # DOCX Audit Report
 
 **Source:** `Paper\MedFollow_JBI_submission.docx`  
-**Size:** 388,503 bytes  
+**Size:** 389,006 bytes  
 **Paragraphs:** 138  
 **Tables:** 2  
 **Embedded images:** 6  
