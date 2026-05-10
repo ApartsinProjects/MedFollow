@@ -205,3 +205,14 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Model weight files - large binaries, not committed.
+# The models/ directory structure and MODELS.md manifest ARE tracked;
+# weights themselves must be downloaded per models/MODELS.md.
+models/**/*.bin
+models/**/*.pth
+models/**/*.safetensors
+models/**/*.pt
+models/**/pytorch_model*
+models/**/adapter_model*
+models/**/model.safetensors
