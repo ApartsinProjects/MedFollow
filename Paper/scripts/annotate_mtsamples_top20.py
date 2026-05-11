@@ -1,20 +1,20 @@
-"""Manually annotate the top 5 MTSamples notes for follow-up items,
+"""Manually annotate the top 20 MTSamples notes for follow-up items,
 aligned with the paper's 28-action closed-set taxonomy and the
 synthetic-corpus schema (action / period_text / period_date / char
 offsets).
 
-This is the first 5 of the planned realism-check sample. Goal: reveal
-how well the paper's action ontology covers real outpatient follow-up
-text, and produce gold annotations in the same JSON shape as the
-synthetic corpus so the same eval scripts can run on this set.
+This is the realism-check sample. Goal: reveal how well the paper's
+action ontology covers real outpatient follow-up text, and produce
+gold annotations in the same JSON shape as the synthetic corpus so
+the same eval scripts can run on this set.
 
 Output:
-  Data/external/mtsamples/mtsamples_top5_gold.json
+  Data/external/mtsamples/mtsamples_top20_gold.json
     - Per-note: note_id, specialty, sample_name, transcription,
       visit_date_assumed, follow_up_items (list with action,
       period_text, period_date, char offsets, in_closed_set flag,
       coverage_note).
-  Data/external/mtsamples/mtsamples_top5_coverage.md
+  Data/external/mtsamples/mtsamples_top20_coverage.md
     - Markdown report on closed-set coverage gaps.
 
 Approach:
@@ -50,8 +50,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top100_followup.csv"
-OUT_JSON = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top5_gold.json"
-OUT_MD = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top5_coverage.md"
+OUT_JSON = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_gold.json"
+OUT_MD = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_coverage.md"
 
 REFERENCE_VISIT_DATE = "2025-01-15"  # placeholder anchor (MTSamples notes are anonymized)
 
@@ -210,11 +210,323 @@ MANUAL = {
             },
         ],
     },
+
+    "Note 6: Tailor Bunionectomy with Screw Fixation (Orthopedic, score 13)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow up with Dr. A",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "vague",
+            },
+        ],
+    },
+
+    "Note 7: Ortho - Letter - 1 (Orthopedic, score 13)": {
+        "items": [
+            {
+                "action_canonical": "EMG",
+                "action_verbatim": "EMG study",
+                "period_text": "in two week's time",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": "Joint Injection",
+                "action_verbatim": "trigger point injections",
+                "period_text": "in two weeks' time",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "following him",
+                "period_text": "in two weeks' time",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 8: Elbow Manipulation (Orthopedic, score 12)": {
+        "items": [
+            {
+                "action_canonical": "Physical Therapy",
+                "action_verbatim": "physical therapy and Dynasplint",
+                "period_text": "in 3 days",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": "Orthopedic Consult",
+                "action_verbatim": "follow up",
+                "period_text": "in 1 week's time",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+        ],
+    },
+
+    "Note 9: Premature retina and vitreous (Office Notes, score 12)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Recheck",
+                "period_text": "in two weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 10: Delayed ORIF (Orthopedic, score 12)": {
+        "items": [
+            {
+                "action_canonical": "Orthopedic Consult",
+                "action_verbatim": "follow up",
+                "period_text": "in 2 days",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+        ],
+    },
+
+    "Note 11: Posttransplant Lymphoproliferative Disorder (SOAP, score 11)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "CBC, CMP, and LDH",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "prednisone",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+        ],
+    },
+
+    "Note 12: Pneumonia & COPD - Discharge Summary (Discharge, score 11)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Clindamycin 300 mg p.o. q.i.d.",
+                "period_text": "x2 weeks",
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": "X-Ray",
+                "action_verbatim": "chest x-ray PA and lateral",
+                "period_text": "after 2 weeks of treatment",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "speech therapy evaluation",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+        ],
+    },
+
+    "Note 13: Hyperthyroidism Following Pregnancy (General Medicine, score 10)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "thyroid function tests",
+                "period_text": "in six weeks",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow up",
+                "period_text": "in 6 weeks",
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "citalopram 10 mg",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+        ],
+    },
+
+    "Note 14: Angiography & Catheterization - 1 (Surgery, score 10)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "aspirin lifelong",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Plavix for at least 12 months",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "smoking cessation",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "self_care",
+            },
+        ],
+    },
+
+    "Note 15: Kidney Transplant - Followup (Nephrology, score 10)": {
+        "items": [
+            {
+                "action_canonical": "Urinalysis",
+                "action_verbatim": "send urine for decoy cells",
+                "period_text": "on his next visit",
+                "in_closed_set": True,
+                "coverage_note": "vague",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "see transplant",
+                "period_text": "in two weeks",
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "and me",
+                "period_text": "in four weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "fish oil b.i.d.",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+        ],
+    },
+
+    "Note 16: Selective Coronary Angiography & Angioplasty (Cardiovascular, score 10)": {
+        "items": [],   # Tail and full text show only procedural narrative; no scheduled follow-up actions identified
+    },
+
+    "Note 17: Long-Arm Cast (Orthopedic, score 10)": {
+        "items": [
+            {
+                "action_canonical": "Orthopedic Consult",
+                "action_verbatim": "She will return",
+                "period_text": "in 3 weeks",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+        ],
+    },
+
+    "Note 18: Myoclonic Epilepsy (Office Notes, score 10)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Keppra 500 mg b.i.d.",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": "Neurology Consult",
+                "action_verbatim": "see in followup",
+                "period_text": "in three months",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+        ],
+    },
+
+    "Note 19: Gen Med Progress Note - 9 (SOAP, score 9)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "CBC and a metabolic panel",
+                "period_text": "in the morning",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "venous Doppler of the left leg",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Detrol 0.4 mg one daily",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "see her back",
+                "period_text": "in two weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 20: Gen Med Progress Note - 2 (SOAP, score 9)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "BMP, lipid, liver profile, CPK, and CBC",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": "Lipid Panel",
+                "action_verbatim": "lipid",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Increase his Altace to 5 mg day",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "see him back",
+                "period_text": "in three months",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
 }
 
 
 def main() -> None:
-    df = pd.read_csv(SRC).head(5).reset_index(drop=True)
+    df = pd.read_csv(SRC).head(len(MANUAL)).reset_index(drop=True)
 
     out: list[dict] = []
     coverage_counts: dict[str, int] = {}
@@ -275,20 +587,20 @@ def main() -> None:
 
     # ---------- Coverage Markdown report ----------
     md = []
-    md.append("# MTSamples Top-5 Realism Check: Closed-Set Coverage Analysis")
+    md.append(f"# MTSamples Top-{len(MANUAL)} Realism Check: Closed-Set Coverage Analysis")
     md.append("")
     md.append(f"Manually annotated on {REFERENCE_VISIT_DATE} reference date. Source: ")
-    md.append("`Data/external/mtsamples/mtsamples_top5_gold.json`.")
+    md.append(f"`Data/external/mtsamples/mtsamples_top{len(MANUAL)}_gold.json`.")
     md.append("")
     md.append("## Headline finding")
     md.append("")
-    md.append(f"Of {total_items} follow-up-style items identified across the 5 notes, "
+    md.append(f"Of {total_items} follow-up-style items identified across the {len(MANUAL)} notes, "
               f"only {in_set_count} ({100 * in_set_count / total_items:.0f}%) "
               "map to one of the paper's 28 closed-set action types. The remaining items "
               "fall outside the synthetic-corpus ontology: medication changes, generic "
               "follow-up appointments without a specified procedure, conditional "
               "instructions ('if symptoms persist...'), patient self-care behaviors, "
-              "and vague timing.")
+              "specialist referrals outside the consult set, and vague or absent timing.")
     md.append("")
     md.append("This is a direct empirical confirmation of the limitation declared in "
               "Section 5.1 of the manuscript: 'Medication changes, conditional follow-up "
@@ -352,7 +664,7 @@ def main() -> None:
     OUT_MD.write_text("\n".join(md), encoding="utf-8")
     print(f"Wrote {OUT_MD.relative_to(ROOT)}")
     print()
-    print(f"Closed-set coverage on top-5 sample: {in_set_count}/{total_items} = {100 * in_set_count / total_items:.0f}%")
+    print(f"Closed-set coverage on top-{len(MANUAL)} sample: {in_set_count}/{total_items} = {100 * in_set_count / total_items:.0f}%")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,757 @@
+[
+  {
+    "note_id": 1357,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Leg Pain & Bone Pain",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "CHIEF COMPLAINT:,  Leg pain.,HISTORY OF PRESENT ILLNESS:,  This is a 56-year-old female who has pain in her legs at nighttime and when she gets up it comes and goes, radiates from her buttocks to her legs, sometimes it is her ankle.  She has noticed it since she has been on Lipitor.  She has had some night sweats occasionally.  She has had a little bit of fever and nausea.  She has noticed her blood sugars have been low.  She has lost over 30 pounds after exercising doing water aerobics at Genesis in Wichita.  She has noticed her fasting blood sugars have been ranging from 100 to 120.  Blood sugars one and a half hours after meals have been 185.  She is coming in for a diabetic checkup in one month and wants lab prior to that time.  She has been eating more meat recently and has not been on a diet for cholesterol.,CURRENT MEDICATIONS:,  Include Lipitor 80 mg q.d. discontinued today, Vioxx 25 mg q.d., Maxzide 37/25 q.d., Protonix 40 mg q.d., hydroxyzine pamoate 50 mg at h.s., aspirin 81 mg q.d., Glucovance 1.25/250 b.i.d. decreased to one a day today, Monopril 20 mg q.d., estradiol one mg q.d., and glucosamine 1000 mg q.d.,ALLERGIES:,  Cipro, sulfa, Bactrim, and Demerol.,OBJECTIVE:,Vital Signs:  Weight is 248 pounds which is a 12-pound drop from January.  Blood pressure 120/70.  Pulse 68.,General:  This is a well-developed adult female, awake, alert, and in no acute distress.,HEENT:  Oropharynx and HEENT are within normal limits.,Lungs:  Clear.,Heart:  Regular rhythm and rate.,Abdomen:  Soft, nontender, and nondistended without organomegaly.,GU:  Palpation of femurs do not cause pain, rotation of hips do not cause pain, and compression of the hips do not cause pain.,Neurologic:  Deep tendon reflexes are normal.,Extremities:  Pulses in lower extremities are normal.  Straight leg lifts are normal.,ASSESSMENT/PLAN:,1.  Leg pain/bone pain, I am going to check her CMP.  I think this possibly is a side effect from Lipitor.  We will stop Lipitor, have her follow up in one month which she has already got planned for diabetes appointment and check symptoms at that time.  Certainly if her pain improves might consider something like Crestor, which is more water soluble, which may cause less adverse effects.  We will check her comprehensive metabolic panel to make sure the alkaline phosphatase is okay, may need an x-ray of back, hip, and legs at that time if symptoms are not gone.,2.  Hypercholesterolemia, this is somewhat bothersome as she is a diabetic.  Did discuss with her that we need to stick to the diet especially after going off of Lipitor.  We will see how she does with her bone pain/leg pain off of Lipitor.  If she has improvement may consider Crestor in one month.  I am going to check her lipid panel and a CMP.  Apparently, she is going to get this at a different site, Mapleridge in Wichita.,3.  Type II diabetes.  We will decrease her Glucovance because she is having frequent low blood sugars.  Her previous hemoglobin A1c was 5.6 so we will see if this improves her symptoms.  I am also going to check a hemoglobin A1c at Mapleridge in Wichita and have a followup here in one month for that diabetes appointment.",
+    "follow_up_items": [
+      {
+        "action": "Annual Physical",
+        "action_verbatim": "diabetic checkup",
+        "period_text": "in one month",
+        "period_date": "2025-02-15",
+        "action_char_start": 678,
+        "action_char_end": 694,
+        "time_char_start": 695,
+        "time_char_end": 707,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": "X-Ray",
+        "action_verbatim": "x-ray of back, hip, and legs",
+        "period_text": "at that time",
+        "period_date": null,
+        "action_char_start": 2343,
+        "action_char_end": 2371,
+        "time_char_start": 2083,
+        "time_char_end": 2095,
+        "in_closed_set": true,
+        "coverage_note": "conditional"
+      },
+      {
+        "action": null,
+        "action_verbatim": "follow up",
+        "period_text": "in one month",
+        "period_date": "2025-02-15",
+        "action_char_start": 1982,
+        "action_char_end": 1991,
+        "time_char_start": 695,
+        "time_char_end": 707,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Crestor",
+        "period_text": "in one month",
+        "period_date": "2025-02-15",
+        "action_char_start": 2159,
+        "action_char_end": 2166,
+        "time_char_start": 695,
+        "time_char_end": 707,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 1447,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Asperger Disorder",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "SUBJECTIVE:  ,School reports continuing difficulties with repetitive questioning, obsession with cleanness on a daily basis, concerned about his inability to relate this well in the classroom.  He appears confused and depressed at times.  Mother also indicates that preservative questioning had come down, but he started collecting old little toys that he did in the past.  He will attend social skills program in the summer.  ABCD indicated to me that they have identified two psychologists to refer him to for functional behavioral analysis.  There is lessening of tremoring in both hands since discontinuation of Zoloft.  He is now currently taking Abilify at 7.5 mg.,OBJECTIVE: , He came in less perseverative questioning, asked appropriate question about whether I talked to ABCD or not, greeted me with Japanese word to say hello, seemed less.,I also note that his tremors were less from the last time.,ASSESSMENT: , 299.8 Asperger disorder, 300.03 obsessive compulsive disorder.,PLAN:,  Decrease Abilify from 7.5 mg to 5 mg tablet one a day, no refills needed.  I am introducing slow Luvox 25 mg tablet one-half a.m. for OCD symptoms, if no side effects in one week we will to tablet one up to therapeutic level.,I also will call ABCD regarding the referral to psychologists for functional behavioral analysis.  Parents will call me in two weeks.  I will see him for medication review in four weeks.  Mother signed informed consent.  I reviewed side effects to observe including behavioral activation.,Abilify has been helpful in decreasing high emotional arousal.  Combination of medication and behavioral intervention is recommended.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Decrease Abilify from 7.5 mg to 5 mg",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 994,
+        "action_char_end": 1030,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Luvox 25 mg tablet one-half",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 1091,
+        "action_char_end": 1118,
+        "time_char_start": 1161,
+        "time_char_end": 1172,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Parents will call me",
+        "period_text": "in two weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 1319,
+        "action_char_end": 1339,
+        "time_char_start": 1340,
+        "time_char_end": 1352,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "medication review",
+        "period_text": "in four weeks",
+        "period_date": "2025-02-12",
+        "action_char_start": 1374,
+        "action_char_end": 1391,
+        "time_char_start": 1392,
+        "time_char_end": 1405,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "referral to psychologists",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1256,
+        "action_char_end": 1281,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      }
+    ]
+  },
+  {
+    "note_id": 2253,
+    "specialty": "Orthopedic",
+    "sample_name": "CT Neck - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "FINDINGS:,There is a lobulated mass lesion of the epiglottis measuring approximately 22 x 16 x 30 mm (mediolateral x AP x craniocaudal) in size. There is slightly greater involvement on the right side however there is bilateral involvement of the aryepiglottic folds. There is marked enlargement of the bilateral aryepiglottic folds (left greater than right). There is thickening of the glossoepiglottic fold. There is an infiltrative mass like lesion extending into the pre-epiglottic space.,There is no demonstrated effacement of the piriform sinuses. The mass obliterates the right vallecula. The paraglottic spaces are normal. The true and false cords appear normal. Normal thyroid, cricoid and arytenoid cartilages.,There is lobulated thickening of the right side of the tongue base, for which invasion of the tongue cannot be excluded. A MRI examination would be of benefit for further evaluation of this finding.,There is a 14 x 5 x 12 mm node involving the left submental region (Level I).,There is borderline enlargement of the bilateral jugulodigastric nodes (Level II). The left jugulodigastric node,measures 14 x 11 x 8 mm while the right jugulodigastric node measures 15 x 12 x 8 mm.,There is an enlarged second left high deep cervical node measuring 19 x 14 x 15 mm also consistent with a left Level II node, with a probable necrotic center.,There is an enlarged second right high deep cervical node measuring 12 x 10 x 10 mm but no demonstrated central necrosis.,There is an enlarged left mid level deep cervical node measuring 9 x 16 x 6 mm, located inferior to the hyoid bone but cephalad to the cricoid consistent with a Level III node.,There are two enlarged matted nodes involving the right mid level deep cervical chain consistent with a right Level III nodal disease, producing a conglomerate nodal mass measuring approximately 26 x 12 x 10 mm.,There is a left low level deep cervical node lying along the inferior edge of the cricoid cartilage measuring approximately 18 x 11 x 14 mm consistent with left Level IV nodal disease.,There is no demonstrated pretracheal, prelaryngeal or superior mediastinal nodes. There is no demonstrated retropharyngeal adenopathy.,There is thickening of the adenoidal pad without a mass lesion of the nasopharynx. The torus tubarius and fossa of Rosenmuller appear normal.,IMPRESSION:,Epiglottic mass lesion with probable invasion of the glossoepiglottic fold and pre-epiglottic space with invasion of the bilateral aryepiglottic folds.,Lobulated tongue base for which tongue invasion cannot be excluded. An MRI may be of benefit for further assessment of this finding.,Borderline enlargement of a submental node suggesting Level I adenopathy.,Bilateral deep cervical nodal disease involving bilateral Level II, Level III and left Level IV.",
+    "follow_up_items": [
+      {
+        "action": "MRI",
+        "action_verbatim": "MRI examination",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 844,
+        "action_char_end": 859,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": "MRI",
+        "action_verbatim": "MRI",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 844,
+        "action_char_end": 847,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      }
+    ]
+  },
+  {
+    "note_id": 2277,
+    "specialty": "Orthopedic",
+    "sample_name": "Cartilage Loose Body Removal",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS: , Left knee medial femoral condyle osteochondritis dissecans.,POSTOPERATIVE DIAGNOSIS: , Left knee medial femoral condyle osteochondritis dissecans.,PROCEDURES:,  Left knee arthroscopy with removal of the cartilage loose body and microfracture of the medial femoral condyle with chondroplasty.,ANESTHESIA: , General.,TOURNIQUET TIME:  ,Thirty-seven minutes.,MEDICATIONS: , The patient also received 30 mL of 0.5% Marcaine local anesthetic at the end of the case.,COMPLICATIONS: , No intraoperative complications.,DRAINS AND SPECIMENS: , None.,INTRAOPERATIVE FINDINGS: , The patient had a loose body that was found in the suprapatellar pouch upon entry of the camera.  This loose body was then subsequently removed.  It measured 24 x 14 mm.  This was actually the OCD lesion seen on the MRI that had come from the weightbearing surface of just the lateral posterior aspect of the medial femoral condyle,HISTORY AND PHYSICAL: , The patient is 13-year-old male with persistent left knee pain.  He was initially seen at Sierra Pacific Orthopedic Group where an MRI demonstrated unstable OCD lesion of the left knee.  The patient presented here for a second opinion.  Surgery was recommended grossly due to the instability of the fragment.  Risks and benefits of surgery were discussed.  The risks of surgery include risk of anesthesia, infection, bleeding, changes in sensation and motion extremity, failure to relieve pain or restore the articular cartilage, possible need for other surgical procedures, and possible early arthritis.  All questions were answered and parents agreed to the above plan.,DESCRIPTION OF PROCEDURE:  ,The patient was taken to the operating room and placed supine on the operating table.  General anesthesia was then administered.  The patient received Ancef preoperatively.  A nonsterile tourniquet was placed on the upper aspect of the patient's left thigh.  The extremity was then prepped and draped in standard surgical fashion.  The standard portals were marked on the skin.  The extremity was wrapped in Esmarch prior to inflation of tourniquet to 250 mmHg.  The portal incisions were then made by an #11 blade.  Camera was inserted into the lateral joint line.  There was a noted large cartilage loose body in the suprapatellar pouch.  This was subsequently removed with extension of the anterolateral portal.  Visualization of the rest of the knee revealed significant synovitis.  The patient had a large cartilage defect in the posterolateral aspect of the medial femoral condyle.  The remainder of the knee demonstrated no other significant cartilage lesions, loose bodies, plica or meniscal pathology.  ACL was also visualized to be intact in the intracondylar notch.,Attention was then turned back to the large defect.  The loose cartilage was debrided using a shaver.  Microfracture technique was then performed to 4 mm depth at 2 to 3 mm distances.  Tourniquet was released at the end of the case to ensure that there was fat and bleeding at the microfracture sites.  All instruments were then removed.  The portals were closed using #4-0 Monocryl.  A total of 30 mL of 0.5% Marcaine was injected into the knee.  Wounds were then cleaned and dried, and dressed in Steri-Strips, Xeroform, 4 x 4s, and bias.  The patient was then placed in a knee immobilizer.  The patient tolerated the procedure well.  The tourniquet was released at 37 minutes.  He was taken to recovery in stable condition.,POSTOPERATIVE PLAN: , The loose cartilage fragment was given to the family.  The intraoperative findings were relayed with intraoperative photos.  There was a large deficit in the weightbearing portion of medial femoral condyle.  His prognosis is guarded given the fact of the fragile lesion and location, but in advantages of his age and his rehab potential down the road, if the patient still has symptoms, he may be a candidate for osteochondral autograft, a procedure which is not performed at Children's or possible cartilaginous transplant.  All questions were answered.  The patient will follow up in 10 days, may wet the wound in 5 days.",
+    "follow_up_items": [
+      {
+        "action": "Orthopedic Consult",
+        "action_verbatim": "follow up",
+        "period_text": "in 10 days",
+        "period_date": "2025-01-25",
+        "action_char_start": 4049,
+        "action_char_end": 4058,
+        "time_char_start": 4059,
+        "time_char_end": 4069,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "may wet the wound",
+        "period_text": "in 5 days",
+        "period_date": "2025-01-20",
+        "action_char_start": 4071,
+        "action_char_end": 4088,
+        "time_char_start": 4089,
+        "time_char_end": 4098,
+        "in_closed_set": false,
+        "coverage_note": "self_care"
+      }
+    ]
+  },
+  {
+    "note_id": 1036,
+    "specialty": "Surgery",
+    "sample_name": "Cineangiography - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "REASON FOR CATHETERIZATION:,  ST-elevation myocardial infarction.,PROCEDURES UNDERTAKEN,1.  Left coronary system cineangiography.,2.  Right coronary system cineangiography.,3.  Left ventriculogram.,4.  PCI to the left circumflex with a 3.5 x 12 and a 3.5 x 8 mm Vision bare-metal stents postdilated with a 3.75-mm noncompliant balloon x2.,PROCEDURE: , After all risks and benefits were explained to the patient, informed consent was obtained.  The patient was brought to the cardiac cath suite.  Right groin was prepped in usual sterile fashion.  Right common femoral artery was cannulated with the modified Seldinger technique.  A 6-French sheath was introduced.  Next, Judkins right catheter was used to engage the right coronary artery and cineangiography was recorded in multiple views.  Next, an EBU 3.5 guide was used to engage the left coronary system.  Cineangiography was recorded in several views and it was noted to have a 99% proximal left circumflex stenosis.  Angiomax bolus and drip were started after checking an ACT, which was 180, and an Universal wire was advanced through the left circumflex beyond the lesion.  Next, a 3.0 x 12 mm balloon was used to pre-dilate the lesion.  Next a 3.5 x 12 mm Vision bare-metal stent was advanced to the area of stenosis and deployed at 12 atmospheres.  There was noted to be a plaque shift proximally at the edge of the stent.  Therefore, a 3.5 x 8 mm Vision bare-metal stent was advanced to cover the proximal margin of the first stent and deployed at 12 atmospheres.  Next, a 3.75 x 13 mm noncompliant balloon was advanced into the margin of the stent and two inflations at 20 atmospheres were done for 20 seconds.  Final images showed excellent results with initial 99% stenosis reduced to 0%.  The patient continues to have residual stenosis in the mid to distal in the OM branch.  At this point, wire was removed.  Final images confirmed initial stent results, no evidence of dissection, perforation, or complications.,Next, an angled pigtail catheter was advanced into the left ventricular cavity.  LV pressure was measured.  LV gram was done in both the LAO and RAO projections and a pullback gradient across the aortic valve was done and recorded.  Finally, all guides were removed.  Right femoral artery access site was imaged and Angio-Seal deployed to attain excellent hemostasis.  The patient tolerated the procedure very well without complications.,DIAGNOSTIC FINDINGS,1.  Left main:  Left main is a large-caliber vessel bifurcating in LAD and left circumflex with no significant disease.,2.  The LAD:  LAD is a large-caliber vessel, wraps around the apex, gives off multiple septal perforators, three small-to-medium caliber diagonal branches without any significant disease.,3.  Left circumflex:  Left circumflex is a large-caliber vessel, gives off a large distal PDA branch, has a 99% proximal lesion, 50% mid vessel lesion, and a 50% lesion in the OM, which is a distal branch.,4.  Right coronary artery:  Right coronary artery is a moderate-caliber vessel, dominant, bifurcates into PDA and PLV branches, has only mild disease.  Otherwise, no significant stenosis noted.,5.  LV:  The LVEF 50%.  Inferolateral wall hypokinesis.  No significant mitral regurgitation.  No gradient across the aortic valve on pullback.,ASSESSMENT AND PLAN: , ST-elevation myocardial infarction with a 99% stenosis of the proximal portion of the left circumflex treated with a 3.5 x 12 mm Vision bare-metal stent and a 3.5 x 8 mm Vision bare-metal stent.  Excellent results, 0% residual stenosis.  The patient continues to have some residual 50% stenosis in the left circumflex system, some mild disease throughout the other vessels.  Therefore, we will aggressively treat this patient medically with close followup as an outpatient.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "close followup as an outpatient",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 3754,
+        "action_char_end": 3785,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "vague"
+      }
+    ]
+  },
+  {
+    "note_id": 2040,
+    "specialty": "Orthopedic",
+    "sample_name": "Tailor Bunionectomy with Screw Fixation",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSES:,1.  Hallux abductovalgus deformity, right foot.,2.  Tailor bunion deformity, right foot.,POSTOPERATIVE DIAGNOSES:,1.  Hallux abductovalgus deformity, right foot.,2.  Tailor bunion deformity, right foot.,PROCEDURES PERFORMED:  ,Tailor bunionectomy, right foot, Weil-type with screw fixation.,ANESTHESIA: , Local with MAC, local consisting of 20 mL of 0.5% Marcaine plain.,HEMOSTASIS:,  Pneumatic ankle tourniquet at 200 mmHg.,INJECTABLES:,  A 10 mL of 0.5% Marcaine plain and 1 mL of dexamethasone phosphate.,MATERIAL: , A 2.4 x 14 mm, 2.4 x 16 mm, and 2.0 x 10 mm OsteoMed noncannulated screw.  A 2-0 Vicryl, 3-0 Vicryl, 4-0 Vicryl, and 5-0 nylon.,COMPLICATIONS: , None.,SPECIMENS: , None.,ESTIMATED BLOOD LOSS:,  Minimal.,PROCEDURE IN DETAIL: , The patient was brought to the operating room and placed on the operating table in the usual supine position.  At this time, a pneumatic ankle tourniquet was placed on the patient's right ankle for the purpose of maintaining hemostasis.  Number of the anesthesias was obtained and then induced mild sedation and local anesthetic as described above was infiltrated about the surgical site.  The right foot was then scrubbed, prepped, and draped in the usual aseptic manner.  An Esmarch bandage was then used to exsanguinate the patient's right foot, and the pneumatic ankle tourniquet inflated to 200 mmHg.  Attention was then directed to dorsal aspect of the first metatarsophalangeal joint where a linear longitudinal incision measuring approximately a 3.5 cm in length was made.  The incision was carried deep utilizing both sharp and blunt dissections.  All major neurovascular structures were avoided.  At this time, through the original skin incision, attention was directed to the first intermetatarsal space where utilizing both sharp and blunt dissection the deep transverse intermetatarsal ligament was identified.  This was then incised fully exposing the tendon and the abductor hallucis muscle.  This was then resected from his osseous attachments and a small tenotomy was performed.  At this time, a small lateral capsulotomy was also performed.  Lateral contractures were once again reevaluated and noted to be grossly reduced.,Attention was then directed to the dorsal aspect of the first metatarsal phalangeal joint where linear longitudinal and periosteal and capsular incisions were made following the first metatarsal joint and following the original shape of the skin incision.  The periosteal capsular layers were then reflected both medially and laterally from the head of the first metatarsal and a utilizing an oscillating bone saw, the head of the first metatarsal and medial eminence was resected and passed from the operative field.  A 0.045 inch K-wire was then driven across the first metatarsal head in order to act as an access dye.  The patient was then placed in the frog-leg position, and two osteotomy cuts were made, one from the access guide to the plantar proximal position and one from the access guide to the dorsal proximal position.  The dorsal arm was made longer than the plantar arm to accommodate for fixation.  At this time, the capital fragment was resected and shifted laterally into a more corrected position.  At this time, three portions of the 0.045-inch K-wire were placed across the osteotomy site in order to access temporary forms of fixation.  Two of the three of these K-wires were removed in sequence and following the standard AO technique two 3.4 x 15 mm and one 2.4 x 14 mm OsteoMed noncannulated screws were placed across the osteotomy site.  Compression was noted to be excellent.  All guide wires and 0.045-inch K-wires were then removed.  Utilizing an oscillating bone saw, the overhanging wedge of the bone on the medial side of the first metatarsal was resected and passed from the operating field.  The wound was then once again flushed with copious amounts of sterile normal saline.  At this time, utilizing both 2-0 and 3-0 Vicryl, the periosteal and capsular layers were then reapproximated.  At this time, the skin was then closed in layers utilizing 4-0 Vicryl and 4-0 nylon.  At this time, attention was directed to the dorsal aspect of the right fifth metatarsal where a linear longitudinal incision was made over the metatarsophalangeal joint just lateral to the extensor digitorum longus tension.  Incision was carried deep utilizing both sharp and blunt dissections and all major neurovascular structures were avoided.,A periosteal and capsular incision was then made on the lateral aspect of the extensor digitorum longus tendon and periosteum and capsular layers were then reflected medially and laterally from the head of the fifth metatarsal.  Utilizing an oscillating bone saw, the lateral eminence was resected and passed from the operative field.  Utilizing the sagittal saw, a Weil-type osteotomy was made at the fifth metatarsal head.  The head was then shifted medially into a more corrected position.  A 0.045-inch K-wire was then used as a temporary fixation, and a 2.0 x 10 mm OsteoMed noncannulated screw was placed across the osteotomy site.  This was noted to be in correct position and compression was noted to be excellent.  Utilizing a small bone rongeur, the overhanging wedge of the bone on the dorsal aspect of the fifth metatarsal was resected and passed from the operative field.  The wound was once again flushed with copious amounts of sterile normal saline.  The periosteal and capsular layers were reapproximated utilizing 3-0 Vicryl, and the skin was then closed utilizing 4-0 Vicryl and 4-0 nylon.  At this time, 10 mL of 0.5% Marcaine plain and 1 mL of dexamethasone phosphate were infiltrated about the surgical site.  The right foot was then dressed with Xeroform gauze, fluffs, Kling, and Ace wrap, all applied in mild compressive fashion.  The pneumatic ankle tourniquet was then deflated and a prompt hyperemic response was noted to all digits of the right foot.  The patient was then transported from the operating room to the recovery room with vital sings stable and neurovascular status grossly intact to the right foot.  After a brief period of postoperative monitoring, the patient was discharged to home with proper written and verbal discharge instructions, which included to keep dressing clean, dry, and intact and to follow up with Dr. A.  The patient is to be nonweightbearing to the right foot.  The patient was given a prescription for pain medications on nonsteroidal anti-inflammatory drugs and was educated on these.  The patient tolerated the procedure and anesthesia well.  Dr. A was present throughout the entire case.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "follow up with Dr. A",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 6314,
+        "action_char_end": 6334,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "vague"
+      }
+    ]
+  },
+  {
+    "note_id": 2095,
+    "specialty": "Orthopedic",
+    "sample_name": "Ortho - Letter - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "XYZ, D.C.,Re:  ABC,Dear Dr. XYZ:,I had the pleasure of seeing your patient, ABC, today MM/DD/YYYY in consultation.  He is an unfortunate 19-year-old right-handed male who was injured in a motor vehicle accident on MM/DD/YYYY, where he was the driver of an automobile, which was struck on the front passenger's side.  The patient sustained impact injuries to his neck and lower back.  There was no apparent head injury or loss of consciousness and he denied any posttraumatic seizures.  He was taken to Hospital, x-rays were taken, apparently which were negative and he was released.,At the present time, he complains of neck and lower back pain radiating into his right arm and right leg with weakness, numbness, paraesthesia, and tingling in his right arm and right leg.  He has had no difficulty with bowel or bladder function.  He does experience intermittent headaches associated with his neck pain with no other associated symptoms.,PAST HEALTH:,  He was injured in a prior motor vehicle accident on MM/DD/YYYY.  At the time of his most recent injuries, he was completely symptom free and under no active therapy.  There is no history of hypertension, diabetes, heart disease, neurological disorders, ulcers or tuberculosis.,SOCIAL HISTORY: , He denies tobacco or alcohol consumption.,ALLERGIES: , No known drug allergies.,CURRENT MEDICATIONS:  ,None.,FAMILY HISTORY: , Otherwise noncontributory.,FUNCTIONAL INQUIRY: , Otherwise noncontributory.,REVIEW OF DIAGNOSTIC STUDIES:,  Includes an MRI scan of the cervical spine dated MM/DD/YYYY which showed evidence for disc bulging at the C6-C7 level.  MRI scan of the lumbar spine on MM/DD/YYYY, showed evidence of a disc herniation at the L1-L2 level as well as a disc protrusion at the L2-L3 level with disc herniations at the L3-L4 and L4-L5 level and disc protrusion at the L5-S1 level.,PHYSICAL EXAMINATION: , Reveals an alert and oriented male with normal language function.  Vital Signs:  Blood pressure was 105/68 in the left arm sitting.  Heart rate was 70 and regular.  Height was 5 feet 8 inches.  Weight was 182 pounds.  Cranial nerve evaluation was unremarkable.  Pupils were equal and reactive.  Funduscopic evaluation was clear.  There was no evidence for nystagmus.  There was decreased range of motion noted in both the cervical and lumbar regions to a significant degree, with tenderness and spasm in the paraspinal musculature.  Straight leg raising was limited to 45 degrees on the right and 90 degrees on the left.  Motor strength was 5/5 on the MRC scale.  Reflexes were 2+ symmetrical and active.  No pathological responses were noted.  Sensory examination showed a diffuse decreased sensation to pinprick in the right upper extremity.  Cerebellar function was normal.  There was normal station and gait.  Chest and cardiovascular evaluations were unremarkable.  Heart sounds were normal.  There were no extra sounds or murmurs.  Palpable trigger points were noted in the right trapezius and right cervical and lumbar paraspinal musculature.,CLINICAL IMPRESSION: , Reveals a 19-year-old male suffering from a posttraumatic cervical and lumbar radiculopathy, secondary to traumatic injuries sustained in a motor vehicle accident on MM/DD/YYYY.  In view of the persistent radicular complaints associated with the weakness, numbness, paraesthesia, and tingling as well as the objective sensory loss noted on today's evaluation as well as the non-specific nature of the radiculopathy, I have scheduled him for an EMG study on his right upper and right lower extremity in two week's time to rule out any nerve root irritation versus any peripheral nerve entrapment or plexopathy as the cause of his symptoms.  Palpable trigger points were noted on today's evaluation.  He is suffering from ongoing myofascitis.  His treatment plan will consist of a series of trigger point injections to be initiated at his next follow up visit in two weeks' time.  I have encouraged him to continue with his ongoing treatment program under your care and supervision.  I will be following him in two weeks' time.  Once again, thank you kindly for allowing me to participate in this patient's care and management.,Yours sincerely,,",
+    "follow_up_items": [
+      {
+        "action": "EMG",
+        "action_verbatim": "EMG study",
+        "period_text": "in two week's time",
+        "period_date": null,
+        "action_char_start": 3483,
+        "action_char_end": 3492,
+        "time_char_start": 3538,
+        "time_char_end": 3556,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": "Joint Injection",
+        "action_verbatim": "trigger point injections",
+        "period_text": "in two weeks' time",
+        "period_date": "2025-01-29",
+        "action_char_start": 3828,
+        "action_char_end": 3852,
+        "time_char_start": 3897,
+        "time_char_end": 3915,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "following him",
+        "period_text": "in two weeks' time",
+        "period_date": "2025-01-29",
+        "action_char_start": 4031,
+        "action_char_end": 4044,
+        "time_char_start": 3897,
+        "time_char_end": 3915,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 2236,
+    "specialty": "Orthopedic",
+    "sample_name": "Elbow Manipulation",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS:,  Left elbow with retained hardware.,POSTOPERATIVE DIAGNOSIS: , Left elbow with retained hardware.,PROCEDURE: , ,1.  Left elbow manipulation.,2.  Hardware removal of left elbow.,ANESTHESIA:  ,Surgery was performed under general anesthesia.,COMPLICATIONS:,  There were no intraoperative complications.,DRAINS: , None.,SPECIMENS: , None.,INTRAOPERATIVE FINDING: , Preoperatively, the patient is 40 to 100 degrees range of motion with limited supination and pronation of about 20 degrees.  We increased his extension and flexion to about 20 to 120 degrees and the pronation and supination to about 40 degrees.,LOCAL ANESTHETIC:  ,10 mL of 0.25% Marcaine.,HISTORY AND PHYSICAL: , The patient is a 10-year-old right-hand dominant male, who threw himself off a quad on 10/10/2007.  The patient underwent open reduction and internal fixation of his left elbow fracture dislocation.  The patient also sustained a nondisplaced right glenoid neck fracture.  The patient's fracture has healed without incident, although he had significant postoperative stiffness for which he is undergoing physical therapy, as well as use of a Dynasplint.  The patient is neurologically intact distally.  Given the fact that his fracture has healed, surgery was recommended for hardware removal to decrease his irritation with elbow extension from the hardware.  Risks and benefits of the surgery were discussed.  The risks of surgery included the risk of anesthesia, infection, bleeding, changes in sensation and motion of the extremities, failure to remove hardware, failure to relieve pain, continued postoperative stiffness.  All questions were answered and the parents agreed to the above plan.,PROCEDURE:  ,The patient was taken to the operating room and placed supine on the operating table.  General anesthesia was then administered.  The patient's left upper extremity was then prepped and draped in a standard surgical fashion.  Using fluoroscopy, the patient's K-wire was located.  An incision was made over his previous scar.  A subcutaneous dissection then took place in the plane between the subcutaneous fat and muscles.  The K-wires were easily palpable.  A small incision was made into the triceps, which allowed for visualization of the two pins, which were removed without incident.  The wound was then irrigated.  The triceps split was now closed using #2-0 Vicryl.  The subcutaneous tissue was also closed using #2-0 Vicryl and the skin with #4-0 Monocryl.  The wound was clean and dry and dressed with Steri-Strips, Xeroform, and 4 x 4s, as well as bias.  A total of 10 mL of 0.25% Marcaine was injected into the incision, as well as the joint line.  At the beginning of the case, prior to removal of the hardware, the arm was taken through some strenuous manipulations with improvement of his extension to 20 degrees, flexion to 130 degrees and pronation supination to about 40 degrees.,DIAGNOSTIC IMPRESSION:  ,The postoperative films demonstrated no fracture, no retained hardware.  The patient tolerated the procedure well and was subsequently taken to the recovery room in stable condition.,POSTOPERATIVE PLAN: , The patient will restart physical therapy and Dynasplint in 3 days.  The patient is to follow up in 1 week's time for a wound check.  The patient was given Tylenol No.  3 for pain.",
+    "follow_up_items": [
+      {
+        "action": "Physical Therapy",
+        "action_verbatim": "physical therapy and Dynasplint",
+        "period_text": "in 3 days",
+        "period_date": "2025-01-18",
+        "action_char_start": 3162,
+        "action_char_end": 3193,
+        "time_char_start": 3194,
+        "time_char_end": 3203,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": "Orthopedic Consult",
+        "action_verbatim": "follow up",
+        "period_text": "in 1 week's time",
+        "period_date": null,
+        "action_char_start": 3224,
+        "action_char_end": 3233,
+        "time_char_start": 3234,
+        "time_char_end": 3250,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      }
+    ]
+  },
+  {
+    "note_id": 2451,
+    "specialty": "Office Notes",
+    "sample_name": "Premature retina and vitreous",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "OCULAR FINDINGS: , Anterior chamber space:  Cornea, iris, lens, and pupils all unremarkable on gross examination in each eye.,Ocular adnexal spaces appear very good in each eye.,Cyclomydril x2 was used to dilate the pupil in each eye.,Medial spaces are clear and the periphery is still hazy in each eye.,Ocular disc space, normal size and shape with a pink color with clear margin in each eye.,Macular spaces are normal in appearance for the age in each eye.,Posterior pole.  No dilated blood vessels seen in each eye.,Periphery:  The peripheral retina is still hazy and retinopathy of prematurity cannot be ruled out at this time in each eye.,IMPRESSION:  ,Premature retina and vitreous, each eye.,PLAN:  ,Recheck in two weeks.,",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Recheck",
+        "period_text": "in two weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 707,
+        "action_char_end": 714,
+        "time_char_start": 715,
+        "time_char_end": 727,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 2249,
+    "specialty": "Orthopedic",
+    "sample_name": "Delayed ORIF",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSES:,1.  Right ankle trimalleolar fracture.,2.  Right distal tibia plafond fracture with comminuted posterolateral impacted fragment.,OPERATIVE PROCEDURE:  ,Delayed open reduction internal fixation with plates and screws, 6-hole contoured distal fibular plate and screws reducing posterolateral malleolar fragment, as well as medial malleolar fragment.,POSTOPERATIVE DIAGNOSES:,1.  Right ankle trimalleolar fracture.,2.  Right distal tibia plafond fracture with comminuted posterolateral impacted fragment.,TOURNIQUET TIME: , 80 minutes.,HISTORY: , This 50-year-old gentleman was from the area and riding his motorcycle in Kentucky.,The patient lost control of his motorcycle when he was traveling approximately 40 mile per hour.  He was on a curve and lost control.  He is unsure what exactly happened, but he thinks his right ankle was pinned underneath the motorcycle while he was sliding.  There were no other injuries.  He was treated in Kentucky.  A close reduction was performed and splint applied.  Orthopedic surgeon called myself with regards to this patient's fracture management and suggested a CT scan.  The patient returned to Ohio and his friend drove him all the way from Kentucky to Northwest Ohio overnight.  The patient showed up in the emergency department where a CT scan was asked to be performed.  This was performed and reviewed.  The patient, however, had significant amount of soft tissue swelling and therefore he was asked to follow up in 2 days.  At this time, he still had significant swelling, but because of the amount of swelling that he had particularly with the long car ride for many hours with his leg dependent, it was felt to be best to wait.,Indeed after 7 days, the patient started to develop fracture blisters on the posterior medial aspect of his ankle with large blisters measuring approximately 2 to 3 inches.  The patient was x-rayed in the office.  He had lost some of his reduction.  Therefore, he was re-reduced at approximately 7 days and then each time the patient had examination of tissues, he was re-reduced just to keep the pressure off the skin.,An x-ray showed the distal fibular fracture starting at the mortise region laterally.  It appeared as an abduction type injury with minimal rotation.  This was comminuted, fragmented, and impacted.,The medial malleolus fracture was an avulsion type.  The syndesmosis appeared to be intact.  This appeared as an AO type B fracture.  However, this was not a rotational injury.,There is a posterior malleolar fragment attached to the distal fibular fragment, which appeared to be avulsed as well, but comminuted.  CT scan revealed a more serious fracture with an anterior as well as posterior plafond fracture of an anterior fragment, which was undisplaced in the posterior medial corner.  A posterior Tillaux fragment appeared to be separate.  However, in this area, there was significant comminution in the mid portion of the ankle joint.,There were many fragments and defects in this region.,The medial mortise however appeared to be intact with regards to the tibial plafond even though there was an anterior undisplaced fragment.,We discussed delayed open reduction internal fixation with the patient.  He understood the risk of surgery including infection, decreased range of motion, stiffness, neurovascular injury, weakness, and numbness.  We discussed seriously the risk of osteoarthritis because of the comminution in the intraarticular surface shown on the CT scan.  We discussed deep vein thrombosis, pulmonary embolism, skin slough, skin necrosis, infection, and need for second surgery.  We discussed shortening, decreased strength, limited use, disability of operative extremity, malunion, nonunion, compartment syndrome, stiffness of the operative extremity, numbness, and weakness.  Examination of the patient revealed that he had slightly decreased sensation on the dorsum of his foot.,The patient was able to flex and extend his toes, had good capillary refill, good dorsalis pedis, and posterior tibial pulse.,The patient's tissues were edematous and we has waited approximately 10 days before performing the surgery when the skin could be wrinkled anteriorly.  We discussed his incision, the medial incision as well as lateral incision and the lateral incision would be more posterolateral to maintain a bridge of at least 6 to 8 cm between the 2 incisions.  We did discuss the skin slough as well as skin necrosis, particularly medially where the most skin pressure was because of displacement laterally.  He understood the posterolateral comminution of the tibial plafond, which would be reduced by aligning up the cortex posteriorly.,We discussed the posterolateral approach with reduction of the fibula.  We discussed that likely the distal fibula would not be removed completely to assess the articular surface as this would likely comminute the fibula, even more fragmentation would occur, and would not be able to obtain an anatomic reduction.  He understood this distal fibular fracture was comminuted and there were missing fragments of bone because they were impacted into intramedullary cancellous space.  With this, the patient understood that the hardware may necessitate removal as well in the future.  We discussed hardware irritation.  We also discussed risk of osteoarthritis, which was nearly 100% particularly because of comminution of this area posteriorly.  With these risks discussed and listed on the consent, the patient wanted the procedure.,OPERATIVE NOTE:,  The patient was brought to operating theater and given successful general anesthetic.  His right leg was prepped and draped in the usual fashion.  Before prep and drape was performed, a close reduction was tried to be obtained to see whether there was any obstruction to reduction.  It was felt that at one point the posterior tibialis tendon may be intraarticular.,The reduction appeared to line up.  However, there was significant gap of approximately 1.5 to 2 cm between the avulsed medial malleolus fragment and distal tibia.,A lateral incision was made over the fracture site approximately 8 cm long and was taken to subcutaneous tissue.  The superficial peroneal nerve was seen and this was avoided.  The incision was placed posterolateral to fibula.,This was to ensure good flap of tissue between the 2 incisions medial and laterally.  The fracture was seen.  The fracture was elevated and medialized and de-rotated.  The anterior portion of the distal fibula was significantly comminuted with defect.  The posterior aspect was still intact.  However, there were multiple fracture lines demonstrating a crush-type injury.  This was reduced manually.  At this point, dissection was performed bluntly behind the peroneal tendons in between this and flexor hallucis longus tendon.  No sharp dissection was performed.  The posterior malleolar fragment was palpated with the distal fibula reduced.  The posterior malleolar fragment appeared to be reduced as well.,X-ray views confirmed this.,An incision was made, standard incision, curvilinear, medially distal to the medial corner of the mortise and curving anterior and posteriorly around the tip of the medial malleolus.  This was taken only through subcutaneous tissue.  The saphenous vein was found, dissected out.  Its branches were cauterized.  Penrose drain was placed around this.,Dissection was undertaken.  The periosteal tissue was seen and was invaginated into the joint.,This was recovered and flipped back on both sides.  Next, the towel clip was used.  Ends were freshened up using irrigation.  The joint surface appeared to be congruent anteriorly and posteriorly medially.,Anatomic reduction was performed in the medial malleolus using 2 mm K-wires and exchanging these for a 35 mm and a 40 mm, anterior and posterior respectively, partially threaded cancellous screws.  Anatomic reduction was gained.  X-rays were taken showing excellent anatomic reduction.  Next, attention was drawn towards the fibula.  Standard 6-hole one-third tubular plate was applied to this.  Again, this was more of a transverse impacted fracture.  Therefore, interfragmentary screw on an angle could not be used.,The posterior cortex was used to assess anatomic reduction.  Screws were placed.  It was used as a spring plate pushing the distal fibular fragment medially.,Screw holes were filled.  They were double-checked.  Screws had excellent purchase and were tightened up.  At this point, lateral views were taken as well as palpation of posterior lateral fragment was performed in the plafond.  This appeared to show anatomic reduction and did not appear to be a step on the articular surface or the posterior cortex of the distal tibia.,The screw was then placed from anterior medial to posterior lateral into this comminuted fragment.,A 2 mm K-wire was used.  Finger was placed on this fragment and the pin was advanced even before the finger.  X-ray views could show the posterior cortex and location of the pin.  This was then exchanged for a 55 mm partially threaded cancellous screw after tapping was performed.  This was double checked to ensure good positioning and this was so.  On the lateral view, we could see this was not in the joint.  AP views and mortise views showed this was not in the joint.  One could palpate this as well.  The screw was placed slightly proximal to distal in the anteroposterior plane.  At the distal tip of it, it was just in the subchondral bone but not in the joint.  There was slight to excellent purchase of this posterior lateral fragment.  Wounds were copiously irrigated followed by closing using 2-0 Vicryl in inverted fashion followed by staples to skin.  Adaptic, 4 x 4s, abdominal pad was placed on wound, held in place with Kerlix followed by an extensor bandage.  Posterior splint was placed on the patient.  The patient's leg was placed in neutral position.  Significant amount of cast padding were used and large bulky trauma ABD type dressings.  The heel was padded and leg was padded with approximately 2 inches of padding.  Tourniquet was deflated.  The patient had good capillary refill, good pulses, and the patient returned to recovery room in stable condition with no complications.  Physician assistant assisted during the case with retracting as well as holding the medial malleolar fragment and fragments in position while placement screws were applied.  Positioning of the leg was accomplished by the physician assistant.  As well, physician assistant assisted in transport of patient to and from the recovery room, assisted in cautery as well as dissection and retraction of tissue.  The patient is expected to do well overall.  He does have an area of comminution shown on the CT scan.  However, by x-rays, it appears that there is anatomic reduction gained at this posterolateral fragment.  Nonetheless, this area was crushed and the patient will have degenerative changes in the future caused by this crushing area.",
+    "follow_up_items": [
+      {
+        "action": "Orthopedic Consult",
+        "action_verbatim": "follow up",
+        "period_text": "in 2 days",
+        "period_date": "2025-01-17",
+        "action_char_start": 1473,
+        "action_char_end": 1482,
+        "time_char_start": 1483,
+        "time_char_end": 1492,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      }
+    ]
+  },
+  {
+    "note_id": 1332,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Posttransplant Lymphoproliferative Disorder",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "CHIEF COMPLAINT: , The patient is here for followup visit and chemotherapy.,DIAGNOSES:,1.  Posttransplant lymphoproliferative disorder.,2.  Chronic renal insufficiency.,3.  Squamous cell carcinoma of the skin.,4.  Anemia secondary to chronic renal insufficiency and chemotherapy.,5.  Hypertension.,HISTORY OF PRESENT ILLNESS: , A 51-year-old white male diagnosed with PTLD in latter half of 2007.  He presented with symptoms of increasing adenopathy, abdominal pain, weight loss, and anorexia.  He did not seek medical attention immediately.  He was finally hospitalized by the renal transplant service and underwent a lymph node biopsy in the groin, which showed diagnosis of large cell lymphoma.  He was discussed at the hematopathology conference.  Chemotherapy with rituximab plus cyclophosphamide, daunorubicin, vincristine, and prednisone was started.  First cycle of chemotherapy was complicated by sepsis despite growth factor support.  He also appeared to have become disoriented either secondary to sepsis or steroid therapy.,The patient has received 5 cycles of chemotherapy to date.  He did not keep his appointment for a PET scan after 3 cycles because he was not feeling well.  His therapy has been interrupted for infection related to squamous cell cancer, skin surgery as well as complaints of chest infection.,The patient is here for the sixth and final cycle of chemotherapy.  He states he feels well.  He denies any nausea, vomiting, cough, shortness of breath, chest pain or fatigue.  He denies any tingling or numbness in his fingers.  Review of systems is otherwise entirely negative.,Performance status on the ECOG scale is 1.,PHYSICAL EXAMINATION:,VITAL SIGNS:  He is afebrile.  Blood pressure 161/80, pulse 65, weight 71.5 kg, which is essentially unchanged from his prior visit.  There is mild pallor noted.  There is no icterus, adenopathy or petechiae noted.  CHEST:  Clear to auscultation.  CARDIOVASCULAR:  S1 and S2 normal with regular rate and rhythm.  Systolic flow murmur is best heard in the pulmonary area.  ABDOMEN:  Soft and nontender with no organomegaly.  Renal transplant is noted in the right lower quadrant with a scar present.  EXTREMITIES:  Reveal no edema.,LABORATORY DATA: , CBC from today shows white count of 9.6 with a normal differential, ANC of 7400, hemoglobin 8.9, hematocrit 26.5 with an MCV of 109, and platelet count of 220,000.,ASSESSMENT AND PLAN:,1.  Diffuse large B-cell lymphoma following transplantation.  The patient is to receive his sixth and final cycle of chemotherapy today.  PET scan has been ordered to be done within 2 weeks.  He will see me back for the visit in 3 weeks with CBC, CMP, and LDH.,2.  Chronic renal insufficiency.,3.  Anemia secondary to chronic renal failure and chemotherapy.  He is to continue on his regimen of growth factor support.,4.  Hypertension.  This is elevated today because he held his meds because he is getting rituximab other than that this is well controlled.  His CMP is pending from today.,5.  Squamous cell carcinoma of the skin.  The scalp is well healed.  He still has an open wound on the right posterior aspect of his trunk.  This has no active drainage, but it is yet to heal.  This probably will heal by secondary intention once chemotherapy is finished.  Prescription for prednisone as part of his chemotherapy has been given to him.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "CBC, CMP, and LDH",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2649,
+        "action_char_end": 2666,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "prednisone",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 834,
+        "action_char_end": 844,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 3895,
+    "specialty": "Discharge Summary",
+    "sample_name": "Pneumonia & COPD - Discharge Summary",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "ADMISSION DIAGNOSES:,1.  Pneumonia, likely secondary to aspiration.,2.  Chronic obstructive pulmonary disease (COPD) exacerbation.,3.  Systemic inflammatory response syndrome.,4.  Hyperglycemia.,DISCHARGE DIAGNOSES:,1.  Aspiration pneumonia.,2.  Aspiration disorder in setting of severe chronic obstructive pulmonary disease.,3.  Chronic obstructive pulmonary disease (COPD) exacerbation.,4.  Acute respiratory on chronic respiratory failure secondary to chronic obstructive pulmonary disease exacerbation.,5.  Hypercapnia on admission secondary to chronic obstructive pulmonary disease.,6.  Systemic inflammatory response syndrome secondary to aspiration pneumonia.  No bacteria identified with blood cultures or sputum culture.,7.  Atrial fibrillation with episodic rapid ventricular rate, now rate control.,8.  Hyperglycemia secondary to poorly controlled type ii diabetes mellitus, insulin requiring.,9.  Benign essential hypertension, poorly controlled on admission, now well controlled on discharge.,10.  Aspiration disorder exacerbated by chronic obstructive pulmonary disease and acute respiratory failure.,11.  Hyperlipidemia.,12.  Acute renal failure on chronic renal failure on admission, now resolved.,HISTORY OF PRESENT ILLNESS:,  Briefly, this is 73-year-old white male with history of multiple hospital admissions for COPD exacerbation and pneumonia who presented to the emergency room on 04/23/08, complaining of severe shortness of breath.  The patient received 3 nebulizers at home without much improvement.  He was subsequently treated successfully with supplemental oxygen provided by normal nasal cannula initially and subsequently changed to BiPAP.,HOSPITAL COURSE:  ,The patient was admitted to the hospitalist service, treated with frequent small volume nebulizers, treated with IV Solu-Medrol and BiPAP support for COPD exacerbation.  The patient also noted with poorly controlled atrial fibrillation with a rate in the low 100s to mid 100s.  The patient subsequently received diltiazem, also received p.o. digoxin.  The patient subsequently responded well as well received IV antibiotics including Levaquin and Zosyn.  The patient made slow, but steady improvement over the course of his hospitalization.  The patient subsequently was able to be weaned off BiPAP during the day, but continued BiPAP at night and will continue with BiPAP if needed.  The patient may require a sleep study after discharge, but by the third day prior to discharge he was no longer utilizing BiPAP, was simply using supplemental O2 at night and was able to maintain appropriate and satisfactory O2 saturations on one-liter per minute supplemental O2 per nasal cannula.  The patient was able to participate with physical therapy, able to ambulate from his bed to the bathroom, and was able to tolerate a dysphagia 2 diet.  Note that speech therapy did provide a consultation during this hospitalization and his modified barium swallow was thought to be unremarkable and really related only to the patient's severe shortness of breath during meal time.  The patient's chest x-ray on admission revealed some mild vascular congestion and bilateral pleural effusions that appeared to be unchanged.  There was also more pronounced patchy alveolar opacity, which appeared to be, \"mass like\" in the right suprahilar region.  This subsequently resolved and the patient's infiltrate slowly improved over the course of his hospitalization.  On the day prior to discharge, the patient had a chest x-ray 2 views, which allowing for differences in technique revealed little change in the bibasilar infiltrates and atelectatic changes at the bases bilaterally.  This was compared with an examination performed 3 days prior.  The patient also had minimal bilateral effusions.  The patient will continue with clindamycin for the next 2 weeks after discharge.  Home health has been ordered and the case has been discussed in detail with Shaun Eagan, physician assistant at Eureka Community Health Center.  The patient was discharged as well on a dysphagia 2 diet, thin liquids are okay.  The patient discharged on the following medications.,DISCHARGE MEDICATIONS:,1.  Home oxygen 1 to 2 liters to maintain O2 saturations at 89 to 91% at all times.,2.  Ativan 1 mg p.o. t.i.d.,3.  Metformin 1000 mg p.o. b.i.d.,4.  Glucotrol 5 mg p.o. daily.,5.  Spiriva 1 puff b.i.d.,6.  Lantus 25 units subcu q.a.m.,7.  Cardizem CD 180 mg p.o. q.a.m.,8.  Advair 250/50 mcg, 1 puff b.i.d.  The patient is instructed to rinse with mouthwash after each use.,9.  Iron 325 mg p.o. b.i.d.,10.  Aspirin 325 mg p.o. daily.,11.  Lipitor 10 mg p.o. bedtime.,12.  Digoxin 0.25 mg p.o. daily.,13.  Lisinopril 20 mg p.o. q.a.m.,14.  DuoNeb every 4 hours for the next several weeks, then q.6 h. thereafter, dispensed 180 DuoNeb ampule's with one refill.,15.  Prednisone 40 mg p.o. q.a.m. x3 days followed by 30 mg p.o. q.a.m. x3 days, then followed by 20 mg p.o. q.a.m. x5 days, then 10 mg p.o. q.a.m. x14 days, then discontinue, #30 days supply given.  No refills.,16.  Clindamycin 300 mg p.o. q.i.d. x2 weeks, dispensed #64 with one refill.,The patient's aspiration pneumonia was discussed in detail.  He is agreeable to obtaining a chest x-ray PA and lateral after 2 weeks of treatment.  Note that this patient did not have community-acquired pneumonia.  His discharge diagnosis is aspiration pneumonia.  The patient will continue with a dysphagia 2 diet with thin liquids after discharge.  The patient discharged with home health.  A dietary and speech therapy evaluation has been ordered.  Speech therapy to treat for chronic dysphagia and aspiration in the setting of severe chronic obstructive pulmonary disease.,Total discharge time was greater than 30 minutes.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Clindamycin 300 mg p.o. q.i.d.",
+        "period_text": "x2 weeks",
+        "period_date": null,
+        "action_char_start": 5028,
+        "action_char_end": 5058,
+        "time_char_start": 5059,
+        "time_char_end": 5067,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": "X-Ray",
+        "action_verbatim": "chest x-ray PA and lateral",
+        "period_text": "after 2 weeks of treatment",
+        "period_date": null,
+        "action_char_start": 5192,
+        "action_char_end": 5218,
+        "time_char_start": 5219,
+        "time_char_end": 5245,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "speech therapy evaluation",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 5507,
+        "action_char_end": 5532,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      }
+    ]
+  },
+  {
+    "note_id": 3278,
+    "specialty": "General Medicine",
+    "sample_name": "Hyperthyroidism Following Pregnancy",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "HISTORY: , Patient is a 21-year-old white woman who presented with a chief complaint of chest pain.  She had been previously diagnosed with hyperthyroidism.  Upon admission, she had complaints of constant left sided chest pain that radiated to her left arm.  She had been experiencing palpitations and tachycardia.  She had no diaphoresis, no nausea, vomiting, or dyspnea.,She had a significant TSH of 0.004 and a free T4 of 19.3.  Normal ranges for TSH and free T4 are 0.5-4.7 µIU/mL and 0.8-1.8 ng/dL, respectively.  Her symptoms started four months into her pregnancy as tremors, hot flashes, agitation, and emotional inconsistency.  She gained 16 pounds during her pregnancy and has lost 80 pounds afterwards.  She complained of sweating, but has experienced no diarrhea and no change in appetite.  She was given isosorbide mononitrate and IV steroids in the ER.,FAMILY HISTORY:,  Diabetes, Hypertension, Father had a Coronary Artery Bypass Graph (CABG) at age 34.,SOCIAL HISTORY:,  She had a baby five months ago.  She smokes a half pack a day.  She denies alcohol and drug use.,MEDICATIONS:,  Citalopram 10mg once daily for depression; low dose tramadol PRN pain.,PHYSICAL EXAMINATION: , Temperature 98.4; Pulse 123; Respiratory Rate 16; Blood Pressure 143/74.,HEENT:  She has exophthalmos and could not close her lids completely.,Cardiovascular:  tachycardia.,Neurologic:  She had mild hyperreflexiveness.,LAB:,  All labs within normal limits with the exception of Sodium 133, Creatinine 0.2, TSH 0.004, Free T4 19.3 EKG showed sinus tachycardia with a rate of 122.  Urine pregnancy test was negative.,HOSPITAL COURSE: , After admission, she was given propranolol at 40mg daily and continued on telemetry.  On the 2nd day of treatment, the patient still complained of chest pain.  EKG again showed tachycardia.  Propranolol was increased from 40mg daily to 60mg twice daily., A I-123 thyroid uptake scan demonstrated an increased thyroid uptake of 90% at 4 hours and 94% at 24 hours.  The normal range for 4-hour uptake is 5-15% and 15-25% for 24-hour uptake.  Endocrine consult recommended radioactive I-131 for treatment of Graves disease.,Two days later she received 15.5mCi of I-131.  She was to return home after the iodine treatment.  She was instructed to avoid contact with her baby for the next week and to cease breast feeding.,ASSESSMENT / PLAN:,1. Treatment of hyperthyroidism.  Patient underwent radioactive iodine 131 ablation therapy.,2. Management of cardiac symptoms stemming from hyperthyroidism.  Patient was discharged on propranolol 60mg, one tablet twice daily.,3. Monitor patient for complications of I-131 therapy such as hypothyroidism.  She should return to Endocrine Clinic in six weeks to have thyroid function tests performed.  Long-term follow-up includes thyroid function tests at 6-12 month intervals.,4. Prevention of pregnancy for one year post I-131 therapy.  Patient was instructed to use 2 forms of birth control and was discharged an oral contraceptive, taken one tablet daily.,5. Monitor ocular health.  Patient was given methylcellulose ophthalmic, one drop in each eye daily.  She should follow up in 6 weeks with the Ophthalmology clinic.,6. Management of depression.  Patient will be continued on citalopram 10 mg.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "thyroid function tests",
+        "period_text": "in six weeks",
+        "period_date": "2025-02-26",
+        "action_char_start": 2729,
+        "action_char_end": 2751,
+        "time_char_start": 2708,
+        "time_char_end": 2720,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "follow up",
+        "period_text": "in 6 weeks",
+        "period_date": "2025-02-26",
+        "action_char_start": 3136,
+        "action_char_end": 3145,
+        "time_char_start": 3146,
+        "time_char_end": 3156,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      },
+      {
+        "action": null,
+        "action_verbatim": "citalopram 10 mg",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 3247,
+        "action_char_end": 3263,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 1262,
+    "specialty": "Surgery",
+    "sample_name": "Angiography & Catheterization - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "INDICATION:,  Acute coronary syndrome.,CONSENT FORM: , The procedure of cardiac catheterization/PCI risks included but not restricted to death, myocardial infarction, cerebrovascular accident, emergent open heart surgery, bleeding, hematoma, limb loss, renal failure requiring dialysis, blood loss, infection had been explained to him.  He understands.  All questions answered and is willing to sign consent.,PROCEDURE PERFORMED:,  Selective coronary angiography of the right coronary artery, left main LAD, left circumflex artery, left ventricular catheterization, left ventricular angiography, angioplasty of totally occluded mid RCA, arthrectomy using 6-French catheter, stenting of the mid RCA, stenting of the proximal RCA, femoral angiography and Perclose hemostasis.,NARRATIVE: , The patient was brought to the cardiac catheterization laboratory in a fasting state.  Both groins were draped and sterilized in the usual fashion.  Local anesthesia was achieved with 2% lidocaine to the right groin area and a #6-French femoral sheath was inserted via modified Seldinger technique in the right common femoral artery.  Selective coronary angiography was performed with #6 French JL4 catheter for the left coronary system and a #6 French JR4 catheter of the right coronary artery.  Left ventricular catheterization and angiography was performed at the end of the procedure with a #6-French angle pigtail catheter.,FINDINGS,1.  Hemodynamics systemic blood pressure 140/70 mmHg.  LVEDP at the end of the procedure was 13 mmHg.,2.  The left main coronary artery is a large with mild diffuse disease in the distal third resulting in less than 20% angiographic stenosis at the take off of the left circumflex artery.  The left circumflex artery is a large caliber vessel with diffuse disease in the ostium of the proximal segment resulting in less than 30% angiographic stenosis.  The left circumflex artery gives rise to a high small obtuse marginal branch that has high moderate-to-severe ostium.  The rest of the left circumflex artery has mild diffuse disease and it gives rise to a second large obtuse marginal branch that bifurcates into an upper and lower trunk.,The LAD is calcified and diffusely disease in the proximal and mid portion.  There is mild nonobstructive disease in the proximal LAD resulting in less than 20% angiographic stenosis.,3.  The right coronary artery is dominant.  It is septal to be occluded in the mid portion.,The findings were discussed with the patient and she opted for PCI.  Angiomax bolus was started.  The ACT was checked.  It was higher in 300.  I have given the patient 600 mg of oral Plavix.,The right coronary artery was engaged using a #6-French JR4 guide catheter.  I was unable to cross through this lesion using a BMW wire and a 3.0x8 mm balloon support.  I was unable to cross with this lesion using a whisper wire.  I was unable to cross with this lesion using Cross-IT 100 wire.  I have also used second #6-French Amplatz right I guide catheter.  At one time, I have lost flow in the distal vessel.  The patient experienced severe chest pain, ST-segment elevation, bradycardia, and hypotension, which responded to intravenous fluids and atropine along with intravenous dopamine.,Dr. X was notified.,Eventually, an Asahi grand slam wire using the same 3.0 x 8 mm Voyager balloon support, I was able to cross into the distal vessel.  I have performed careful balloon angioplasty of the mid RCA.  I have given nitroglycerin under the nursing several times during the procedure.,I then performed arthrectomy using #5-French export catheter.,I performed more balloon predilation using a 3.0 x16 mm Voyager balloon.  I then deployed 4.0 x15 mm, excised, and across the mid RCA at 18 atmospheres with good angiographic result.  Proximal to the proximal edge of the stent, there was still some persistent haziness most likely just diseased artery/diffuse plaquing.  I decided to cover this segment using a second 4.0 x 15 mm, excised, and two stents were overlapped, the overlap was postdilated using the same stent delivery balloon at high pressure with excellent angiographic result.,Left ventricular catheterization was performed with #6-French angle pigtail catheter.  The left ventricle is rather smaller in size.  The mid inferior wall is minimally hypokinetic, ejection fraction is 70%.  There is no evidence of aortic wall stenosis or mitral regurgitation.,Femoral angiography revealed that the entry point was above the bifurcation of the right common femoral artery and I have performed this as Perclose hemostasis.,CONCLUSIONS,1.  Normal left ventricular size and function.  Ejection fraction is 65% to 70%.  No MR.,2.  Successful angioplasty and stenting of the subtotally closed mid RCA.  This was hard, organized thrombus, very difficult to penetrate.  I have deployed two overlapping 4.0 x15 mm excised and with excellent angiographic result.  The RCA is dominant.,3.  No moderate disease in the distal left main.  Moderate disease in the ostium of the left circumflex artery.  Mild disease in the proximal LAD.,PLAN: , Recommend smoking cessation.  Continue aspirin lifelong and continue Plavix for at least 12 months.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "aspirin lifelong",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 5116,
+        "action_char_end": 5132,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Plavix for at least 12 months",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 5146,
+        "action_char_end": 5175,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "smoking cessation",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 5087,
+        "action_char_end": 5104,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "self_care"
+      }
+    ]
+  },
+  {
+    "note_id": 3003,
+    "specialty": "Nephrology",
+    "sample_name": "Kidney Transplant - Followup",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "REASON FOR VISIT:,  Kidney transplant.,HISTORY OF PRESENT ILLNESS: , The patient is a 52-year-old gentleman with ESRD secondary to hypertension, status post kidney transplant in February 2006.  He had to back down on his WelChol because of increased backache.  He actually increased his Pravachol and is tolerating this with minimal problems.  He comes in for followup.,ALLERGIES: , Aspirin and Altace caused cough, Lipitor and Pravachol at higher doses caused myalgias, Zetia caused myalgias.,MEDICATIONS:,  Gengraf 125/50 mg daily, CellCept 500 mg q.i.d., acyclovir 800 mg q.i.d., DexFol daily, ferrous sulfate Mondays, Wednesdays and Fridays, metoprolol 50 mg b.i.d., vitamin C daily, baby aspirin 81 mg daily, Bactrim Single Strength daily, Cozaar 50 mg daily, WelChol 625 mg daily, and Pravachol 10 mg daily.,PAST MEDICAL HISTORY:,1.  ESRD secondary to hypertension.,2.  Cadaveric kidney in February 2006.,3.  Gunshot wound in Southeast Asia.,4.  Hyperlipidemia.,REVIEW OF SYSTEMS: , Cardiovascular:  No chest pain, dyspnea on exertion, orthopnea, PND or edema.  GU:  No hematuria, foamy urine, pyuria, frequency or dysuria.  He has occasional tingling over his graft, but this is not bothering him today.,PHYSICAL EXAMINATION:,  VITAL SIGNS:  Pulse 82.  Blood pressure is 108/64.  Weight is 64.5 kg.  GENERAL:  He is in no apparent distress.  HEART:  Regular rate and rhythm.  No murmurs, rubs or gallops.  LUNGS:  Clear bilaterally.  ABDOMEN:  Soft, nontender, and nondistended.  Multiple scars.  Right lower quadrant graft is unremarkable.  EXTREMITIES:  No edema.,LABORATORY DATA:,  Labs dated 07-11-06, hematocrit 34.8, sodium 137, magnesium 1.9, potassium 4.9, chloride 102, CO2 25, BUN is 37, creatinine is 1.3, calcium 10.1, phosphorus 3.7, and albumin 4.4.  LFTs unremarkable.  Cholesterol 221, triglycerides 104, HDL 42, LDL 158, and cyclosporine 163.,IMPRESSION:,1.  Status post cadaveric kidney transplant with stable function.,2.  Hypertension under excellent control.,3.  Hyperlipidemia not at goal.  He simply is not tolerating higher doses of medications.,PLAN:,1.  We will add over-the-counter fish oil b.i.d.,2.  Continue all current medications.,3.  Recheck labs today including urinalysis.,4.  He will see transplant in two weeks and me in four weeks.  We will plan to send urine for decoy cells on his next visit.",
+    "follow_up_items": [
+      {
+        "action": "Urinalysis",
+        "action_verbatim": "send urine for decoy cells",
+        "period_text": "on his next visit",
+        "period_date": null,
+        "action_char_start": 2294,
+        "action_char_end": 2320,
+        "time_char_start": 2321,
+        "time_char_end": 2338,
+        "in_closed_set": true,
+        "coverage_note": "vague"
+      },
+      {
+        "action": null,
+        "action_verbatim": "see transplant",
+        "period_text": "in two weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 2227,
+        "action_char_end": 2241,
+        "time_char_start": 2242,
+        "time_char_end": 2254,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      },
+      {
+        "action": null,
+        "action_verbatim": "and me",
+        "period_text": "in four weeks",
+        "period_date": "2025-02-12",
+        "action_char_start": 2255,
+        "action_char_end": 2261,
+        "time_char_start": 2262,
+        "time_char_end": 2275,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "fish oil b.i.d.",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2116,
+        "action_char_end": 2131,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 4675,
+    "specialty": "Cardiovascular / Pulmonary",
+    "sample_name": "Selective Coronary Angiography & Angioplasty",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS AND INDICATIONS:,  Acute non-ST-elevation MI.,POSTOPERATIVE DIAGNOSIS AND SUMMARY:,  The patient presented with an acute non-ST-elevation MI.  Despite medical therapy, she continued to have intermittent angina.  Angiography demonstrated the severe LAD as the culprit lesion.  This was treated as noted above with angioplasty alone as the stent could not be safely advanced.  She has residual lesions of 75% in the proximal right coronary and 60% proximal circumflex, and the other residual LAD lesions as noted above.  She will be continued on her medical therapy.  At age 90, she is not a good candidate for aortic valve replacement and coronary bypass grafting.,PROCEDURE PERFORMED: , Selective coronary angiography, coronary angioplasty.,PROCEDURE IN DETAIL:,  After informed consent was obtained, the patient was taken to the cath lab, placed on the table in the supine position.  The area of the right femoral artery was prepped and draped in a sterile fashion.  Using the percutaneous technique, a 6-French sheath was placed in the right femoral artery under fluoroscopic guidance.  With the guidewire in place, a 5-French JL-4 catheter was used to selectively angiogram the left coronary system.  The catheter was removed.  The sheath flushed.  The 5-French 3DRC catheter was then used to selectively angiogram the right coronary artery.  The cath removed, the sheath flushed.,It was decided that intervention was needed in the severe lesions in the LAD, which appeared to be the culprit lesions for the non-ST elevation-MI.  The patient was given a bolus of heparin and an ACT of approximately 50 seconds was obtained, we rebolused and the ACT was slightly lower.  We repeated the level and it was slightly higher.  We administered 500 more units of heparin and then proceeded with an ACT of approximately 270 seconds prior to the 500 units of heparin IV.  Additionally, the patient had been given 300 mg of Plavix orally during the procedure and Integrilin IV bolus and then maintenance drip was started.,A 6-French CLS 3.5 left coronary guide catheter was used to cannulate the left main and HEW guidewire was positioned in the distal LAD and another HEW guidewire in the relatively large third diagonal.  An Apex 2.5 x 15 mm balloon was positioned in the distal portion of the mid LAD stenosis and inflated to 6 atmospheres for 15 seconds and then deflated.  Angiography was then performed, demonstrated marked improvement in the stenosis and this image was used for sizing the last of the needed stent.  The balloon was pulled more proximally and then inflated again at 6 atmospheres for approximately 20 seconds, with the proximal end of the balloon positioned distal to the origin of the third diagonal so as to not compromise the ostium.  The balloon was inflated and removed, repeat angiography performed.  We attempted to advance a Driver 2.5 x 24 mm bare metal stent, but I could not advance it beyond the proximal LAD, where there was significant calcification.  The stent was removed.  Attempts to advance the same 2.5 x 15 mm Apex balloon that was previously used were unsuccessful.  It was removed, a new Apex 2.5 x 15 mm balloon was then positioned in the proximal LAD and inflated to 6 atmospheres for 15 seconds and then deflated and advanced slightly with the distal tip of the balloon proximal to the third diagonal ostium and it was inflated to 6 atmospheres for 15 seconds and then deflated and removed.  Repeat angiography demonstrated no evidence of dissection.  One more attempt was made to advance the Driver 2.5 x 24 mm bare metal stent, but again I could not advance it beyond the calcified plaque in the proximal LAD and this was despite the presence of the buddy wire in the diagonal.  I felt that further attempts in this calcified vessel in a 90-year-old with severe aortic stenosis and severe aortic insufficiency would likely result in complications of dissection, so the stent was removed.  The guidewires and guide cath were removed.  The sheath flushed and sutured into position.  The patient moved to ICU in stable condition with no chest discomfort at all.,CONTRAST: , Isovue-370, 120 mL.,FLUORO TIME: , 9.4 minutes.,ESTIMATED BLOOD LOSS: , 30 mL.,HEMODYNAMICS:,  Aorta 185/54.,Left ventriculography was not performed.  I did not make an attempt to cross this severely stenotic aortic valve.,The left main is a large vessel, giving rise to LAD and circumflex vessels.  The left main has no significant disease other than calcification in the walls.,The LAD is a moderate-to-large vessel, giving rise to small diagonals and then a moderate-to-large third diagonal, and then a small fourth diagonal.  The LAD has significant calcification proximally.  There is a 50% stenosis between the first and second diagonals that we treated with angioplasty alone in an attempt to be able to advance the stent.  This resulted in a 30% residual, mostly eccentric calcified plaque.  Following this, there was a 50% stenosis in the LAD just after the takeoff of the third diagonal.  This was not ballooned.  Beyond this is an 80% stenosis prior to the fourth diagonal and then a 99% stenosis after the fourth diagonal.  These 2 lesions were dilated with 10% residual prior to the fourth diagonal and 25% residual distal to the fourth diagonal.  As noted above, this area was not stented because I could not safely advance the stent.  Note, there was also a 50% stenosis at the origin of the moderate-to-large third diagonal that did not change with angioplasty.,The circumflex is a large, nondominant vessel consisting of a large obtuse marginal with multiple branches.  The proximal circumflex has an eccentric 60% stenosis prior to the takeoff of the obtuse marginal.  The remainder of the vessel was without significant disease.,The right coronary was a large, dominant vessel giving rise to a large posterior descending artery and small-to-moderate first posterolateral, small second posterolateral, and a small-to-moderate third posterolateral branch.  The right coronary has an eccentric smooth 75% stenosis beginning about a centimeter after the origin of the vessel and prior to the acute marginal branch.  The remainder of the right coronary and its branches were without significant disease.",
+    "follow_up_items": []
+  },
+  {
+    "note_id": 2173,
+    "specialty": "Orthopedic",
+    "sample_name": "Long-Arm Cast",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS:,  Left distal radius fracture displaced.,POSTOPERATIVE DIAGNOSIS: , Left distal radius fracture displaced.,SURGERY:  ,Closed reduction and placement of long-arm cast, CPT code 25605.,ANESTHESIA:  ,General LMA.,FINDINGS:  ,The patient was found to have a displaced fracture.  She was found to be in perfect alignment after closed reduction and placement of cast.  The radial deviation was well corrected.,INDICATIONS: , The patient is 5 years old.  She was seen in our office today 1 week after being placed into a cast for a displaced fracture.  She was noted to have significant loss of alignment especially on the lateral view.  She was indicated for closed reduction and placed of the long-arm cast.  Risks and benefits were discussed at length with the family.  They wished to proceed.,PROCEDURE:  ,The patient was brought to the operating room and placed on the operating table in supine position.  General anesthesia was induced without incident.  Previous cast was previously removed.  An arm was approached and a closed reduction was performed.  This was checked under AP and lateral projection and was found to be in adequate alignment.  There was very mild residual dorsiflexion deformity noted.,A long-arm cast was then placed with plaster and molding.  Repeat x-rays demonstrated adequate alignment on both views.,The cast was then reinforced with fiberglass.  The patient was awakened from anesthesia and taken to recovery room in good condition.  There were no complications.  All instruments, sponge, and needle counts were correct at the end of case.,PLAN:  ,The patient will be discharged home.  She will return in 3 weeks for cast removal and clinical examination.  She would likely be placed into a wrist-guard at that time.  She has a prescription for Tylenol with codeine elixir.,",
+    "follow_up_items": [
+      {
+        "action": "Orthopedic Consult",
+        "action_verbatim": "She will return",
+        "period_text": "in 3 weeks",
+        "period_date": "2025-02-05",
+        "action_char_start": 1637,
+        "action_char_end": 1652,
+        "time_char_start": 1653,
+        "time_char_end": 1663,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      }
+    ]
+  },
+  {
+    "note_id": 2487,
+    "specialty": "Office Notes",
+    "sample_name": "Myoclonic Epilepsy",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "DIAGNOSES:,1.  Juvenile myoclonic epilepsy.,2.  Recent generalized tonic-clonic seizure.,MEDICATIONS:,1.  Lamictal 250 mg b.i.d.,2.  Depo-Provera.,INTERIM HISTORY: , The patient returns for followup.  Since last consultation she has tolerated Lamictal well, but she has had a recurrence of her myoclonic jerking.  She has not had a generalized seizure.  She is very concerned that this will occur.  Most of the myoclonus is in the mornings.  Recent EEG did show polyspike and slow wave complexes bilaterally, more prominent on the left.  She states that she has been very compliant with the medications and is getting a good amount of sleep.  She continues to drive.,Social history and review of systems are discussed above and documented on the chart.,PHYSICAL EXAMINATION: , Vital signs are normal.  Pupils are equal and reactive to light.  Extraocular movements are intact.  There is no nystagmus.  Visual fields are full.  Demeanor is normal.  Facial sensation and symmetry is normal.  No myoclonic jerks noted during this examination.  No myoclonic jerks provoked by tapping on her upper extremity muscles.  Negative orbit.  Deep tendon reflexes are 2 and symmetric.  Gait is normal.  Tandem gait is normal.  Romberg negative.,IMPRESSION AND PLAN:,  Recurrence of early morning myoclonus despite high levels of Lamictal.  She is tolerating the medication well and has not had a generalized tonic-clonic seizure.  She is concerned that this is a precursor for another generalized seizure.  She states that she is compliant with her medications and has had a normal sleep-wake cycle.,Looking back through her notes, she initially responded very well to Keppra, but did have a breakthrough seizure on Keppra.  This was thought secondary to severe insomnia when her baby was very young.  Because she tolerated the medication well and it was at least partially affective, I have recommended adding Keppra 500 mg b.i.d.  Side effect profile of this medication was discussed with the patient.,I will see in followup in three months.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Keppra 500 mg b.i.d.",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1898,
+        "action_char_end": 1918,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": "Neurology Consult",
+        "action_verbatim": "see in followup",
+        "period_text": "in three months",
+        "period_date": "2025-04-15",
+        "action_char_start": 1998,
+        "action_char_end": 2013,
+        "time_char_start": 2014,
+        "time_char_end": 2029,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      }
+    ]
+  },
+  {
+    "note_id": 1381,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Gen Med Progress Note - 9",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "SUBJECTIVE:,  The patient is a 44-year-old white female who is here today with multiple problems.  The biggest concern she has today is her that left leg has been swollen.  It is swollen for three years to some extent, but worse for the past two to three months.  It gets better in the morning when she is up, but then through the day it begins to swell again.  Lately it is staying bigger and she somewhat uncomfortable with it being so large.  The right leg also swells, but not nearly like the left leg.  The other problem she had was she has had pain in her shoulder and back.  These occurred about a year ago, but the pain in her left shoulder is of most concern to her.  She feels like the low back pain is just a result of a poor mattress.  She does not remember hurting her shoulder, but she said gradually she has lost some mobility.  It is hard time to get her hands behind her back or behind her head.  She has lost strength in the left shoulder.  As far as the blood count goes, she had an elevated white count.  In April of 2005, Dr. XYZ had asked Dr. XYZ to see her because of the persistent leukocytosis; however, Dr. XYZ felt that this was not a problem for the patient and asked her to just return here for follow up.  She also complains of a lot of frequency with urination and nocturia times two to three.  She has gained weight; she thinks about 12 pounds since March.  She now weighs 284.  Fortunately, her blood pressure is staying stable.  She takes atenolol 12.5 mg per day and takes Lasix on a p.r.n. basis, but does not like to take it because it causes her to urinate so much.  She denies chest pain, but she does feel like she is becoming gradually more short of breath.  She works for the city of Wichita as bus dispatcher, so she does sit a lot, and just really does not move around much.  Towards the end of the day her leg was really swollen.  I reviewed her lab work.  Other than the blood count her lab work has been pretty normal, but she does need to have a cholesterol check.,OBJECTIVE:,General:  The patient is a very pleasant 44-year-old white female quite obese.,Vital Signs:  Blood pressure:  122/70.  Temperature:  98.6.,HEENT:  Head:  Normocephalic.  Ears:  TMs intact.  Eyes:  Pupils round, and equal.  Nose:  Mucosa normal.  Throat:  Mucosa normal.,Lungs:  Clear.,Heart:  Regular rate and rhythm.,Abdomen:  Soft and obese.,Extremities:  A lot of fluid in both legs, but especially the left leg is really swollen.  At least 2+ pedal edema.  The right leg just has a trace of edema.  She has pain in her low back with range of motion.  She has a lot of pain in her left shoulder with range of motion.  It is hard for her to get her hand behind her back.  She cannot get it up behind her head.  She has pain in the anterior left shoulder in that area.,ASSESSMENT:,1.  Multiple problems including left leg swelling.,2.  History of leukocytosis.,3.  Joint pain involving the left shoulder, probably impingement syndrome.,4.  Low back pain, chronic with obesity.,5.  Obesity.,6.  Frequency with urination.,7.  Tobacco abuse.,PLAN:,1.  I will schedule for a venous Doppler of the left leg and will have her come back in the morning for a CBC and a metabolic panel.  We will start her on Detrol 0.4 mg one daily and also started on Mobic 15 mg per day.,2.  Elevate her leg as much as possible and wear support hose if possible.  Keep her foot up during the day.  We will see her back in two weeks.  We will have the results of the Doppler, the lab work and see how she is doing with the Detrol and the joint pain.  If her shoulder pain is not any better, we probably should refer her on over to orthopedist.  We did do x-rays of her shoulder today that did not show anything remarkable.  See her in two weeks or p.r.n.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "CBC and a metabolic panel",
+        "period_text": "in the morning",
+        "period_date": null,
+        "action_char_start": 3176,
+        "action_char_end": 3201,
+        "time_char_start": 279,
+        "time_char_end": 293,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "venous Doppler of the left leg",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 3096,
+        "action_char_end": 3126,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Detrol 0.4 mg one daily",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 3225,
+        "action_char_end": 3248,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "see her back",
+        "period_text": "in two weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 3408,
+        "action_char_end": 3420,
+        "time_char_start": 3421,
+        "time_char_end": 3433,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 1382,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Gen Med Progress Note - 2",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "CHIEF COMPLAINT:,  Followup on hypertension and hypercholesterolemia.,SUBJECTIVE:,  This is a 78-year-old male who recently had his right knee replaced and also back surgery about a year and a half ago.  He has done well with that.  He does most of the things that he wants to do.  He travels at every chance he has, and he just got back from a cruise.  He denies any type of chest pain, heaviness, tightness, pressure, shortness of breath with stairs only, cough or palpitations.  He sees Dr. Ferguson.  He is known to have Crohn's and he takes care of that for him.  He sees Dr. Roszhart for his prostate check.  He is a nonsmoker and denies swelling in his ankles.,MEDICATIONS:, Refer to chart.,ALLERGIES:, Refer to chart.,PHYSICAL EXAMINATION:, ,Vitals:  Wt; 172 lbs, up 2 lbs,  B/P; 150/60, T; 96.4, P; 72 and regular.  ,General:  A 78-year-old male who does not appear to be in any acute distress.  Glasses.  Good dentition.,CV: Distant S1, S2 without murmur or gallop. No carotid bruits. P: 2+ all around.,Lungs: Diminished with increased AP diameter. ,Abdomen:  Soft, bowel sounds active x 4 quadrants. No tenderness, no distention, no masses or organomegaly noted.,Extremities:  Well-healed surgical scar on the right knee.  No edema.  Hand grasps are strong and equal.,Back:  Surgical scar on the lower back.,Neuro: Intact.  A&O. Moves all four with no focal motor or sensory deficits.,IMPRESSION:,1.  Hypertension.,2.  Hypercholesterolemia.,3.  Osteoarthritis.,4.  Fatigue.,PLAN:,  We will check a BMP, lipid, liver profile, CPK, and CBC.  Refill his medications x 3 months.  I gave him a copy of Partners in Prevention.  Increase his Altace to 5 mg day for better blood pressure control.  Diet, exercise, and weight loss, and we will see him back in three months and p.r.n.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "BMP, lipid, liver profile, CPK, and CBC",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1509,
+        "action_char_end": 1548,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": "Lipid Panel",
+        "action_verbatim": "lipid",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1514,
+        "action_char_end": 1519,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Increase his Altace to 5 mg day",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1633,
+        "action_char_end": 1664,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "see him back",
+        "period_text": "in three months",
+        "period_date": "2025-04-15",
+        "action_char_start": 1746,
+        "action_char_end": 1758,
+        "time_char_start": 1759,
+        "time_char_end": 1774,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  }
+]
