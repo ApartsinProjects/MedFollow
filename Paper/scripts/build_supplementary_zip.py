@@ -56,9 +56,9 @@ FILES = [
     # Supplementary figure: stress-factor coverage (moved out of body to free a figure slot)
     ("figures/stress_factor_coverage.png",             ROOT / "Paper" / "figures" / "stress_factor_coverage.png"),
 
-    # MTSamples top-20 realism check (gold annotations + coverage report)
-    ("realism_check/mtsamples_top20_gold.json",        ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_gold.json"),
-    ("realism_check/mtsamples_top20_coverage.md",      ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_coverage.md"),
+    # MTSamples top-40 realism check (gold annotations + coverage report)
+    ("realism_check/mtsamples_top40_gold.json",        ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top40_gold.json"),
+    ("realism_check/mtsamples_top40_coverage.md",      ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top40_coverage.md"),
 ]
 
 README = """# Supplementary Materials
@@ -117,14 +117,14 @@ Code repository: https://github.com/michallaufer/Clinical-Follow-up-Extraction
   to satisfy the journal's figure-count cap).
 
 ### realism_check/
-- **mtsamples_top20_gold.json** -- Manual ground-truth annotations
-  for the top 20 highest-scoring real transcribed outpatient notes
+- **mtsamples_top40_gold.json** -- Manual ground-truth annotations
+  for the top 40 highest-scoring real transcribed outpatient notes
   from the MTSamples corpus (Apache-2.0). Each note carries a list
   of follow-up items with `action_verbatim`, `period_text`,
   `period_date`, character offsets, an `in_closed_set` flag, and a
   `coverage_note` tag. Cited in Section 5.1 of the manuscript.
-- **mtsamples_top20_coverage.md** -- Per-category coverage breakdown
-  showing the 40% closed-set coverage finding and a per-note table.
+- **mtsamples_top40_coverage.md** -- Per-category coverage breakdown
+  showing the 31% closed-set coverage finding and a per-note table.
 
 ## Reproducibility
 

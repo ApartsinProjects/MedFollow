@@ -753,5 +753,699 @@
         "coverage_note": "generic_followup"
       }
     ]
+  },
+  {
+    "note_id": 3036,
+    "specialty": "Nephrology",
+    "sample_name": "CT Abdomen & Pelvis - 3",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "EXAM: , CT of the abdomen and pelvis without contrast.,HISTORY: , Lower abdominal pain.,FINDINGS:,  Limited views of the lung bases demonstrate linear density most likely representing dependent atelectasis.  There is a 1.6 cm nodular density at the left posterior sulcus.,Noncontrast technique limits evaluation of the solid abdominal organs.  Cardiomegaly and atherosclerotic calcifications are seen.,Hepatomegaly is observed.  There is calcification within the right lobe of the liver likely related to granulomatous changes.  Subtle irregularity of the liver contour is noted, suggestive of cirrhosis.  There is splenomegaly seen.  There are two low-attenuation lesions seen in the posterior aspect of the spleen, which are incompletely characterized that may represent splenic cyst.  The pancreas appears atrophic.  There is a left renal nodule seen, which measures 1.9 cm with a Hounsfield unit density of approximately 29, which is indeterminate.,There is mild bilateral perinephric stranding.  There is an 8-mm fat density lesion in the anterior inner polar region of the left kidney, compatible in appearance with angiomyolipoma.  There is a 1-cm low-attenuation lesion in the upper pole of the right kidney, likely representing a cyst, but incompletely characterized on this examination.  Bilateral ureters appear normal in caliber along their visualized course.  The bladder is partially distended with urine, but otherwise unremarkable.,Postsurgical changes of hysterectomy are noted.  There are pelvic phlebolith seen.  There is a calcified soft tissue density lesion in the right pelvis, which may represent an ovary with calcification, as it appears continuous with the right gonadal vein.,Scattered colonic diverticula are observed.  The appendix is within normal limits.  The small bowel is unremarkable.  There is an anterior abdominal wall hernia noted containing herniated mesenteric fat.  The hernia neck measures approximately 2.7 cm.  There is stranding of the fat within the hernia sac.,There are extensive degenerative changes of the right hip noted with changes suggestive of avascular necrosis.  Degenerative changes of the spine are observed.,IMPRESSION:,1.  Anterior abdominal wall hernia with mesenteric fat-containing stranding, suggestive of incarcerated fat.,2.  Nodule in the left lower lobe, recommend follow up in 3 months.,3.  Indeterminate left adrenal nodule, could be further assessed with dedicated adrenal protocol CT or MRI.,4.  Hepatomegaly with changes suggestive of cirrhosis.  There is also splenomegaly observed.,5.  Low-attenuation lesions in the spleen may represent cyst, that are incompletely characterized on this examination.,6.  Fat density lesion in the left kidney, likely represents angiomyolipoma.,7.  Fat density soft tissue lesion in the region of the right adnexa, this contains calcifications and may represent an ovary or possibly dermoid cyst.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "follow up",
+        "period_text": "in 3 months",
+        "period_date": "2025-04-15",
+        "action_char_start": 2336,
+        "action_char_end": 2345,
+        "time_char_start": 2346,
+        "time_char_end": 2357,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": "MRI",
+        "action_verbatim": "MRI",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2462,
+        "action_char_end": 2465,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      }
+    ]
+  },
+  {
+    "note_id": 2075,
+    "specialty": "Orthopedic",
+    "sample_name": "Physical Therapy - Synovitis",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "DIAGNOSIS:,  Synovitis/anterior cruciate ligament tear of the left knee.,HISTORY: , The patient is a 52-year-old male, who was referred to Physical Therapy, secondary to left knee pain.  The patient states that on 10/02/08, the patient fell in a grocery store.  He reports slipping on a grape that was on the floor.  The patient states he went to the emergency room and then followed up with his primary care physician.  The patient was then ultimately referred to Physical Therapy.  After receiving a knee brace, history and information was received through a translator as the patient is Spanish speaking only.,PAST MEDICAL HISTORY: , Past medical history is unremarkable.,MEDICAL IMAGING: , Medical imaging is significant for x-rays and MRIs.  The report was available at the time of the evaluation.  The patient reports abnormal posterior horn of medial meniscus consistent with knee degenerative change and possibly tears.,MEDICATIONS:,1.  Tramadol.,2.  Diclofenac.,3.  Advil.,4.  Tylenol.,SUBJECTIVE: , The patient rates his pain at 6/10 on the Pain Analog Scale, primarily with ambulation.  The patient does deny pain at night.  The patient does present with his knee brace on the exterior of his __________ leg and appears to be on backboard.,FUNCTIONAL ACTIVITIES AND HOBBIES:  ,Functional activities and hobbies that are currently limited include any work as the patient is currently unemployed and is looking for a job; however, his primary skills are of a laborer and a street broker for new homes.,OBJECTIVE:  ,Upon observation, the patient is ambulating with a significant antalgic gait pattern.  However, he is not using any assistive device.  The knee brace was corrected and the patient and his wife demonstrated understanding and knowledge of how to place the knee brace on correctly.,ACTIVE RANGE OF MOTION: , Active range of motion of the left knee is 0 to 105 degrees with pain during range of motion.  Right knee active range of motion is 0 to 126 degrees.,STRENGTH:  ,Strength is 3/5 for left knee, 4+/5 for right knee.  The patient denies any pain upon light and deep palpation at the knee joints.  There is no evidence of temperature change, increased swelling or any discoloration at the left knee joint.  The patient does not appear to have instability at this time with formal tests at the left knee joint.,SPECIAL TESTS:  ,The patient performed a six-minute walk test.  He was able to complete 600 feet; however, had to stop this test at approximately five minutes, secondary to significant increase in pain.,ASSESSMENT:,  The patient would benefit from skilled physical therapy intervention in order to address the following problem list:,1.  Increased pain.,2.  Decreased range of motion.,3.  Decreased strength.,4.  Decreased ability to perform functional activities and work tasks.,5.  Decreased ambulation tolerance.,SHORT-TERM GOALS TO BE COMPLETED IN THREE WEEKS:,1.  Patient will demonstrate independence with the home exercise program.,2.  Patient will report maximum pain of 2/10 on a Pain Analog Scale within a 24-hour period.,3.  The patient will demonstrate left knee active range of motion, 0 to 120 degrees, without significant increase in pain during motion.,4.  The patient will demonstrate 4/5 strength for the left knee.,5.  The patient will complete 800 feet in a six-minute walk test without significant increase in pain.,LONG-TERM GOALS TO BE COMPLETED IN SIX WEEKS:,1.  The patient will demonstrate bilateral knee active range of motion, 0 to 130 degrees.,2.  The patient will demonstrate 5/5 lower extremity strength bilaterally without significant increase in pain.,3.  Patient will complete 1000 feet in a six-minute walk test without increase in pain and tolerate full completion of the six minutes.,4.  The patient will improve confidence with ability to perform work activity, when the situation improves and resolves.,PROGNOSIS:  ,Prognosis is good for above-stated goals, with compliance to a home exercise program and treatment.,SESSION PLAN: , The patient to be seen two to three times a week for six weeks for the following:,1.  Therapeutic exercise with home exercise program.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Therapeutic exercise",
+        "period_text": "for six weeks",
+        "period_date": null,
+        "action_char_start": 4092,
+        "action_char_end": 4112,
+        "time_char_start": 4055,
+        "time_char_end": 4068,
+        "in_closed_set": false,
+        "coverage_note": "recurring_schedule"
+      }
+    ]
+  },
+  {
+    "note_id": 4320,
+    "specialty": "Consult - History and Phy.",
+    "sample_name": "Hypertension & Cardiomyopathy",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PROBLEMS LIST:,1.  Nonischemic cardiomyopathy.,2.  Branch vessel coronary artery disease.,3.  Congestive heart failure, NYHA Class III.,4.  History of nonsustained ventricular tachycardia.,5.  Hypertension.,6.  Hepatitis C.,INTERVAL HISTORY: , The patient was recently hospitalized for CHF exacerbation and was discharged with increased medications.  However, he did not fill his prescriptions and came back with persistent shortness of breath on exertion and on rest.  He has history of orthopnea and PND.  He has gained a few pounds of weight but denied to have any palpitation, presyncope, or syncope.,REVIEW OF SYSTEMS: , Positive for right upper quadrant pain.  He has occasional nausea, but no vomiting.  His appetite has decreased.  No joint pain, TIA, seizure or syncope.  Other review of systems is unremarkable.,I reviewed his past medical history, past surgical history, and family history.,SOCIAL HISTORY: , He has quit smoking, but unfortunately was positive for cocaine during last hospital stay in 01/08.,ALLERGIES: , He has no known drug allergies.,MEDICATIONS:,  I reviewed his medication list in the chart.  He states he is compliant, but he was not taking the revised dose of medications as per discharge orders and prescription.,PHYSICAL EXAMINATION:,VITAL SIGNS:  Pulse 91 per minute and regular, blood pressure 151/102 in the right arm and 152/104 in the left arm, weight 172 pounds, which is about 6 pounds more than last visit in 11/07.  HEENT:  Atraumatic and normocephalic.  No pallor, icterus or cyanosis.  NECK:  Supple.  Jugular venous distention 5 cm above the clavicle present.  No thyromegaly.  LUNGS:  Clear to auscultation.  No rales or rhonchi.  Pulse ox was 98% on room air.  CVS:  S1 and S2 present.  S3 and S4 present.  ABDOMEN:  Soft and nontender.  Liver is palpable 5 cm below the right subcostal margin.  EXTREMITIES:  No clubbing or cyanosis.  A 1+ edema present.,ASSESSMENT AND PLAN:,  The patient has hypertension, nonischemic cardiomyopathy, and branch vessel coronary artery disease.  Clinically, he is in NYHA Class III.  He has some volume overload and was not unfortunately taking Lasix as prescribed.  I have advised him to take Lasix 40 mg p.o. b.i.d.  I also increased the dose of hydralazine from 75 mg t.i.d. to 100 mg t.i.d.  I advised him to continue to take Toprol and lisinopril.  I have also added Aldactone 25 mg p.o. daily for survival advantage.  I reinforced the idea of not using cocaine.  He states that it was a mistake, may be somebody mixed in his drink, but he has not intentionally taken any cocaine.  I encouraged him to find a primary care provider.  He will come for a BMP check in one week.  I asked him to check his blood pressure and weight.  I discussed medication changes and gave him an updated list.  I have asked him to see a gastroenterologist for hepatitis C.  At this point, his Medicaid is pending.  He has no insurance and finds hard to find a primary care provider.  I will see him in one month.  He will have his fasting lipid profile, AST, and ALT checked in one week.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "BMP check",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 2643,
+        "action_char_end": 2652,
+        "time_char_start": 2653,
+        "time_char_end": 2664,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": "Lipid Panel",
+        "action_verbatim": "fasting lipid profile",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 3002,
+        "action_char_end": 3023,
+        "time_char_start": 2653,
+        "time_char_end": 2664,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Lasix 40 mg p.o. b.i.d.",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2180,
+        "action_char_end": 2203,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "hydralazine from 75 mg t.i.d. to 100 mg t.i.d.",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2234,
+        "action_char_end": 2280,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Aldactone 25 mg p.o. daily",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2358,
+        "action_char_end": 2384,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": "GI Consult",
+        "action_verbatim": "see a gastroenterologist for hepatitis C",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2802,
+        "action_char_end": 2842,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "see him",
+        "period_text": "in one month",
+        "period_date": "2025-02-15",
+        "action_char_start": 2962,
+        "action_char_end": 2969,
+        "time_char_start": 2970,
+        "time_char_end": 2982,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 4015,
+    "specialty": "Dermatology",
+    "sample_name": "Excision - Skin Neoplasm",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSES:,1.  Enlarging nevus of the left upper cheek.,2.  Enlarging nevus 0.5 x 1 cm, left lower cheek.,3.  Enlarging superficial nevus 0.5 x 1 cm, right nasal ala.,TITLE OF PROCEDURES:,1.  Excision of left upper cheek skin neoplasm 0.5 x 1 cm with two layer closure.,2.  Excision of the left lower cheek skin neoplasm 0.5 x 1 cm with a two layer plastic closure.,3.  Shave excision of the right nasal ala 0.5 x 1 cm skin neoplasm.,ANESTHESIA:  ,Local.  I used a total of 5 mL of 1% lidocaine with 1:100,000 epinephrine.,ESTIMATED BLOOD LOSS: , Less than 10 mL.,COMPLICATIONS:,  None.,PROCEDURE: , The patient was evaluated preop and noted to be in stable condition.  Chart and informed consent were all reviewed preop.  All risks, benefits, and alternatives regarding the procedure have been reviewed in detail with the patient.  Risks including but not limited to bleeding, infection, scarring, recurrence of the lesion, need for further procedures have been all reviewed.  Each of these lesions appears to be benign nevi; however, they have been increasing in size.  The lesions involving the left upper and lower cheek appear to be deep.  These required standard excision with the smaller lesion of the right nasal ala being more superficial and amenable to a superficial shave excision.  Each of these lesions was marked.  The skin was cleaned with a sterile alcohol swab.  Local anesthetic was infiltrated.  Sterile prep and drape were then performed.,Began first excision of the left upper cheek skin lesion.  This was excised with the 15-blade full thickness.  Once it was removed in its entirety, undermining was performed, and the wound was closed with 5-0 myochromic for the deep subcutaneous, 5-0 nylon interrupted for the skin.,The lesion of the lower cheek was removed in a similar manner.  Again, it was excised with a 15 blade with two layer plastic closure.  Both these lesions appear to be fairly deep nevi.,The right nasal ala nevus was superficially shaved using the radiofrequency wave unit.  Each of these lesions was sent as separate specimens.  The patient was discharged from my office in stable condition.  He had minimal blood loss.  The patient tolerated the procedure very well.  Postop care instructions were reviewed in detail.  We have scheduled a recheck in one week and we will make further recommendations at that time.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "recheck",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 2295,
+        "action_char_end": 2302,
+        "time_char_start": 2303,
+        "time_char_end": 2314,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 4494,
+    "specialty": "Consult - History and Phy.",
+    "sample_name": "Consult - Hydronephrosis",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "CHIEF COMPLAINT:,  Right hydronephrosis.,HISTORY OF PRESENT ILLNESS: , The patient is a 56-year-old female who has a history of uterine cancer, breast cancer, mesothelioma.  She is scheduled to undergo mastectomy in two weeks.  In September 1999, she was diagnosed with right breast cancer and underwent lumpectomy and axillary node dissection and radiation.  Again, she is scheduled for mastectomy in two weeks.  She underwent a recent PET scan for Dr. X, which revealed marked hydronephrosis on the right possibly related to right UPJ obstruction and there is probably a small nonobstructing stone in the upper pole of the right kidney.  There was no dilation of the right ureter noted.  Urinalysis today is microscopically negative.,PAST MEDICAL HISTORY: , Uterine cancer, mesothelioma, breast cancer, diabetes, hypertension.,PAST SURGICAL HISTORY: , Lumpectomy, hysterectomy.,MEDICATIONS:,  Diovan HCT 80/12.5 mg daily, metformin 500 mg daily.,ALLERGIES:,  None.,FAMILY HISTORY: , Noncontributory.,SOCIAL HISTORY:,  She is retired.  Does not smoke or drink.,REVIEW OF SYSTEMS:,  I have reviewed his review of systems sheet and it is on the chart.,PHYSICAL EXAMINATION:,  Please see the physical exam sheet I completed.  Abdomen is soft, nontender, nondistended, no palpable masses, no CVA tenderness.,IMPRESSION AND PLAN: , Marked right hydronephrosis without hydruria.  She believes she had a CT scan of the abdomen and pelvis at Hospital in 2005.  I will try to obtain the report to see if the right kidney was evaluated at that time.  She will need evaluation with an IVP and renal scan to determine the point of obstruction and renal function of the right kidney.  She is quite anxious about her upcoming surgery and would like to delay any evaluation of this until the surgery is completed.  She will call us back to schedule the x-rays.  She understands the great importance and getting back in touch with us to schedule these x-rays due to the possibility that it may be somehow related to the cancer.  There is also a question of a stone present in the kidney.  She voiced a complete understanding of that and will call us after she recovers from her surgery to schedule these tests.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "IVP and renal scan",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1575,
+        "action_char_end": 1593,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "out_of_ontology"
+      },
+      {
+        "action": null,
+        "action_verbatim": "x-rays",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1839,
+        "action_char_end": 1845,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "vague"
+      }
+    ]
+  },
+  {
+    "note_id": 1326,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Progress Note - Liver Cirrhosis",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "HISTORY OF PRESENT ILLNESS: , The patient is a 55-year-old Hispanic male who was seen initially in the office February 15, 2006, with epigastric and right upper quadrant abdominal pain, nausea, dizziness, and bloating.  The patient at that time stated that he had established diagnosis of liver cirrhosis.  Since the last visit the patient was asked to sign a lease of information form and we sent request for information from the doctor the patient saw before, Dr. X in Las Cruces and his primary care physician in Silver City, and unfortunately we did not get any information from anybody.  Also the patient had admission in Gila Medical Center with epigastric pain, diarrhea, and confusion.  He spent 3 days in the hospital.  He was followed by Dr. X and unfortunately we also do not have the information of what was wrong with the patient.  From the patient's report he was diagnosed with some kind of viral infection.  At the time of admission he had a lot of epigastric pain, nausea, vomiting, fever, and chills.,PHYSICAL EXAMINATION,VITAL SIGNS:  Weight 107, height 6 feet 1 inch, blood pressure 128/67, heart rate 74, saturation 98%; pain is 3/10 with localization of the pain in the epigastric area.,HEENT:  PERRLA.  EOM intact.  Oropharynx is clear of lesions.,NECK:  Supple.  No lymphadenopathy.  No thyromegaly.,LUNGS:  Clear to auscultation and percussion bilateral.,CARDIOVASCULAR:  Regular rate and rhythm.  No murmurs, rubs, or gallops.,ABDOMEN:  Not tender, not distended.  Splenomegaly about 4 cm under the costal margin.  No hepatomegaly.  Bowel sounds present.,MUSCULOSKELETAL:  No cyanosis, no clubbing, no pitting edema.,NEUROLOGIC:  Nonfocal.  No asterixis.  No costovertebral tenderness.,PSYCHE:  The patient is oriented x4, alert and cooperative.,LABORATORY DATA: , We were able to collect lab results from Medical Center; we got only CMP from the hospital which showed glucose level 79, BUN 9, creatinine 0.6, sodium 136, potassium 3.5, chloride 104, CO2 23.7, calcium 7.3, total protein 5.9, albumin 2.5, total bilirubin 5.63.  His AST 56, ALT 37, alkaline phosphatase 165, and his ammonia level was 53.  We do not have any other results back.  No hepatitis panels.  No alpha-fetoprotein level.  The patient told me today that he also got an ultrasound of the abdomen and the result was not impressive, but we do not have this result despite calling medical records in the hospital to release this information.,ASSESSMENT AND PLAN:,  The patient is a 55-year-old with established diagnosis of liver cirrhosis, unknown cause.,1.  Epigastric pain.  The patient had chronic pain syndrome, he had multiple back surgeries, and he has taken opiate for a prolonged period of time.  In the office twice the patient did not have any abdominal pain on physical exam.  His pain does not sound like obstruction of common bile duct and he had these episodes of abdominal pain almost continuously.  He probably requires increased level of pain control with increased dose of opiates, which should be addressed with his primary care physician.,2.  End-stage liver disease.  Of course, we need to find out the cause of the liver cirrhosis.  We do not have hepatitis panel yet and we do not have information about the liver biopsy which was performed before.  We do not have any information of any type of investigation in the past.  Again, patient was seen by gastroenterologist already in Las Cruces, Dr. X.  The patient was advised to contact Dr. X by himself to convince him to send available information because we already send release information form signed by the patient without any result.  It will be not reasonable to repeat unnecessary tests in that point in time.,We are waiting for the hepatitis panel and alpha-fetoprotein level.  We will also need to get information about ultrasound which was done in Gila Medical Center, but obviously no tumor was found on this exam of the liver.  We have to figure out hepatitis status for another reason if he needs vaccination against hepatitis A and B.  Until now we do not know exactly what the cause of the patient's end-stage liver disease is and my differential diagnosis probably is hepatitis C.  The patient denied any excessive alcohol intake, but I could not preclude alcohol-related liver cirrhosis also.  We will need to look for nuclear antibody if it is not done before.  PSC is extremely unlikely but possible.  Wilson disease also possible diagnosis but again, we first have to figure out if these tests were done for the patient or not.  Alpha1-antitrypsin deficiency will be extremely unlikely because the patient has no lung problem.  On his end-stage liver disease we already know that he had low platelet count splenomegaly.  We know that his bilirubin is elevated and albumin is very low.  I suspect that at the time of admission to the hospital the patient presented with encephalopathy.  We do not know if INR was checked to look for coagulopathy.  The patient had an EGD in 2005 as well as colonoscopy in Silver City.  We have to have this result to evaluate if the patient had any varices and if he needs any intervention for that.,At this point in time, I recommended the patient to continue to take lactulose 50 mL 3 times daily.  The patient tolerated it well; no diarrhea at this point in time.  I also recommended for him to contact his primary care physician for increased dose of opiates for him.  As a primary prophylaxis of GI bleeding in patient with end-stage liver disease we will try to use Inderal.  The patient got a prescription for 10 mg pills.  He will take 10 mg twice daily and we will gradually increase his dose until his heart rate will drop to 25% from 75% to probably 60-58.  The patient was educated how to use Inderal and he was explained why we decided to use this medication.  The patient will hold this medication if he is orthostatic or bradycardic.,Again, the patient and his wife were advised to contact all offices they have seen before to get information about what tests were already done and if on the next visit in 2 weeks we still do not have any information we will need to repeat all these tests I mentioned above.,We also discussed nutrition issues.  The patient was provided information that his protein intake is supposed to be about 25 g per day.  He was advised not to over-eat protein and advised not to starve.  He also was advised to stay away from alcohol.  His next visit is in 2 weeks with all results available.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Inderal",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 5495,
+        "action_char_end": 5502,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "next visit",
+        "period_text": "in 2 weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 6030,
+        "action_char_end": 6040,
+        "time_char_start": 6041,
+        "time_char_end": 6051,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 3011,
+    "specialty": "Nephrology",
+    "sample_name": "Fistulogram & Angioplasty",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREPROCEDURE DIAGNOSIS: , End-stage renal disease.,POSTPROCEDURE DIAGNOSIS: , End-stage renal disease.,PROCEDURES PERFORMED,1.  Left arm fistulogram.,2.  Percutaneous transluminal angioplasty of the proximal and distal cephalic vein.,3.  Ultrasound-guided access of left upper arm brachiocephalic fistula.,ANESTHESIA:,  Sedation with local.,COMPLICATIONS:,  None.,CONDITION:,  Fair.,DISPOSITION:,  PACU.,ACCESS SITE:,  Left upper arm brachiocephalic fistula.,SHEATH SIZE: , 5 French.,CONTRAST TYPE: , JC PEG tube 70.,CONTRAST VOLUME: , 48 mL.,FLUOROSCOPY TIME: , 16 minutes.,INDICATION FOR PROCEDURE: , This is a 38-year-old female with a left upper arm brachiocephalic fistula which has been transposed.  The patient recently underwent a fistulogram with angioplasty at the proximal upper arm cephalic vein due to a stenosis detected on Duplex ultrasound.  The patient subsequently was noted to have poor flow to the fistula, and the fistula was difficult to palpate.  A repeat ultrasound was performed which demonstrated a high-grade stenosis involving the distal upper arm cephalic vein just distal to the brachial anastomosis.  The patient presents today for a left arm fistulogram with angioplasty.  The risks, benefits, and alternatives of the procedure were discussed with the patient and understands and in agreement to proceed.,PROCEDURE DETAILS:  ,The patient was brought to the angio suite and laid supine on the table.  After sedation was administered, the left arm was then prepped and draped in a standard surgical fashion.  Continuous pulse oximetry and cardiac monitoring were performed throughout the procedure.  The patient was given 1 g of IV Ancef prior to incision.,The left brachiocephalic fistula was visualized with bevel ultrasound.  The cephalic vein in the proximal upper arm region appeared to be of adequate caliber.  There was an area of stenosis at the proximal cephalic vein just distal to the brachial artery anastomosis.  The cephalic vein in the proximal forearm region was easily compressible.  The skin overlying the vessel was injected with 1% lidocaine solution.  A small incision was made with the #11 blade.  The cephalic vein then was cannulated with a 5 French micropuncture introducer sheath.  The sheath was advanced over the wire.  A fistulogram was performed which demonstrated a high-grade stenosis just distal to the brachial artery anastomosis.  The introducer sheath was then exchanged for a 5 French sheath over a 0.025 guide wire.  The sheath was aspirated and flushed with heparinized saline solution.  A 0.025 glidewire was then obtained and advanced, placed over the sheath and across the area of stenosis into the brachial artery.  A 5 French short Kumpe catheter was used to guide the wire into the distal brachial and radial artery.  After crossing the area of stenosis, a 5 x 20 mm standard angioplasty balloon was obtained and prepped from the back table.  This was placed over the glidewire into the area of stenosis and inflated to 14 mmHg pressure and then deflated.  The balloon was then removed over the wire and repeat fistulogram was performed which demonstrated significant improvement.  However, there is still a remainder of residual stenosis.  The 5-mm balloon was placed over the wire again and a repeat angioplasty was performed.  The balloon was then removed over the wire and a repeat angiogram was performed which demonstrated again an area of stenosis right at the anastomosis.  The glidewire was removed and a 0.014 guide wire was then obtained and placed through the sheath and across the brachial anastomosis and into the radial artery.  A 4 x 20 mm cutting balloon was obtained and prepped on the back table.  The 5 French sheath was then exchanged for a 6 French sheath.  The balloon was then placed over the 0.014 guide wire into the area of stenosis and then inflated to normal pressures at 8 mmHg.  The balloon was then deflated and removed over the wire.  A 5 mm x 20 mm balloon was obtained and prepped and placed over the wire into the area of stenosis and inflated to pressures of 14 mmHg.  A repeat fistulogram was performed after the removal of the balloon which demonstrated excellent results with no significant residual stenosis.  The patient actually had a nice palpable thrill at this point.  The fistulogram of the distal cephalic vein at the subclavian anastomosis was performed which demonstrated a mild area of stenosis.  The sheath was removed and blood pressure was held over the puncture site for approximately 10 minutes.,After hemostasis was achieved, the cephalic vein again was visualized with bevel ultrasound.  The proximal cephalic vein was then cannulated after injecting the skin overlying the vessel with a 1% lidocaine solution.  A 5 French micropuncture introducer sheath was then placed over the wire into the proximal cephalic vein.  A repeat fistulogram was performed which demonstrated an area of stenosis within the distal cephalic vein just prior to the subclavian vein confluence.  The 5 French introducer sheath was then exchanged for a 5 French sheath.  The 5 mm x 20 mm balloon was placed over a 0.035 glidewire across the area of stenosis.  The balloon was inflated to 14 mmHg.  The balloon was then deflated and a repeat fistulogram was performed through the sheath which demonstrated good results.  The sheath was then removed and blood pressure was held over the puncture site for approximately 10 minutes.  After adequate hemostasis was achieved, the area was cleansed in 2x2 and Tegaderm was applied.  The patient tolerated the procedure without any complications.  I was present for the entire case.  The sponge, instrument, and needle counts are correct at the end of the case.  The patient was subsequently taken to PACU in stable condition.,ANGIOGRAPHIC FINDINGS:,  The initial left arm brachiocephalic fistulogram demonstrated a stenosis at the brachial artery anastomosis and distally within the cephalic vein.  After standard balloon angioplasty, there was a mild improvement but some residual area of stenosis remained at the anastomosis.  Then postcutting balloon angioplasty, venogram demonstrated a significant improvement without any evidence of significant stenosis.,Fistulogram of the proximal cephalic vein demonstrated a stenosis just prior to the confluence with the left subclavian vein.  Postangioplasty demonstrated excellent results with the standard balloon.  There was no evidence of any contrast extravasation.,IMPRESSION,1.  High-grade stenosis involving the cephalic vein at the brachial artery anastomosis and distally.  Postcutting balloon and standard balloon angioplasty demonstrated excellent results without any evidence of contrast extravasation.,2.  A moderate grade stenosis within the distal cephalic vein just prior to the confluence to the left subclavian vein.  Poststandard balloon angioplasty demonstrated excellent results.  No evidence of contrast extravasation.",
+    "follow_up_items": []
+  },
+  {
+    "note_id": 4214,
+    "specialty": "Consult - History and Phy.",
+    "sample_name": "OB/GYN Consultation - 2",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "She started her periods at age 13.  She is complaining of a three-month history of lower abdominal pain for which she has been to the emergency room twice.  She describes the pain as bilateral, intermittent, and non-radiating.  It decreases slightly when she eats and increases with activity.  She states the pain when it comes can last for half-a-day.  It is not associated with movement, but occasionally the pain was so bad that it was associated with vomiting.  She has tried LactAid, which initially helped, but then the pain returned.  She has tried changing her diet and Pepcid AC.  She was seen at XYZ where blood work was done.  At that time, she had a normal white count and a normal H&H.  She was given muscle relaxants, which did not work.,Approximately two weeks ago, she was seen in the emergency room at XYZ where a pelvic ultrasound was done.  This showed a 1.9 x 1.4-cm cyst on the right with no free fluid.  The left ovary and uterus appeared normal.  Two days later, the pain resolved and she has not had a recurrence.  She denies constipation and diarrhea.  She has had some hot flashes, but has not taken her temperature.,In addition, she states that her periods have been very irregular coming between four and six weeks.  They are associated with cramping which she is not happy about.,She has never had a pelvic exam.  She states she is not sexually active and declined having her mother leave the room, so she was not questioned regarding this without her mother present.  She is very interested in not having pain with her periods and if this was a cyst that caused her pain, she is interested in starting birth control pills to prevent this from happening again.,PAST MEDICAL HX:  ,Pneumonia in 2002, depression diagnosed in 2005, and seizures as an infant.,PAST SURGICAL HX:  ,Plastic surgery on her ear after a dog bite in 1997.,MEDICATIONS:  ,Zoloft 50 mg a day and LactAid.,ALLERGIES:  ,NO KNOWN DRUG ALLERGIES.,SOCIAL HX: , She enjoys cooking and scrapbooking.  She does have a boyfriend; again she states she is not sexually active.  She also states that she exercises regularly, does not smoke cigarettes, use drugs, or drink alcohol.,FAMILY HX: , Significant for her maternal grandfather with adult-onset diabetes, a maternal grandmother with hypertension, mother with depression, and a father who died of colon cancer at 32 years of age.  She also has a paternal great grandfather who was diagnosed with colon cancer.,PE: , VITALS: Height: 5 feet 5 inches.  Weight: 190 lb.  Blood Pressure: 120/88.  GENERAL: She is well-developed, well-nourished with normal habitus and no deformities.  NECK: Without thyromegaly or lymphadenopathy.  LUNGS: Clear to auscultation bilaterally.  HEART: Regular rate and rhythm without murmurs.  ABDOMEN: Soft, nontender, and nondistended.  There is no organomegaly or lymphadenopathy.  PELVIC: Deferred.,A/P: , Abdominal pain, unclear etiology.  I expressed my doubt that her pain was secondary to this 1.9-cm ovarian cyst given the fact that there was no free fluid surrounding this.  However, given that she has irregular periods and they are painful for her, I think it is reasonable to start her on a low-dose birth control pill.  She has no personal or familial contraindications to start this.  She was given a prescription for Lo/Ovral, dispensed 30 with refill x 4.  She will come back in six weeks for blood pressure check as well as in six months to followup on her pain and her bleeding patterns.,If she should have the recurrence of her pain, I have advised her to call.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Lo/Ovral",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 3302,
+        "action_char_end": 3310,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "blood pressure check",
+        "period_text": "in six weeks",
+        "period_date": "2025-02-26",
+        "action_char_start": 3379,
+        "action_char_end": 3399,
+        "time_char_start": 3362,
+        "time_char_end": 3374,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "followup on her pain",
+        "period_text": "in six months",
+        "period_date": "2025-07-15",
+        "action_char_start": 3428,
+        "action_char_end": 3448,
+        "time_char_start": 3411,
+        "time_char_end": 3424,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 1344,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Ophthalmology Progress Note - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "She is stable at this time and does not require any intervention at today's visit.  I have asked her to return in six months' for a followup dilated examination, but would be happy to see her sooner should you or she notice any changes in her vision.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "followup dilated examination",
+        "period_text": "in six months",
+        "period_date": "2025-07-15",
+        "action_char_start": 132,
+        "action_char_end": 160,
+        "time_char_start": 111,
+        "time_char_end": 124,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      }
+    ]
+  },
+  {
+    "note_id": 2781,
+    "specialty": "Neurology",
+    "sample_name": "Physical Therapy - Brain Tumor Removal",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "DIAGNOSIS:,  Status post brain tumor removal.,HISTORY:,  The patient is a 64-year-old female referred to physical therapy following complications related to brain tumor removal.  The patient reports that on 10/24/08 she had a brain tumor removed and had left-sided weakness.  The patient was being seen in physical therapy from 11/05/08 to 11/14/08 then she began having complications.  The patient reports that she was admitted to Hospital on 12/05/08.  At that time, they found massive swelling on the brain and a second surgery was performed.  The patient then remained in acute rehab until she was discharged to home on 01/05/09.  The patient's husband, Al, is also present and he reports that during rehabilitation the patient did have a DVT in the left calf that has since been resolved.,PAST MEDICAL HISTORY: , Unremarkable.,MEDICATIONS:  ,Coumadin, Keppra, Decadron, and Glucophage.,SUBJECTIVE: , The patient reports that the pain is not an issue at this time.  The patient states that her primary concern is her left-sided weakness as related to her balance and her walking and her left arm weakness.,PATIENT GOAL:  ,To increase strength in her left leg for better balance and walking.,OBJECTIVE:,RANGE OF MOTION:  Bilateral lower extremities are within normal limits.,STRENGTH:  Bilateral lower extremities are grossly 5/5 with one repetition, except left hip reflexion 4+/5.,BALANCE:  The patient's balance was assessed with a Berg balance test.  The patient has got 46/56 points, which places her at moderate risk for falls.,GAIT:  The patient ambulates with contact guard assist.  The patient ambulates with a reciprocal gait pattern with good bilateral foot clearance.  However, the patient has been reports that with increased fatigue, left footdrop tends to occur.  A 6-minute walk test will be performed at the next visit due to time constraints.,ASSESSMENT: , The patient is a 64-year-old female referred to Physical Therapy status post brain surgery.  Examination indicates deficits in strength, balance, and ambulation.  The patient will benefit from skilled physical therapy to address these impairments.,TREATMENT PLAN: , The patient will be seen three times per week for 4 weeks and then reduce it to two times per week for 4 additional weeks.  Interventions include:,1.  Therapeutic exercise.,2.  Balance training.,3.  Gait training.,4.  Functional mobility training.,SHORT TERM GOAL TO BE COMPLETED IN 4 WEEKS:,1.  The patient is to tolerate 30 repetitions of all lower extremity exercises.,2.  The patient is to improve balance with a score of 50/56 points.,3.  The patient is to ambulate 1000 feet in a 6-minute walk test with standby assist.,LONG TERM GOAL TO BE ACHIEVED IN 8 WEEKS:,1.  The patient is to ambulate independently within her home and standby to general supervision within the community.,2.  Berg balance test to be 52/56.,3.  The patient is to ambulate a 6-minute walk test for 1500 feet independently including safe negotiation of corners and busy areas.,4.  The patient is to demonstrate safely stepping over and around objects without loss of balance.,Prognosis for the above-stated goals is good.  The above treatment plan has been discussed with the patient and her husband.  They are in agreement.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Therapeutic exercise",
+        "period_text": "4 additional weeks",
+        "period_date": null,
+        "action_char_start": 2295,
+        "action_char_end": 2315,
+        "time_char_start": 2247,
+        "time_char_end": 2265,
+        "in_closed_set": false,
+        "coverage_note": "recurring_schedule"
+      },
+      {
+        "action": null,
+        "action_verbatim": "ambulate independently",
+        "period_text": "8 WEEKS",
+        "period_date": "2025-03-12",
+        "action_char_start": 2734,
+        "action_char_end": 2756,
+        "time_char_start": 2703,
+        "time_char_end": 2710,
+        "in_closed_set": false,
+        "coverage_note": "recurring_schedule"
+      }
+    ]
+  },
+  {
+    "note_id": 4860,
+    "specialty": "Cardiovascular / Pulmonary",
+    "sample_name": "Complex Cyanotic Congenital Heart Disease",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "HISTORY:,  The patient is a 10-1/2-year-old born with asplenia syndrome with a complex cyanotic congenital heart disease characterized by dextrocardia bilateral superior vena cava, complete atrioventricular septal defect, a total anomalous pulmonary venous return to the right-sided atrium, and double-outlet to the right ventricle with malposed great vessels, the aorta being anterior with a severe pulmonary stenosis.  He had undergone staged repair beginning on 04/21/1997 with a right modified Blalock-Taussig shunt followed on 09/02/1999 with a bilateral bidirectional Glenn shunt, and left pulmonary artery to main pulmonary artery pericardial patch augmentation.  These procedures were performed at Medical College Hospital.  Family states that they moved to the United States.  Evaluation at the Children's Hospital earlier this year demonstrated complete occlusion of the right bidirectional Glenn shunt as well as occlusion of the proximal right pulmonary artery.  He was also found to have elevated Glenn pressures at 22 mmHg, transpulmonary gradient axis of 14 mmHg.  The QP:QS ratio of 0.6:1.  A large decompressing venous collateral was also appreciated.  The patient was brought back to cardiac catheterization in an attempt to reconstitute the right caval pulmonary anastomosis and to occlude the venous collateral vessel.,DESCRIPTION OF PROCEDURE: , After sedation and local Xylocaine anesthesia, the patient was prepped and draped.  Cardiac catheterization was performed as outlined in the attached continuation sheets.  Vascular entry was by percutaneous technique, and the patient was heparinized.  Monitoring during the procedure included continuous surface ECG, continuous pulse oximetry, and cycled cuff blood pressures, in addition to intravascular pressures.,Using a 6-French sheath, a 6-French wedge catheter was inserted in the right femoral vein and advanced from the inferior vena cava into the right-sided atrium pulmonary veins and the right ventricle.,Using a 6-French sheath, a 5-French pigtail catheter was inserted into the right femoral artery and advanced retrograde to the descending aorta and ascending aorta.  A separate port of arterial access was obtained in the left femoral artery utilizing a 5-French sheath.,Percutaneous access into the right jugular vein was attempted, but unsuccessful.  Ultrasound on the right neck demonstrated a complete thrombosis of the right internal jugular vein.  Using percutaneous technique and a 5-French sheath, 5-French wedge catheter was inserted into the left internal jugular vein and advanced along the left superior vena cava across the left caval-pulmonary anastomosis into the main pulmonary artery and left pulmonary artery with aid of guidewire.  This catheter then also advanced into the bridging innominate vein.  The catheter was then exchanged over wire for a 4-French Bernstein catheter, which was advanced to the blind end of the right superior vena cava.  A balloon wedge angiogram of the right lower pulmonary vein demonstrated back filling of a small right lower pulmonary artery.  There was no vascular continuity to the stump of the right Glenn.  The jugular venous catheter and sheaths were exchanged over a wire for a 6-French flexor sheath, which was advanced to the proximal right superior vena cava.  The Bernstein catheter was then reintroduced using a Terumo guidewire.  Probing of the superior vena cava facilitated access into the right lower pulmonary artery.  The angiogram in the right pulmonary artery showed a diminutive right lower pulmonary artery and severe long segment proximal stenosis.  The distal pulmonary measured approximately 5.5 to 60 mm in diameter with a long segment stenosis measuring approximately 31 mm in length.  The length of the obstruction was balloon dilated using ultra-thin SD 4 x 2 cm balloon catheter with complete disappearance of the waist.  This facilitated advancement of a flexor sheath into the proximal portion of the stenosis.  A PG 2960 BPX Genesis stent premounted on a 6 mm OptiProbe.  A balloon catheter was advanced across the area of narrowing and inflated with a near-complete disappearance of proximal waist.  Angiogram demonstrated a good stent apposition to the caval wall.  Further angioplasty was then performed utilizing an ultra-thin SDS 8 x 3 cm balloon catheter inflated to 19 atmospheres pressure with complete disappearance of a distinct proximal waist.  Angiogram demonstrated wide patency of reconstituted right caval pulmonary anastomosis though there was no flow seen to the right upper pulmonary artery.  The balloon wedge angiograms were then obtained in the right upper pulmonary veins suggesting the presence of right upper pulmonary artery and not contiguous with the right lower pulmonary artery.  Bernstein catheter was advanced into the main pulmonary artery where a wire probing of the stump of the proximal right pulmonary artery facilitated access to the right upper pulmonary artery.  Angiogram demonstrated severe long segment stenosis of the proximal right pulmonary artery.  Angioplasty of the right pulmonary was then performed using the OptiProbe 6-mm balloon catheter inflated to 16 atmospheres pressure with disappearance of a distinct waist.  Repeat angiogram showed improvement in caliber of right upper pulmonary artery with filling defect of the proximal right pulmonary artery.  The proximal right pulmonary artery was then dilated and stent implanted using a PG 2980 BPX Genesis stent premounted on 8-mm OptiProbe balloon catheter and implanted with complete disappearance of the waist.  Distal right upper pulmonary artery was then dilated and stent implanted utilizing a PG 1870 BPX Genesis stent premounted on 7-mm OptiProbe balloon catheter.  Repeat angiograms were then performed.  Attention was then directed to the large venous collateral vessel arising from the left superior vena cava with a contrast filling of a left-sided azygos vein.  A selective angiogram demonstrated a large azygos vein of the midsection measuring approximately 9.4 mm in diameter.  An Amplatzer 12 mm vascular plug was loaded on the delivery catheter and advanced through the flexor sheath into the azygos vein.  Once stable device was confirmed, the device was released from the delivery catheter.  The 4-French Bernstein catheter was then reintroduced and 5 inch empirical 0.038 inch, 10 cm x 8 mm detachable coils were then implanted above the vascular plug filling the proximal azygos vein.  A pigtail catheter was then introduced into the left superior vena cava for final angiogram.,Flows were calculated by the Fick technique using an assumed oxygen consumption and contents derived from Radiometer Hemoximeter saturations and hemoglobin capacity.,Cineangiograms were obtained with injection of the coronary sinus of pulmonary veins, the innominate vein, superior vena cava, the main pulmonary artery, and azygos vein.,After angiography, two normal-appearing renal collecting systems were visualized.  The catheters and sheaths were removed and topical pressure applied for hemostasis.  The patient was returned to the recovery room in satisfactory condition.  There were no complications.,DISCUSSION:,  Oxygen consumption was assumed to be normal mixed venous saturation, but was low due to systemic arterial desaturation of 79%.  The pulmonary veins were fully saturated with partial pressure of oxygen ranging between 120 and 169 mmHg in 30% oxygen.  Remaining saturations reflected complete admixture.  There was increased saturation in the left pulmonary artery due to aortopulmonary collateral flow.  Phasic right atrial pressures were normal with an A-wave somewhat to the normal right ventricular end-diastolic pressure of 9 mmHg.  Left ventricular systolic pressure was systemic with no outflow obstruction to the ascending aorta.  Phasic ascending, descending pressures were similar and normal.  Mean Glenn pressures at initiation of the case were slightly elevated at 14 mmHg with a transpulmonary gradient of 9 mmHg.  The calculated systemic flow was a normal pulmonary flows reduced with a QP:QS ratio of 0.6:1.  The pulmonary vascular resistance was elevated at 4.4 Woods units.  Following stent implantation in the right caval pulmonary anastomosis and right pulmonary artery, there was a slight increase in the Glenn venous pressures to 16 mmHg.  Following embolization of the azygos vein, there was increase in systemic arterial saturation to 84% and increase in mixed venous saturation.  There was similar increase in Glenn pressures to 28 mmHg with a transpulmonary gradient of 14 mmHg.  There was an increase in arterial pressure.  The calculated systemic flow increased from 3.1 liters /minute/meter squared to 4.3 liters/minute/meter squared.  Angiogram within the innominate vein following stent implantation demonstrated appropriate stent position without significant distortion of the innominate vein or proximal cava.  There appeared unobstructed contrast flow to the right lower pulmonary artery of a 1-mmHg mean pressure gradient.  There was absence of contrast filling of the right middle and right upper pulmonary artery.  Final angiogram with a contrast injection in the left superior vena cava showed a forward flow through the right Glenn, a good contrast filling of the right lower pulmonary artery, and a widely patent left Glenn negative contrast washout of the proximal right pulmonary artery and left pulmonary artery presumably due to aortopulmonary collateral flow.  Contrast injection within the right upper pulmonary artery following the stent implantation demonstrated widely patent proximal right pulmonary artery along the length of the implanted stents though with retrograde contrast flow.,INITIAL DIAGNOSES:  ,1.  Asplenia syndrome.,2.  Dextrocardia bilateral superior vena cava.,3.  Atrioventricular septal defect.,4.  Total anomalous pulmonary venous return to the right-sided atrium.,5.  Double outlet right ventricle with malposed great vessels.,6.  Severe pulmonary stenosis.,7.  Separate hepatic venous drainage into the atria.,PRIOR SURGERIES AND INTERVENTIONS:  ,1.  Right modified Blalock-Taussig shunt.,2.  Bilateral bidirectional Glenn shunt.,3.  Patch augmentation of the main pulmonary to left pulmonary artery.,CURRENT DIAGNOSES:  ,1.  Obstructed right caval pulmonary anastomosis.,2.  Obstructed right proximal pulmonary artery.,3.  Venovenous collateral vessel.,CURRENT INTERVENTION:  ,1.  Balloon dilation of the right superior vena cava and stent implantation.,2.  Balloon dilation of the proximal right pulmonary artery, stent implantation.,3.  Embolization of venovenous collateral vessel.,MANAGEMENT: , The case will be discussed in Combined Cardiology Cardiothoracic Surgery case conference.  A repeat catheterization is recommended in 3 months to assess for right pulmonary artery growth and to assess candidacy for Fontan completion.  The patient will be maintained on anticoagulant medications of aspirin and Plavix.  Further cardiology care will be directed by Dr. X.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "repeat catheterization",
+        "period_text": "in 3 months",
+        "period_date": "2025-04-15",
+        "action_char_start": 10752,
+        "action_char_end": 10774,
+        "time_char_start": 10790,
+        "time_char_end": 10801,
+        "in_closed_set": false,
+        "coverage_note": "out_of_ontology"
+      },
+      {
+        "action": null,
+        "action_verbatim": "aspirin and Plavix",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 10957,
+        "action_char_end": 10975,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 1453,
+    "specialty": "SOAP / Chart / Progress Notes",
+    "sample_name": "Acne - SOAP",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "SUBJECTIVE:,  The patient is a 49-year-old white female, established patient to Dermatology, last seen in the office on 08/10/2004.  She comes in today for reevaluation of her acne plus she has had what she calls a rash for the past two months now on her chest, stomach, neck, and back.  On examination, this is a flaring of her acne with small folliculitis lesions.  The patient has been taking amoxicillin 500 mg b.i.d. and using Tazorac cream 0.1, and her face is doing well, but she has been out of her medicine now for three days also.  She has also been getting photofacials at Healing Waters and was wondering about what we could offer as far as cosmetic procedures and skin care products, etc.  The patient is married.  She is a secretary.,FAMILY, SOCIAL, AND ALLERGY HISTORY:,  She has hay fever, eczema, sinus, and hives.  She has no melanoma or skin cancers or psoriasis.  Her mother had oral cancer.  The patient is a nonsmoker.  No blood tests.  Had some sunburn in the past.  She is on benzoyl peroxide and Daypro.,CURRENT MEDICATIONS:,  Lexapro, Effexor, Ditropan, aspirin, vitamins.,PHYSICAL EXAMINATION:,  The patient is well developed, appears stated age.  Overall health is good.  She has a couple of acne lesions, one on her face and neck but there are a lot of small folliculitis-like lesions on her abdomen, chest, and back.,IMPRESSION:,  Acne with folliculitis.,TREATMENT:,1.  Discussed condition and treatment with the patient.,2.  Continue the amoxicillin 500 mg two at bedtime.,3.  Add Septra DS every morning with extra water.,4.  Continue the Tazorac cream 0.1; it is okay to use on back and chest also.,5.  Referred to ABC clinic for an aesthetic consult.  Return in two months for followup evaluation of her acne.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "amoxicillin 500 mg",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 396,
+        "action_char_end": 414,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Septra DS",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1512,
+        "action_char_end": 1521,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Tazorac cream 0.1",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 432,
+        "action_char_end": 449,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Referred to ABC clinic for an aesthetic consult",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1636,
+        "action_char_end": 1683,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Return",
+        "period_text": "in two months",
+        "period_date": "2025-03-15",
+        "action_char_start": 1686,
+        "action_char_end": 1692,
+        "time_char_start": 1693,
+        "time_char_end": 1706,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 3310,
+    "specialty": "General Medicine",
+    "sample_name": "Gen Med Progress Note - 4",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "SUBJECTIVE:,  The patient is in complaining of headaches and dizzy spells, as well as a new little rash on the medial right calf.  She describes her dizziness as both vertigo and lightheadedness.  She does not have a headache at present but has some intermittent headaches, neck pains, and generalized myalgias.  She has noticed a few more bruises on her legs.  No fever or chills with slight cough.  She has had more chest pains but not at present.  She does have a little bit of nausea but no vomiting or diarrhea.  She complains of some left shoulder tenderness and discomfort.  She reports her blood sugar today after lunch was 155.,CURRENT MEDICATIONS:,  She is currently on her nystatin ointment to her lips q.i.d. p.r.n.  She is still using a triamcinolone 0.1% cream t.i.d. to her left wrist rash and her Bactroban ointment t.i.d. p.r.n. to her bug bites on her legs.  Her other meds remain as per the dictation of 07/30/2004 with the exception of her Klonopin dose being 4 mg in a.m. and 6 mg at h.s. instead of what the psychiatrist had recommended which should be 6 mg and 8 mg.,ALLERGIES: , Sulfa, erythromycin, Macrodantin, and tramadol.,OBJECTIVE:,General:  She is a well-developed, well-nourished, obese female in no acute distress.,Vital Signs:  Her age is 55.  Temperature:  98.2.  Blood pressure:  110/70.  Pulse:  72.  Weight:  174 pounds.,HEENT:  Head was normocephalic.  Throat:  Clear.  TMs clear.,Neck:  Supple without adenopathy.,Lungs:  Clear.,Heart:  Regular rate and rhythm without murmur.,Abdomen:  Soft, nontender without hepatosplenomegaly or mass.,Extremities:  Trace of ankle edema but no calf tenderness x 2 in lower extremities is noted.  Her shoulders have full range of motion.  She has minimal tenderness to the left shoulder anteriorly.,Skin:  There is bit of an erythematous rash to the left wrist which seems to be clearing with triamcinolone and her rash around her lips seems to be clearing nicely with her nystatin.,ASSESSMENT:,1.  Headaches.,2.  Dizziness.,3.  Atypical chest pains.,4.  Chronic renal failure.,5.  Type II diabetes.,6.  Myalgias.,7.  Severe anxiety (affect is still quite anxious.),PLAN:,  I strongly encouraged her to increase her Klonopin to what the psychiatrist recommended, which should be 6 mg in the a.m. and 8 mg in the p.m.  I sent her to lab for CPK due to her myalgias and pro-time for monitoring her Coumadin.  Recheck in one week.  I think her dizziness is multifactorial and due to enlarged part of her anxiety.  I do note that she does have a few new bruises on her extremities, which is likely due to her Coumadin.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "increase her Klonopin",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2179,
+        "action_char_end": 2200,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      },
+      {
+        "action": "Blood Test",
+        "action_verbatim": "CPK due to her myalgias and pro-time",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2316,
+        "action_char_end": 2352,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Recheck",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 2383,
+        "action_char_end": 2390,
+        "time_char_start": 2391,
+        "time_char_end": 2402,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
+  },
+  {
+    "note_id": 749,
+    "specialty": "Surgery",
+    "sample_name": "Heart Catheterization, Ventriculography, & Angiography - 10",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PROCEDURE: , Left heart catheterization, left and right coronary angiography, left ventricular angiography, and intercoronary stenting of the right coronary artery.,PROCEDURE IN DETAIL:  ,The patient was brought to the Catheterization Laboratory.  After informed consent, he was medicated with Versed and fentanyl.  The right groin was prepped and draped, and infiltrated with 2% Xylocaine.  Percutaneously, #6-French arterial sheath was placed.  Selective native left and right coronary angiography was performed followed by left ventricular angiography.  The patient had a totally occluded right coronary.  We initially started with a JR4 guide.  We were able to a sport wire through the total occlusion and saw a very tight stenosis.  We were able to get a 30 x 13 mm power saver balloon into the stenosis and dilated.  We then attempted to put a 30 x 12 mm stent across the stenosis, but we had very little guide support, the guide kept coming out.  We then switched to an AL1 guide and that too did not enable us to get anything to cross this lesion.  We finally had to go an AL2 guide, we were concerned that this could cause some proximal dissection.  That guided seated, we did have initial difficulty getting the wire back across the stenosis, and we did see a little staining suggesting we did have some tearing from the guide tip.  The surgeons were put on notice in case we could not get this vessel open, but we were able to re-cross with a sport wire.  We then re-dilated the area of stenosis and with good guide support, we were able to get a 30 x 23 mm Vision stent, where the lesion was and post-dilated it to 18 atmospheres.  Routine angiography did show that the distal posterolateral branch seems to be occluded, whether this was from distal wire dissection or distal thrombosis was unclear, but we were able to re-wire that area and get a 25 x12 Vision balloon and dilate the area and re-establish flow to the small segment.  We then came back because of the residual dissection proximal to the first stent and put a 30 x15 mm Vision stent at 18 atmospheres.  Final angiography showed resolution of the dissection.  We could see a little staining extrinsic to the stent.  No perforation and excellent flow.  During the intervention, we did give a bolus and drip of Angiomax.  At the end of the procedure, we stopped the Angiomax and gave 600 mg of Plavix.  We did a right femoral angiogram; however, the Angio-Seal plug could not take, so we used manual pressure and a Femostop.  We transported the patient to his room in stable condition.,ANGIOGRAPHIC DATA:,  Left main coronary is normal.  Left anterior descending artery has a fair amount of wall disease proximally about 50 to 60% stenosis of the LAD before it bifurcates into diagonal.  The diagonal does appear to have about 50% osteal stenosis.  There is a lot of plaquing further down the diagonal, but good flow.  The rest of the LAD looked good pass the proximal 60% stenosis and after the diagonal branch.  Circumflex artery was nondominant vessel, consisting of an obtuse marginal vessel.  The first obtuse marginal had a long 50% narrowing and then the AV groove branch was free of any disease.  Some mild collaterals to the right were seen.  Right coronary angiography revealed a total occlusion of the right coronary, just about 0.5 cm after its origin.  After we got a wire across the area of occlusion, we could see some thrombosis and a 99% stenosis just at the curve.  Following the balloon angioplasty, we established good flow down the distal vessel.  We still had about residual 70% stenosis.  When we had to go back with the AL2 guide, we could see a little bit of staining in the proximal portion of the vessel that we did not notice previously and we felt that the tip of the guide caused a little bit of intimal dissection.  We re-dilated and then deployed.  Repeat angiography now did show some hang up off dye distally.  We never did have the wire that far down, so this was probably felt to be due to distal embolization of some thrombus.  After deploying the stent, we had total resolution of the original lesion.  We then directed our attention to the posterolateral branch, which the remainder of the vessel was patent giving off a large PDA.  The posterolateral branch appeared to be occluded in its mid portion.  We got a wire through and dilated this.  We then came back and put a second stent in the proximal area of the right coronary proximal and abutting to the previous stent.  Repeat angiography now showed no significant dissection, a little bit of contrast getting extrinsic to the stent probably in a little subintimal pouch, but this was excluded by the stent.  There were no filling defects in the stent and excellent flow.  The distal posterolateral branch did open up, although it was little under-filled and there may have been some mild residual disease there.,IMPRESSION: , Atherosclerotic heart disease with total occlusion of right coronary, successfully stented to zero residual with repair of a small proximal dissection.  Minor distal disease of the posterolateral branch and 60% proximal left anterior descending coronary artery stenosis and 50% diagonal stenosis along with 50% stenosis of the first obtuse marginal branch.",
+    "follow_up_items": []
+  },
+  {
+    "note_id": 2217,
+    "specialty": "Orthopedic",
+    "sample_name": "Hardware Removal - Elbow",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS: , Retained hardware in left elbow.,POSTOPERATIVE DIAGNOSIS:,  Retained hardware in left elbow.,PROCEDURE: , Hardware removal in the left elbow.,ANESTHESIA: , Procedure done under general anesthesia.  The patient also received 4 mL of 0.25% Marcaine of local anesthetic.,TOURNIQUET:  ,There is no tourniquet time.,ESTIMATED BLOOD LOSS:  ,Minimal.,COMPLICATIONS:  ,No intraoperative complications.,HISTORY AND PHYSICAL:  ,The patient is a 5-year, 8-month-old male who presented to me direct from ED with distracted left lateral condyle fracture.  He underwent screw compression for the fracture in October 2007.  The fracture has subsequently healed and the patient presents for hardware removal.  The risks and benefits of surgery were discussed.  The risks of surgery include the risk of anesthesia, infection, bleeding, changes in sensation and motion of extremity, failure of removal of hardware, failure to relieve pain or improved range of motion.  All questions were answered and the family agreed to the above plan.,PROCEDURE: , The patient was taken to the operating room, placed supine on the operating table.  General anesthesia was then administered.  The patient's left upper extremity was then prepped and draped in standard surgical fashion.  Using his previous incision, dissection was carried down through the screw.  A guide wire was placed inside the screw and the screw was removed without incident.  The patient had an extension lag of about 15 to 20 degrees.  Elbow is manipulated and his arm was able to be extended to zero degrees dorsiflex.  The washer was also removed without incident.  Wound was then irrigated and closed using #2-0 Vicryl and #4-0 Monocryl.  Wound was injected with 0.25% Marcaine.  The wound was then dressed with Steri-Strips, Xeroform, 4 x4 and bias.  The patient tolerated the procedure well and subsequently taken to the recovery in stable condition.,DISCHARGE NOTE: , The patient will be discharged on date of surgery.  He is to follow up in one week's time for a wound check.  This can be done at his primary care physician's office.  The patient should keep his postop dressing for about 4 to 5 days.  He may then wet the wound, but not scrub it.  The patient may resume regular activities in about 2 weeks.  The patient was given Tylenol with Codeine 10 mL p.o. every 3 to 4 hours p.r.n.",
+    "follow_up_items": [
+      {
+        "action": "Orthopedic Consult",
+        "action_verbatim": "follow up",
+        "period_text": "in one week's time",
+        "period_date": null,
+        "action_char_start": 2003,
+        "action_char_end": 2012,
+        "time_char_start": 2013,
+        "time_char_end": 2031,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": null,
+        "action_verbatim": "resume regular activities",
+        "period_text": "in about 2 weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 2240,
+        "action_char_end": 2265,
+        "time_char_start": 2266,
+        "time_char_end": 2282,
+        "in_closed_set": false,
+        "coverage_note": "self_care"
+      }
+    ]
+  },
+  {
+    "note_id": 1955,
+    "specialty": "Pain Management",
+    "sample_name": "Transforaminal Epidural Steroid Injection",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PROCEDURE: , Left L3-L4 transforaminal epidural steroid injection (L3 nerve root) and Left L4-L5 transforaminal epidural steroid injection (L4 nerve root) under fluoroscopic guidance.,PATIENT PROFILE: , This is a 44-year-old female.  The patient reports greatly increasing pain over the past several weeks.  In addition, the patient has associated radicular symptoms of aching, radiating to the L3 dermatome distribution and L4 dermatome distribution.  She is status post posterior fusion and lumbar decompression within the past several years.  Due to the nature of the patient's persistent pain, epidural steroid injection is recommended.  The alternatives, benefits, and risks were discussed with the patient.  The patient verbalized understanding of the risks as well as the alternatives and wished to proceed with the procedure.  A signed and witnessed informed consent was placed on the chart.,PRE-OP DIAGNOSIS:,  Left leg pain, Left leg weakness, Left L3-4 radicular pain, Left L4-5 radicular pain, Lumbar spondylosis.,POST-OP DIAGNOSIS:,  Left leg pain, Left leg weakness, Left L3-4 radicular pain, Left, L4-5 radicular pain, Lumbar spondylosis.,ANESTHESIA:,  Midazolam 2 mg IV Fentanyl 50 mcg IV.,FINDINGS:,PAIN MANAGEMENT:,  The patient reports greatly increasing pain over the past several weeks.  The patient now rates pain as 8/10.  The reported pain is at L3-4 and L4-5.,DESCRIPTION OF PROCEDURE:,  The patient was placed in the prone position on the radiolucent operating table.  The lumbar area was prepped and draped in the appropriate sterile fashion.  The left L3-L4 level was identified for a transforaminal epidural injection and the overlying skin and subcutaneous tissue were anesthetized.  A 22 gauge 3.5 inch B-bevel spinal needle was passed through the skin wheal and advanced in a ventral direction until the tip of the needle was properly placed in the left superior posterior intervertebral foramen as confirmed by AP and lateral fluoroscopic views.  No blood was aspirated.  There was no CSF flow.  Following negative aspiration, 1 mL Isovue-M200 was injected to produce the epidurogram.  There was appropriate needle placement and no intravascular or intrathecal flow.  1 mL of a 40 mg/mL solution of Kenalog and 1 mL of 1% Lidocaine was injected.,Attention was then turned to the next injection.  The lumbar area was prepped and draped in the appropriate sterile fashion.  The left L4-L5 level was identified for a transforaminal epidural injection and a skin wheal was made at the spinal needle entry site.  A 22 gauge 3.5 inch spinal needle was passed through the skin wheal and advanced in a ventral direction until the tip of the needle was properly placed in the left superior posterior intervertebral foramen as confirmed by AP and lateral fluoroscopic views.  No blood was aspirated.  There was no CSF flow.  Following negative aspiration 1 mL Isovue-M200 was injected to produce the epidurogram.  There was appropriate needle placement and no intravascular or intrathecal flow.  1 mL of a 40 mg/mL solution of Kenalog and 1 mL of 1% Lidocaine was injected.  The patient tolerated the procedure well.,DRAINS / DRESSING:,  Applied sterile dressing including BAND-AID.,PATIENT TO RECOVERY ROOM: , The patient tolerated the procedure well, and was brought to the recovery room in excellent condition.,COMPLICATIONS: , No immediate complications,DISCHARGE ORDERS:,DISPOSITION: , Discharge patient to home today.,ACTIVITY: , Patient may resume normal activity level in 1 day.,FOLLOW-UP: , Appointment to Surgeon's Office in 2 weeks,CPT4 CODE(S):,64483 LT, Injection, anesthetic agent and/or steroid, transforaminal epidural; lumbar or sacral, single level.,64484 LT, Injection, anesthetic agent and/or steroid, transforaminal epidural; lumbar or sacral, each additional level (List separately in addition to code for primary procedure).,76005, Fluoroscopic guidance and localization of needle or catheter tip for spine or paraspinous diagnostic or therapeutic injection procedures (epidural, transforaminal epidural, subarachnoid, paravertebral facet joint, paravertebral facet joint nerve or sacroiliac joint), including neurolytic agent destruction.,ICD9 CODE(S):,724.4  Thoracic or lumbosacral neuritis or radiculitis.,721.3  Lumbosacral spondylosis without myelopathy.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "Appointment to Surgeon's Office",
+        "period_text": "in 2 weeks",
+        "period_date": "2025-01-29",
+        "action_char_start": 3523,
+        "action_char_end": 3554,
+        "time_char_start": 3555,
+        "time_char_end": 3565,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "resume normal activity level",
+        "period_text": "in 1 day",
+        "period_date": "2025-01-16",
+        "action_char_start": 3471,
+        "action_char_end": 3499,
+        "time_char_start": 3500,
+        "time_char_end": 3508,
+        "in_closed_set": false,
+        "coverage_note": "self_care"
+      }
+    ]
+  },
+  {
+    "note_id": 2180,
+    "specialty": "Orthopedic",
+    "sample_name": "Kyphosis",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "REASON FOR VISIT: , Kyphosis.,HISTORY OF PRESENT ILLNESS: , The patient is a 13-year-old new patient is here for evaluation of thoracic kyphosis.  The patient has a family history in a maternal aunt and grandfather of kyphosis.  She was noted by her parents to have round back posture.  They have previously seen another orthopedist who recommended observation at this time.  She is here for a second opinion in regards to kyphosis.  The patient denies any pain in her back or any numbness, tingling, or weakness in her upper or lower extremities.  No problems with her bowels or bladder.,PAST MEDICAL HISTORY: , None.,PAST SURGICAL HISTORY: , Bilateral pinning of her ears.,SOCIAL HISTORY:  ,She is currently an eighth grader at Middle School and is interested in basketball.  She lives with both of her parents and has a 9-year-old brother.  She had menarche beginning in September.,FAMILY HISTORY:  ,Of kyphosis in great grandmother and second cousin.,REVIEW OF SYSTEMS: , She is in her usual state of health and is negative except otherwise as mentioned in the history of present illness.,MEDICATIONS: , She is currently on Zyrtec, Flonase, and Ceftin for an ear infection.,ALLERGIES: , No known drug allergies.,FINDINGS: , On physical exam, she is alert, oriented, and in no acute distress standing 63 inches tall.  In regards to her back, her skin is intact with no rashes, lesions, and/or no dimpling or hair spots.  No cafe au lait spots.  She is not tender to palpation from her occiput to her sacrum.  There is no evidence of paraspinal muscle spasm.  On forward bending, there is a mild kyphosis.  She is not able to touch her toes indicating her hamstring tightness.  She has a full 5 out of 5 in all muscle groups.  Her lower extremities including iliopsoas, quadriceps, gastroc-soleus, tibialis anterior, and extensor hallucis longus.  Her sensation intact to light touch in L1 through L2 dermatomal distributions.  She has symmetric limb lengths as well bilaterally from both the coronal and sagittal planes.,X-rays today included PA and lateral sclerosis series.  She has approximately 46 degree kyphosis.,ASSESSMENT: , Kyphosis.,PLANS:  ,The patient's kyphosis is quite mild.  While this is likely in the upper limits of normal or just it is normal for an adolescent and still within normal range as would be expected return at home.  At this time, three options were discussed with the parents including observation, physical therapy, and bracing.  At this juncture, given that she has continued to grow, they are Risser 0.  She may benefit from continued observation with physical therapy, bracing would be a more aggressive option certainly that thing would be lost with following at this time.  As such, she was given a prescription for physical therapy for extension based strengthening exercises, flexibility range of motion exercises, postural training with no forward bending.  We will see her back in 3 months' time for repeat radiographs at that time including PA and lateral standing of scoliosis series.  Should she show evidence of continued progression of her kyphotic deformity, discussions of bracing would be held at time.  We will see her back in 3 months' time for repeat evaluation.",
+    "follow_up_items": [
+      {
+        "action": "X-Ray",
+        "action_verbatim": "repeat radiographs",
+        "period_text": "in 3 months' time",
+        "period_date": null,
+        "action_char_start": 2946,
+        "action_char_end": 2964,
+        "time_char_start": 2924,
+        "time_char_end": 2941,
+        "in_closed_set": true,
+        "coverage_note": "in_set"
+      },
+      {
+        "action": "Physical Therapy",
+        "action_verbatim": "physical therapy for extension based strengthening exercises",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2758,
+        "action_char_end": 2818,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      }
+    ]
+  },
+  {
+    "note_id": 3301,
+    "specialty": "General Medicine",
+    "sample_name": "Gen Med SOAP - 2",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "SUBJECTIVE:,  Overall, she has been doing well.  Her blood sugars have usually been less than or equal to 135 by home glucose monitoring.  Her fasting blood sugar today is 120 by our Accu-Chek.  She is exercising three times per week.  Review of systems is otherwise unremarkable. ,OBJECTIVE:,  Her blood pressure is 110/60.  Other vitals are stable.  HEENT:  Unremarkable.  Neck:  Unremarkable.  Lungs:  Clear.  Heart:  Regular.  Abdomen:  Unchanged.  Extremities:  Unchanged.  Neurologic:  Unchanged. ,ASSESSMENT:,  ,1.  NIDDM with improved control. ,2.  Hypertension. ,3.  Coronary artery disease status post coronary artery bypass graft. ,4.  Degenerative arthritis. ,5.  Hyperlipidemia. ,6.  Hyperuricemia. ,7.  Renal azotemia. ,8.  Anemia. ,9.  Fibroglandular breasts. ,PLAN:,  We will get follow-up labs today.  We will continue with current medications and treatment.  We will arrange for a follow-up mammogram as recommended by the radiologist in six months, which will be approximately Month DD, YYYY.  The patient is advised to proceed with previous recommendations.  She is to follow-up with Ophthalmology and Podiatry for diabetic evaluation and to return for follow-up as directed.",
+    "follow_up_items": [
+      {
+        "action": "Blood Test",
+        "action_verbatim": "follow-up labs",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 796,
+        "action_char_end": 810,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": true,
+        "coverage_note": "no_time"
+      },
+      {
+        "action": null,
+        "action_verbatim": "follow-up mammogram",
+        "period_text": "in six months",
+        "period_date": "2025-07-15",
+        "action_char_start": 899,
+        "action_char_end": 918,
+        "time_char_start": 953,
+        "time_char_end": 966,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      },
+      {
+        "action": null,
+        "action_verbatim": "follow-up with Ophthalmology and Podiatry for diabetic evaluation",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 1089,
+        "action_char_end": 1154,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "referral"
+      }
+    ]
+  },
+  {
+    "note_id": 317,
+    "specialty": "Surgery",
+    "sample_name": "Suction, Dilation, & Curettage - 1",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS: ,Incomplete abortion.,POSTOPERATIVE DIAGNOSIS: ,Incomplete abortion.,PROCEDURE PERFORMED:, Suction dilation and curettage.,ANESTHESIA:  ,General and nonendotracheal by Dr. X.,ESTIMATED BLOOD LOSS: , Less than 200 cc.,SPECIMENS: , Endometrial curettings.,DRAINS: , None.,FINDINGS:  ,On bimanual exam, the patient has approximately 15-week anteverted, mobile uterus with the cervix that is dilated to approximately 2 cm with multiple blood colts in the vagina.  There was a large amount of tissue obtained on the procedure.,PROCEDURE:  ,The patient was taken to the operating room where a general anesthetic was administered.  She was then positioned in the dorsal lithotomy position and prepped and draped in the normal sterile fashion.  Once the anesthetic was found to be adequate, a bimanual exam was performed under anesthetic.  Next, a weighted speculum was placed in the vagina.  The anterior lip of cervix was grasped with the vulsellum tenaculum and due to the patient already being dilated approximately 2 cm, no cervical dilation was needed.  A size 12 straight suction curette was used and connected to the suction and was placed in the cervix and a suction curettage was performed.  Two passes were made with the suction curettage.  Next, a sharp curettage was performed obtaining a small amount of tissue and this was followed by third suction curettage and then a final sharp curettage was performed, which revealed a good uterine cry on all sides of the uterus.  After the procedure, the vulsellum tenaculum was removed.  The cervix was seemed to be hemostatic.  The weighted speculum was removed.  The patient was given 0.25 mg of Methergine IM approximately half-way through the procedure.  After the procedure, a second bimanual exam was performed and the patient's uterus had significantly decreased in size.  It is now approximately eight to ten-week size.  The patient was taken from the operating room in stable condition after she was cleaned.  She will be discharged on today.  She was given Methergine, Motrin, and doxycycline for her postoperative care.  She will follow-up in one week in the office.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "follow-up",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 2113,
+        "action_char_end": 2122,
+        "time_char_start": 2123,
+        "time_char_end": 2134,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      },
+      {
+        "action": null,
+        "action_verbatim": "Methergine, Motrin, and doxycycline",
+        "period_text": null,
+        "period_date": null,
+        "action_char_start": 2039,
+        "action_char_end": 2074,
+        "time_char_start": -1,
+        "time_char_end": -1,
+        "in_closed_set": false,
+        "coverage_note": "med_change"
+      }
+    ]
+  },
+  {
+    "note_id": 623,
+    "specialty": "Surgery",
+    "sample_name": "Laparoscopy",
+    "visit_date_assumed": "2025-01-15",
+    "transcription": "PREOPERATIVE DIAGNOSIS:,  Pelvic pain.,POSTOPERATIVE DIAGNOSES:,1.  Pelvic pain.,2.  Pelvic endometriosis.,3.  Pelvic adhesions.,PROCEDURE PERFORMED:,1.  Laparoscopy.,2.  Harmonic scalpel ablation of endometriosis.,3.  Lysis of adhesions.,4.  Cervical dilation.,ANESTHESIA:  ,General.,SPECIMEN:  ,Peritoneal biopsy.,ESTIMATED BLOOD LOSS:,  Scant.,COMPLICATIONS: , None.,FINDINGS: , On bimanual exam, the patient has a small, anteverted, and freely mobile uterus with no adnexal masses.  Laparoscopically, the patient has large omental to anterior abdominal wall adhesions along the left side of the abdomen extending down to the left adnexa.  There are adhesions involving the right ovary to the anterior abdominal wall and the bowel.  There are also adhesions from the omentum to the anterior abdominal wall near the liver.  The uterus and ovaries appear within normal limits other than the adhesions.  The left fallopian tube grossly appeared within normal limits.  The right fallopian tube was not well visualized but appeared grossly scarred and no tubal end was visualized.  There was a large area of endometriosis, approximately 1 cm wide in the left ovarian fossa and there was a small spot of endometriosis in the posterior cul-de-sac.  There was also vesicular appearing endometriosis lesion in the posterior cul-de-sac.,PROCEDURE:  ,The patient was taken in the operating room and generalized anesthetic was administered.  She was then positioned in the dorsal lithotomy position and prepped and draped in the normal sterile fashion.  After exam under anesthetic, weighted speculum was placed in the vagina.  The anterior lip of the cervix was grasped with vulsellum tenaculum.  The uterus was sounded and then was serially dilated with Hank dilators to a size 10 Hank, then the uterine manipulator was inserted and attached to the anterior lip of the cervix.  At this point, the vulsellum tenaculum was removed along with the weighted speculum and attention was turned towards the abdomen.  An approximately 2 cm incision was made immediately inferior to the umbilicus with the skin knife.  The superior aspect of the umbilicus was grasped with a towel clamp.  The abdomen was tented up and a Veress needle inserted through this incision.  When the Veress needle was felt to be in place, deep position was checked by placing saline in the needle.  This was seen to freely drop in the abdomen so it was connected to CO2 gas.  Again, this was started at the lowest setting, was seen to flow freely, so it was advanced to the high setting.  The abdomen was then insufflated to an adequate distention.  Once an adequate distention was reached, the CO2 gas was disconnected.  The Veress needle was removed and a size #11 step trocar was placed.  Next, the laparoscope was inserted through this port.  The medial port was connected to CO2 gas.  Next, a 1 cm incision was made in the midline approximately 2 fingerbreadths above the pubic symphysis.  Through this, a Veress needle was inserted followed by size #5 step trocar and this procedure was repeated under direct visualization on the right upper quadrant lateral to the umbilicus and a size #5 trocar was also placed.  Next, a grasper was placed through the suprapubic port.  This was used to grasp the bowel that was adhesed to the right ovary and the Harmonic scalpel was then used to lyse these adhesions.  Bowel was carefully examined afterwards and no injuries or bleeding were seen.  Next, the adhesions touching the right ovary and anterior abdominal wall were lysed with the Harmonic scalpel and this was done without difficulty.  There was a small amount of bleeding from the anterior abdominal wall peritoneum.  This was ablated with the Harmonic scalpel.  The Harmonic scalpel was used to lyse and ablate the endometriosis in the left ovarian fossa and the posterior cul-de-sac.  Both of these areas were seen to be hemostatic.  Next, a grasper was placed and was used to bluntly remove the vesicular lesion from the posterior cul-de-sac.  This was sent to pathology.  Next, the pelvis was copiously irrigated with the Nezhat dorsi suction irrigator and the irrigator was removed.  It was seen to be completely hemostatic.  Next, the two size #5 ports were removed under direct visualization.  The camera was removed.  The abdomen was desufflated.  The size #11 introducer was replaced and the #11 port was removed.,Next, all the ports were closed with #4-0 undyed Vicryl in a subcuticular interrupted fashion.  The incisions were dressed with Steri-Strips and bandaged appropriately and the patient was taken to recovery in stable condition and she will be discharged home today with Darvocet for pain and she will follow-up in one week in the clinic for pathology results and to have a postoperative check.",
+    "follow_up_items": [
+      {
+        "action": null,
+        "action_verbatim": "follow-up",
+        "period_text": "in one week",
+        "period_date": "2025-01-22",
+        "action_char_start": 4689,
+        "action_char_end": 4698,
+        "time_char_start": 4699,
+        "time_char_end": 4710,
+        "in_closed_set": false,
+        "coverage_note": "generic_followup"
+      }
+    ]
   }
 ]

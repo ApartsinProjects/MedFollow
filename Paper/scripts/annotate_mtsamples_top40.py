@@ -1,4 +1,4 @@
-"""Manually annotate the top 20 MTSamples notes for follow-up items,
+"""Manually annotate the top 40 MTSamples notes for follow-up items,
 aligned with the paper's 28-action closed-set taxonomy and the
 synthetic-corpus schema (action / period_text / period_date / char
 offsets).
@@ -9,13 +9,8 @@ gold annotations in the same JSON shape as the synthetic corpus so
 the same eval scripts can run on this set.
 
 Output:
-  Data/external/mtsamples/mtsamples_top20_gold.json
-    - Per-note: note_id, specialty, sample_name, transcription,
-      visit_date_assumed, follow_up_items (list with action,
-      period_text, period_date, char offsets, in_closed_set flag,
-      coverage_note).
-  Data/external/mtsamples/mtsamples_top20_coverage.md
-    - Markdown report on closed-set coverage gaps.
+  Data/external/mtsamples/mtsamples_top40_gold.json
+  Data/external/mtsamples/mtsamples_top40_coverage.md
 
 Approach:
   - The paper's closed set has 28 action types (CT Scan, X-Ray, MRI,
@@ -50,8 +45,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top100_followup.csv"
-OUT_JSON = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_gold.json"
-OUT_MD = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_coverage.md"
+OUT_JSON = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top40_gold.json"
+OUT_MD = ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top40_coverage.md"
 
 REFERENCE_VISIT_DATE = "2025-01-15"  # placeholder anchor (MTSamples notes are anonymized)
 
@@ -522,6 +517,414 @@ MANUAL = {
             },
         ],
     },
+
+    # =========================================================================
+    # Notes 21-40 (extension of the realism-check sample to top-40)
+    # Two new coverage_note tags introduced:
+    #   "recurring_schedule"  - PT regimens, weekly/biweekly schedules that
+    #                           cannot be represented as a single day_offset
+    #   "out_of_ontology"     - clinical actions outside the 28-set ontology
+    #                           (mammogram, IVP, renal scan, catheterization)
+    # =========================================================================
+
+    "Note 21: CT Abdomen & Pelvis - 3 (Nephrology, score 9)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow up",
+                "period_text": "in 3 months",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+            {
+                "action_canonical": "MRI",
+                "action_verbatim": "MRI",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+        ],
+    },
+
+    "Note 22: Physical Therapy - Synovitis (Orthopedic, score 9)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Therapeutic exercise",
+                "period_text": "for six weeks",
+                "in_closed_set": False,
+                "coverage_note": "recurring_schedule",
+            },
+        ],
+    },
+
+    "Note 23: Hypertension & Cardiomyopathy (Consult, score 9)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "BMP check",
+                "period_text": "in one week",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": "Lipid Panel",
+                "action_verbatim": "fasting lipid profile",
+                "period_text": "in one week",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Lasix 40 mg p.o. b.i.d.",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "hydralazine from 75 mg t.i.d. to 100 mg t.i.d.",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Aldactone 25 mg p.o. daily",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": "GI Consult",
+                "action_verbatim": "see a gastroenterologist for hepatitis C",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "see him",
+                "period_text": "in one month",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 24: Excision - Skin Neoplasm (Dermatology, score 9)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "recheck",
+                "period_text": "in one week",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 25: Consult - Hydronephrosis (Consult, score 9)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "IVP and renal scan",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "out_of_ontology",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "x-rays",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "vague",
+            },
+        ],
+    },
+
+    "Note 26: Progress Note - Liver Cirrhosis (SOAP, score 9)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Inderal",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "next visit",
+                "period_text": "in 2 weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 27: Fistulogram & Angioplasty (Nephrology, score 8)": {
+        "items": [],   # Procedural narrative tail; no scheduled follow-up actions identified
+    },
+
+    "Note 28: OB/GYN Consultation - 2 (Consult, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Lo/Ovral",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "blood pressure check",
+                "period_text": "in six weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "followup on her pain",
+                "period_text": "in six months",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 29: Ophthalmology Progress Note - 1 (SOAP, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "followup dilated examination",
+                "period_text": "in six months",
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+        ],
+    },
+
+    "Note 30: Physical Therapy - Brain Tumor Removal (Neurology, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Therapeutic exercise",
+                "period_text": "4 additional weeks",
+                "in_closed_set": False,
+                "coverage_note": "recurring_schedule",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "ambulate independently",
+                "period_text": "8 WEEKS",
+                "in_closed_set": False,
+                "coverage_note": "recurring_schedule",
+            },
+        ],
+    },
+
+    "Note 31: Complex Cyanotic Congenital Heart Disease (Cardiovascular, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "repeat catheterization",
+                "period_text": "in 3 months",
+                "in_closed_set": False,
+                "coverage_note": "out_of_ontology",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "aspirin and Plavix",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+        ],
+    },
+
+    "Note 32: Acne - SOAP (Dermatology, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "amoxicillin 500 mg",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Septra DS",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Tazorac cream 0.1",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Referred to ABC clinic for an aesthetic consult",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Return",
+                "period_text": "in two months",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 33: Gen Med Progress Note - 4 (General Medicine, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "increase her Klonopin",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "CPK due to her myalgias and pro-time",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Recheck",
+                "period_text": "in one week",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
+
+    "Note 34: Heart Catheterization, Ventriculography, & Angiography - 10 (Surgery, score 8)": {
+        "items": [],  # Procedural narrative; no scheduled follow-up in the captured tail
+    },
+
+    "Note 35: Hardware Removal - Elbow (Orthopedic, score 8)": {
+        "items": [
+            {
+                "action_canonical": "Orthopedic Consult",
+                "action_verbatim": "follow up",
+                "period_text": "in one week's time",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "resume regular activities",
+                "period_text": "in about 2 weeks",
+                "in_closed_set": False,
+                "coverage_note": "self_care",
+            },
+        ],
+    },
+
+    "Note 36: Transforaminal Epidural Steroid Injection (Pain Management, score 8)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "Appointment to Surgeon's Office",
+                "period_text": "in 2 weeks",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "resume normal activity level",
+                "period_text": "in 1 day",
+                "in_closed_set": False,
+                "coverage_note": "self_care",
+            },
+        ],
+    },
+
+    "Note 37: Kyphosis (Orthopedic, score 7)": {
+        "items": [
+            {
+                "action_canonical": "X-Ray",
+                "action_verbatim": "repeat radiographs",
+                "period_text": "in 3 months' time",
+                "in_closed_set": True,
+                "coverage_note": "in_set",
+            },
+            {
+                "action_canonical": "Physical Therapy",
+                "action_verbatim": "physical therapy for extension based strengthening exercises",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+        ],
+    },
+
+    "Note 38: Gen Med SOAP - 2 (General Medicine, score 7)": {
+        "items": [
+            {
+                "action_canonical": "Blood Test",
+                "action_verbatim": "follow-up labs",
+                "period_text": None,
+                "in_closed_set": True,
+                "coverage_note": "no_time",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow-up mammogram",
+                "period_text": "in six months",
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow-up with Ophthalmology and Podiatry for diabetic evaluation",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "referral",
+            },
+        ],
+    },
+
+    "Note 39: Suction, Dilation, & Curettage - 1 (Surgery, score 7)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow-up",
+                "period_text": "in one week",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+            {
+                "action_canonical": None,
+                "action_verbatim": "Methergine, Motrin, and doxycycline",
+                "period_text": None,
+                "in_closed_set": False,
+                "coverage_note": "med_change",
+            },
+        ],
+    },
+
+    "Note 40: Laparoscopy (Surgery, score 7)": {
+        "items": [
+            {
+                "action_canonical": None,
+                "action_verbatim": "follow-up",
+                "period_text": "in one week",
+                "in_closed_set": False,
+                "coverage_note": "generic_followup",
+            },
+        ],
+    },
 }
 
 
@@ -619,7 +1022,9 @@ def main() -> None:
         "med_change": "Medication start / stop / titration",
         "self_care": "Patient self-care or activity instruction",
         "vague": "Vague timing without a specific date phrase",
-        "referral": "Referral to specialist outside the closed set",
+        "referral": "Referral to specialist outside the closed set, or to a different imaging service",
+        "recurring_schedule": "Recurring or multi-session schedule (e.g., PT 3x/week for 6 weeks) that cannot be represented as a single day_offset",
+        "out_of_ontology": "Clinical action that does not appear in the 28-action closed set (e.g., catheterization, IVP)",
     }
     for cat, n in sorted(coverage_counts.items(), key=lambda x: -x[1]):
         md.append(f"| `{cat}` | {n} | {descriptions.get(cat, '')} |")
