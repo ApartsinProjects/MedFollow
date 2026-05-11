@@ -216,3 +216,9 @@ models/**/*.pt
 models/**/pytorch_model*
 models/**/adapter_model*
 models/**/model.safetensors
+
+# Side-by-side clone of michallaufer/Clinical-Follow-up-Extraction for comparison; not part of this repo.
+newrepo/
+
+# Toloka API credential; never commit.
+toloko.env.key.txt
