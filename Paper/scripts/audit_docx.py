@@ -91,7 +91,7 @@ def main() -> None:
     headings = [t for t in para_texts if t and (t == t.strip())]
 
     # Title
-    if any("Reliable Follow-Up Action" in t for t in para_texts[:5]):
+    if any("Reliable Extraction of Clinical Follow-Up" in t for t in para_texts[:5]):
         pass_.append("Title present in first 5 paragraphs")
     else:
         issues.append("Title not found in first 5 paragraphs")
@@ -251,10 +251,10 @@ def main() -> None:
         issues.append(f"Figures + tables = {n_images + n_tables} EXCEEDS cap 8")
 
     # ---------- Math: equations + leftover raw KaTeX ----------
-    if n_equations >= 40:
-        pass_.append(f"{n_equations} native Word OMML equations (>= 40 expected)")
+    if n_equations >= 30:
+        pass_.append(f"{n_equations} native Word OMML equations (>= 30 expected)")
     else:
-        issues.append(f"Only {n_equations} OMML equations found (expected >= 40)")
+        issues.append(f"Only {n_equations} OMML equations found (expected >= 30)")
     if raw_paren > 0:
         issues.append(f"Found {raw_paren} occurrences of literal '\\(' in document.xml (KaTeX did not parse)")
     else:

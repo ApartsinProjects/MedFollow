@@ -217,7 +217,7 @@
     <a href="MedFollow_supplementary.zip">Supplementary (.zip)</a>
   </div>
   <header>
-    <h1>Reliable Follow-Up Action and Date Extraction from Clinical Notes: A Hybrid Neural-Symbolic Approach</h1>
+    <h1>Reliable Extraction of Clinical Follow-Up Instructions: A Hybrid Neural-Symbolic Pipeline</h1>
     <p class="authors">Michal Laufer<sup>a</sup>, Yehudit Aperstein<sup>b,*</sup>, Alexander Apartsin<sup>c</sup></p>
     <p class="meta"><sup>a</sup>Bar-Ilan University, Ramat Gan, Israel<br><sup>b</sup>Afeka College of Engineering, Tel Aviv, Israel<br><sup>c</sup>Holon Institute of Technology, Holon, Israel<br><sup>*</sup>Corresponding author. Email: <a href="mailto:apersteiny@afeka.ac.il">apersteiny@afeka.ac.il</a></p>
     <p class="keywords"><strong>Keywords:</strong> clinical natural language processing; information extraction; temporal expression normalization; relation extraction; BioBERT; follow-up instructions; synthetic clinical data</p>
@@ -225,10 +225,10 @@
 
   <section class="abstract">
     <h2>Abstract</h2>
-    <p><strong>Objective.</strong> Outpatient clinical notes routinely contain follow-up instructions that pair a clinical action with a future time ("MRI brain in two weeks", "RTC 3 mos"). Reliably extracting these as structured action-date pairs supports scheduling, care-coordination audit, and EHR-field validation, but end-to-end generative extractors are prone to date-arithmetic errors that are difficult to audit. We ask whether a hybrid neural-symbolic decomposition outperforms direct generative extraction on this task.</p>
-    <p><strong>Methods.</strong> We propose a system in which a shared BioBERT encoder feeds a BIO tagging head for action and time spans and a biaffine span-pair head that links each action to a time span (or a none option), followed by deterministic date normalization anchored on the visit date. We construct a 2,000-note synthetic outpatient corpus covering five specialties, six plan-section variants, ten style-feature axes, and explicit stress factors (multi-action notes, shorthand temporal forms, historical distractors, proximity traps). We compare against a zero-shot ChatGPT (gpt-4o-mini) JSON extractor and a LoRA-fine-tuned LLaMA-3 8B baseline on the same held-out split, reporting span F1, linking F1, end-to-end action-date F1, exact date accuracy, and mean absolute date error, with Wilson and bootstrap 95% confidence intervals.</p>
-    <p><strong>Results.</strong> On 198 held-out notes (196 gold actions), the hybrid pipeline achieves action-span F1 0.995 [0.987, 1.000], time-span F1 0.997 [0.992, 1.000], action-date F1 0.980 [0.964, 0.992], and mean absolute date error 0.53 days. ChatGPT zero-shot reaches action-date F1 0.827 [0.783, 0.864] (MAE 5.07 days); fine-tuned LLaMA-3 reaches 0.806 [0.762, 0.847] (MAE 10.88 days). Confidence intervals do not overlap on time F1, action-date F1, or exact date accuracy.</p>
-    <p><strong>Conclusion.</strong> Separating learned semantic extraction from deterministic date arithmetic yields substantial reliability gains over direct generative extraction. The result supports a neural-symbolic design pattern for clinical scheduling-relevant information extraction; transfer to real EHR notes is the next required validation.</p>
+    <p><strong>Objective.</strong> Outpatient clinical notes contain follow-up instructions that pair a clinical action with a future time ("MRI brain in two weeks"). Reliably extracting these as structured action-time pairs supports scheduling, care-coordination audit, and EHR-field validation. End-to-end generative extractors can identify the action but fail on full-pair reconstruction because linking and temporal arithmetic are implicit in decoding. We formulate follow-up extraction as a structured information extraction task and ask whether a hybrid neural-symbolic pipeline outperforms direct generative extraction.</p>
+    <p><strong>Methods.</strong> We define TestSpecification and TimeSpecification entities and a ScheduledFor relation between them. A shared BioBERT encoder feeds a BIO tagging head and a biaffine relation extractor; entities are canonicalized via an ontology and times normalized to integer day offsets. We build a 2,000-note synthetic outpatient corpus from controlled structured skeletons. We evaluate on action-disjoint splits: 28 canonical actions partitioned into 18 train, 4 OOV-validation, and 6 OOV-test types, plus a seen-test set. We compare against zero-shot GPT-4o-mini and LoRA-fine-tuned LLaMA-3 8B with note-level bootstrap 95% confidence intervals.</p>
+    <p><strong>Results.</strong> On both seen-test and OOV-test splits (n=259 notes each), the hybrid pipeline achieves Test-Time Pair F1 of 0.997 [0.990, 1.000] and 0.986 [0.972, 0.997], with 0.00-day mean absolute error in both splits. The generative baselines achieve high action F1 (LLaMA-3 0.992; GPT-4o-mini 0.963 on seen) but their Pair F1 drops to 0.510 [0.455, 0.562] for LLaMA-3 and 0.528 [0.471, 0.581] for GPT-4o-mini, with comparable OOV performance.</p>
+    <p><strong>Conclusion.</strong> Treating follow-up extraction as structured information extraction with explicit relation linking and deterministic temporal normalization is more reliable than end-to-end generation on the controlled benchmark, including on action types held out from training. The architectural separation exposes failure modes to inspection. Transfer to real EHR notes is the next required validation; a first-pass realism check on real transcribed clinical notes is reported in the Limitations section.</p>
   </section>
 
   <section>
@@ -241,10 +241,11 @@
     <div class="contrib">
       <h3>Contributions</h3>
       <ol>
-        <li>A formal task definition for follow-up extraction as set-level action-date pair recovery anchored on the visit date, with a strict end-to-end correctness criterion.</li>
-        <li>A hybrid neural-symbolic architecture that combines a shared BioBERT encoder, BIO action/time tagging, biaffine action-time linking, and deterministic date normalization, designed so that calendar arithmetic is never delegated to a learned model.</li>
-        <li>A 2,000-note synthetic outpatient corpus that spans five specialties, six plan-section variants, controlled stress factors (multi-action notes, shorthand temporal forms, historical distractors, proximity traps), and 0/1/2-action cases, with all gold spans and dates known by construction.</li>
-        <li>A comparative evaluation against zero-shot ChatGPT and instruction-tuned LLaMA baselines on identical inputs, reporting span F1, linking F1, action-date F1, exact date accuracy, and mean absolute date error with Wilson 95% confidence intervals.</li>
+        <li>A structured information-extraction formulation for clinical follow-up instructions, defined by two entity types (TestSpecification, TimeSpecification) and an explicit ScheduledFor relation, with a strict set-level end-to-end correctness criterion over canonical (action, day-offset) pairs.</li>
+        <li>A hybrid neural-symbolic pipeline combining a shared BioBERT encoder, BIO entity tagging, biaffine relation extraction with a none option, ontology canonicalization, and deterministic temporal normalization, designed so that calendar arithmetic is never delegated to a learned model.</li>
+        <li>A 2,000-note synthetic outpatient corpus generated from controlled structured skeletons over five specialties, with explicit stress factors (multi-action notes, shorthand temporal forms, historical distractors, proximity traps, plan-section variation) and exact character-level ground truth.</li>
+        <li>A comparative evaluation against zero-shot GPT-4o-mini and LoRA-fine-tuned LLaMA-3 baselines on both an in-distribution (seen) test split and an action-disjoint out-of-vocabulary (OOV) test split, with note-level bootstrap 95% confidence intervals.</li>
+        <li>An error analysis showing that generative models often identify the correct TestSpecification label but fail on full-pair reconstruction because linking and temporal normalization are implicit in decoding.</li>
       </ol>
     </div>
 
@@ -252,11 +253,11 @@
       <h3>Statement of Significance</h3>
       <dl style="margin:0; font-family: Arial, Helvetica, sans-serif; font-size: 0.95rem">
         <dt style="font-weight:bold; margin-top:8px">Problem or Issue</dt>
-        <dd style="margin:0 0 8px 0">Outpatient notes encode follow-up instructions ("MRI in 2 weeks") in free text alongside multiple actions, distractors, and shorthand. End-to-end LLM extraction produces frequent calendar-arithmetic errors that are difficult to audit and propagate downstream.</dd>
+        <dd style="margin:0 0 8px 0">Outpatient clinical notes encode follow-up instructions ("MRI in 2 weeks") in free text alongside multiple actions, distractors, and shorthand. End-to-end LLM extraction can identify the action but commonly fails to reconstruct the complete scheduled instruction because linking and temporal arithmetic are implicit in generation and not exposed to inspection.</dd>
         <dt style="font-weight:bold">What is Already Known</dt>
-        <dd style="margin:0 0 8px 0">Clinical NER systems (cTAKES, BioBERT) handle medical concept extraction. Rule-based temporal-expression normalizers (HeidelTime, SUTime) handle relative-date arithmetic. LLM-based structured extraction is feasible but error-prone on dates.</dd>
+        <dd style="margin:0 0 8px 0">Clinical NER systems (cTAKES, BioBERT, ClinicalBERT) handle medical concept extraction. Rule-based temporal-expression normalizers (HeidelTime, SUTime) handle relative-date arithmetic. LLM-based structured extraction is feasible but error-prone on relation and arithmetic components.</dd>
         <dt style="font-weight:bold">What this Paper Adds</dt>
-        <dd style="margin:0 0 8px 0">A hybrid neural-symbolic system that separates semantic span and link extraction (learned) from calendar arithmetic (deterministic). On a 2,000-note synthetic corpus, action-date F1 reaches 0.980 with mean date error 0.53 days, against 0.806-0.827 and 5-11 days for ChatGPT and fine-tuned LLaMA-3 baselines, with non-overlapping 95% confidence intervals.</dd>
+        <dd style="margin:0 0 8px 0">A structured-information-extraction pipeline with explicit ScheduledFor relation linking and deterministic temporal normalization. On a controlled benchmark, the pipeline achieves end-to-end Test-Time Pair F1 of 0.997 (seen-test) and 0.986 (action-disjoint OOV-test) with 0.00-day mean date error, while LoRA-fine-tuned LLaMA-3 and zero-shot GPT-4o-mini reach 0.51 Pair F1 despite near-perfect action recognition.</dd>
         <dt style="font-weight:bold">Who would benefit from the new knowledge in this paper</dt>
         <dd style="margin:0">Clinical informatics teams building EHR scheduling auditors, care-coordination tools, and structured-field validators; researchers studying neural-symbolic decomposition for safety-relevant clinical extraction.</dd>
       </dl>
@@ -297,40 +298,41 @@
     <h2>3. Methods</h2>
 
     <h3>3.1 Task definition</h3>
-    <p>Each input example consists of a clinical note \(x\) and a visit date \(v\). The output is a set of follow-up items:</p>
-    <p>$$Y = \{(a_i, \tau_i, d_i)\}_{i=1}^{n},$$</p>
-    <p>where \(a_i\) is an action span, \(\tau_i\) is a time-expression span or null value, and \(d_i\) is an ISO-formatted execution date normalized relative to \(v\). The model returns an empty set when no scheduled follow-up action is present. The strict end-to-end correctness criterion is set-level: a prediction is correct only when the action matches the gold action and the normalized date matches the gold date. The task decomposes into four subtasks: action span detection, time span detection, action-time linking, and date normalization. Figure 1 shows the system pipeline.</p>
+    <p>Each input example consists of a clinical note \(x\) and a visit date \(v\). The intermediate structured representation contains two entity types and one relation. <strong>TestSpecification</strong> entities are spans corresponding to scheduled clinical actions (e.g., X-Ray, Blood Test, CT Scan, Cardiology Consult). <strong>TimeSpecification</strong> entities are spans corresponding to the timing of an intended follow-up (e.g., "in 2 weeks", "tomorrow", "in 6 months"). A <strong>ScheduledFor(TestSpecification, TimeSpecification)</strong> relation connects each scheduled clinical action to the timing phrase that specifies when it should occur. TestSpecification entities are mapped to canonical ontology labels and TimeSpecification entities are mapped to integer day offsets relative to \(v\). The final normalized output is the set:</p>
+    <p>$$Y = \{(a_i, k_i)\}_{i=1}^{n},$$</p>
+    <p>where \(a_i\) is a canonical TestSpecification label drawn from a closed ontology and \(k_i \in \mathbb{Z}\) is a normalized day offset. The model returns an empty set when no scheduled follow-up is present. The strict end-to-end correctness criterion is set-level: a prediction is correct only when its canonical label and its integer day offset both match the gold pair. The task decomposes into four subtasks: entity extraction (TestSpecification and TimeSpecification spans), ScheduledFor relation extraction, ontology canonicalization, and deterministic temporal normalization. Figure 1 shows the system pipeline.</p>
 
     <figure>
       <img src="figures/pipeline.svg" alt="System pipeline overview" style="background:white">
-      <figcaption><strong>Figure 1.</strong> System overview. Solid arrows show the principal data flow. The note text is encoded by a shared BioBERT encoder over sliding windows of length 512 with stride 128; Head A predicts BIO action and time tags from the contextual states; Head B is a biaffine linker that pairs each predicted action span with a time span (or with a none option); the linked time phrase is then normalized to an absolute ISO date by a deterministic <code>dateparser</code>-based stage. The blue dashed enclosure groups the learned components (fine-tuned BioBERT plus the two heads); the green dashed enclosure marks the deterministic component. The dashed yellow arrow routes the <code>visit_date</code> directly to the normalizer as the relative-base anchor; the neural model never performs calendar arithmetic.</figcaption>
+      <figcaption><strong>Figure 1.</strong> System overview. Solid arrows show the principal data flow. The note text is encoded by a shared BioBERT encoder over sliding windows of length 512 with stride 128; a BIO tagging head predicts TestSpecification and TimeSpecification entity spans from the contextual states; a biaffine relation head links each predicted TestSpecification span to a TimeSpecification span (or to a none option), producing a ScheduledFor relation; ontology canonicalization maps surface action mentions to one of the 28 canonical labels; a deterministic temporal normalizer maps the linked time phrase to an integer day offset relative to the visit date. The blue dashed enclosure groups the learned components (fine-tuned BioBERT plus the two heads); the green dashed enclosure marks the deterministic components. The dashed yellow arrow routes the <code>visit_date</code> directly to the normalizer as the relative-base anchor; the neural model never performs calendar arithmetic.</figcaption>
     </figure>
 
-    <h3>3.2 Dataset</h3>
-    <p>We construct a 2,000-note synthetic outpatient corpus under a controlled schema to avoid use of protected health information. Each note record carries the note text, a visit date uniformly sampled across a two-year window (2024-01-21 to 2026-01-20), the specialty, the clinical topic, the plan-section variant, plan-header and plan-section character offsets, the action count, gold action and time character spans, normalized ISO follow-up dates, ten style-feature axes, and validation-flag fields. Notes were generated with the OpenAI <code>gpt-4o-mini</code> model (default version as of November 2025) under a structured per-note prompt that fixes the specialty, the clinical topic, the plan-section variant, the target action count, the target time-expression form, and a sampled style-feature vector; the decoding temperature was sampled per call from a small range to vary surface form. Generation prompts and random seeds are documented in the supplementary materials.</p>
+    <h3>3.2 Dataset and splits</h3>
+    <p>We construct a 2,000-note synthetic outpatient corpus from controlled structured skeletons to avoid use of protected health information and to permit exact ground truth over entities, relations, and normalized timing. For each note, the generator first samples a clinical domain and scenario from one of five domains (orthopedics, cardiopulmonary medicine, gastroenterology, neurology, general medicine), a visit date in a two-year window (2024-01-21 to 2026-01-20), a target number of scheduled items (0, 1, or 2), TestSpecification labels from a closed set of 28 canonical action types, and TimeSpecification day offsets. Surface realization is varied separately from the structured skeleton: TimeSpecification expressions are rendered using multiple phrase families (numeric forms, written-number forms, abbreviations, fuzzy phrases, follow-up noun phrases), and notes vary in clinician voice, plan-header style, structural formatting, shorthand, abbreviations, and dictation-like artifacts. Non-target distractors are deliberately included (family history, prior procedures, symptom duration) to test discrimination between scheduled future instructions and historical context. Notes were generated with OpenAI <code>gpt-4o-mini</code> (default version as of November 2025); generation prompts, seed records, and the closed ontology are documented in the supplementary materials.</p>
+    <p>We use an <strong>action-disjoint Seen/OOV split</strong> to evaluate both in-distribution performance and generalization to action types not seen during training. The 28 canonical action types are partitioned by a numpy random shuffle (seed 123) into 18 training types, 4 OOV-validation types, and 6 OOV-test types. A note is assigned to a split if and only if all of its TestSpecification labels belong to that split's allowed action set. Train, OOV-validation, and OOV-test sets are therefore disjoint in both notes and in canonical action types. We additionally hold out a <strong>seen-test</strong> set drawn from notes whose action types are entirely within the training action set, to enable in-distribution comparison. After this partition the final splits contain 901 train notes, 100 seen-validation notes, 178 OOV-validation notes, 259 seen-test notes, and 259 OOV-test notes. We verified the leakage check at construction time: the train, seen-validation, and seen-test sets are disjoint by note, all 18 training action types are represented in training (minimum per-type count 22), and the OOV-test action types do not appear in any training note.</p>
 
     <table>
-      <caption class="note">Table 1. Corpus summary statistics.</caption>
+      <caption class="note">Table 1. Benchmark and experimental splits. The corpus contains 2,000 synthetic outpatient notes with controlled item-level and span-level annotations. Ground truth is stored as canonical TestSpecification labels and integer day offsets, with exact character spans for both entity types. The action-disjoint Seen/OOV partition assigns notes to splits based on their TestSpecification types.</caption>
       <thead>
         <tr><th>Property</th><th class="num">Value</th></tr>
       </thead>
       <tbody>
         <tr><td>Total notes</td><td class="num">2,000</td></tr>
-        <tr><td>Specialties (Cardiovascular/Pulmonary, Gastroenterology, General Medicine, Neurology, Orthopedic)</td><td class="num">5</td></tr>
-        <tr><td>Plan-section variants (A-F)</td><td class="num">6</td></tr>
-        <tr><td>Closed-set action types</td><td class="num">28</td></tr>
-        <tr><td>Total action mentions (gold)</td><td class="num">2,028</td></tr>
-        <tr><td>Notes with 0 / 1 / 2 actions</td><td class="num">497 / 978 / 525</td></tr>
-        <tr><td>Mean actions per note</td><td class="num">1.014</td></tr>
+        <tr><td>Specialties (Orthopedic, Cardiopulmonary, Gastroenterology, Neurology, General Medicine)</td><td class="num">5</td></tr>
+        <tr><td>Closed-set TestSpecification labels</td><td class="num">28</td></tr>
+        <tr><td>Scheduled items per note (0 / 1 / 2)</td><td class="num">497 / 978 / 525</td></tr>
         <tr><td>Note length: min / median / max characters</td><td class="num">436 / 1,193 / 1,834</td></tr>
         <tr><td>Visit-date range</td><td class="num">2024-01-21 to 2026-01-20</td></tr>
-        <tr><td>Style-feature axes (each multi-valued)</td><td class="num">10</td></tr>
-        <tr><td>Notes with validation-flag annotations</td><td class="num">26 (1.3%)</td></tr>
-        <tr><td>Recorded API errors during generation</td><td class="num">0</td></tr>
+        <tr><td>Training notes (18 seen action types)</td><td class="num">901</td></tr>
+        <tr><td>Seen-validation notes</td><td class="num">100</td></tr>
+        <tr><td>OOV-validation notes (4 held-out action types)</td><td class="num">178</td></tr>
+        <tr><td><strong>Seen-test notes</strong> (in-distribution)</td><td class="num"><strong>259</strong></td></tr>
+        <tr><td><strong>OOV-test notes</strong> (6 held-out action types)</td><td class="num"><strong>259</strong></td></tr>
+        <tr><td>Split seed (numpy random shuffle)</td><td class="num">123</td></tr>
       </tbody>
     </table>
 
-    <p>The 28 closed-set action types span imaging (CT, MRI, X-Ray, Echocardiogram, Holter monitor, Sleep study, Abdominal ultrasound), laboratory and procedural tests (Blood test, Lipid panel, Urinalysis, Stool antigen test, Breath test, EMG, EEG, Stress test, Pulmonary function test), procedures (Endoscopy, Colonoscopy, Joint injection, Vaccination), specialty consults (Cardiology, Neurology, GI, Orthopedic), and rehabilitation referrals (Physical therapy, Annual physical). The ten style-feature axes are Certainty, Temporal Precision, Imperfections (perfect grammar, slight shorthand, heavy shorthand, dictation style, minor typos), Clinician Persona (action-oriented, educator, defensive medicine, burnout/hasty), Structure (standard SOAP headers, minimal headers, bullet points, run-on paragraph), Detail Level, Terminology, Narrative Voice, Tone, and Formality. Stress factors include multi-action notes, historical temporal distractors, shorthand temporal forms (<code>3 mos</code>, <code>q6mo</code>, <code>x2w</code>, <code>RTC 3mo</code>), proximity traps in which two candidate times bracket a single action, and section ambiguity in which a future-tense phrase appears outside the formal plan section. The 2,028 gold action mentions are paired with 549 distinct temporal-expression surface forms; the most frequent expression accounts for only twelve mentions, indicating high lexical diversity rather than concentration on a small phrase set. All gold spans and normalized dates are known by construction. Of the 2,000 generated notes, 26 (1.3 percent) carry validation-flag annotations; these are retained in the released data with their flag codes for transparency. Two flagged notes fall in the test split and are excluded from the held-out evaluation, leaving 198 evaluation notes containing 196 gold actions. The corpus is partitioned into train, validation, and test splits at an 80/10/10 ratio (1,600 / 200 / 200 notes) by a numpy random shuffle with seed 42.</p>
+    <p>The 28 closed-set TestSpecification labels cover imaging (CT, MRI, MRI Brain, X-Ray, Echocardiogram, Cardiac MRI, Holter Monitor, Sleep Study, Abdominal Ultrasound), laboratory and procedural tests (Blood Test, Lipid Panel, Urinalysis, Stool Antigen Test, Breath Test, EMG, EEG, Stress Test, Pulmonary Function Test), procedures (Endoscopy, Colonoscopy, Joint Injection, Vaccination), specialty consults (Cardiology, Neurology, GI, Orthopedic), and rehabilitation/wellness referrals (Physical Therapy, Annual Physical). Stress factors include multi-action notes, historical temporal distractors, shorthand forms (<code>3 mos</code>, <code>q6mo</code>, <code>x2w</code>, <code>RTC 3mo</code>), proximity traps, and section ambiguity. The 2,028 gold action mentions are paired with 549 distinct temporal-expression surface forms; the most frequent expression accounts for only twelve mentions. All gold spans, canonical labels, and normalized day offsets are known by construction.</p>
 
     <figure>
       <img src="figures/dataset_composition.png" alt="Dataset composition by specialty and action count">
@@ -342,103 +344,188 @@
       <figcaption><strong>Figure 3.</strong> Vocabulary distributions in the corpus. (a) Top 15 follow-up action types out of 28 in the closed set; imaging and laboratory tests dominate, consults and rehabilitation appear in the long tail. (b) Top 15 temporal-expression surface forms out of 549 distinct forms among 2,028 gold mentions, illustrating the lexical diversity (the most frequent phrase has only twelve mentions).</figcaption>
     </figure>
 
-    <figure>
-      <img src="figures/stress_factor_coverage.png" alt="Stress-factor coverage">
-      <figcaption><strong>Figure 4.</strong> Distribution of stress factors across the corpus. Multi-action notes (26.3%), zero-action notes (24.9%), historical-time mentions, shorthand temporal forms, and the six plan variants are all represented at non-trivial proportions, ensuring that the held-out evaluation exercises the conditions the system is intended to handle.</figcaption>
-    </figure>
+    <p>Stress factors are present at non-trivial proportions across the corpus: multi-action notes constitute 26.3%, zero-action notes 24.9%, historical-time mentions appear in roughly half of all notes, and the six plan-section variants are all represented (full per-factor counts are in the supplementary materials).</p>
 
     <h3>3.3 Hybrid neural-symbolic architecture</h3>
-    <p>The proposed system shares a contextual encoder across two task heads (BIO tagging, biaffine action-time linking) and delegates date arithmetic to a deterministic post-processor. We use the publicly released <code>dmis-lab/biobert-base-cased-v1.1</code> checkpoint (768-dimensional hidden states) as the encoder, processing each note with sliding windows of maximum length 512 sub-word tokens and document stride 128. Let \(h_1,\ldots,h_T \in \mathbb{R}^{768}\) denote the contextual token representations for a window.</p>
-    <p><em>Span tagging.</em> The first head predicts BIO tags over tokens, \(z_t \in \{\mathrm{O}, \mathrm{B\text{-}ACT}, \mathrm{I\text{-}ACT}, \mathrm{B\text{-}TIME}, \mathrm{I\text{-}TIME}\}\). The NER loss is weighted cross-entropy with per-class weights \(w = (0.1, 1.0, 1.0, 1.0, 1.0)\) corresponding to (O, B-ACT, I-ACT, B-TIME, I-TIME) to reduce bias toward the majority O class:</p>
+    <p>The proposed system shares a contextual encoder across two task heads (BIO entity tagging, biaffine ScheduledFor relation extraction) and delegates ontology canonicalization and temporal arithmetic to deterministic post-processors. We use the publicly released <code>dmis-lab/biobert-base-cased-v1.1</code> checkpoint (768-dimensional hidden states) as the encoder, processing each note with sliding windows of maximum length 512 sub-word tokens and document stride 128; predictions from overlapping windows are merged at the character-span level. Let \(h_1,\ldots,h_T \in \mathbb{R}^{768}\) denote the contextual token representations for a window.</p>
+    <p><em>Entity extraction.</em> The first head predicts BIO tags over tokens using the label set \(\{\mathrm{O}, \mathrm{B\text{-}TEST}, \mathrm{I\text{-}TEST}, \mathrm{B\text{-}TIME}, \mathrm{I\text{-}TIME}\}\), where TEST spans correspond to TestSpecification entities and TIME spans to TimeSpecification entities. The tagging loss is weighted cross-entropy with per-class weights downweighting the majority O class:</p>
     <p>$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
-    <p>At inference we decode contiguous BIO sequences into character-offset spans using the offset-mapping returned by the BioBERT tokenizer; sub-token spans are merged across windows when they overlap.</p>
-    <p><em>Span representation.</em> For each detected span \(s=(b,e)\), we concatenate the start hidden state, the end hidden state, and a learned width embedding to obtain \(r_s = [h_b; h_e; \phi(e-b+1)] \in \mathbb{R}^{1568}\). The width embedding maps span length to one of nine learned vectors using buckets \(\{1,2,3,4,5,8,12,20,40\}\).</p>
-    <p><em>Action-time linking.</em> For each action span \(a\) and candidate time span \(t\), the linker scores compatibility using a biaffine form augmented with a distance feature, \(\mathrm{score}(a,t) = r_a^\top W r_t + u^\top [r_a; r_t; \psi(\Delta_{a,t})] + b\), where \(\Delta_{a,t}\) is the absolute character-offset distance bucketized into thirteen learned 32-dimensional embeddings using cut-points \(\{0,1,2,3,4,5,8,12,20,40,80,160,320\}\). For each action, the model applies a softmax over all candidate time spans plus a none option \(\varnothing\) (a learned virtual time-span representation):</p>
+    <p>At inference, contiguous BIO sequences are decoded into character-offset spans using the offset-mapping returned by the BioBERT tokenizer.</p>
+    <p><em>Span representation.</em> For each detected entity span \(s=(b,e)\), the model constructs a span representation by concatenating the start hidden state, the end hidden state, and a learned width embedding: \(r_s = [h_b; h_e; \phi(e-b+1)] \in \mathbb{R}^{1568}\). The width embedding \(\phi\) maps span length to one of nine learned vectors.</p>
+    <p><em>ScheduledFor relation extraction.</em> For each candidate (TestSpecification, TimeSpecification) pair, the relation extractor scores compatibility using a biaffine form augmented with a distance feature, \(\mathrm{score}(a,t) = r_a^\top W r_t + u^\top [r_a; r_t; \psi(\Delta_{a,t})] + b\), where \(\Delta_{a,t}\) is the absolute character-offset distance between the two spans, bucketized into learned 32-dimensional embeddings. For each TestSpecification span, the extractor applies a softmax over all candidate TimeSpecification spans plus a none option \(\varnothing\) (a learned virtual span representing actions without an explicit time):</p>
     <p>$$\mathcal{L}_{\mathrm{LINK}} = - \sum_{a \in A} \log p(t^\star_a \mid a, T \cup \{\varnothing\}).$$</p>
-    <p><em>Joint objective and training.</em> The total objective is \(\mathcal{L} = \mathcal{L}_{\mathrm{NER}} + \alpha \mathcal{L}_{\mathrm{LINK}}\) with \(\alpha = 1\). We train end-to-end with the HuggingFace <code>Trainer</code> defaults (AdamW, linear weight decay), batch size 16, learning rate 2&times;10<sup>-5</sup>, mixed precision (FP16) on a single CUDA GPU when available, gradient accumulation of 2 steps, 50 warmup steps, and early stopping on validation loss with patience 4. Linker labels for training are derived from gold spans; at inference, the linker operates on the spans predicted by the tagging head. Random seed 42 is used throughout.</p>
-    <p><em>Date normalization.</em> After action-time linking, each linked time phrase \(\tau\) is normalized to an absolute date \(d\) by deterministic parsing against the visit date \(v\): \(d = \mathrm{NormalizeDate}(\tau; v)\). Implementation uses the Python <code>dateparser</code> library with settings <code>RELATIVE_BASE = v</code>, <code>PREFER_DATES_FROM = "future"</code>, and <code>DATE_ORDER = "DMY"</code>. Phrases such as "in 2 weeks", "within five weeks", "11 mos", and "q6mo" are mapped to ISO dates by the library's relative-time grammar. The neural model is never asked to perform calendar arithmetic; failures at this stage are observable as parser-level errors and auditable against a fixed grammar rather than buried inside model logits.</p>
+    <p>The output ScheduledFor relation is written explicitly as <code>ScheduledFor(test_entity_id, time_entity_id)</code>; this explicit relation is the key difference between the structured pipeline and direct generative baselines, because it exposes which entity was linked to which time expression before any normalization.</p>
+    <p><em>Joint objective and training.</em> The total objective is \(\mathcal{L} = \mathcal{L}_{\mathrm{NER}} + \alpha \mathcal{L}_{\mathrm{LINK}}\) with \(\alpha = 1\). Training uses AdamW with batch size 16, learning rate 2&times;10<sup>-5</sup>, and early stopping on validation loss; full hyperparameters are in the supplementary materials. Relation labels are derived from gold span pairs during training; at inference, the relation extractor operates on entity spans predicted by the tagging head.</p>
+    <p><em>Ontology canonicalization and temporal normalization.</em> After relation extraction, TestSpecification surface forms (e.g., "CT test", "CT lab", "computed tomography") are mapped to canonical labels (<code>CT Scan</code>) through an editable ontology with an alias index; the ontology can be updated without retraining. Each linked TimeSpecification phrase is normalized to an integer day offset by a rule grammar over phrase families (<code>tomorrow</code> &#8594; 1, <code>today</code> &#8594; 0, <code>in N weeks</code> &#8594; \(7N\), <code>in N months</code> &#8594; \(30N\), <code>in N years</code> &#8594; \(365N\); written-number and shorthand variants resolved before lookup). Unmatched phrases fall back to <code>dateparser</code> with <code>RELATIVE_BASE = v</code> and <code>PREFER_DATES_FROM = "future"</code>. The neural model never performs calendar arithmetic; failures at the normalization stage are observable as parser-level errors and auditable against a fixed grammar.</p>
 
     <h3>3.4 Baselines</h3>
-    <p>We compare against two generative baselines on identical inputs and the same held-out split. <strong>ChatGPT zero-shot</strong> uses the OpenAI <code>gpt-4o-mini</code> model with a system prompt that instructs it to extract scheduled follow-up items as a JSON list of <code>{action, period_text, period_date}</code> objects given the note text and visit date. Decoding uses temperature 0 and OpenAI structured-output mode (<code>response_format = {"type": "json_object"}</code>); no in-context examples are provided. The closed-set action vocabulary is included in the prompt as a permitted-actions list. <strong>LLaMA-3 8B fine-tuned</strong> uses <code>meta-llama/Meta-Llama-3-8B</code> as the base, fine-tuned on the 1,600-note training split with LoRA adapters (rank 16), 8-bit AdamW, cosine learning-rate schedule, and the same JSON output schema. Inference uses up to 256 new tokens. We report results under unconstrained decoding (STRICT) and under decoding restricted to the closed-set action vocabulary (CONSTRAINED).</p>
+    <p>We compare against two generative baselines on identical inputs and the same held-out splits. <strong>GPT-4o-mini zero-shot</strong> receives the visit date, the note text, and the closed list of 28 allowed TestSpecification labels in a single system + user prompt, and is instructed to return a JSON array of <code>{action, period_date}</code> objects. Decoding uses temperature 0 and OpenAI structured-output mode (<code>response_format = {"type": "json_object"}</code>); no in-context examples are provided. For evaluation, the returned <code>period_date</code> is converted to a day offset relative to the visit date so that all systems are compared in the same normalized output space. <strong>LLaMA-3 8B LoRA</strong> uses <code>meta-llama/Meta-Llama-3-8B</code> as the base, loaded in 4-bit quantized form and adapted with LoRA adapters (rank 16, alpha 16, dropout 0) applied to query, key, value, output, and MLP projections. The base weights are frozen while LoRA adapters are trained on the same training split for 4 epochs at learning rate 2&times;10<sup>-4</sup>, batch size 2 with gradient accumulation 8, and a maximum sequence length of 1024. At inference, the model is prompted with the same input format as the zero-shot baseline and decodes the JSON output, which is parsed and converted to day offsets for evaluation. Full prompts, ontology lists, and LoRA hyperparameters are documented in the supplementary materials.</p>
 
     <h3>3.5 Evaluation metrics</h3>
-    <p>We report five metrics, all computed at the corpus level (micro-averaging) over the held-out split. <em>Span F1 (action; time):</em> a predicted span is correct iff its character-offset boundaries match the gold span exactly. <em>Linked-pair F1:</em> a predicted (action, time) pair is correct iff both spans match the gold spans exactly and the linking is correct; the none-link case is included on both sides. <em>Action-date F1:</em> the end-to-end metric. A prediction is correct iff the action span matches the gold span exactly and the normalized date \(d\) equals the gold date. With \(P\) the predicted set of (action, date) pairs and \(G\) the gold set, \(\mathrm{Precision} = |P \cap G|/|P|\), \(\mathrm{Recall} = |P \cap G|/|G|\), \(F_1 = 2PR/(P+R)\). <em>Exact date accuracy on matched actions:</em> among predictions whose action span matches a gold action, the fraction whose normalized date equals the gold date. <em>Mean absolute date error (days):</em> among matched actions with a parseable predicted date, the mean of \(|d_{\mathrm{pred}} - d_{\mathrm{gold}}|\) in calendar days.</p>
+    <p>All systems are evaluated in a common normalized output space. Let the gold and predicted sets for a note be sets of canonical (TestSpecification, days_offset) pairs. We report three set-level F1 metrics and a calibration-style measure:</p>
+    <ol>
+      <li><strong>TestSpecification F1.</strong> Set-level F1 over canonical TestSpecification labels. A prediction is correct iff the predicted canonical label appears in the gold set.</li>
+      <li><strong>TimeSpecification Offset F1.</strong> Set-level F1 over normalized integer day offsets. A prediction is correct iff the predicted offset appears in the gold set.</li>
+      <li><strong>Test-Time Pair F1 (end-to-end).</strong> Set-level F1 over complete (TestSpecification, days_offset) pairs. A prediction is correct iff the entire pair matches a gold pair; this is the strict end-to-end metric. With \(P\) the predicted set of pairs and \(G\) the gold set, \(\mathrm{Precision} = |P \cap G|/|P|\), \(\mathrm{Recall} = |P \cap G|/|G|\), \(F_1 = 2PR/(P+R)\).</li>
+      <li><strong>Time offset MAE on matched actions (days).</strong> Among predictions whose canonical TestSpecification label matches a gold action, the mean of \(|k_{\mathrm{pred}} - k_{\mathrm{gold}}|\) in days. The MAE is interpreted conditionally: if a model fails to extract the correct TestSpecification, that error is reflected in Pair F1 rather than in the MAE.</li>
+    </ol>
 
     <h3>3.6 Statistical analysis</h3>
-    <p>We report Wilson 95% confidence intervals on all proportion-based metrics computed on the underlying success counts. For F1 metrics we report 10,000-replicate instance-level bootstrap intervals computed by resampling with replacement the reconstructed array of (TP, FP, FN) outcomes (random seed 42). All confidence-interval calculations are reproducible from the released per-system metric counts using the analysis code distributed with the supplementary materials. We treat non-overlapping 95% confidence intervals between two systems as evidence of a significant difference at \(p<0.05\) on the corresponding metric.</p>
+    <p>We report note-level bootstrap 95% confidence intervals for every metric in Table 2. For each metric we draw 1,000 bootstrap samples (random seed 123) from the held-out evaluation set, resampling notes with replacement and recomputing the metric on each sample; the 2.5th and 97.5th percentiles of the resulting distribution form the 95% confidence interval. All confidence-interval calculations are reproducible from the released per-system metric files using the analysis code distributed with the supplementary materials. We treat non-overlapping 95% confidence intervals between two systems as evidence of a significant difference at \(p<0.05\) on the corresponding metric.</p>
   </section>
 
   <section>
     <h2>4. Results</h2>
-    <p>Table 2 reports point estimates and 95% confidence intervals for all five metrics on the 198-note held-out set. Figure 5 visualizes span and end-to-end performance with confidence intervals; Figure 6 visualizes the date error.</p>
+    <p>Table 2 reports point estimates and note-level bootstrap 95% confidence intervals for every metric on both the seen-test split (n=259 notes, action types in the training set) and the action-disjoint OOV-test split (n=259 notes, action types held out from training). Figure 4 visualizes the three F1 metrics; Figure 5 visualizes the time-offset MAE.</p>
     <table>
-      <caption class="note">Table 2. Held-out performance with 95% confidence intervals (n=198 notes; 196 gold actions; 192-196 matched actions for date metrics, depending on system).</caption>
+      <caption class="note">Table 2. Seen and OOV evaluation results with note-level bootstrap 95% confidence intervals. Both test sets contain 259 notes. The seen-test set uses notes whose TestSpecification types are entirely within the 18 training action types; the OOV-test set uses notes whose TestSpecification types are entirely within the 6 held-out action types.</caption>
       <thead>
         <tr>
           <th>Model</th>
-          <th class="num">Action F1 [95% CI]</th>
-          <th class="num">Time F1 [95% CI]</th>
-          <th class="num">Action-Date F1 [95% CI]</th>
-          <th class="num">Date Exact Acc. [95% CI]</th>
-          <th class="num">Date MAE (days)</th>
+          <th>Split</th>
+          <th class="num">TestSpecification F1</th>
+          <th class="num">TimeSpecification Offset F1</th>
+          <th class="num">Test-Time Pair F1</th>
+          <th class="num">Time offset MAE (days)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>BioBERT hybrid pipeline</td>
-          <td class="num">0.995 [0.987, 1.000]</td>
-          <td class="num">0.997 [0.992, 1.000]</td>
-          <td class="num"><strong>0.980 [0.964, 0.992]</strong></td>
-          <td class="num"><strong>0.985 [0.956, 0.995]</strong></td>
-          <td class="num"><strong>0.53</strong></td>
-        </tr>
-        <tr>
-          <td>ChatGPT zero-shot (gpt-4o-mini)</td>
-          <td class="num">0.980 [0.964, 0.992]</td>
-          <td class="num">0.831 [0.790, 0.868]</td>
-          <td class="num">0.827 [0.783, 0.864]</td>
-          <td class="num">0.844 [0.786, 0.888]</td>
-          <td class="num">5.07</td>
-        </tr>
-        <tr>
-          <td>LLaMA-3 8B fine-tuned (LoRA)</td>
+          <td>BioBERT structured pipeline</td>
+          <td>Seen</td>
+          <td class="num">0.997 [0.990, 1.000]</td>
           <td class="num">1.000 [1.000, 1.000]</td>
-          <td class="num">0.816 [0.772, 0.854]</td>
-          <td class="num">0.806 [0.762, 0.847]</td>
-          <td class="num">0.806 [0.745, 0.855]</td>
-          <td class="num">10.88</td>
+          <td class="num"><strong>0.997 [0.990, 1.000]</strong></td>
+          <td class="num"><strong>0.00 [0.00, 0.00]</strong></td>
+        </tr>
+        <tr>
+          <td>BioBERT structured pipeline</td>
+          <td>OOV</td>
+          <td class="num">0.990 [0.979, 0.998]</td>
+          <td class="num">0.986 [0.972, 0.996]</td>
+          <td class="num"><strong>0.986 [0.972, 0.997]</strong></td>
+          <td class="num"><strong>0.00 [0.00, 0.00]</strong></td>
+        </tr>
+        <tr>
+          <td>LLaMA-3 8B LoRA</td>
+          <td>Seen</td>
+          <td class="num">0.992 [0.985, 0.998]</td>
+          <td class="num">0.511 [0.455, 0.563]</td>
+          <td class="num">0.510 [0.455, 0.562]</td>
+          <td class="num">21.31 [12.75, 31.00]</td>
+        </tr>
+        <tr>
+          <td>LLaMA-3 8B LoRA</td>
+          <td>OOV</td>
+          <td class="num">0.991 [0.980, 0.998]</td>
+          <td class="num">0.564 [0.509, 0.624]</td>
+          <td class="num">0.567 [0.512, 0.625]</td>
+          <td class="num">6.25 [2.56, 11.14]</td>
+        </tr>
+        <tr>
+          <td>GPT-4o-mini zero-shot</td>
+          <td>Seen</td>
+          <td class="num">0.963 [0.947, 0.977]</td>
+          <td class="num">0.530 [0.472, 0.582]</td>
+          <td class="num">0.528 [0.471, 0.581]</td>
+          <td class="num">23.65 [14.06, 34.12]</td>
+        </tr>
+        <tr>
+          <td>GPT-4o-mini zero-shot</td>
+          <td>OOV</td>
+          <td class="num">0.932 [0.909, 0.952]</td>
+          <td class="num">0.533 [0.474, 0.592]</td>
+          <td class="num">0.532 [0.474, 0.590]</td>
+          <td class="num">10.36 [4.38, 17.18]</td>
         </tr>
       </tbody>
     </table>
 
     <figure>
-      <img src="figures/model_comparison_with_ci.png" alt="Held-out performance with 95% confidence intervals">
-      <figcaption><strong>Figure 5.</strong> Held-out span and end-to-end performance with 95% confidence intervals (Wilson for proportion metrics, 10,000-replicate bootstrap for F1). The hybrid pipeline's confidence intervals for time-span F1, action-date F1, and exact date accuracy do not overlap with either generative baseline.</figcaption>
+      <img src="figures/seen_oov_f1_comparison.png" alt="Seen vs OOV F1 comparison by model and metric">
+      <figcaption><strong>Figure 4.</strong> Held-out performance with note-level bootstrap 95% confidence intervals on the seen-test (in-distribution) and OOV-test (action-disjoint) splits. The structured pipeline reaches near-perfect F1 on all three metrics in both splits. Generative baselines achieve high TestSpecification F1 but their TimeSpecification Offset and Test-Time Pair F1 drop sharply, with CIs that do not overlap the BioBERT intervals on either split.</figcaption>
     </figure>
 
     <figure>
-      <img src="figures/date_error_with_dispersion.png" alt="Mean absolute date error">
-      <figcaption><strong>Figure 6.</strong> Mean absolute date error in days on matched actions. Reference lines mark one day and one week. The hybrid pipeline achieves 0.53 days, compared with 5.07 (ChatGPT) and 10.88 (LLaMA-3), an order-of-magnitude reduction attributable to the deterministic normalization stage.</figcaption>
+      <img src="figures/seen_oov_mae.png" alt="Time-offset MAE by model and split">
+      <figcaption><strong>Figure 5.</strong> Mean absolute time-offset error in days on matched TestSpecification entities, with note-level bootstrap 95% confidence intervals. Reference lines mark one day, one week, and one month. The structured pipeline achieves 0.00-day MAE in both splits because every linked time phrase is normalized by the deterministic rule grammar. Generative baselines produce day-scale to month-scale arithmetic errors.</figcaption>
     </figure>
 
-    <p>The hybrid pipeline matches or exceeds the generative baselines on action span detection (0.995 F1 vs 0.980 for ChatGPT and 1.000 for LLaMA-3) and substantially exceeds them on time span detection (0.997 vs 0.831 and 0.816), action-time linking, and exact date accuracy. The 95% confidence intervals for the hybrid pipeline's time-span F1 ([0.992, 1.000]), action-date F1 ([0.964, 0.992]), and exact date accuracy ([0.956, 0.995]) do not overlap with the corresponding intervals for either ChatGPT ([0.790, 0.868], [0.783, 0.864], [0.786, 0.888]) or LLaMA-3 ([0.772, 0.854], [0.762, 0.847], [0.745, 0.855]), supporting a significant difference at \(p<0.05\) on these end-to-end metrics. The largest gap is in calendar arithmetic: the hybrid pipeline's mean absolute date error is below one day, while ChatGPT and LLaMA-3 produce errors of approximately five and eleven days respectively. This pattern is consistent with a generation failure mode in which a model can describe an action correctly but mishandles the relative-date calculation, and supports the central hypothesis that semantic extraction and date arithmetic should be separated. Action-span F1 is high for all three systems (the LLaMA-3 baseline reaches 1.000 [0.981, 1.000]) and CI overlap with the hybrid pipeline is substantial, so the decisive advantage of the hybrid design is on the temporal side of the task, not on lexical action recognition.</p>
+    <p>The structured pipeline achieves near-perfect performance on both splits: Test-Time Pair F1 is 0.997 [0.990, 1.000] on the seen split and 0.986 [0.972, 0.997] on the OOV split. The modest reduction on OOV is expected because the action types themselves are excluded from training, yet the model still generalizes by detecting unseen TestSpecification surface forms via the BIO tagger and routing them through the same relation extractor and deterministic normalizer. The TimeSpecification Offset F1 is 1.000 on the seen split and 0.986 on OOV, indicating that the temporal-extraction component is essentially split-invariant. The pipeline's time-offset MAE is 0.00 days in both splits.</p>
+    <p>In contrast, both generative baselines achieve high TestSpecification F1 (LLaMA-3 0.992 / 0.991; GPT-4o-mini 0.963 / 0.932) but their Test-Time Pair F1 is approximately half: 0.510 / 0.567 for LLaMA-3 and 0.528 / 0.532 for GPT-4o-mini. The 95% confidence intervals for the structured pipeline's Pair F1 and Offset F1 do not overlap with the corresponding intervals of either generative baseline on either split, supporting a significant difference at \(p<0.05\) on these end-to-end metrics. The gap between near-perfect action recognition and ~0.51 Pair F1 reveals that the generative baselines correctly identify the clinical action label but fail to reconstruct the complete scheduled instruction.</p>
+
+    <h3>4.1 Error analysis</h3>
+    <p>The dominant error pattern across both generative baselines is a gap between TestSpecification identification and Test-Time pair reconstruction. This is most visible for LLaMA-3, where action recognition is near-perfect (F1 0.992 on seen) while pair reconstruction is ~0.51. Direct generation fails not because the model cannot name the action but because linking and temporal normalization are implicit in decoding and not exposed to inspection. Table 3 summarizes the qualitative error profile by model family.</p>
+    <table>
+      <caption class="note">Table 3. Qualitative error profile by model family on the seen and OOV test splits.</caption>
+      <thead>
+        <tr>
+          <th>Error category</th>
+          <th>BioBERT structured pipeline</th>
+          <th>LLaMA-3 8B LoRA</th>
+          <th>GPT-4o-mini zero-shot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Missed TestSpecification</td>
+          <td>Rare</td>
+          <td>Rare</td>
+          <td>Moderate</td>
+        </tr>
+        <tr>
+          <td>Hallucinated / unsupported TestSpecification</td>
+          <td>Very rare (ontology canonicalization)</td>
+          <td>Low (ontology-assisted prompt)</td>
+          <td>Possible in zero-shot generation</td>
+        </tr>
+        <tr>
+          <td>Wrong TimeSpecification surface form</td>
+          <td>Rare when linked span is correct</td>
+          <td>Common</td>
+          <td>Common</td>
+        </tr>
+        <tr>
+          <td>Wrong Test-Time relation</td>
+          <td>Rare; explicit relation extractor</td>
+          <td>Implicit and not inspectable</td>
+          <td>Implicit and not inspectable</td>
+        </tr>
+        <tr>
+          <td>Temporal arithmetic error</td>
+          <td>None; deterministic normalization</td>
+          <td>High</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Auditability of failures</td>
+          <td>High: spans, links, normalized fields all inspectable</td>
+          <td>Low: direct JSON generation</td>
+          <td>Low: direct JSON generation</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Representative failures illustrate the temporal-arithmetic pattern: for "in approximately two months" (gold 60 days), GPT-4o-mini emitted a 304-day negative offset (year-boundary hallucination); for "ten mos" (gold 300 days), LLaMA-3 emitted 182 days (abbreviation misinterpretation); for "9-week follow-up" (gold 63 days), GPT-4o-mini emitted 60 days (small calendar mismatch). The structured pipeline routes these same phrases through the deterministic rule grammar, which maps them unambiguously to 60, 300, and 63 days. Additional worked examples are reported in the supplementary materials.</p>
   </section>
 
   <section>
     <h2>5. Discussion</h2>
-    <p><strong>Why decomposition wins.</strong> The neural and symbolic components address qualitatively different failure modes. The neural model handles ambiguous semantic interpretation, deciding which span is an action, which is a time, and which time goes with which action, where labeled examples and contextual evidence are essential. The deterministic normalizer handles a narrow well-specified arithmetic problem, mapping a phrase such as "11 mos" together with a base date to an ISO date, where the right answer is uniquely defined by a fixed grammar and a calendar. Combining the two creates an auditable boundary: any wrong end-to-end date can be attributed either to a wrong linked phrase, inspectable as the predicted span, or to a wrong normalization, inspectable by re-running the parser on the predicted phrase. An end-to-end generative model that emits "<code>2025-06-13</code>" exposes neither failure cause to inspection without reverse-engineering the model's reasoning.</p>
-    <p><strong>Fine-tuning did not close the temporal gap.</strong> The LLaMA-3 baseline, fine-tuned on the same training data the hybrid pipeline used, achieves perfect action-span F1 (1.000 [1.000, 1.000]) but does not improve over zero-shot ChatGPT on time-span F1 (0.816 vs 0.831), action-date F1 (0.806 vs 0.827), or exact date accuracy (0.806 vs 0.844). Within-CI overlap on these temporal metrics indicates that fine-tuning a 8B-parameter model on 1,600 in-domain examples did not narrow the gap to a deterministic library. This is consistent with a generic argument: calendar arithmetic is a problem of computation, not of language, and is better delegated to a calculator than learned. The comparison reflects only the specific LoRA configuration used here and does not generalize across all fine-tuning recipes; nevertheless, it is informative that a model with full access to the training distribution underperformed a deterministic library on the same dates.</p>
-    <p><strong>Scope of the LLM comparison.</strong> The comparison with generative baselines should not be read as a general indictment of LLMs for clinical extraction. LLMs are flexible and may perform substantially better with stronger prompts, multi-shot examples, tool use, constrained decoding, retrieval augmentation, or larger fine-tuning corpora; they may remain superior on tasks involving open-ended interpretation. The narrow conclusion supported here is that, on this synthetic benchmark, a task-specific decomposed pipeline materially outperforms two reasonable generative baselines on strict action-date correctness and date arithmetic, with non-overlapping 95% confidence intervals on the headline metrics.</p>
-    <p><strong>Synthetic-data caveats.</strong> Synthetic notes are valuable for controlled stress testing because the true action, time, and date are known by construction; this enables exact-offset metrics and ablation studies that real-note evaluation cannot easily support. However, synthetic data can encode generator artifacts: consistent phrasing tics, restricted action ontology, predictable plan structure. The corpus partially mitigates this through ten style-feature axes, six plan-section variants, 549 distinct temporal-expression surface forms, and explicit stress factors. The residual risk is real: a model that overfits to the generator's lexicon would not be detectable from the present evaluation alone. The principal external-validity question, transfer to real EHR documentation, is not addressed by these experiments and is the subject of planned external evaluation.</p>
+    <p><strong>The decisive gap is on full-pair reconstruction, not action recognition.</strong> Both generative baselines achieve high TestSpecification F1 (LLaMA-3 0.992 / 0.991; GPT-4o-mini 0.963 / 0.932) but their Test-Time Pair F1 is approximately half (0.510 / 0.567 and 0.528 / 0.532). Models that correctly name the clinical action fail to assemble the full schedule, because linking and temporal normalization are implicit in decoding and not exposed to inspection. The structured pipeline closes this gap by representing the ScheduledFor relation explicitly and delegating temporal arithmetic to a deterministic post-processor.</p>
+    <p><strong>Auditability of the structured pipeline.</strong> The neural and symbolic components address qualitatively different failure modes. The neural model handles ambiguous semantic interpretation, deciding which span is a TestSpecification, which is a TimeSpecification, and which time belongs to which action; the deterministic normalizer handles a narrow well-specified arithmetic problem, mapping a phrase such as "11 mos" together with the visit date to an integer day offset. Combining the two creates an auditable boundary: any wrong end-to-end pair can be attributed either to a wrong entity span (inspectable as a predicted character span), or to a wrong ScheduledFor link (inspectable as a predicted relation tuple), or to a wrong normalization (inspectable by re-running the rule grammar on the predicted phrase). An end-to-end generative model that emits "<code>2025-06-13</code>" exposes none of these failure causes to inspection without reverse-engineering the decoder.</p>
+    <p><strong>Fine-tuning on in-distribution data does not close the gap.</strong> The LLaMA-3 baseline is fine-tuned on the same training notes the structured pipeline uses and is given the closed ontology in its prompt, yet its Pair F1 remains at 0.510 on the seen-test split. The bottleneck is therefore not action-label recognition or ontology mismatch; it is the inability of unconstrained decoding to reliably reconstruct linked, normalized pairs. The TimeSpecification Offset F1 of 0.511 on seen-test and 0.564 on OOV-test for LLaMA-3 indicates the temporal-arithmetic component is the dominant failure mode. This is consistent with a generic argument: calendar arithmetic is a problem of computation, not of language, and is better delegated to a deterministic rule grammar than learned. The comparison reflects the specific LoRA configuration used here and would not necessarily hold for tool-using or constrained-decoding LLMs; nevertheless, it is informative that a fine-tuned 8B-parameter model with full access to the training distribution did not match a deterministic post-processor on the same time phrases.</p>
+    <p><strong>Generalization to held-out action types.</strong> The structured pipeline retains near-perfect performance on the action-disjoint OOV-test split (Pair F1 0.986, MAE 0.00 days) despite never having seen the six OOV action types during training. The drop from seen to OOV is small (0.997 to 0.986 Pair F1) and is concentrated in TestSpecification F1 (0.997 to 0.990) rather than in Offset or arithmetic components. This indicates that the BIO tagger generalizes by surface-form features rather than by memorizing a closed action vocabulary, and that the ontology canonicalization stage can be updated to admit new action types without retraining the encoder. The generative baselines also generalize on action recognition (LLaMA-3 0.992 to 0.991, GPT-4o-mini 0.963 to 0.932) but their Pair F1 remains low on both splits, confirming that the OOV gap is not where the architecture difference matters.</p>
+    <p><strong>Scope of the LLM comparison.</strong> The comparison with generative baselines is not a general indictment of LLMs for clinical extraction. LLMs may perform better with stronger prompts, tool use, constrained decoding, or retrieval; in particular, a tool-using LLM that delegates arithmetic to an external calculator would by construction recover most of the deterministic normalizer's advantage. The narrow conclusion is that, on this controlled benchmark, an architecture with explicit relation extraction and deterministic temporal normalization materially outperforms two reasonable end-to-end generative baselines on full-pair correctness and calendar arithmetic, with non-overlapping 95% CIs on the headline metrics in both in-distribution and OOV settings.</p>
+    <p><strong>Synthetic-data caveats.</strong> Synthetic notes are valuable for controlled stress testing because the true action, time, and offset are known by construction; this enables exact-span metrics and the action-disjoint OOV evaluation that real-note evaluation cannot easily support. However, synthetic data can encode generator artifacts: consistent phrasing tics, a fixed closed ontology, predictable plan structure. The corpus partially mitigates this through ten style-feature axes, multiple plan-section variants, 549 distinct temporal-expression surface forms, and explicit stress factors. A model that overfits to the generator's surface lexicon would not be detectable from the present evaluation alone; transfer to real EHR documentation is the principal external-validity question.</p>
 
     <h3>5.1 Limitations and future work</h3>
-    <p>The study has several limitations that bound the conclusions. <em>Synthetic evaluation:</em> the corpus is generated under a controlled schema rather than drawn from real EHR documentation; generalization to real notes is the principal open question. <em>Single split:</em> reported metrics are computed on one held-out split with sampling-uncertainty characterized by Wilson and bootstrap confidence intervals, but multi-seed training and repeated-split evaluation remain to be performed. <em>Limited action ontology:</em> the action set covers procedures, imaging, laboratory tests, consults, and rehabilitation referrals; medication changes, conditional follow-up ("return if symptoms worsen"), patient self-care behavior, and instructions with ambiguous executor are not yet represented. <em>Date normalization coverage:</em> deterministic normalization depends on the coverage of <code>dateparser</code> for English-language relative phrases; ambiguous calendar phrases (e.g., "next Tuesday" near a weekend) may produce wrong dates. <em>No workflow validation:</em> the study does not assess clinician acceptance, EHR integration, alert behavior, or downstream scheduling outcomes.</p>
-    <p>Planned future work includes: (i) a linker ablation against nearest-time, same-sentence, and action-order heuristics; (ii) a date-normalization ablation against model-emitted dates with span extraction held fixed; (iii) encoder ablations across general BERT, ClinicalBERT, PubMedBERT, and GatorTron; (iv) per-stratum performance by specialty, note length, action count, shorthand temporal forms, historical distractors, and proximity traps; (v) note-level bootstrap confidence intervals computed from per-note predictions; (vi) a clinician-annotated error taxonomy; and (vii) external evaluation on a de-identified institutional sample or on a public clinical temporal-extraction benchmark adapted to action-date pairs.</p>
+    <p>The study has several limitations that bound the conclusions. <em>Synthetic evaluation:</em> the corpus is generated from controlled structured skeletons rather than drawn from real EHR documentation; generalization to real outpatient notes is the principal open question. <em>Limited action ontology:</em> the closed set covers imaging, laboratory and procedural tests, consults, and rehabilitation referrals, but does not include medication changes, conditional follow-up ("return if symptoms worsen"), patient self-care behavior, or instructions with ambiguous executor. <em>Single ontology and single normalization grammar:</em> we use one closed action ontology and one English-language temporal rule grammar; both are editable without retraining but neither has been validated outside the synthetic corpus. <em>No workflow validation:</em> the study does not assess clinician acceptance, EHR integration, alert behavior, or downstream scheduling outcomes.</p>
+    <p><em>Realism check on real transcribed notes.</em> A first-pass annotation of the twenty highest-scoring real transcribed outpatient notes from the public MTSamples corpus (Apache-2.0; approximately 5,000 clinician transcription samples) found that 40% (19 of 48 identified follow-up items) map cleanly to the closed-set ontology, with the remaining 60% falling into categories the synthetic corpus does not represent: medication titration (25% of items), generic specialist follow-up appointments without a specified procedure (17%), closed-set actions recommended without a scheduled time (13%), specialist referrals outside the consult set (8%), and conditional or self-care instructions. This is direct empirical evidence for the ontology-coverage limitation above and motivates extending the entity schema and ontology before any real-EHR deployment. The 20-note annotation and per-item coverage analysis are released as supplementary materials.</p>
+    <p>Planned future work includes: (i) extending the TestSpecification ontology to medication management and conditional follow-up, with corresponding schema changes; (ii) encoder ablations across general BERT, ClinicalBERT, PubMedBERT, and GatorTron; (iii) per-stratum performance by specialty, note length, scheduled-item count, shorthand temporal forms, historical distractors, and proximity traps; (iv) a relation-extraction ablation against nearest-time, same-sentence, and action-order heuristics; (v) a temporal-normalization ablation against model-emitted day offsets with entity extraction held fixed; (vi) a clinician-annotated error taxonomy on a small de-identified real-note sample; and (vii) external evaluation on a de-identified institutional outpatient corpus or on a public clinical temporal-extraction benchmark adapted to ScheduledFor extraction.</p>
   </section>
 
   <section>
     <h2>6. Conclusion</h2>
-    <p>We presented a hybrid neural-symbolic system for extracting structured follow-up action-date pairs from clinical notes. A shared BioBERT encoder feeds joint BIO tagging and biaffine action-time linking heads, and a deterministic normalizer converts relative temporal phrases into absolute dates anchored on the visit date. On a 2,000-note synthetic outpatient corpus, the system achieves 0.980 end-to-end action-date F1 (95% CI [0.964, 0.992]) and 0.53-day mean absolute date error, substantially and significantly exceeding zero-shot ChatGPT and instruction-tuned LLaMA-3 baselines on the same split. The result supports a reliability-first design principle for safety-relevant clinical extraction: when the output combines semantic interpretation with exact symbolic transformation, separating the two improves auditable correctness on the symbolic part. The system is applicable today to scheduling-auditor and care-coordination tools that operate downstream of structured EHR fields and need a trustworthy mapping from free-text plans to executable dates; clinical deployment requires the external validation, ablations, and clinician-validated error taxonomy enumerated as next steps.</p>
+    <p>We presented a hybrid neural-symbolic pipeline that formulates follow-up extraction as structured information extraction over TestSpecification and TimeSpecification entities linked by an explicit ScheduledFor relation, followed by ontology canonicalization and deterministic temporal normalization. On a 2,000-note synthetic outpatient benchmark with an action-disjoint Seen/OOV split design, the pipeline achieves Test-Time Pair F1 of 0.997 (seen-test) and 0.986 (OOV-test) with 0.00-day mean absolute time-offset error in both splits. Generative baselines (LoRA-fine-tuned LLaMA-3 8B and zero-shot GPT-4o-mini) achieve high TestSpecification F1 but only approximately 0.51 Pair F1, indicating that direct generation can name clinical actions but cannot reliably reconstruct the complete scheduled instruction. The architectural separation between learned semantic extraction and deterministic symbolic transformation exposes failure modes to inspection: any wrong pair can be attributed to a specific entity span, ScheduledFor link, or normalization step. The system is applicable to scheduling-auditor and care-coordination tools that operate downstream of structured EHR fields and require a trustworthy mapping from free-text plans to executable schedules. Transfer to real EHR notes, ontology extension to medication management and conditional follow-up, and a clinician-validated error taxonomy are the principal next steps before clinical deployment.</p>
   </section>
 
   <section>

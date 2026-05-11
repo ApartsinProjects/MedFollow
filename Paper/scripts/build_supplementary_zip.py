@@ -31,28 +31,46 @@ OUT = ROOT / "Paper" / "MedFollow_supplementary.zip"
 
 FILES = [
     # (zip path, source path)
-    ("data/synthetic_clinical_notes_2000.csv", ROOT / "Data" / "synthetic_clinical_notes_2000.csv"),
-    ("results/biobert_metrics.json",            ROOT / "Results" / "biobert_metrics.json"),
-    ("results/chatgpt_metrics.json",            ROOT / "Results" / "chatgpt_metrics.json"),
-    ("results/llama_metrics.json",              ROOT / "Results" / "llama_metrics.json"),
-    ("results/results_with_ci.json",            ROOT / "Results" / "results_with_ci.json"),
-    ("scripts/compute_confidence_intervals.py", ROOT / "Paper" / "scripts" / "compute_confidence_intervals.py"),
-    ("scripts/make_round2_figures.py",          ROOT / "Paper" / "scripts" / "make_round2_figures.py"),
-    ("scripts/make_round4_figures.py",          ROOT / "Paper" / "scripts" / "make_round4_figures.py"),
-    ("scripts/make_vocab_distributions.py",     ROOT / "Paper" / "scripts" / "make_vocab_distributions.py"),
-    ("figures/pipeline.svg",                    ROOT / "Paper" / "figures" / "pipeline.svg"),
+    # Synthetic corpus
+    ("data/synthetic_clinical_notes_2000.csv",         ROOT / "Data" / "synthetic_clinical_notes_2000.csv"),
+
+    # Per-system per-split metrics + consolidated canonical file
+    ("results/biobert_seen_metrics.json",              ROOT / "newrepo" / "artifacts" / "metrics" / "biobert_seen_metrics.json"),
+    ("results/biobert_oov_metrics.json",               ROOT / "newrepo" / "artifacts" / "metrics" / "biobert_oov_metrics.json"),
+    ("results/llama_seen_metrics.json",                ROOT / "newrepo" / "artifacts" / "metrics" / "llama_seen_metrics.json"),
+    ("results/llama_oov_metrics.json",                 ROOT / "newrepo" / "artifacts" / "metrics" / "llama_oov_metrics.json"),
+    ("results/gpt_seen_metrics.json",                  ROOT / "newrepo" / "artifacts" / "metrics" / "gpt_seen_metrics.json"),
+    ("results/gpt_oov_metrics.json",                   ROOT / "newrepo" / "artifacts" / "metrics" / "gpt_oov_metrics.json"),
+    ("results/results_seen_oov_with_ci.json",          ROOT / "Results" / "results_seen_oov_with_ci.json"),
+
+    # Analysis scripts that reproduce figures and tables in the manuscript
+    ("scripts/consolidate_seen_oov_metrics.py",        ROOT / "Paper" / "scripts" / "consolidate_seen_oov_metrics.py"),
+    ("scripts/make_seen_oov_figures.py",               ROOT / "Paper" / "scripts" / "make_seen_oov_figures.py"),
+    ("scripts/make_round2_figures.py",                 ROOT / "Paper" / "scripts" / "make_round2_figures.py"),
+    ("scripts/make_round4_figures.py",                 ROOT / "Paper" / "scripts" / "make_round4_figures.py"),
+    ("scripts/make_vocab_distributions.py",            ROOT / "Paper" / "scripts" / "make_vocab_distributions.py"),
+
+    # Editable vector source of the pipeline figure
+    ("figures/pipeline.svg",                           ROOT / "Paper" / "figures" / "pipeline.svg"),
+
+    # Supplementary figure: stress-factor coverage (moved out of body to free a figure slot)
+    ("figures/stress_factor_coverage.png",             ROOT / "Paper" / "figures" / "stress_factor_coverage.png"),
+
+    # MTSamples top-20 realism check (gold annotations + coverage report)
+    ("realism_check/mtsamples_top20_gold.json",        ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_gold.json"),
+    ("realism_check/mtsamples_top20_coverage.md",      ROOT / "Data" / "external" / "mtsamples" / "mtsamples_top20_coverage.md"),
 ]
 
-README = """# MedFollow Supplementary Materials
+README = """# Supplementary Materials
 
 Companion package for the manuscript:
 
-> *Reliable Follow-Up Action and Date Extraction from Clinical Notes:
-> A Hybrid Neural-Symbolic Approach.*
+> *Reliable Extraction of Clinical Follow-Up Instructions:
+> A Hybrid Neural-Symbolic Pipeline.*
 > M. Laufer, Y. Aperstein, A. Apartsin.
 > Submitted to *Journal of Biomedical Informatics*.
 
-Public repository: https://github.com/ApartsinProjects/MedFollow
+Code repository: https://github.com/michallaufer/Clinical-Follow-up-Extraction
 
 ## Contents
 
@@ -60,59 +78,72 @@ Public repository: https://github.com/ApartsinProjects/MedFollow
 - **synthetic_clinical_notes_2000.csv** -- The 2,000-note synthetic
   outpatient corpus described in Section 3.2. Each row contains
   `note_text`, `visit_date`, `specialty`, `topic`, `plan_variant`,
-  `num_actions`, `actions_gt` (JSON list of gold action/time spans
-  with normalized dates), `style_features` (JSON list of the ten
-  style-feature axes), and validation-flag fields. License: CC BY 4.0.
+  `num_actions`, `actions_gt` (JSON list of gold spans with canonical
+  TestSpecification labels, TimeSpecification phrases, normalized
+  period_date, and character offsets), style-feature fields, and
+  validation-flag fields. License: CC BY 4.0.
 
 ### results/
-- **biobert_metrics.json**, **chatgpt_metrics.json**,
-  **llama_metrics.json** -- Per-system aggregated held-out metrics
-  (precision, recall, F1, exact date accuracy, MAE) on the 198-note
-  test split.
-- **results_with_ci.json** -- Consolidated point estimates and 95%
-  confidence intervals for all three systems and all five metrics,
-  plus reconstructed (TP, FP, FN) counts and CI methodology metadata.
-  This is the strict-JSON file used to populate Table 2 and Section 4.
+- **biobert_{seen,oov}_metrics.json**,
+  **llama_{seen,oov}_metrics.json**,
+  **gpt_{seen,oov}_metrics.json** -- Per-system, per-split metric
+  files containing the point estimates and the note-level bootstrap
+  distributions used to populate Table 2 of the manuscript.
+- **results_seen_oov_with_ci.json** -- Consolidated canonical file
+  with point estimates and 95% confidence intervals for all three
+  systems on both the seen-test and OOV-test splits, plus
+  methodology metadata. This is the strict-JSON file used to drive
+  Table 2, Figure 4, and Figure 5.
 
 ### scripts/
-- **compute_confidence_intervals.py** -- Reproduces every CI in the
-  manuscript from the per-system metric files. Wilson score intervals
-  on proportion metrics; 10,000-replicate instance-level bootstrap on
-  F1 metrics with random seed 42. Run with Python 3.11+; depends on
-  numpy and matplotlib.
+- **consolidate_seen_oov_metrics.py** -- Builds the consolidated
+  `results_seen_oov_with_ci.json` from the six per-system per-split
+  metric files. Reproduces every number in Table 2.
+- **make_seen_oov_figures.py** -- Regenerates Figure 4 (Seen vs OOV
+  F1 comparison) and Figure 5 (Time-offset MAE by model and split)
+  from the consolidated metrics file.
 - **make_round2_figures.py** -- Regenerates Figure 2 (dataset
   composition) from the released CSV.
 - **make_vocab_distributions.py** -- Regenerates Figure 3
   (vocabulary distributions) from the released CSV.
-- **make_round4_figures.py** -- Regenerates Figure 4 (stress-factor
-  coverage) from the released CSV.
-
-Figures 5 and 6 (model comparison with CIs; date error) are produced
-by the same `compute_confidence_intervals.py` script.
+- **make_round4_figures.py** -- Regenerates the supplementary
+  stress-factor-coverage figure from the released CSV.
 
 ### figures/
 - **pipeline.svg** -- Editable vector source of Figure 1 (system
-  overview). The DOCX manuscript embeds this same SVG; reviewers who
-  prefer a rasterized version can render it via Inkscape, librsvg,
-  or any SVG viewer.
+  overview). The DOCX manuscript embeds this same SVG.
+- **stress_factor_coverage.png** -- Supplementary figure showing the
+  per-stress-factor proportions in the corpus (moved out of the body
+  to satisfy the journal's figure-count cap).
 
-## Reproducibility notes
+### realism_check/
+- **mtsamples_top20_gold.json** -- Manual ground-truth annotations
+  for the top 20 highest-scoring real transcribed outpatient notes
+  from the MTSamples corpus (Apache-2.0). Each note carries a list
+  of follow-up items with `action_verbatim`, `period_text`,
+  `period_date`, character offsets, an `in_closed_set` flag, and a
+  `coverage_note` tag. Cited in Section 5.1 of the manuscript.
+- **mtsamples_top20_coverage.md** -- Per-category coverage breakdown
+  showing the 40% closed-set coverage finding and a per-note table.
 
-- All scripts assume the repository layout (`scripts/` referencing
-  `data/`, `results/`, `figures/` siblings); they are intended to be
-  run after extracting the zip with the directory structure preserved.
-- The training notebook used to produce the per-system metrics is
-  available in the public repository at
-  `Code/llm_project_follow_up_instruction_extraction_2k_dataset_submit.ipynb`.
-- Trained model checkpoints (BioBERT fine-tuned weights, LLaMA-3
-  LoRA adapter) are not included in this zip; see `models/MODELS.md`
-  in the public repository for download instructions.
+## Reproducibility
+
+The scripts assume the directory layout in this zip; run them from
+the zip root after extraction. The trained BioBERT joint checkpoint
+and LLaMA-3 LoRA adapter used in evaluation are not redistributed
+here owing to size; they are available from the corresponding
+author on reasonable request. Re-running `consolidate_seen_oov_metrics.py`
+followed by `make_seen_oov_figures.py` reproduces every number in
+the manuscript Table 2 and Figures 4-5 from the released per-system
+metric files alone.
 
 ## License
 
-- Synthetic dataset: CC BY 4.0.
-- Code (scripts): MIT.
-- Figures (SVG source): CC BY 4.0.
+- Synthetic dataset (data/): CC BY 4.0.
+- MTSamples top-20 annotations (realism_check/): Apache-2.0 (inherits
+  from the MTSamples upstream).
+- Code (scripts/): MIT.
+- Pipeline figure (figures/pipeline.svg): CC BY 4.0.
 """
 
 

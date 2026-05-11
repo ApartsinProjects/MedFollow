@@ -1,0 +1,225 @@
+{
+  "evaluation": {
+    "methodology": {
+      "split_design": "Action-disjoint Seen/OOV split with 28 canonical action types partitioned by numpy shuffle (seed 123) into 18 train types, 4 OOV-validation types, and 6 OOV-test types. A separate seen-test set is drawn from notes whose action types are in the training set.",
+      "note_partition": {
+        "train": 901,
+        "seen_val": 100,
+        "oov_val": 178,
+        "seen_test": 259,
+        "oov_test": 259
+      },
+      "bootstrap": "Note-level resampling, 1,000 iterations, seed 123",
+      "random_seed": 123,
+      "metric_definitions": {
+        "action_f1": "Set-level F1 on canonical TestSpecification labels.",
+        "offset_f1": "Set-level F1 on normalized TimeSpecification day-offsets.",
+        "pair_f1": "Set-level F1 on complete (TestSpecification, days_offset) pairs (end-to-end).",
+        "mae_days": "Mean absolute error in days on matched TestSpecification entities."
+      }
+    },
+    "systems": {
+      "biobert": {
+        "canonical_name": "BioBERT structured pipeline",
+        "seen_test": {
+          "n_notes": 259,
+          "n_matched_actions": 316,
+          "action_f1": {
+            "point": 0.9968,
+            "ci95": [
+              0.9901,
+              1.0
+            ]
+          },
+          "offset_f1": {
+            "point": 1.0,
+            "ci95": [
+              1.0,
+              1.0
+            ]
+          },
+          "pair_f1": {
+            "point": 0.9968,
+            "ci95": [
+              0.9901,
+              1.0
+            ]
+          },
+          "mae_days": {
+            "point": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "oov_test": {
+          "n_notes": 259,
+          "n_matched_actions": 285,
+          "action_f1": {
+            "point": 0.9896,
+            "ci95": [
+              0.9786,
+              0.9983
+            ]
+          },
+          "offset_f1": {
+            "point": 0.986,
+            "ci95": [
+              0.9717,
+              0.9965
+            ]
+          },
+          "pair_f1": {
+            "point": 0.9861,
+            "ci95": [
+              0.9719,
+              0.9965
+            ]
+          },
+          "mae_days": {
+            "point": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "llama": {
+        "canonical_name": "LLaMA-3 8B LoRA",
+        "seen_test": {
+          "n_notes": 259,
+          "n_matched_actions": 315,
+          "action_f1": {
+            "point": 0.9921,
+            "ci95": [
+              0.9854,
+              0.9984
+            ]
+          },
+          "offset_f1": {
+            "point": 0.511,
+            "ci95": [
+              0.4553,
+              0.5633
+            ]
+          },
+          "pair_f1": {
+            "point": 0.5102,
+            "ci95": [
+              0.4545,
+              0.5624
+            ]
+          },
+          "mae_days": {
+            "point": 21.31,
+            "ci95": [
+              12.75,
+              31.0
+            ]
+          }
+        },
+        "oov_test": {
+          "n_notes": 259,
+          "n_matched_actions": 287,
+          "action_f1": {
+            "point": 0.9914,
+            "ci95": [
+              0.9804,
+              0.9983
+            ]
+          },
+          "offset_f1": {
+            "point": 0.5635,
+            "ci95": [
+              0.5088,
+              0.6239
+            ]
+          },
+          "pair_f1": {
+            "point": 0.5665,
+            "ci95": [
+              0.512,
+              0.6255
+            ]
+          },
+          "mae_days": {
+            "point": 6.25,
+            "ci95": [
+              2.56,
+              11.14
+            ]
+          }
+        }
+      },
+      "gpt": {
+        "canonical_name": "GPT-4o-mini zero-shot",
+        "seen_test": {
+          "n_notes": 259,
+          "n_matched_actions": 301,
+          "action_f1": {
+            "point": 0.9632,
+            "ci95": [
+              0.947,
+              0.9772
+            ]
+          },
+          "offset_f1": {
+            "point": 0.5297,
+            "ci95": [
+              0.4723,
+              0.5822
+            ]
+          },
+          "pair_f1": {
+            "point": 0.528,
+            "ci95": [
+              0.4708,
+              0.5806
+            ]
+          },
+          "mae_days": {
+            "point": 23.65,
+            "ci95": [
+              14.06,
+              34.12
+            ]
+          }
+        },
+        "oov_test": {
+          "n_notes": 259,
+          "n_matched_actions": 259,
+          "action_f1": {
+            "point": 0.9317,
+            "ci95": [
+              0.9094,
+              0.952
+            ]
+          },
+          "offset_f1": {
+            "point": 0.5326,
+            "ci95": [
+              0.4737,
+              0.5921
+            ]
+          },
+          "pair_f1": {
+            "point": 0.5324,
+            "ci95": [
+              0.4738,
+              0.5902
+            ]
+          },
+          "mae_days": {
+            "point": 10.36,
+            "ci95": [
+              4.38,
+              17.18
+            ]
+          }
+        }
+      }
+    }
+  }
+}
