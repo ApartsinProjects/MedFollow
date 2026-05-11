@@ -73,17 +73,21 @@
       hyphens: manual;
       word-break: keep-all;
     }
-    /* Centre KaTeX display equations regardless of the parent paragraph's
-       justify alignment. The auto-render wraps display math in
-       span.katex-display; force it to a centred block. */
-    .katex-display, p > .katex-display {
-      display: block;
+    /* Display-math paragraphs: paragraphs that wrap a single $$...$$ block
+       are marked with class="display-math" so they centre reliably in every
+       browser (the :has() selector is not universally supported). */
+    p.display-math {
       text-align: center;
+      text-align-last: center;
       margin: 14px 0;
     }
-    /* Paragraphs that contain only a display-math equation (i.e. that wrap
-       a $$...$$ block) should also centre to keep the equation true-centred
-       even if KaTeX's internal centring metrics are off in a given browser. */
+    /* Also style the KaTeX-rendered span itself as a centred block so the
+       math element occupies the full paragraph width and is centred within it. */
+    .katex-display {
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+    }
     p:has(> .katex-display) {
       text-align: center;
     }
@@ -170,8 +174,16 @@
     a:hover {
       text-decoration: underline;
     }
+    /* Bibliography: keep the [N] prefix in the entry text and suppress
+       the <ol>'s auto-generated counter to avoid double numbering. */
+    ol.bib {
+      list-style: none;
+      padding-left: 0;
+      counter-reset: none;
+    }
     .bib li {
       margin-bottom: 10px;
+      padding-left: 0;
     }
     .smallcaps {
       font-variant: small-caps;
@@ -299,7 +311,7 @@
 
     <h3>3.1 Task definition</h3>
     <p>Each input example consists of a clinical note \(x\) and a visit date \(v\). The intermediate structured representation contains two entity types and one relation. <strong>TestSpecification</strong> entities are spans corresponding to scheduled clinical actions (e.g., X-Ray, Blood Test, CT Scan, Cardiology Consult). <strong>TimeSpecification</strong> entities are spans corresponding to the timing of an intended follow-up (e.g., "in 2 weeks", "tomorrow", "in 6 months"). A <strong>ScheduledFor(TestSpecification, TimeSpecification)</strong> relation connects each scheduled clinical action to the timing phrase that specifies when it should occur. TestSpecification entities are mapped to canonical ontology labels and TimeSpecification entities are mapped to integer day offsets relative to \(v\). The final normalized output is the set:</p>
-    <p>$$Y = \{(a_i, k_i)\}_{i=1}^{n},$$</p>
+    <p class="display-math">$$Y = \{(a_i, k_i)\}_{i=1}^{n},$$</p>
     <p>where \(a_i\) is a canonical TestSpecification label drawn from a closed ontology and \(k_i \in \mathbb{Z}\) is a normalized day offset. The model returns an empty set when no scheduled follow-up is present. The strict end-to-end correctness criterion is set-level: a prediction is correct only when its canonical label and its integer day offset both match the gold pair. The task decomposes into four subtasks: entity extraction (TestSpecification and TimeSpecification spans), ScheduledFor relation extraction, ontology canonicalization, and deterministic temporal normalization. Figure 1 shows the system pipeline.</p>
 
     <figure>
@@ -349,11 +361,11 @@
     <h3>3.3 Hybrid neural-symbolic architecture</h3>
     <p>The proposed system shares a contextual encoder across two task heads (BIO entity tagging, biaffine ScheduledFor relation extraction) and delegates ontology canonicalization and temporal arithmetic to deterministic post-processors. We use the publicly released <code>dmis-lab/biobert-base-cased-v1.1</code> checkpoint (768-dimensional hidden states) as the encoder, processing each note with sliding windows of maximum length 512 sub-word tokens and document stride 128; predictions from overlapping windows are merged at the character-span level. Let \(h_1,\ldots,h_T \in \mathbb{R}^{768}\) denote the contextual token representations for a window.</p>
     <p><em>Entity extraction.</em> The first head predicts BIO tags over tokens using the label set \(\{\mathrm{O}, \mathrm{B\text{-}TEST}, \mathrm{I\text{-}TEST}, \mathrm{B\text{-}TIME}, \mathrm{I\text{-}TIME}\}\), where TEST spans correspond to TestSpecification entities and TIME spans to TimeSpecification entities. The tagging loss is weighted cross-entropy with per-class weights downweighting the majority O class:</p>
-    <p>$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
+    <p class="display-math">$$\mathcal{L}_{\mathrm{NER}} = - \sum_{t=1}^{T} w_{z_t}\log p(z_t \mid h_t).$$</p>
     <p>At inference, contiguous BIO sequences are decoded into character-offset spans using the offset-mapping returned by the BioBERT tokenizer.</p>
     <p><em>Span representation.</em> For each detected entity span \(s=(b,e)\), the model constructs a span representation by concatenating the start hidden state, the end hidden state, and a learned width embedding: \(r_s = [h_b; h_e; \phi(e-b+1)] \in \mathbb{R}^{1568}\). The width embedding \(\phi\) maps span length to one of nine learned vectors.</p>
     <p><em>ScheduledFor relation extraction.</em> For each candidate (TestSpecification, TimeSpecification) pair, the relation extractor scores compatibility using a biaffine form augmented with a distance feature, \(\mathrm{score}(a,t) = r_a^\top W r_t + u^\top [r_a; r_t; \psi(\Delta_{a,t})] + b\), where \(\Delta_{a,t}\) is the absolute character-offset distance between the two spans, bucketized into learned 32-dimensional embeddings. For each TestSpecification span, the extractor applies a softmax over all candidate TimeSpecification spans plus a none option \(\varnothing\) (a learned virtual span representing actions without an explicit time):</p>
-    <p>$$\mathcal{L}_{\mathrm{LINK}} = - \sum_{a \in A} \log p(t^\star_a \mid a, T \cup \{\varnothing\}).$$</p>
+    <p class="display-math">$$\mathcal{L}_{\mathrm{LINK}} = - \sum_{a \in A} \log p(t^\star_a \mid a, T \cup \{\varnothing\}).$$</p>
     <p>The output ScheduledFor relation is written explicitly as <code>ScheduledFor(test_entity_id, time_entity_id)</code>; this explicit relation is the key difference between the structured pipeline and direct generative baselines, because it exposes which entity was linked to which time expression before any normalization.</p>
     <p><em>Joint objective and training.</em> The total objective is \(\mathcal{L} = \mathcal{L}_{\mathrm{NER}} + \alpha \mathcal{L}_{\mathrm{LINK}}\) with \(\alpha = 1\). Training uses AdamW with batch size 16, learning rate 2&times;10<sup>-5</sup>, and early stopping on validation loss; full hyperparameters are in the supplementary materials. Relation labels are derived from gold span pairs during training; at inference, the relation extractor operates on entity spans predicted by the tagging head.</p>
     <p><em>Ontology canonicalization and temporal normalization.</em> After relation extraction, TestSpecification surface forms (e.g., "CT test", "CT lab", "computed tomography") are mapped to canonical labels (<code>CT Scan</code>) through an editable ontology with an alias index; the ontology can be updated without retraining. Each linked TimeSpecification phrase is normalized to an integer day offset by a rule grammar over phrase families (<code>tomorrow</code> &#8594; 1, <code>today</code> &#8594; 0, <code>in N weeks</code> &#8594; \(7N\), <code>in N months</code> &#8594; \(30N\), <code>in N years</code> &#8594; \(365N\); written-number and shorthand variants resolved before lookup). Unmatched phrases fall back to <code>dateparser</code> with <code>RELATIVE_BASE = v</code> and <code>PREFER_DATES_FROM = "future"</code>. The neural model never performs calendar arithmetic; failures at the normalization stage are observable as parser-level errors and auditable against a fixed grammar.</p>
