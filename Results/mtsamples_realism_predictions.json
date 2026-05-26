@@ -1,0 +1,724 @@
+[
+  {
+    "note_id": 1357,
+    "sample_name": "Leg Pain & Bone Pain",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Annual Physical",
+        "days_offset": 30
+      },
+      {
+        "action": "X-Ray",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 2,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1447,
+    "sample_name": "Asperger Disorder",
+    "n_test_spans": 0,
+    "n_time_spans": 2,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2253,
+    "sample_name": "CT Neck - 1",
+    "n_test_spans": 1,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "MRI",
+        "days_offset": null
+      },
+      {
+        "action": "MRI",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2277,
+    "sample_name": "Cartilage Loose Body Removal",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Orthopedic Consult",
+        "days_offset": 10
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1036,
+    "sample_name": "Cineangiography - 1",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2040,
+    "sample_name": "Tailor Bunionectomy with Screw Fixation",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2095,
+    "sample_name": "Ortho - Letter - 1",
+    "n_test_spans": 1,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "EMG",
+        "days_offset": 14
+      },
+      {
+        "action": "Joint Injection",
+        "days_offset": 14
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 2,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 2
+  },
+  {
+    "note_id": 2236,
+    "sample_name": "Elbow Manipulation",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [
+      {
+        "action": "Physical Therapy",
+        "days_offset": 3,
+        "test_span": [
+          3162,
+          3178,
+          "physical therapy"
+        ],
+        "time_span": [
+          3194,
+          3203,
+          "in 3 days"
+        ]
+      }
+    ],
+    "gold_in_set": [
+      {
+        "action": "Physical Therapy",
+        "days_offset": 3
+      },
+      {
+        "action": "Orthopedic Consult",
+        "days_offset": 7
+      }
+    ],
+    "action_tp": 1,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 1,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 2451,
+    "sample_name": "Premature retina and vitreous",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2249,
+    "sample_name": "Delayed ORIF",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Orthopedic Consult",
+        "days_offset": 2
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1332,
+    "sample_name": "Posttransplant Lymphoproliferative Disorder",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 3895,
+    "sample_name": "Pneumonia & COPD - Discharge Summary",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "X-Ray",
+        "days_offset": 14
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 3278,
+    "sample_name": "Hyperthyroidism Following Pregnancy",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": 42
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1262,
+    "sample_name": "Angiography & Catheterization - 1",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 3003,
+    "sample_name": "Kidney Transplant - Followup",
+    "n_test_spans": 1,
+    "n_time_spans": 2,
+    "predictions": [
+      {
+        "action": "Urinalysis",
+        "days_offset": 14,
+        "test_span": [
+          2203,
+          2213,
+          "urinalysis"
+        ],
+        "time_span": [
+          2242,
+          2254,
+          "in two weeks"
+        ]
+      }
+    ],
+    "gold_in_set": [
+      {
+        "action": "Urinalysis",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 1,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 1,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 4675,
+    "sample_name": "Selective Coronary Angiography & Angioplasty",
+    "n_test_spans": 2,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2173,
+    "sample_name": "Long-Arm Cast",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Orthopedic Consult",
+        "days_offset": 21
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 2487,
+    "sample_name": "Myoclonic Epilepsy",
+    "n_test_spans": 0,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Neurology Consult",
+        "days_offset": 90
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1381,
+    "sample_name": "Gen Med Progress Note - 9",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 1382,
+    "sample_name": "Gen Med Progress Note - 2",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": null
+      },
+      {
+        "action": "Lipid Panel",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 2,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 3036,
+    "sample_name": "CT Abdomen & Pelvis - 3",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "MRI",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2075,
+    "sample_name": "Physical Therapy - Synovitis",
+    "n_test_spans": 3,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 4320,
+    "sample_name": "Hypertension & Cardiomyopathy",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": 7
+      },
+      {
+        "action": "Lipid Panel",
+        "days_offset": 7
+      },
+      {
+        "action": "GI Consult",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 3,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 2
+  },
+  {
+    "note_id": 4015,
+    "sample_name": "Excision - Skin Neoplasm",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 4494,
+    "sample_name": "Consult - Hydronephrosis",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 1326,
+    "sample_name": "Progress Note - Liver Cirrhosis",
+    "n_test_spans": 1,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 3011,
+    "sample_name": "Fistulogram & Angioplasty",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 4214,
+    "sample_name": "OB/GYN Consultation - 2",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 1344,
+    "sample_name": "Ophthalmology Progress Note - 1",
+    "n_test_spans": 0,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2781,
+    "sample_name": "Physical Therapy - Brain Tumor Removal",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 4860,
+    "sample_name": "Complex Cyanotic Congenital Heart Disease",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 1453,
+    "sample_name": "Acne - SOAP",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 3310,
+    "sample_name": "Gen Med Progress Note - 4",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 749,
+    "sample_name": "Heart Catheterization, Ventriculography, & Angiography - 10",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2217,
+    "sample_name": "Hardware Removal - Elbow",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Orthopedic Consult",
+        "days_offset": 7
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 1955,
+    "sample_name": "Transforaminal Epidural Steroid Injection",
+    "n_test_spans": 1,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 2180,
+    "sample_name": "Kyphosis",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "X-Ray",
+        "days_offset": 90
+      },
+      {
+        "action": "Physical Therapy",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 2,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 1
+  },
+  {
+    "note_id": 3301,
+    "sample_name": "Gen Med SOAP - 2",
+    "n_test_spans": 2,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [
+      {
+        "action": "Blood Test",
+        "days_offset": null
+      }
+    ],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 1,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 317,
+    "sample_name": "Suction, Dilation, & Curettage - 1",
+    "n_test_spans": 0,
+    "n_time_spans": 1,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  },
+  {
+    "note_id": 623,
+    "sample_name": "Laparoscopy",
+    "n_test_spans": 0,
+    "n_time_spans": 0,
+    "predictions": [],
+    "gold_in_set": [],
+    "action_tp": 0,
+    "action_fp": 0,
+    "action_fn": 0,
+    "pair_tp": 0,
+    "pair_fp": 0,
+    "pair_fn": 0
+  }
+]

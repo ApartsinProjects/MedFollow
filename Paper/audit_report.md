@@ -1,13 +1,13 @@
 # DOCX Audit Report
 
 **Source:** `Paper\MedFollow_JBI_submission.docx`  
-**Size:** 348,512 bytes  
-**Paragraphs:** 155  
+**Size:** 341,706 bytes  
+**Paragraphs:** 157  
 **Tables:** 3  
 **Embedded images:** 5  
 **Native OMML equations:** 35  
-**Body word count:** 5693  
-**Abstract word count:** 299  
+**Body word count:** 5941  
+**Abstract word count:** 191  
 
 ## Embedded media files
 
@@ -34,15 +34,15 @@ None.
 - :white_check_mark: All 7 declaration blocks present after Conclusion
 - :white_check_mark: References section present
 - :white_check_mark: References list contains 25 [N]-prefixed entries (>= 22 expected)
-- :white_check_mark: Body word count 5693 (cap 6000)
-- :white_check_mark: Abstract word count 299 (cap 300)
+- :white_check_mark: Body word count 5941 (cap 6000)
+- :white_check_mark: Abstract word count 191 (cap 300)
 - :white_check_mark: Figures (5) + tables (3) = 8 (cap 8)
 - :white_check_mark: 35 native Word OMML equations (>= 30 expected)
 - :white_check_mark: No literal '\(' KaTeX delimiters left in document.xml
 - :white_check_mark: Found 21 live https://doi.org hyperlinks in references (>= 18 expected)
 - :white_check_mark: No vertical rules detected in tables
 - :white_check_mark: Figure captions present and numbered 1..5 consecutively
-- :white_check_mark: Body alignment: 79 paragraphs explicitly JUSTIFIED, 26 LEFT, 17 other
+- :white_check_mark: Body alignment: 80 paragraphs explicitly JUSTIFIED, 26 LEFT, 17 other
 - :white_check_mark: Corresponding-author marker present
 - :white_check_mark: Generative AI disclosure contains Elsevier mandated wording
 - :white_check_mark: Synthetic-data generator model name present (gpt-4o-mini)

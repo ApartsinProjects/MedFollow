@@ -1,0 +1,42 @@
+{
+  "seen": {
+    "n_notes": 259,
+    "llama_original_pair_f1": {
+      "tp": 179,
+      "fp": 140,
+      "fn": 140,
+      "precision": 0.5611,
+      "recall": 0.5611,
+      "f1": 0.5611
+    },
+    "llama_ablation_pair_f1": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 319,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0
+    },
+    "delta_f1": -0.5611
+  },
+  "oov": {
+    "n_notes": 264,
+    "llama_original_pair_f1": {
+      "tp": 166,
+      "fp": 126,
+      "fn": 130,
+      "precision": 0.5685,
+      "recall": 0.5608,
+      "f1": 0.5646
+    },
+    "llama_ablation_pair_f1": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 296,
+      "precision": 0,
+      "recall": 0.0,
+      "f1": 0
+    },
+    "delta_f1": -0.5646
+  }
+}

@@ -29,7 +29,7 @@ def main() -> None:
     # ---------- Figure: dataset composition (specialty x action count) ----------
     ct = pd.crosstab(df["specialty"], df["num_actions"])
     ct = ct.reindex(sorted(ct.index))
-    fig, ax = plt.subplots(figsize=(7.2, 3.6))
+    fig, ax = plt.subplots(figsize=(7.2, 4.0))
     bottoms = np.zeros(len(ct))
     palette = ["#a6cee3", "#1f78b4", "#08306b"]
     for i, col in enumerate(ct.columns):
@@ -44,10 +44,15 @@ def main() -> None:
         bottoms += ct[col].values
     ax.set_xlabel("Number of notes")
     ax.set_title("Dataset composition by specialty and follow-up action count (n = 2,000)")
-    ax.legend(loc="lower right", frameon=False, fontsize=9)
+    # Legend BELOW the plot, in one horizontal row, so it never overlaps the
+    # longest bar (the original "lower right" inside-the-plot placement sat on
+    # top of the data for the largest specialty).
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.16),
+              frameon=False, fontsize=9, ncol=len(ct.columns))
     ax.spines[["top", "right"]].set_visible(False)
     fig.tight_layout()
-    fig.savefig(OUT / "dataset_composition.png", dpi=180)
+    fig.subplots_adjust(bottom=0.22)
+    fig.savefig(OUT / "dataset_composition.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
     # ---------- Figure: action ontology (top-N vocabulary) ----------

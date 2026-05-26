@@ -222,3 +222,7 @@ newrepo/
 
 # Toloka API credential; never commit.
 toloko.env.key.txt
+
+# Local-only artifacts (model checkpoints go on Zenodo at acceptance; runpod_bundle is working scratch)
+models/
+runpod_bundle/

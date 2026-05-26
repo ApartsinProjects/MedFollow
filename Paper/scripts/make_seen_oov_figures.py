@@ -75,9 +75,14 @@ def main() -> None:
         ax.spines[["top", "right"]].set_visible(False)
         if ax is axes[0]:
             ax.set_ylabel("F1 (with 95% CI)")
-    axes[0].legend(loc="lower left", frameon=False, fontsize=9)
+    # Figure-level legend BELOW the three panels instead of inside axes[0],
+    # which previously overlapped the lowest bars on the left panel.
+    handles, labels = axes[0].get_legend_handles_labels()
     fig.suptitle("Held-out performance with 95% confidence intervals", fontsize=12, y=1.01)
     fig.tight_layout()
+    fig.subplots_adjust(bottom=0.18)
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, -0.02),
+               ncol=len(handles), frameon=False, fontsize=10)
     fig.savefig(OUT / "seen_oov_f1_comparison.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
     print(f"Wrote {OUT/'seen_oov_f1_comparison.png'}")
