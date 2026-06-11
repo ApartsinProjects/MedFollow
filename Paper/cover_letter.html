@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cover Letter — MedFollow (JBI submission)</title>
+<style>
+  :root {
+    --ink: #111418;
+    --soft: #2c3138;
+    --muted: #5a626c;
+    --navy: #14385c;
+    --rule: #d1d4d8;
+  }
+  html, body { background: #fff; }
+  body {
+    font-family: "Charter", "Iowan Old Style", "Source Serif Pro", Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    font-size: 11pt;
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 36px auto 64px;
+    padding: 0 28px;
+    hyphens: auto;
+  }
+  h1 {
+    font-size: 17pt;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 18px;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+  .meta {
+    margin: 0 0 24px;
+    font-size: 10pt;
+    color: var(--soft);
+  }
+  .meta p { margin: 0 0 2px; text-indent: 0; }
+  .meta strong { color: var(--ink); }
+  p {
+    margin: 0 0 10px;
+    text-align: justify;
+    text-indent: 1.4em;
+  }
+  /* First paragraph after a heading or rule is flush-left (academic convention) */
+  hr + p, h1 + p, h2 + p, .meta + p, ul + p, li > p:first-child { text-indent: 0; }
+  p.flush { text-indent: 0; }
+  .lead { color: var(--navy); }
+  ul {
+    margin: 6px 0 12px;
+    padding-left: 22px;
+    text-align: justify;
+  }
+  ul li { margin: 0 0 6px; text-indent: 0; }
+  ul li p { text-indent: 0; margin: 0; }
+  ol.numbered {
+    margin: 6px 0 12px;
+    padding-left: 22px;
+  }
+  ol.numbered li { margin: 0 0 10px; text-indent: 0; }
+  ol.numbered li p { text-indent: 0; margin: 0 0 6px; }
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 18px 0 18px;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: #f4f5f7;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: 0.92em;
+  }
+  a { color: var(--navy); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .signoff p { text-indent: 0; margin: 4px 0; }
+  .signoff p.name { margin-top: 22px; font-weight: 600; }
+  @media print {
+    body { margin: 0.7in auto; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Cover Letter</h1>
+
+<div class="meta">
+  <p><strong>To:</strong> Editor-in-Chief, <em>Journal of Biomedical Informatics</em></p>
+  <p><strong>From:</strong> Yehudit Aperstein (corresponding author), Afeka College of Engineering, Tel Aviv, Israel. Email: <a href="mailto:apersteiny@afeka.ac.il">apersteiny@afeka.ac.il</a></p>
+  <p><strong>Date:</strong> [insert at submission]</p>
+  <p><strong>Re:</strong> Submission of <em>Reliable Extraction of Clinical Follow-Up Instructions: A Hybrid Neural-Symbolic Pipeline</em> as an Original Research article.</p>
+</div>
+
+<hr>
+
+<p class="flush">Dear Editor,</p>
+
+<p>We are pleased to submit our manuscript <em>Reliable Extraction of Clinical Follow-Up Instructions: A Hybrid Neural-Symbolic Pipeline</em> for consideration as an Original Research article in the <em>Journal of Biomedical Informatics</em>. The work has not been published previously and is not under consideration at any other journal.</p>
+
+<p><strong class="lead">Why JBI.</strong> The manuscript sits squarely in JBI's scope as a methodology paper on a concrete clinical-informatics problem: extracting structured (action, date) pairs (e.g., <em>"MRI brain in two weeks" &rarr; {MRI Brain, 2026-01-24}</em>) from outpatient note text. Reliable extraction of these pairs is a prerequisite for downstream EHR scheduling, care-coordination audit, and structured-field validation, and the problem is acutely sensitive to the date-arithmetic failure modes that current end-to-end LLM extractors exhibit. Failure to follow up on instructions of this kind has been documented as a patient-safety issue in ambulatory care (Callen et al., 2012, <em>J. Gen. Intern. Med.</em>).</p>
+
+<p><strong class="lead">Core contribution.</strong> We propose a hybrid neural-symbolic system that delegates calendar arithmetic to a deterministic temporal-expression normalizer while retaining a learned BioBERT encoder with a joint BIO action/time tagging head and a biaffine action-time linker. On a 2,000-note synthetic outpatient corpus we release with the paper, the system reaches Test-Time Pair F1 of <strong>0.997 [0.990, 1.000]</strong> on a 259-note seen-test split and <strong>0.986 [0.972, 0.997]</strong> on a 259-note action-disjoint OOV-test split, with <strong>0.00-day mean absolute date error</strong> in both splits. The two generative baselines (zero-shot GPT-4o-mini and LoRA-fine-tuned LLaMA-3 8B) reach high TestSpecification F1 (0.93-0.99) but their Pair F1 stays at <strong>0.51-0.57</strong> with day-to-month-scale arithmetic errors. The 95% confidence intervals on the headline metrics do not overlap between the hybrid pipeline and either baseline on either split. To the best of our knowledge this is the first explicit comparative evaluation of a decomposed-versus-end-to-end architecture for clinical action-date extraction with a designed stress-factor corpus and a strict set-level correctness criterion.</p>
+
+<p><strong class="lead">Two findings worth flagging for reviewers.</strong></p>
+
+<ol class="numbered">
+  <li><p>A <strong>date-normalization ablation</strong> (Section 4.2) addresses the natural alternative architecture: <em>can the symbolic normalizer be applied to a generative model's output as a drop-in date-arithmetic component?</em> Feeding the LoRA model's emitted <code>period_text</code> strings through the same rule grammar collapses Pair F1 from 0.564 to <strong>0.000</strong> on seen-test and from 0.562 to <strong>0.000</strong> on OOV-test, because the fine-tuned model emits absolute ISO dates directly and never produces a <code>period_text</code> intermediate the rule grammar can parse. This is a stronger statement than the original architectural argument: the symbolic normalizer is coupled to the structured BIO tagger output by design and is not a separable swappable component.</p></li>
+  <li><p>A <strong>realism check on real transcribed notes</strong> (Section 5.1) is the principal external-validity signal in the current version. Forty MTSamples transcribed outpatient notes were manually annotated against the closed 28-action ontology; <strong>31% (28 of 91)</strong> of identified follow-up items fell inside the ontology, with the remaining 69% in categories the synthetic corpus does not represent (medication titration 25%, generic specialist follow-up 21%, recurring schedules, conditional/self-care instructions). On the in-ontology subset (15 evaluable items), the hybrid pipeline scored Pair F1 = <strong>0.118</strong> (1 TP, 1 FP, 14 FN), an approximately eight-fold drop from the synthetic OOV-test split (0.986). The two findings together separate a coverage gap (ontology design) from a textual-generalization gap (synthetic-only training) and give an honest empirical bound on real-world readiness rather than a hand-waved limitations paragraph.</p></li>
+</ol>
+
+<p><strong class="lead">Compliance with the Guide for Authors.</strong> We confirm the manuscript conforms to JBI's structural and editorial requirements:</p>
+
+<ul>
+  <li><strong>Body shape:</strong> Introduction / Related Work / Methods / Results / Discussion / Conclusion, with <strong>5,941 body words</strong> (cap 6,000).</li>
+  <li><strong>Abstract:</strong> <strong>191 words / 1,385 characters</strong>, structured as Objective / Methods / Results / Conclusion (caps 300 / 1,500).</li>
+  <li><strong>Statement of Significance</strong> with the four mandated sub-headings (Problem or Issue; What is Already Known; What this Paper Adds; Who would benefit) is included at the end of the Introduction.</li>
+  <li><strong>Figures and tables:</strong> 5 figures and 3 tables, total <strong>8 (at the cap)</strong>. No vertical rules in tables; figures are embedded at the cited locations.</li>
+  <li><strong>References:</strong> 25 entries in Elsevier numbered Vancouver format with LTWA-abbreviated journal names. Every entry was verified resolvable against Crossref / OpenAlex / arXiv (DOI present for journal articles; ACL Anthology or OpenReview link for conference papers without DOIs).</li>
+  <li><strong>Required declarations</strong> (CRediT authorship contribution, Declaration of competing interest, Funding, Ethics, Data and code availability, Generative AI use disclosure, Acknowledgements) are all present after the Conclusion. Generative AI was used in drafting and copy-editing the manuscript and as the synthetic-data generator (OpenAI <code>gpt-4o-mini</code>); both uses are disclosed using Elsevier's mandated wording, with model name and version recorded in the Methods section.</li>
+  <li><strong>Ethics:</strong> The dataset is fully synthetic and contains no protected health information; no IRB approval is required for the present experiments.</li>
+</ul>
+
+<p><strong class="lead">Data, code, and reproducibility.</strong> The synthetic corpus, training and inference code, per-system metric files, the per-note LLaMA prediction dumps used for the Table 3 quantitative error profile and the Section 4.2 ablation, the MTSamples top-40 gold annotations and per-item coverage breakdown referenced in Section 5.1, and the source files for every manuscript figure are publicly released under permissive licences at <a href="https://github.com/ApartsinProjects/MedFollow">https://github.com/ApartsinProjects/MedFollow</a>. The inference pipeline reproduces end-to-end from the released data and supplied checkpoints in approximately ten minutes on a single rented RTX 4090. A DOI-bearing Zenodo deposit including the fine-tuned BioBERT weights (~440 MB) and the LLaMA-3 LoRA adapter (~158 MB) will be created at acceptance and cited in the final version.</p>
+
+<p><strong class="lead">Conflicts of interest.</strong> None to declare.</p>
+
+<p><strong class="lead">Funding.</strong> This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.</p>
+
+<p>We thank you in advance for considering this manuscript. We will be happy to address any questions you or the reviewers may have, and we welcome feedback that would strengthen the paper toward publication.</p>
+
+<div class="signoff">
+  <p class="flush">Sincerely,</p>
+  <p class="name">Yehudit Aperstein, on behalf of the authors</p>
+  <p>Afeka College of Engineering, Tel Aviv, Israel</p>
+  <p><a href="mailto:apersteiny@afeka.ac.il">apersteiny@afeka.ac.il</a></p>
+</div>
+
+</body>
+</html>
